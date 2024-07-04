@@ -161,3 +161,33 @@ div#rightMenu a:hover{
 .top-bar__menu-box-1 > ul {
     border-radius: 20px;
 }
+
+/*인기카테고리*/
+.gallery_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+.gallery {
+    display: grid;
+    grid-template-columns: 546px 454px;
+    gap: 10px;
+    margin: 20px;
+}
+.gallery img {
+    height: 400px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    object-fit: cover;
+}
+.gallery img:nth-child(1), .gallery img:nth-child(3) {
+    width: 546px;
+}
+.gallery img:nth-child(2), .gallery img:nth-child(4) {
+    width: 454px;
+}
+.gallery img:nth-child(5) {
+    grid-column: span 2;
+    width: 100%;
+}
