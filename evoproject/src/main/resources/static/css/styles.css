@@ -18,6 +18,7 @@ body {
 
 #wrap{
     /* 각 웹 페이지 크기에 맞게 사이즈 조정 */
+    display: inline;
     position: relative;
     text-align:center;
     margin:0;
@@ -25,6 +26,7 @@ body {
     margin-left:auto;
     background-repeat:repeat-y;
     font-size:2em;
+    vertical-align: center;
 }
 
 a {
@@ -41,30 +43,7 @@ a {
     margin:40px 0 0 40px;
 }
 
-div#middleMenu {
-    display:inline-block;
-    margin:65px -11% 0 0;
-    font-family: Arial, Helvetica, sans-serif;
-    justify-content: center;
-}
 
-div#middleMenu ul{
-    text-align: center;
-}
-
-div#middleMenu li{
-    list-style: none;
-    display: inline-block;
-    vertical-align: middle;
-    margin-right:20pt;
-}
-div#middleMenu a{
-    color: black;
-}
-
-div#middleMenu a:hover{
-    color: gray;
-}
 
 div#rightMenu {
     display:inline-block;
@@ -94,12 +73,14 @@ div#rightMenu a:hover{
 /* 라이브러리 시작 */
 .con {
     margin-right: auto;
+    margin-left: auto;
+    display: inline;
 }
 /* 라이브러리 끝 */
 
 /* 커스텀 시작 */
 :root {
-    --site-width: 100px;
+    --site-width: 1000px;
 }
 
 .con-min-width {
@@ -120,38 +101,45 @@ div#rightMenu a:hover{
 }
 
 .top-bar__menu-box-1 > ul > li {
+    list-style: none;
+    vertical-align: middle;
     display: inline-block;
+    margin-right: 20px;
 }
 
 .top-bar__menu-box-1 {
-    text-align: center;
-    margin-top: 100px;
+    display:inline-block;
+    margin:65px -11% 0 0;
+    font-family: Arial, Helvetica, sans-serif;
+    justify-content: center;
+    text-align: left;
+
 }
 
 .top-bar__menu-box-1 ul {
-
+    text-align: center;
 }
 
 .top-bar__menu-box-1 ul > li > a {
     display: block;
-    font-size: 3rem;
+    font-size: 2rem;
     padding: 10px 50px;
 }
 
 .top-bar__menu-box-1 ul > li:hover > a {
-    background-color: #555;
+    color: #555;
 }
 
 .top-bar__menu-box-1 > ul > li {
     position: relative;
-    white-space: nowrap;
 }
 
 .top-bar__menu-box-1 > ul > li > ul {
-    position: absolute;
-    top: 100%;
+    position: fixed;
+    top: 153px;
     left: 0;
-    width: 98vw;
+    width: 100vw;
+    text-align: left;
 }
 
 .top-bar__menu-box-1 > ul > li:hover > ul {
