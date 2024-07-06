@@ -6,7 +6,8 @@ import java.util.List;
 
 public interface ProductService {
 
-    List<Product> getAllProducts();
+    List<Product> getAllProducts(int page, int size);
+
     Product getProductByNo(int productNo);
 
 }

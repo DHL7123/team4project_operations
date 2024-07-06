@@ -1,14 +1,10 @@
 package com.evo.evoproject.domain.product;
 
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
-@Getter
-@Setter
+
+@Data
     public class Product {
-
-//        @JsonProperty("proId")
         private int productNo;
         private String productName;
         private String productDes;

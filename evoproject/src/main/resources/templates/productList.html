@@ -2,28 +2,70 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <title>Product List</title>
+  <style>
+    .product {
+      position: relative;
+      width: 200px;
+      height: 300px;
+      margin: 10px;
+      float: left;
+      border: 1px solid #ccc;
+      padding: 10px;
+      cursor: pointer;
+    }
+    .product img {
+      width: 100%;
+      height: 200px;
+    }
+    .add-to-cart {
+      display: none;
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #000;
+      color: #fff;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+    .product:hover .add-to-cart {
+      display: block;
+    }
+  </style>
+  <script>
+    function redirectToDetailPage(productNo) {
+      window.location.href = '/product/' + productNo;
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      var products = document.querySelectorAll('.product');
+      products.forEach(function (product) {
+        var addToCartButton = product.querySelector('.add-to-cart');
+        product.addEventListener('click', function (event) {
+          if (event.target !== addToCartButton) {
+            var productNo = product.getAttribute('data-product-no');
+            redirectToDetailPage(productNo);
+          }
+        });
+      });
+    });
+  </script>
 </head>
 <body>
 <h1>Product List</h1>
-<table>
-  <thead>
-  <tr>
-    <th>ID</th>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Price</th>
-    <th>Stock</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr th:each="product : ${products}">
-    <td th:text="${product.productNo}"></td>
-    <td th:text="${product.productName}"></td>
-    <td th:text="${product.productDes}"></td>
-    <td th:text="${product.price}"></td>
-    <td th:text="${product.stock}"></td>
-  </tr>
-  </tbody>
-</table>
+<div>
+  <div class="product" th:each="product : ${products}" th:data-product-no="${product.productNo}">
+    <img th:src="@{/images/} + ${product.imageId}" alt="Product Image">
+    <h2 th:text="${product.productName}">Product Name</h2>
+    <p th:text="${product.price} + ' 원'">Product Price</p>
+    <div class="add-to-cart">Add to cart</div>
+  </div>
+</div>
+<div>
+  <button th:if="${currentPage > 1}"
+          th:onclick="'location.href=\'/product?page=' + (${currentPage} - 1) + '&size=16\''">Previous</button>
+  <button th:if="${products.size() == 16}"
+          th:onclick="'location.href=\'/product?page=' + (${currentPage} + 1) + '&size=16\''">Next</button>
+</div>
 </body>
 </html>
