@@ -10,4 +10,5 @@ public interface ProductService {
 
     Product getProductByNo(int productNo);
 
+    int getTotalPages(int pageSize);
 }

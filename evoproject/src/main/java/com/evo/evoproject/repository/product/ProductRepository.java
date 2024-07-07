@@ -10,6 +10,6 @@ public interface ProductRepository {
 
     List<Product> selectAllProducts(int offset, int size);
     Product selectProductByNo(int productNo);
-
+    int countAllProducts();
 
 }

@@ -31,6 +31,28 @@
     .product:hover .add-to-cart {
       display: block;
     }
+    .pagination {
+      width: 100%;
+      position: absolute;
+      bottom: 10px;
+      display: flex;
+      justify-content: center;
+    }
+    .pagination ul {
+      padding: 0;
+      list-style: none;
+      text-align: center;
+    }
+    .pagination li {
+      display: inline;
+      margin: 0 5px;
+    }
+    .pagination li a {
+      text-decoration: none;
+    }
+    .pagination li.active a {
+      font-weight: bold;
+    }
   </style>
   <script>
     function redirectToDetailPage(productNo) {
@@ -60,12 +82,23 @@
     <p th:text="${product.price} + ' 원'">Product Price</p>
     <div class="add-to-cart">Add to cart</div>
   </div>
-</div>
-<div>
-  <button th:if="${currentPage > 1}"
-          th:onclick="'location.href=\'/product?page=' + (${currentPage} - 1) + '&size=16\''">Previous</button>
-  <button th:if="${products.size() == 16}"
-          th:onclick="'location.href=\'/product?page=' + (${currentPage} + 1) + '&size=16\''">Next</button>
-</div>
+  <div class="pagination">
+    <ul>
+      <!-- 이전 페이지 버튼 -->
+      <li th:if="${currentPage > 1}">
+        <a th:href="@{/product(page=${currentPage - 1})}">Prev</a>
+      </li>
+
+      <!-- 페이지 번호 -->
+      <li th:each="pageNum : ${#numbers.sequence(1, totalPages)}" th:classappend="${pageNum == currentPage} ? 'active'">
+        <a th:href="@{/product(page=${pageNum})}" th:text="${pageNum}">1</a>
+      </li>
+
+      <!-- 다음 페이지 버튼 -->
+      <li th:if="${currentPage < totalPages}">
+        <a th:href="@{/product(page=${currentPage + 1})}">Next</a>
+      </li>
+    </ul>
+  </div>
 </body>
 </html>

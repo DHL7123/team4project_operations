@@ -35,8 +35,11 @@ public class ProductController {
               Model model) {
         log.info("getAllProducts. page {}, size {}", page, size);
         List<Product> products = productService.getAllProducts(page, size);
+        int totalPages = productService.getTotalPages(size);
+
         model.addAttribute("products", products);
         model.addAttribute("currentPage", page);
+        model.addAttribute("totalPages", totalPages);
         return "productList";
     }
     //상품번호로 특정 상품 조회
