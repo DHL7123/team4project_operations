@@ -17,29 +17,3 @@ public class Product {
 
 
 }
-// Integer / int
-// long <-> int
-
-// new Data(init);
-
-// publi  정적팩토리메서드
-// public static Data servciceException(InitData init) {
-// new Data(init);
-// }
-
-
-// successfulResponse(initData);
-
-
-
-
-// new Data.builer()
-// .id()
-// .id()
-// .id()
-// .id()
-// .id()
-// .pw()
-// ...()
-// ..()
-// .build();

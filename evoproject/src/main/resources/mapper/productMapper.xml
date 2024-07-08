@@ -37,13 +37,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         SELECT * FROM product WHERE category_id = #{categoryId}  LIMIT #{offset}, #{size}
     </select>
 
-
     <update id="incrementProductViewCount">
-        UPDATE product SET view_count = view_count + 1 WHERE pro_no = #{productNo}
+        UPDATE product SET view_count = view_count + #{count} WHERE pro_no = #{productNo}
     </update>
 
 </mapper>
-
 
 
 

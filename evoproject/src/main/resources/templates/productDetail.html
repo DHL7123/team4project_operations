@@ -2,34 +2,56 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Product Detail</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        h1 {
+            color: #4a4a4a;
+            text-align: center;
+            padding: 20px 0;
+        }
+        table {
+            width: 100%;
+            margin: 0 auto;
+            text-align: left;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+    </style>
 </head>
 <body>
 <h1>Product Detail</h1>
 <table>
     <tr>
-        <th>Name:</th>
-        <td th:text="${product.productName}"></td>
+        <th>Product Name</th>
+        <td th:text="${productDetailResponse.product.productName}"></td>
     </tr>
     <tr>
-        <th>Category:</th>
-        <td th:text="${product.categoryId}"></td>
+        <th>Category ID</th>
+        <td th:text="${productDetailResponse.product.categoryId}"></td>
     </tr>
     <tr>
-        <th>Description:</th>
-        <td th:text="${product.productDes}"></td>
+        <th>Product Description</th>
+        <td th:text="${productDetailResponse.product.productDes}"></td>
     </tr>
     <tr>
-        <th>Image:</th>
-        <td th:text="${product.imageId}"></td>
-    </tr>
-
-    <tr>
-        <th>Price:</th>
-        <td th:text="${product.price}"></td>
+        <th>Image ID</th>
+        <td th:text="${productDetailResponse.product.imageId}"></td>
     </tr>
     <tr>
-        <th>Stock:</th>
-        <td th:text="${product.stock}"></td>
+        <th>Price</th>
+        <td th:text="${productDetailResponse.product.price}"></td>
+    </tr>
+    <tr>
+        <th>Stock</th>
+        <td th:text="${productDetailResponse.product.stock}"></td>
     </tr>
 </table>
 </body>
