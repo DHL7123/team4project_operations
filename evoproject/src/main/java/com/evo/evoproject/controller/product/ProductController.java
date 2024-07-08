@@ -23,7 +23,7 @@ public class ProductController {
 
     //모든 상품 조회
     @GetMapping
-      public String getAllProducts(@RequestParam(defaultValue = "1") int page,
+      public String findAllProducts(@RequestParam(defaultValue = "1") int page,
                                    @RequestParam(defaultValue = "16") int size,
                                    Model model) {
         List<Product> products = productService.findAllProducts(page, size);
@@ -32,13 +32,13 @@ public class ProductController {
         model.addAttribute("products", products);
         model.addAttribute("currentPage", page);
         model.addAttribute("totalPages", totalPages);
-        log.info("getAllProducts. page = {}, size = {}", page, size);
+        log.info("findAllProducts. page = {}, size = {}", page, size);
         return "productList";
         // return productService.listProducts_v2(page, size);
     }
     // 상품번호로 특정 상품 조회
     @GetMapping("/detail/{no}")
-    public String getProductByNo(@PathVariable int no, Model model) {
+    public String findProductByNo(@PathVariable int no, Model model) {
         Product product = productService.findProductByNo(no);
         if (product != null) {
             model.addAttribute("product", product);
@@ -49,20 +49,20 @@ public class ProductController {
     }
     // 카테고리별 상품 조회
     @GetMapping("/category/{id}")
-    public String getProductsByCategoryId(
+    public String findProductsByCategory(
             @PathVariable int id,
             @RequestParam(defaultValue = "1") int page,
             @RequestParam(defaultValue = "16") int size,
             Model model) {
         try {
             List<Product> products = productService.findProductsByCategory(id, page, size);
-            int totalPages = productService.countAllProducts(size);
+            int totalPages = productService.countProductsByCategory(id, size);
+            log.info("countProducts. id = {} page = {}, size = {}",id, page, size);
             model.addAttribute("products", products);
             model.addAttribute("currentPage", page);
             model.addAttribute("totalPages", totalPages);
             return "productList";
         } catch (Exception e) {
-            log.error("Failed to fetch products for category: {} with error: {}", id, e.getMessage());
             return "error";
         }
     }

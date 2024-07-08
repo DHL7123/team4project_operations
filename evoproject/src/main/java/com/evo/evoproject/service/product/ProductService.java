@@ -11,5 +11,7 @@ public interface ProductService {
 
     int countAllProducts(int pageSize);
 
+    int countProductsByCategory (int categoryId, int pageSize);
+
     List<Product> findProductsByCategory(int categoryId, int page, int size);
 }

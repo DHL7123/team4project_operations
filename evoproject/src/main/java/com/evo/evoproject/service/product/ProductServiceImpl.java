@@ -7,11 +7,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 @Slf4j
 @Service
 @RequiredArgsConstructor
+
 public class ProductServiceImpl implements ProductService {
 
     private final ProductRepository productRepository;
@@ -20,8 +20,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     @Transactional(readOnly = true)
     public List<Product> findAllProducts(int page, int size) {
-        List<Product> response = new ArrayList<>();
-
+//        List<Product> response = new ArrayList<>();
         int offset = (page - 1) * size; //출력할 상품번호 계산
         return productRepository.findAllProducts(offset, size);
     }
@@ -33,6 +32,16 @@ public class ProductServiceImpl implements ProductService {
         int totalCount = productRepository.countAllProducts();
         return (totalCount + pageSize - 1) / pageSize; //페이지수 계산
     }
+
+
+    @Override
+    @Transactional(readOnly = true)
+    public int countProductsByCategory(int categoryId, int pageSize) {
+        int totalCount = productRepository.countProductsByCategory(categoryId);
+        return (totalCount + pageSize - 1) / pageSize;
+    }
+
+
     // 상품 번호로 특정 상품 조회
     @Override
     @Transactional
@@ -48,10 +57,7 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.findProductsByCategory(categoryId, offset, size);
     }
 
-    private int carculateTotalPages(int pageSize) {
-        int totalCount = productRepository.countAllProducts();
-        return (totalCount + pageSize - 1) / pageSize; //페이지수 계산
-    }
+
     private void increaseViewCount(int productNo) {
         productRepository.incrementProductViewCount(productNo);
     }

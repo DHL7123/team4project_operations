@@ -12,5 +12,6 @@ public interface ProductRepository {
     Product findProductByNo(int productNo);
     int countAllProducts();
     List<Product> findProductsByCategory(int categoryId, int offset, int size);
-    int incrementProductViewCount(int productNo);
+    void incrementProductViewCount(int productNo);
+    int countProductsByCategory(int categoryId);
 }

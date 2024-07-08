@@ -29,9 +29,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         SELECT COUNT(*) FROM product
     </select>
 
+    <select id="countProductsByCategory" parameterType="int" resultType="int">
+        SELECT COUNT(*) FROM product WHERE category_id = #{categoryId}
+    </select>
+
     <select id="findProductsByCategory" resultMap="ProductResultMap">
         SELECT * FROM product WHERE category_id = #{categoryId}  LIMIT #{offset}, #{size}
     </select>
+
 
     <update id="incrementProductViewCount">
         UPDATE product SET view_count = view_count + 1 WHERE pro_no = #{productNo}
