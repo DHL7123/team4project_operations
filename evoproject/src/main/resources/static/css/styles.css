@@ -18,6 +18,7 @@ body {
 
 #wrap{
     /* 각 웹 페이지 크기에 맞게 사이즈 조정 */
+    display: inline;
     position: relative;
     text-align:center;
     margin:0;
@@ -25,6 +26,7 @@ body {
     margin-left:auto;
     background-repeat:repeat-y;
     font-size:2em;
+    vertical-align: center;
 }
 
 a {
@@ -39,31 +41,6 @@ a {
     width:100px;
     height:100px;
     margin:40px 0 0 40px;
-}
-
-div#middleMenu {
-    display:inline-block;
-    margin:65px -11% 0 0;
-    font-family: Arial, Helvetica, sans-serif;
-    justify-content: center;
-}
-
-div#middleMenu ul{
-    text-align: center;
-}
-
-div#middleMenu li{
-    list-style: none;
-    display: inline-block;
-    vertical-align: middle;
-    margin-right:20pt;
-}
-div#middleMenu a{
-    color: black;
-}
-
-div#middleMenu a:hover{
-    color: gray;
 }
 
 div#rightMenu {
@@ -94,12 +71,14 @@ div#rightMenu a:hover{
 /* 라이브러리 시작 */
 .con {
     margin-right: auto;
+    margin-left: auto;
+    display: inline;
 }
 /* 라이브러리 끝 */
 
 /* 커스텀 시작 */
 :root {
-    --site-width: 100px;
+    --site-width: 1000px;
 }
 
 .con-min-width {
@@ -120,38 +99,54 @@ div#rightMenu a:hover{
 }
 
 .top-bar__menu-box-1 > ul > li {
+    list-style: none;
+    vertical-align: middle;
     display: inline-block;
+    margin-right: 20px;
 }
+
+/*.top-bar__menu-box-1 {
+    display:inline-block;
+    margin:65px -11% 0 0;
+    font-family: Arial, Helvetica, sans-serif;
+    justify-content: center;
+    text-align: left;
+
+}*/
 
 .top-bar__menu-box-1 {
-    text-align: center;
-    margin-top: 100px;
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    margin: 65px -11% 0 0;
+    font-family: Arial, Helvetica, sans-serif;
+    justify-content: center;
+    text-align: left;
 }
-
 .top-bar__menu-box-1 ul {
-
+    text-align: center;
 }
 
 .top-bar__menu-box-1 ul > li > a {
     display: block;
-    font-size: 3rem;
+    font-size: 2rem;
     padding: 10px 50px;
 }
 
 .top-bar__menu-box-1 ul > li:hover > a {
-    background-color: #555;
+    color: #555;
 }
 
 .top-bar__menu-box-1 > ul > li {
     position: relative;
-    white-space: nowrap;
 }
 
 .top-bar__menu-box-1 > ul > li > ul {
-    position: absolute;
-    top: 100%;
+    position: fixed;
+    top: 153px;
     left: 0;
-    width: 98vw;
+    width: 100vw;
+    text-align: left;
 }
 
 .top-bar__menu-box-1 > ul > li:hover > ul {
@@ -160,4 +155,86 @@ div#rightMenu a:hover{
 
 .top-bar__menu-box-1 > ul {
     border-radius: 20px;
+}
+
+
+/*메인페이지 > 인기카테고리*/
+.gallery_container {
+    max-width: 1050px;
+    margin: 0 auto;
+    padding: 20px;
+}
+.gallery {
+    display: grid;
+    /*뷰포트를 줄이고 키우고에 따라서 반응형으로 만든 것이지만, 아직 컨트롤하는 능력이 부족해 픽스 형태로 해놨음*/
+    /*이후에 주석을 바꾸고 gap을 20px로 수정해 반응형 그리드로 수정 진행 예정*/
+    /*grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));*/
+    grid-template-columns: repeat(4, 250px);
+    gap: 40px;
+}
+.galleryItem {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    height: 400px;
+}
+.galleryItem img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+.galleryItem:nth-child(1),
+.galleryItem:nth-child(3) {
+    grid-column: span 2;
+    width: 546px;
+}
+.galleryItem:nth-child(2),
+.galleryItem:nth-child(4) {
+    grid-column: span 2;
+    width: 454px;
+}
+
+.galleryItem:nth-child(5) {
+    grid-column: span 2;
+    width: 1040px;
+}
+.galleryItem:nth-child(3) {
+    margin-right: 20px;
+}
+.galleryItem:hover {
+    transform: translateY(-5px);
+}
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.3s ease;
+}
+.galleryItem:hover .overlay {
+    opacity: 1;
+}
+.overlay button {
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+.overlay button:hover {
+    background-color: white;
+    color: black;
 }

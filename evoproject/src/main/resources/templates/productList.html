@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Product List</title>
+  <style>
+    .product {
+      position: relative;
+      width: 200px;
+      height: 300px;
+      margin: 10px;
+      float: left;
+      border: 1px solid #ccc;
+      padding: 10px;
+      cursor: pointer;
+    }
+    .product img {
+      width: 100%;
+      height: 200px;
+    }
+    .add-to-cart {
+      display: none;
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #000;
+      color: #fff;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+    .product:hover .add-to-cart {
+      display: block;
+    }
+    .pagination {
+      width: 100%;
+      position: absolute;
+      bottom: 10px;
+      display: flex;
+      justify-content: center;
+    }
+    .pagination ul {
+      padding: 0;
+      list-style: none;
+      text-align: center;
+    }
+    .pagination li {
+      display: inline;
+      margin: 0 5px;
+    }
+    .pagination li a {
+      text-decoration: none;
+    }
+    .pagination li.active a {
+      font-weight: bold;
+    }
+  </style>
+  <script>
+    function redirectToDetailPage(productNo) {
+      window.location.href = '/products/detail/' + productNo;
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      var products = document.querySelectorAll('.product');
+      products.forEach(function (product) {
+        var addToCartButton = product.querySelector('.add-to-cart');
+        product.addEventListener('click', function (event) {
+          if (event.target !== addToCartButton) {
+            var productNo = product.getAttribute('data-product-no');
+            redirectToDetailPage(productNo);
+          }
+        });
+      });
+    });
+  </script>
+</head>
+<body>
+<h1>Product List</h1>
+<div>
+  <div class="product" th:each="product : ${products}" th:data-product-no="${product.productNo}">
+    <img th:src="@{/images/} + ${product.imageId}" alt="Product Image">
+    <h2 th:text="${product.productName}">Product Name</h2>
+    <p th:text="${product.price} + ' 원'">Product Price</p>
+    <div class="add-to-cart">Add to cart</div>
+  </div>
+  <div class="pagination">
+    <ul>
+      <!-- 이전 페이지 버튼 -->
+      <li th:if="${currentPage > 1}">
+        <a th:href="@{/products(page=${currentPage - 1})}">Prev</a>
+      </li>
+
+      <!-- 페이지 번호 -->
+      <li th:each="pageNum : ${#numbers.sequence(1, totalPages)}" th:classappend="${pageNum == currentPage} ? 'active'">
+        <a th:href="@{/products(page=${pageNum})}" th:text="${pageNum}">1</a>
+      </li>
+
+      <!-- 다음 페이지 버튼 -->
+      <li th:if="${currentPage < totalPages}">
+        <a th:href="@{/products(page=${currentPage + 1})}">Next</a>
+      </li>
+    </ul>
+  </div>
+  </div>
+</body>
+</html>
