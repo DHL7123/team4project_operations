@@ -1,3 +1,20 @@
+window.addEventListener('load', function() {
+    var allElements = document.getElementsByTagName('*');
+    Array.prototype.forEach.call(allElements, function(el) {
+        var includePath = el.dataset.includePath;
+        if (includePath) {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    el.outerHTML = this.responseText;
+                }
+            };
+            xhttp.open('GET', includePath, true);
+            xhttp.send();
+        }
+    });
+});
+
 document.addEventListener('DOMContentLoaded', function() {
 
     const menuItems = document.querySelectorAll('.menu-item');
@@ -38,5 +55,39 @@ document.addEventListener('DOMContentLoaded', function() {
                     break;
             }
         });
+    });
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+    var searchIcon = document.getElementById("searchIcon");
+    var modal = document.getElementById("modal");
+
+    // 검색 아이콘 클릭 시 모달 열기
+    searchIcon.addEventListener("click", function(event) {
+        event.preventDefault(); // 링크이동 방지. index에 icon이 a태그로 감싸져 있음
+        console.log("검색 아이콘 클릭됨");
+        modal.style.display = "flex"; // 모달 보이기
+    });
+
+    // 검색 버튼 클릭 이벤트 처리
+    var searchButton = document.getElementById("searchButton");
+    searchButton.addEventListener("click", function(event) {
+        event.preventDefault(); // 기본 동작(페이지 이동 등) 방지
+        console.log("검색 버튼 클릭됨");
+        closeModal(); // 모달 닫기
+    });
+
+    // 모달 닫기 함수
+    function closeModal() {
+        var modal = document.getElementById("modal");
+        console.log("모달 닫기");
+        modal.style.display = "none";
+    }
+
+    // 모달 닫기 버튼 이벤트
+    var closeButton = document.querySelector(".closeButton");
+    closeButton.addEventListener("click", function() {
+        console.log("닫기 버튼 클릭됨");
+        closeModal();
     });
 });
