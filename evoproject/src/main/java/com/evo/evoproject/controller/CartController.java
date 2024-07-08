@@ -7,35 +7,14 @@ import org.springframework.ui.Model;
 @Controller
 public class CartController {
 
-//    @GetMapping("/cart")
-//    public String showCart(Model model, HttpSession session) {
-//        ArrayList<Product> cartList = (ArrayList<Product>) session.getAttribute("cartlist");
-//        if (cartList == null) {
-//            cartList = new ArrayList<>();
-//        }
-//
-//        // 계산 로직
-//        int sum = 0;
-//        for (Product product : cartList) {
-//            int total = product.getUnitPrice() * product.getQuantity();
-//            sum += total;
-//        }
-//
-//        model.addAttribute("cartList", cartList);
-//        model.addAttribute("sum", sum);
-//
-//        return "cart";
-//    }
+    @GetMapping("/cart")
+    public String viewCart(Model model) {
+        // 모델에 필요한 속성 추가
+        // model.addAttribute("cartItems", cartService.getCartItems());
+        // model.addAttribute("subtotal", cartService.getSubtotal());
 
-    @GetMapping("/continue-shopping")
-    public String continueShopping() {
-//        메인페이지로 포워딩
-        return "forward:/main";
-    }
-
-    @GetMapping("/login")
-    public String showLoginPage() {
-
-        return "login";
+        return "cart";
     }
 }
+
+

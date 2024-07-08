@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<meta charset="UTF-8">
+<title>Evo Market_Shopping cart</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" />
+<link rel="stylesheet" th:href="@{/css/styles.css}">
+<link rel="stylesheet" th:href="@{/css/cart.css}">
+</head>
+<body>
+<!-- Include header -->
+<header th:replace="header :: header"></header>
+
+
+<!--  Cart Contents  -->
+<div class="CartBanner">
+    <img src="image/cart.png" alt="shopping cart">
+</div>
+
+<table>
+    <tr>
+        <th>Product</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Shipping</th>
+        <th>Total</th>
+        <th></th>
+    </tr>
+
+    <tr>
+        <td th:text="상품명"></td>
+        <td th:text="상품가격"></td>
+        <td th:text="상품수량"></td>
+        <td th:text="배송비"></td>
+        <td th:text="상품총가격"></td>
+        <td><img src="image/delete.png" alt="삭제하기" height="15px" width="15px"></td>
+    </tr>
+
+</table>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<div class="continueShopping">
+    <a th:href="@{/}">쇼핑 계속하기</a>
+</div>
+<hr>
+<table>
+    <tr>
+        <td th:text="Subtotal"></td>
+        <td th:text="총합"></td>
+    </tr>
+</table>
+
+<hr>
+<br>
+<div class="checkoutBtn">
+    <a href="" class="btn btn-primary btn-rounded btnBlock btn-lg fw-bold">Check out</a>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<!-- Include footer -->
+<footer th:replace="footer :: footer"></footer>
+
+<!-- JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js"></script>
+
+</body>
+</html>

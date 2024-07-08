@@ -1,0 +1,64 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.CartBanner {
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.continueShopping{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*쇼핑카트 테이블*/
+.CartBanner img {
+    max-height: 100%;
+    max-width: 100%;
+}
+
+table {
+    width: 100%;
+    margin-top: 20px;
+}
+
+th, td {
+    text-align: center;
+    padding: 10px;
+}
+
+th {
+    background-color: #F9F1E7;
+    color: black;
+}
+
+td {
+    background-color: #ffffff;
+}
+/*결제하기*/
+.btn-rounded {
+    border-radius: 20px;
+}
+.checkoutBtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.btnBlock{
+    width: 100%; /* Adjust the width as needed */
+    max-width: 300px; /* Optional: Set a maximum width */
+    padding: 10px;
+}
+.btn-lg {
+    font-size: 1.5rem; /* Adjust font size as needed */
+}
+
+.fw-bold {
+    font-weight: bold; /* Ensure font weight is bold */
+}
