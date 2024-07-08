@@ -1,19 +1,13 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>Evo Market</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="css/styles.css" rel="stylesheet">
-
-
-    <script src="script.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" />
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
 <body>
-
-<div class="container">
-
+<!-- header -->
     <div id="wrap">
         <header class="top-bar con-min-width">
             <div id="logo">
@@ -57,15 +51,18 @@
                         <a href="NonageShop?command=login_form" style="width:110px;">Account </a>
                     </li>
                     <li>
-                        <a href="#"><img alt="search" height="27" src="image/search.png" width="27"></a>
+                        <a href="#" id="searchIcon">
+                            <img src="image/search.png" alt="search" height="27px" width="27px">
+                        </a>
                     </li>
                     <li>
-                        <a href="#"><img alt="search" height="25" src="image/shopping_cart.png" width="25"></a>
+                        <a th:href="@{/cart}"><img alt="shopping_cart" src="image/shopping_cart.png" width="25" height="25"></a>
                     </li>
                 </ul>
             </div>
         </header>
 
     </div>
-</div>
 
+</body>
+</html>
