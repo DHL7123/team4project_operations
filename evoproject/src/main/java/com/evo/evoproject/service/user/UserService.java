@@ -18,10 +18,13 @@ public class UserService {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
     }
-
+    // 새로운 사용자를 등록하는 메소드
     public void registerUser(User user) {
-        user.setUserPw(passwordEncoder.encode(user.getUserPw())); // 비밀번호 암호화
-        user.setIsAdmin('N'); // is_admin 필드를 'N'으로 설정
+        // 비밀번호 암호화
+        user.setUserPw(passwordEncoder.encode(user.getUserPw()));
+        // is_admin 필드를 'N'으로 설정
+        user.setIsAdmin('N');
+        // 사용자 정보를 데이터베이스에 삽입
         userRepository.insertUser(user);
     }
 
