@@ -2,6 +2,7 @@ package com.evo.evoproject.controller.product;
 
 import com.evo.evoproject.controller.product.dto.RetrieveProductDetailResponse;
 import com.evo.evoproject.controller.product.dto.RetrieveProductsResponse;
+import com.evo.evoproject.domain.product.Product;
 import com.evo.evoproject.service.product.ProductService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
 
 
 @Slf4j
@@ -92,7 +94,10 @@ public class RetrieveProductsController {
         log.info("제품 상세 정보 요청 - 제품 번호: {}", productNo);
         try {
             RetrieveProductDetailResponse response = productService.getProductByNo(productNo);
+            RetrieveProductsResponse relatedProductsResponse = productService.getTopProductsByCategory(response.getProduct().getCategoryId(), productNo);
+
             model.addAttribute("productDetailResponse", response);
+            model.addAttribute("relatedProducts", relatedProductsResponse.getProducts());
             return "productDetail";
         } catch (Exception e) {
             log.error("제품 상세 정보를 가져오는 중 오류 발생", e);

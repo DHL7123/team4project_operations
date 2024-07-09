@@ -1,4 +1,4 @@
-package com.evo.evoproject.util;
+package com.evo.evoproject.util.date;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

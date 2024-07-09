@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.evo.evoproject.Mapper.image.ImageMapper">
+
+    <resultMap id="ImageResultMap" type="com.evo.evoproject.domain.image.Image">
+        <id property="imageId" column="image_id" />
+        <result property="imageName" column="image_name" />
+        <result property="imageType" column="image_type" />
+    </resultMap>
+
+    <insert id="insertImage" parameterType="com.evo.evoproject.domain.image.Image">
+        INSERT INTO image (image_name, image_type)
+        VALUES (#{imageName}, #{imageType})
+    </insert>
+
+    <select id="findImageById" parameterType="int" resultMap="ImageResultMap">
+        SELECT * FROM image WHERE image_id = #{imageId}
+    </select>
+</mapper>

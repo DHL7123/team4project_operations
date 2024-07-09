@@ -24,10 +24,48 @@
             padding: 15px;
             border-bottom: 1px solid #ddd;
         }
+        .product-image img {
+            width: 300px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        .related-products {
+            margin-top: 20px;
+        }
+        .related-products h2 {
+            text-align: center;
+            color: #4a4a4a;
+        }
+        .related-product {
+            display: inline-block;
+            width: 200px;
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+        .related-product img {
+            width: 100%;
+            height: auto;
+        }
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .button-container button {
+            margin: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
 <h1>Product Detail</h1>
+<div class="product-image">
+    <img th:src="${productDetailResponse.product.imageUrl}" alt="Product Image">
+</div>
 <table>
     <tr>
         <th>Product Name</th>
@@ -38,12 +76,12 @@
         <td th:text="${productDetailResponse.product.categoryId}"></td>
     </tr>
     <tr>
-        <th>Product Description</th>
-        <td th:text="${productDetailResponse.product.productDes}"></td>
+        <th>Shipping</th>
+        <td th:text="${productDetailResponse.product.shipping}"></td>
     </tr>
     <tr>
-        <th>Image ID</th>
-        <td th:text="${productDetailResponse.product.imageId}"></td>
+        <th>Product Description</th>
+        <td th:text="${productDetailResponse.product.productDes}"></td>
     </tr>
     <tr>
         <th>Price</th>
@@ -51,8 +89,25 @@
     </tr>
     <tr>
         <th>Stock</th>
-        <td th:text="${productDetailResponse.product.stock}"></td>
+        <td th:text="${productDetailResponse.product.soldout ? 'Sold Out' : productDetailResponse.product.stock}"></td>
     </tr>
 </table>
+
+<div class="button-container">
+    <button onclick="location.href='/order.html'">구매하기</button>
+    <button onclick="location.href='/cart.html'">장바구니 담기</button>
+</div>
+
+<div class="related-products">
+    <h2>Related Products</h2>
+    <div th:each="product : ${relatedProducts}" class="related-product">
+        <a th:href="@{'/products/detail/' + ${product.productNo}}">
+            <img th:src="${product.imageUrl}" alt="Related Product Image">
+            <h3 th:text="${product.productName}"></h3>
+            <p th:text="${product.price} + '원'"></p>
+        </a>
+    </div>
+</div>
+
 </body>
 </html>

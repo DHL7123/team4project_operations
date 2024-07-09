@@ -3,22 +3,27 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.evo.evoproject.repository.product.ProductRepository">
+<mapper namespace="com.evo.evoproject.Mapper.product.ProductMapper">
 
 <resultMap id="ProductResultMap" type="com.evo.evoproject.domain.product.Product">
     <id property="productNo" column="pro_no" />
     <result property="productName" column="pro_name" />
     <result property="productDes" column="pro_content" />
-    <result property="imageId" column="image_id" />
     <result property="categoryId" column="category_id" />
     <result property="price" column="pro_price" />
     <result property="stock" column="pro_stock" />
     <result property="date" column="pro_date" />
     <result property="viewCount" column="view_count" />
+    <result property="shipping" column="shipping" />
+    <result property="soldout" column="soldout" />
+    <result property="imageId" column="image_id" />
+    <result property="imageUrl" column="image_name" />
 </resultMap>
 
     <select id="findAllProducts" resultMap="ProductResultMap">
-        SELECT * FROM product
+        SELECT p.*, i.image_name AS image_name
+        FROM product p
+        LEFT JOIN image i ON p.image_id = i.image_id
             <choose>
                 <when test="sort == 'price_asc'">
                     ORDER BY pro_price ASC
@@ -37,7 +42,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </select>
 
     <select id="findProductsByCategory" resultMap="ProductResultMap">
-        SELECT * FROM product WHERE category_id = #{categoryId}
+        SELECT p.*, i.image_name AS image_name
+        FROM product p
+        LEFT JOIN image i ON p.image_id = i.image_id
+        WHERE category_id = #{categoryId}
         <choose>
             <when test="sort == 'price_asc'">
                 ORDER BY pro_price ASC
@@ -56,7 +64,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </select>
     <!--다른 SQL 도 동적쿼리를 활용해보자-->
     <select id="findProductByNo" resultMap="ProductResultMap">
-        SELECT * FROM product WHERE pro_no = #{productNo}
+        SELECT p.*, i.image_name AS image_name
+        FROM product p
+                 LEFT JOIN image i ON p.image_id = i.image_id
+        WHERE pro_no = #{productNo}
     </select>
 
     <select id="countAllProducts" resultType="int">
@@ -70,6 +81,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <update id="incrementProductViewCount">
         UPDATE product SET view_count = view_count + #{count} WHERE pro_no = #{productNo}
     </update>
+
+    <select id="findTopProductsByCategory" resultMap="ProductResultMap">
+        SELECT p.*, i.image_name AS image_name
+        FROM product p
+                 LEFT JOIN product_image pi ON p.pro_no = pi.pro_no
+                 LEFT JOIN image i ON pi.image_id = i.image_id
+        WHERE p.category_id = #{categoryId} AND p.pro_no != #{productNo}
+        ORDER BY p.view_count DESC
+            LIMIT 4
+    </select>
+
 
 </mapper>
 

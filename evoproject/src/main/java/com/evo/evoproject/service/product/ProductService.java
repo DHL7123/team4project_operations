@@ -9,4 +9,6 @@ public interface ProductService {
     RetrieveProductsResponse getAllProducts(String sort,int page,int size);
     RetrieveProductDetailResponse getProductByNo(int productNo);
     RetrieveProductsResponse getProductsByCategory(String sort,int categoryId,int page, int size);
+    RetrieveProductsResponse getTopProductsByCategory(int categoryId, int productNo);
+
 }
