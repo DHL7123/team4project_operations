@@ -17,8 +17,7 @@ public class User {
     private int userPhone;
     private Timestamp userIndate;
     private char userMarketing;
-    private char userWithdrawal;
+    private char userWithdrawal = 'N';
     private char isAdmin = 'N';
-
 
 }

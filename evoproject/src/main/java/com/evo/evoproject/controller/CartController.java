@@ -33,9 +33,9 @@ public class CartController {
         return "forward:/main";
     }
 
-    @GetMapping("/login")
-    public String showLoginPage() {
-
-        return "login";
-    }
+//    @GetMapping("/login")
+//    public String showLoginPage() {
+//
+//        return "login";
+//    }
 }

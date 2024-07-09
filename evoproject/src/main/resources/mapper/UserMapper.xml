@@ -12,4 +12,24 @@
     <select id="findByUserId" parameterType="string" resultType="com.evo.evoproject.domain.user.User">
         SELECT * FROM user WHERE user_id = #{userId}
     </select>
+
+    <select id="findByUserEmail" parameterType="string" resultType="com.evo.evoproject.domain.user.User">
+        SELECT * FROM user WHERE user_email = #{userEmail}
+    </select>
+
+    <update id="updateUserPassword" parameterType="com.evo.evoproject.domain.user.User">
+        UPDATE user SET user_pw = #{userPw} WHERE user_id = #{userId}
+    </update>
+
+    <update id="updateUserDetails" parameterType="com.evo.evoproject.domain.user.User">
+        UPDATE user
+        SET
+            user_email = #{userEmail},
+            user_address_1 = #{userAddress1},
+            user_address_2 = #{userAddress2},
+            user_phone = #{userPhone},
+            user_marketing = #{userMarketing}
+        WHERE user_id = #{userId}
+    </update>
+
 </mapper>

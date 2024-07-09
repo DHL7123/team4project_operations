@@ -7,9 +7,33 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet"/>
   <link href="../static/css/styles.css" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link rel="stylesheet" th:href="@{/css/styles.css}">
+  <link href="css/styles.css" rel="stylesheet">
+  <style>
+    .mypage-banner {
+      position: relative;
+      background-image: url('/image/banner.jpg');
+      background-size: cover;
+      background-position: center;
+      height: 400px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+    .mypage-banner h1 {
+      margin: 0;
+    }
+  </style>
+  <script src="script.js"></script>
 </head>
 <body>
-<div id="header-placeholder"></div>
+<header th:replace="header :: header"></header>
+<div class="mypage-banner">
+  <h1>My page</h1>
+</div>
 <div class="container mt-5">
   <div class="card bg-light card-custom mx-auto" style="border-radius: 1rem; max-width: 600px;">
     <div class="card-body p-5">
@@ -25,34 +49,116 @@
         </div>
         <div class="mb-3">
           <label for="userEmail" class="form-label">이메일</label>
-          <input type="email" id="userEmail" th:value="${user.userEmail}" class="form-control" readonly />
+          <input type="email" id="userEmail" th:value="${user.userEmail}" class="form-control" />
         </div>
         <div class="mb-3">
           <label for="userAddress1" class="form-label">주소</label>
-          <input type="text" id="userAddress1" th:value="${user.userAddress1}" class="form-control" readonly />
+          <input type="text" id="userAddress1" th:value="${user.userAddress1}" class="form-control" />
         </div>
         <div class="mb-3">
           <label for="userAddress2" class="form-label">상세 주소</label>
-          <input type="text" id="userAddress2" th:value="${user.userAddress2}" class="form-control" readonly />
+          <input type="text" id="userAddress2" th:value="${user.userAddress2}" class="form-control" />
         </div>
         <div class="mb-3">
           <label for="userPhone" class="form-label">전화번호</label>
-          <input type="text" id="userPhone" th:value="${user.userPhone}" class="form-control" readonly />
+          <input type="text" id="userPhone" th:value="${user.userPhone}" class="form-control" />
         </div>
         <div class="mb-3">
           <label class="form-label">마케팅 동의</label>
-          <input type="text" class="form-control" readonly th:value="${user.userMarketing == 'Y' ? '예' : '아니오'}" />
+          <select class="form-select" id="userMarketing">
+            <option th:selected="${user.userMarketing == 'Y'}" value="Y">예</option>
+            <option th:selected="${user.userMarketing == 'N'}" value="N">아니오</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="currentPassword" class="form-label">현재 비밀번호</label>
+          <input type="password" id="currentPassword" class="form-control" />
+        </div>
+        <div class="mb-3">
+          <label for="newPassword" class="form-label">새 비밀번호</label>
+          <input type="password" id="newPassword" class="form-control" />
+        </div>
+        <div class="mb-3">
+          <label for="confirmNewPassword" class="form-label">새 비밀번호 확인</label>
+          <input type="password" id="confirmNewPassword" class="form-control" />
+        </div>
+        <div class="d-grid">
+          <button type="button" class="btn btn-primary mb-3" onclick="changePassword()">비밀번호 변경</button>
+        </div>
+        <div class="d-grid">
+          <button type="button" class="btn btn-success" onclick="updateUserDetails()">수정</button>
         </div>
       </form>
     </div>
   </div>
 </div>
-<div id="footer-placeholder"></div>
+<footer th:replace="footer :: footer"></footer>
+
 <script>
-  $(document).ready(function(){
-    $("#header-placeholder").load("/header.html");
-    $("#footer-placeholder").load("/footer.html");
-  });
+  function changePassword() {
+    const userId = document.getElementById('userId').value;
+    const currentPassword = document.getElementById('currentPassword').value;
+    const newPassword = document.getElementById('newPassword').value;
+    const confirmNewPassword = document.getElementById('confirmNewPassword').value;
+
+    if (newPassword !== confirmNewPassword) {
+      alert('새 비밀번호가 일치하지 않습니다.');
+      return;
+    }
+
+    $.ajax({
+      url: '/change-password',
+      type: 'POST',
+      data: {
+        userId: userId,
+        currentPassword: currentPassword,
+        newPassword: newPassword
+      },
+      success: function(response) {
+        if (response.message) {
+          alert(response.message);
+        } else if (response.error) {
+          alert(response.error);
+        }
+      },
+      error: function() {
+        alert('비밀번호 변경 중 오류가 발생했습니다.');
+      }
+    });
+  }
+
+  function updateUserDetails() {
+    const userId = document.getElementById('userId').value;
+    const userEmail = document.getElementById('userEmail').value;
+    const userAddress1 = document.getElementById('userAddress1').value;
+    const userAddress2 = document.getElementById('userAddress2').value;
+    const userPhone = document.getElementById('userPhone').value;
+    const userMarketing = document.getElementById('userMarketing').value;
+
+    $.ajax({
+      url: '/update-user',
+      type: 'POST',
+      data: {
+        userId: userId,
+        userEmail: userEmail,
+        userAddress1: userAddress1,
+        userAddress2: userAddress2,
+        userPhone: userPhone,
+        userMarketing: userMarketing
+      },
+      success: function(response) {
+        if (response.message) {
+          alert('수정이 완료되었습니다!');
+        } else if (response.error) {
+          alert(response.error);
+        }
+      },
+      error: function() {
+        alert('사용자 정보 수정 중 오류가 발생했습니다.');
+      }
+    });
+  }
 </script>
+
 </body>
 </html>
