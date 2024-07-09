@@ -18,9 +18,43 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 </resultMap>
 
     <select id="findAllProducts" resultMap="ProductResultMap">
-        SELECT * FROM product LIMIT #{offset}, #{size}
+        SELECT * FROM product
+            <choose>
+                <when test="sort == 'price_asc'">
+                    ORDER BY pro_price ASC
+                </when>
+                <when test="sort == 'price_desc'">
+                    ORDER BY pro_price DESC
+                </when>
+                <when test="sort == 'viewCount_desc'">
+                    ORDER BY view_count DESC
+                </when>
+                <otherwise>
+                    ORDER BY pro_date DESC
+                </otherwise>
+            </choose>
+            LIMIT #{offset}, #{size}
     </select>
 
+    <select id="findProductsByCategory" resultMap="ProductResultMap">
+        SELECT * FROM product WHERE category_id = #{categoryId}
+        <choose>
+            <when test="sort == 'price_asc'">
+                ORDER BY pro_price ASC
+            </when>
+            <when test="sort == 'price_desc'">
+                ORDER BY pro_price DESC
+            </when>
+            <when test="sort == 'viewCount_desc'">
+                ORDER BY view_count DESC
+            </when>
+            <otherwise>
+                ORDER BY pro_date DESC
+            </otherwise>
+        </choose>
+        LIMIT #{offset}, #{size}
+    </select>
+    <!--다른 SQL 도 동적쿼리를 활용해보자-->
     <select id="findProductByNo" resultMap="ProductResultMap">
         SELECT * FROM product WHERE pro_no = #{productNo}
     </select>
@@ -31,10 +65,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
     <select id="countProductsByCategory" parameterType="int" resultType="int">
         SELECT COUNT(*) FROM product WHERE category_id = #{categoryId}
-    </select>
-
-    <select id="findProductsByCategory" resultMap="ProductResultMap">
-        SELECT * FROM product WHERE category_id = #{categoryId}  LIMIT #{offset}, #{size}
     </select>
 
     <update id="incrementProductViewCount">

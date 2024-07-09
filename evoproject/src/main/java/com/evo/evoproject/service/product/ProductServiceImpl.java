@@ -6,6 +6,7 @@ import com.evo.evoproject.domain.product.Product;
 import com.evo.evoproject.repository.product.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,21 +26,23 @@ public class ProductServiceImpl implements ProductService {
 
     /**
      * 모든 제품을 가져오는 서비스 메서드
-     *
+     * @param sort  정렬 기준
      * @param page 페이지 번호
      * @param size 페이지당 항목 수
      * @return 제품 목록 응답 객체
      */
     @Transactional(readOnly = true)
     @Override
-    public RetrieveProductsResponse getAllProducts(int page, int size) {
-        log.info("모든 제품 목록을 가져오는 서비스 - 페이지: {}, 사이즈: {}", page, size);
+    public RetrieveProductsResponse getAllProducts(String sort,int page, int size) {
+        log.info("모든 제품 목록을 가져오는 서비스 - 정렬기준: {}, 페이지: {}, 사이즈: {}",sort, page, size);
         try {
-            List<Product> products = productRepository.findAllProducts((page - 1) * size, size);
+            int offset = (page - 1) * size; // offset 계산
+            List<Product> products = productRepository.findAllProducts(sort, offset, size);
             int totalProducts = productRepository.countAllProducts();
 
             RetrieveProductsResponse response = new RetrieveProductsResponse();
             response.setProducts(products);
+            response.setSort(sort);
             response.setCurrentPage(page);
             response.setTotalPages((totalProducts + size - 1) / size);
             return response;
@@ -71,7 +74,7 @@ public class ProductServiceImpl implements ProductService {
     }
     /**
      * 카테고리별 제품을 가져오는 서비스 메서드
-     *
+     * @param sort 카테고리 ID
      * @param categoryId 카테고리 ID
      * @param page 페이지 번호
      * @param size 페이지당 항목 수
@@ -79,13 +82,15 @@ public class ProductServiceImpl implements ProductService {
      */
     @Transactional(readOnly = true)
     @Override
-    public RetrieveProductsResponse getProductsByCategory(int categoryId, int page, int size) {
-        log.info("카테고리별 제품 목록을 가져오는 서비스 - 카테고리 ID: {}, 페이지: {}, 사이즈: {}", categoryId, page, size);
+    public RetrieveProductsResponse getProductsByCategory(String sort,int categoryId, int page, int size) {
+        log.info("카테고리별 제품 목록을 가져오는 서비스 - 정렬 기준: {}, 카테고리 ID: {}, 페이지: {}, 사이즈: {}",sort, categoryId, page, size);
         try {
-            List<Product> products = productRepository.findProductsByCategory(categoryId, (page - 1) * size, size);
+            int offset = (page - 1) * size; // offset 계산
+            List<Product> products = productRepository.findProductsByCategory(sort, categoryId, offset, size);
             int totalProducts = productRepository.countProductsByCategory(categoryId);
 
             RetrieveProductsResponse response = new RetrieveProductsResponse();
+            response.setSort(sort);
             response.setProducts(products);
             response.setCurrentPage(page);
             response.setTotalPages((totalProducts + size - 1) / size);
@@ -106,6 +111,8 @@ public class ProductServiceImpl implements ProductService {
         log.info("제품 번호 {}의 조회수를 증가시킵니다.", productNo);
         viewCountMap.computeIfAbsent(productNo, k -> new AtomicInteger(0)).incrementAndGet();
     }
+
+
     /**
      * 조회수를 데이터베이스에 업데이트하는 스케줄러 메서드
      * 1분마다 실행되도록 설정됨
@@ -123,3 +130,7 @@ public class ProductServiceImpl implements ProductService {
         log.info("조회수 업데이트 작업을 완료했습니다.");
     }
 }
+
+//void productsSortedByPrice(@Param("sort")String sort);
+//void productsSortedByDate();
+//void productsSortedByViewCount();

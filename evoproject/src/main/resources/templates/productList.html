@@ -55,10 +55,25 @@
     }
   </style>
   <script>
-    function redirectToDetailPage(productNo) {
-      window.location.href = '/products/detail/' + productNo;
+    // 정렬 기준 변경 함수
+    function onSortChange() {
+      var sort = document.getElementById("sortSelect").value;
+      var currentPage = document.getElementById("currentPage").value;
+      var categoryId = document.getElementById("categoryId").value;
+
+      var url;
+      if (categoryId) {
+        // 카테고리별 조회
+        url = "/products/category/" + categoryId + "?sort=" + sort + "&page=" + currentPage + "&size=16";
+      } else {
+        // 전체 상품 조회
+        url = "/products?sort=" + sort + "&page=" + currentPage + "&size=16";
+      }
+
+      window.location.href = url;
     }
 
+    // 각 상품에 클릭 리스너 추가
     document.addEventListener('DOMContentLoaded', function () {
       var products = document.querySelectorAll('.product');
       products.forEach(function (product) {
@@ -66,18 +81,38 @@
         product.addEventListener('click', function (event) {
           if (event.target !== addToCartButton) {
             var productNo = product.getAttribute('data-product-no');
-            console.log('Redirecting to product number:', productNo);  // 콘솔 로그 추가
+            console.log('Redirecting to product number:', productNo);
             redirectToDetailPage(productNo);
           }
         });
       });
     });
+
+    // 상세 페이지로 리다이렉트하는 함수
+    function redirectToDetailPage(productNo) {
+      window.location.href = '/products/detail/' + productNo;
+    }
   </script>
 </head>
 <body>
 <h1>Product List</h1>
+
+<!-- 정렬 드롭다운 -->
 <div>
-  <!-- 상품 목록 반복 표시 -->
+  <select id="sortSelect" onchange="onSortChange()">
+    <option value="pro_date_desc" th:selected="${productsResponse.sort == 'pro_date_desc'}">최근 등록순</option>
+    <option value="price_asc" th:selected="${productsResponse.sort == 'price_asc'}">가격 오름차순</option>
+    <option value="price_desc" th:selected="${productsResponse.sort == 'price_desc'}">가격 내림차순</option>
+    <option value="viewCount_desc" th:selected="${productsResponse.sort == 'viewCount_desc'}">조회수순</option>
+  </select>
+  <input type="hidden" id="categoryId" th:value="${categoryId}">
+</div>
+
+<!-- 현재 페이지를 숨김 필드로 추가 -->
+<input type="hidden" id="currentPage" th:value="${productsResponse.currentPage}" />
+
+<!-- 상품 목록 -->
+<div id="product-container">
   <div th:each="product : ${products}" class="product" th:data-product-no="${product.productNo}">
     <img th:src="@{/images/} + ${product.imageId}" alt="Product Image">
     <h2 th:text="${product.productName}">Product Name</h2>
@@ -85,21 +120,23 @@
     <div class="add-to-cart">Add to cart</div>
   </div>
 </div>
+
+<!-- 페이지네이션 -->
 <div class="pagination">
   <ul>
     <!-- 이전 페이지 버튼 -->
     <li th:if="${productsResponse.currentPage > 1}">
-      <a th:href="@{/products(page=${productsResponse.currentPage - 1}, size=16)}">Prev</a>
+      <a th:href="@{${categoryId != null ? '/products/category/' + categoryId : '/products'}(page=${productsResponse.currentPage - 1}, size=16, sort=${productsResponse.sort})}">Prev</a>
     </li>
 
     <!-- 페이지 번호 반복 -->
     <li th:each="pageNum : ${#numbers.sequence(1, productsResponse.totalPages)}" th:classappend="${pageNum == productsResponse.currentPage} ? 'active'">
-      <a th:href="@{/products?page=${pageNum}&size=16}" th:text="${pageNum}">1</a>
+      <a th:href="@{${categoryId != null ? '/products/category/' + categoryId : '/products'}(page=${pageNum}, size=16, sort=${productsResponse.sort})}" th:text="${pageNum}">1</a>
     </li>
 
     <!-- 다음 페이지 버튼 -->
     <li th:if="${productsResponse.currentPage < productsResponse.totalPages}">
-      <a th:href="@{/products(page=${productsResponse.currentPage + 1}, size=16)}">Next</a>
+      <a th:href="@{${categoryId != null ? '/products/category/' + categoryId : '/products'}(page=${productsResponse.currentPage + 1}, size=16, sort=${productsResponse.sort})}">Next</a>
     </li>
   </ul>
 </div>

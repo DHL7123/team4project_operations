@@ -12,6 +12,8 @@ import java.util.List;
 @AllArgsConstructor
 public class RetrieveProductsResponse {
     private List<Product> products;
+    private String sort;
     private int currentPage;
     private int totalPages;
+
 }

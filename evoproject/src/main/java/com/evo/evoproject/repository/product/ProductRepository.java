@@ -8,10 +8,11 @@ import java.util.List;
 
 @Mapper
 public interface ProductRepository {
-    List<Product> findAllProducts(@Param("offset") int offset, @Param("size") int size);
+    List<Product> findAllProducts(@Param("sort")String sort,@Param("offset")int offset, @Param("size")int size);
     Product findProductByNo(int productNo);
     int countAllProducts();
     int countProductsByCategory(int categoryId);
-    List<Product> findProductsByCategory(@Param("categoryId") int categoryId, @Param("offset") int offset, @Param("size") int size);
-    void incrementProductViewCount(@Param("productNo") int productNo, @Param("count") int count);
+    List<Product> findProductsByCategory(@Param("sort")String sort, @Param("categoryId") int categoryId, @Param("offset") int offset, @Param("size") int size);
+    void incrementProductViewCount(@Param("productNo")int productNo, @Param("count")int count);
+
 }
