@@ -33,20 +33,31 @@
     <tr th:each="cartItem : ${session.cartItems}">
         <td th:each="product : ${cartItem.products}" th:text="${product.proName}"></td>
         <td th:each="product : ${cartItem.products}" th:text="${product.proPrice}"></td>
-        <td th:text="${cartItem.cartQuantity}"></td> <!-- Display cartQuantity from Cart object -->
+        <td th:text="${cartItem.cartQuantity}"></td>
         <td th:each="product : ${cartItem.products}" th:text="${product.shipping}"></td>
         <td>
             <!-- 상품가격 + 상품의 배송비 합계 -->
             <span th:each="product : ${cartItem.products}" th:text="${product.proPrice * cartItem.cartQuantity + product.shipping}"></span>
         </td>
         <td>
-            <form th:each="product : ${cartItem.products}" th:action="@{/cart/remove}" method="post">
-                <input type="hidden" name="userNo" th:value="${cartItem.userNo}" />
-                <input type="hidden" name="proNo" th:value="${product.proNo}" />
+            <!-- 폼데이터가 전송될 URL userNo에 따라 동적으로 변경 -->
+            <!-- 이후에 post방식으로 변경 예정 -->
+            <form th:each="product : ${cartItem.products}" th:action="@{/cart/delete}" method="get">
+                <input type="hidden" id="userNo" name="userNo" />
+                <input type="hidden" id="proNo" name="proNo" />
                 <button type="submit" class="btn btn-danger" style="background-color: transparent; border: none; padding: 0;">
                     <img th:src="@{/image/delete.png}" alt="Delete" height="15px" width="15px">
                 </button>
             </form>
+            <!--
+            <form th:each="product : ${cartItem.products}" th:action="@{/cart/delete}" method="post">
+                <input type="hidden" name="userNo" th:value="${cartItem.userNo}" />
+                <input type="hidden" name="proNo" th:value="${product.proNo}" />
+                <button type="submit" class="btn btn-danger" style="background-color: transparent; border: none; padding: 0;">
+                    <img th:src="@{/image/delete.png}" alt="Delete" height="15px" width="15px">
+                 </button>
+            </form>
+              -->
         </td>
     </tr>
     </tbody>
@@ -83,6 +94,33 @@
 <!-- JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js"></script>
 <script th:inline="javascript">
+
+    document.addEventListener('DOMContentLoaded', function() {
+        var deleteButtons = document.querySelectorAll('.btn-danger');
+        deleteButtons.forEach(function(button) {
+            button.addEventListener('click', function(event) {
+                event.preventDefault();
+                var form = button.closest('form');
+
+                var userNo = form.querySelector('input[name="userNo"]').value;
+                var proNo = form.querySelector('input[name="proNo"]').value;
+
+                console.log("UserNo: " + userNo + ", ProNo: " + proNo);
+
+                // userNo, proNo 유효성 검사
+                if (userNo.trim() !== "" && proNo.trim() !== "") {
+                    document.getElementById('userNo').value = userNo;
+                    document.getElementById('proNo').value = proNo;
+
+                    form.submit();
+                } else {
+                    console.error("Invalid userNo or proNo");
+                }
+            });
+        });
+    });
+
+
     document.addEventListener('DOMContentLoaded', function() {
         var totalAmount = 0;
         //세션에서 cartItem 데이터 가져오기

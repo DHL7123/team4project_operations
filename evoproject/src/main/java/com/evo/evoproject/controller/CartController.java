@@ -28,16 +28,22 @@ public class CartController {
         // 모든 장바구니 항목을 세션에 저장
         session.setAttribute("cartItems", cartItems);
 
+       // log.info("사용자 " + userNo + "의 장바구니 항목 조회: " + cartItems.size() + "개의 상품");
+
         return "cart";
     }
 
 
     // 장바구니에서 상품 제거
-    @DeleteMapping("/delete")
-    @ResponseBody
-    public String deleteProductFromCart(@RequestParam int userNo, @RequestParam int proNo) {
+    @GetMapping("/delete")
+    public String deleteProductFromCart(@RequestParam int userNo, @RequestParam int proNo, HttpSession session) {
         cartService.deleteProductFromCart(userNo, proNo);
         log.info("장바구니에서 상품이 제거되었습니다. 상품 번호: " + proNo);
-        return "장바구니에서 상품이 제거되었습니다";
+
+        // 장바구니를 다시 조회 후 업데이트
+        List<Cart> updatedCartItems = cartService.getCartItemsByUser(userNo);
+        session.setAttribute("cartItems", updatedCartItems);
+
+        return "redirect:/cart/" + userNo;  // 페이지를 새로고침
     }
 }
