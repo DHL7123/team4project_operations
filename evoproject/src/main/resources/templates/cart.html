@@ -24,21 +24,24 @@
         <th>Price</th>
         <th>Quantity</th>
         <th>Shipping</th>
-        <th>Total</th>
+        <th>SubTotal</th>
         <th></th>
     </tr>
     </thead>
-    <tbody th:if="${session.cart != null}">
-    <!-- Iterate over products in the cart -->
-    <tr th:each="product : ${session.cart.products}">
-        <td th:text="${product.proName}"></td>
-        <td th:text="${product.proPrice}"></td>
-        <td th:text="${session.cart.cartQuantity}"></td> <!-- 수정: cartitem -> product -->
-        <td th:text="${product.shipping}"></td>
-        <td th:text="${product.proPrice * session.cart.cartQuantity + product.shipping}"></td>
+
+    <tbody th:if="${session.cartItems != null}">
+    <tr th:each="cartItem : ${session.cartItems}">
+        <td th:each="product : ${cartItem.products}" th:text="${product.proName}"></td>
+        <td th:each="product : ${cartItem.products}" th:text="${product.proPrice}"></td>
+        <td th:text="${cartItem.cartQuantity}"></td> <!-- Display cartQuantity from Cart object -->
+        <td th:each="product : ${cartItem.products}" th:text="${product.shipping}"></td>
         <td>
-            <form th:action="@{/cart/remove}" method="post">
-                <input type="hidden" name="userNo" th:value="${session.cart.userNo}" />
+            <!-- 상품가격 + 상품의 배송비 합계 -->
+            <span th:each="product : ${cartItem.products}" th:text="${product.proPrice * cartItem.cartQuantity + product.shipping}"></span>
+        </td>
+        <td>
+            <form th:each="product : ${cartItem.products}" th:action="@{/cart/remove}" method="post">
+                <input type="hidden" name="userNo" th:value="${cartItem.userNo}" />
                 <input type="hidden" name="proNo" th:value="${product.proNo}" />
                 <button type="submit" class="btn btn-danger" style="background-color: transparent; border: none; padding: 0;">
                     <img th:src="@{/image/delete.png}" alt="Delete" height="15px" width="15px">
@@ -47,6 +50,7 @@
         </td>
     </tr>
     </tbody>
+
 </table>
 
 <br><br><br><br>

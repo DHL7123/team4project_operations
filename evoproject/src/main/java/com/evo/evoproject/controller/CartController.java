@@ -24,10 +24,8 @@ public class CartController {
     @GetMapping("/{userNo}")
     public String viewCart(@PathVariable int userNo, HttpSession session) {
         List<Cart> cartItems = cartService.getCartItemsByUser(userNo);
-        if (!cartItems.isEmpty()) {
-            Cart cart = cartItems.get(0);
-            session.setAttribute("cart", cart);
-        }
+        session.setAttribute("cartItems", cartItems); // 모든 장바구니 항목을 세션에 저장
+
         return "cart";
     }
 
