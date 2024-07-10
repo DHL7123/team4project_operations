@@ -1,23 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
 <html xmlns:th="http://www.thymeleaf.org">
-<meta charset="UTF-8">
-<title>Evo Market_Shopping cart</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" />
-<link rel="stylesheet" th:href="@{/css/styles.css}">
-<link rel="stylesheet" th:href="@{/css/cart.css}">
+<head>
+    <meta charset="UTF-8">
+    <title>Evo Market - Shopping Cart</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" />
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" th:href="@{/css/cart.css}">
 </head>
 <body>
-<!-- Include header -->
-<header th:replace="header :: header"></header>
 
+<!-- 헤더 포함 -->
+<header th:replace="~{header :: header}"></header>
 
-<!--  Cart Contents  -->
+<!-- 장바구니 콘텐츠 -->
 <div class="CartBanner">
-    <img src="image/cart.png" alt="shopping cart">
+    <img th:src="@{/image/cart.png}" alt="장바구니">
 </div>
 
-<table>
+<table class="table">
+    <thead>
     <tr>
         <th>Product</th>
         <th>Price</th>
@@ -26,48 +27,54 @@
         <th>Total</th>
         <th></th>
     </tr>
-
-    <tr>
-        <td th:text="상품명"></td>
-        <td th:text="상품가격"></td>
-        <td th:text="상품수량"></td>
-        <td th:text="배송비"></td>
-        <td th:text="상품총가격"></td>
-        <td><img src="image/delete.png" alt="삭제하기" height="15px" width="15px"></td>
+    </thead>
+    <tbody th:if="${session.cart != null}">
+    <!-- Iterate over products in the cart -->
+    <tr th:each="product : ${session.cart.products}">
+        <td th:text="${product.proName}"></td>
+        <td th:text="${product.proPrice}"></td>
+        <td th:text="${session.cart.cartQuantity}"></td> <!-- 수정: cartitem -> product -->
+        <td th:text="${product.shipping}"></td>
+        <td th:text="${product.proPrice * session.cart.cartQuantity + product.shipping}"></td>
+        <td>
+            <form th:action="@{/cart/remove}" method="post">
+                <input type="hidden" name="userNo" th:value="${session.cart.userNo}" />
+                <input type="hidden" name="proNo" th:value="${product.proNo}" />
+                <button type="submit" class="btn btn-danger" style="background-color: transparent; border: none; padding: 0;">
+                    <img th:src="@{/image/delete.png}" alt="Delete" height="15px" width="15px">
+                </button>
+            </form>
+        </td>
     </tr>
-
+    </tbody>
 </table>
 
-<br>
-<br>
-<br>
-<br>
-<br>
+<br><br><br><br>
 
+<!-- 쇼핑 계속하기  -->
 <div class="continueShopping">
     <a th:href="@{/}">쇼핑 계속하기</a>
 </div>
+
+<!-- 장바구니 총액 -->
 <hr>
-<table>
+<table class="table">
+    <tbody>
     <tr>
-        <td th:text="Subtotal"></td>
-        <td th:text="총합"></td>
+        <td>총액</td>
+        <td></td>
     </tr>
+    </tbody>
 </table>
-
 <hr>
-<br>
-<div class="checkoutBtn">
-    <a href="" class="btn btn-primary btn-rounded btnBlock btn-lg fw-bold">Check out</a>
-</div>
-<br>
-<br>
-<br>
-<br>
-<br>
 
-<!-- Include footer -->
-<footer th:replace="footer :: footer"></footer>
+<!-- 체크아웃 버튼 -->
+<div class="checkoutBtn">
+    <a href="#" class="btn btn-primary btn-rounded btn-block btn-lg fw-bold">Check out</a>
+</div>
+
+<!-- 푸터 포함 -->
+<footer th:replace="~{footer :: footer}"></footer>
 
 <!-- JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js"></script>
