@@ -65,8 +65,8 @@
 <table class="table">
     <tbody>
     <tr>
-        <td>총액</td>
-        <td></td>
+        <td><strong>Total</strong></td>
+        <td id="totalAmount"></td>
     </tr>
     </tbody>
 </table>
@@ -82,6 +82,25 @@
 
 <!-- JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js"></script>
+<script th:inline="javascript">
+    document.addEventListener('DOMContentLoaded', function() {
+        var totalAmount = 0;
+        //세션에서 cartItem 데이터 가져오기
+        var cartItems = [[${session.cartItems}]];
+
+        //Total 계산하기
+        cartItems.forEach(function(cartItem) {
+            cartItem.products.forEach(function(product) {
+                var productTotal = product.proPrice * cartItem.cartQuantity + product.shipping;
+                totalAmount += productTotal;
+            });
+        });
+
+        //세자리 단위로 콤마로 포맷 맞추기
+        var formattedTotal = totalAmount.toLocaleString('ko-KR');
+        document.getElementById('totalAmount').textContent = formattedTotal + ' 원';
+    });
+</script>
 
 </body>
 </html>
