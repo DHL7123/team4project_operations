@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ko">
+<meta charset="UTF-8">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Create Order</title>
+    <link rel="stylesheet" th:href="@{/css/order.css}">
+</head>
+<body>
+<h1>Create Order</h1>
+<form th:action="@{/orders/create}" method="post">
+    <div>
+        <label for="userName">User Name:</label>
+        <input type="text" id="userName" name="userName" required>
+    </div>
+    <div>
+        <label for="item">Item:</label>
+        <input type="text" id="item" name="item" required>
+    </div>
+    <div>
