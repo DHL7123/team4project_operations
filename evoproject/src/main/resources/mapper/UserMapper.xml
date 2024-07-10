@@ -32,4 +32,9 @@
         WHERE user_id = #{userId}
     </update>
 
+    <delete id="deleteUser" parameterType="com.evo.evoproject.domain.user.User">
+        DELETE FROM user WHERE user_id = #{userId}
+    </delete>
+
+
 </mapper>

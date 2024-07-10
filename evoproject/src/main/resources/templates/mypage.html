@@ -192,6 +192,9 @@
         <div class="d-grid">
           <button type="button" class="btn btn-success" onclick="updateUserDetails()">수정</button>
         </div>
+        <div class="text-center mt-3">
+          <a href="/withdrawal" class="text-danger" style="font-size: 0.9em;">회원 탈퇴</a>
+        </div>
       </form>
     </div>
   </div>
@@ -199,6 +202,7 @@
 <footer th:replace="footer :: footer"></footer>
 
 <script>
+
   function changePassword() {
     const userId = document.getElementById('userId').value;
     const currentPassword = document.getElementById('currentPassword').value;

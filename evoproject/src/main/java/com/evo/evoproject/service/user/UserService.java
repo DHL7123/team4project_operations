@@ -5,6 +5,7 @@ import com.evo.evoproject.repository.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class UserService {
@@ -46,6 +47,11 @@ public class UserService {
 
     public void updateUserDetails(User user) {
         userRepository.updateUserDetails(user);
+    }
+
+    @Transactional
+    public void deleteUser(String userId) {
+        userRepository.deleteUser(userId);
     }
 
 }

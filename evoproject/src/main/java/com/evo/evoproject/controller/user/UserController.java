@@ -3,11 +3,14 @@ package com.evo.evoproject.controller.user;
 import com.evo.evoproject.domain.user.User;
 import com.evo.evoproject.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import jakarta.servlet.http.HttpSession;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -28,6 +31,7 @@ public class UserController {
     public String acceptTerms() {
         return "redirect:/register";
     }
+
     // 회원가입 폼
     @GetMapping("/register")
     public String showRegisterForm(Model model) {
@@ -80,4 +84,36 @@ public class UserController {
         session.invalidate(); // 세션 무효화
         return "redirect:/login";
     }
+
+    // 회원탈퇴 폼
+    @GetMapping("/withdrawal")
+    public String withdrawalForm(HttpSession session, Model model) {
+        String userId = (String) session.getAttribute("userId");
+        if (userId == null) {
+            return "redirect:/login";
+        }
+        User user = userService.findUserByUserId(userId);
+        model.addAttribute("user", user);
+        return "withdrawal";
+    }
+    // 회원탈퇴 처리
+    @PostMapping("/delete-user")
+    @ResponseBody
+    public ResponseEntity<Map<String, String>> deleteUser(@RequestParam String userId, @RequestParam String password) {
+        User user = userService.findUserByUserId(userId);
+        Map<String, String> response = new HashMap<>();
+
+        if (userService.checkPassword(user, password)) {
+            userService.deleteUser(userId);
+            response.put("message", "회원탈퇴가 완료되었습니다.");
+            return ResponseEntity.ok(response);
+        } else {
+            response.put("error", "비밀번호가 일치하지 않습니다.");
+            return ResponseEntity.badRequest().body(response);
+        }
+    }
+
+
+
+
 }

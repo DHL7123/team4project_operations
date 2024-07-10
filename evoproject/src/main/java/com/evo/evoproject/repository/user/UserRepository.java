@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 @Mapper
 public interface UserRepository {
 
+    void deleteUser(String userId);
 
     void insertUser(User user);
 
