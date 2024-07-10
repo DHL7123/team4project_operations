@@ -21,22 +21,14 @@ public class CartController {
     @Autowired
     private CartService cartService;
 
+    //장바구니 전체 상품 조회
     @GetMapping("/{userNo}")
     public String viewCart(@PathVariable int userNo, HttpSession session) {
         List<Cart> cartItems = cartService.getCartItemsByUser(userNo);
-        session.setAttribute("cartItems", cartItems); // 모든 장바구니 항목을 세션에 저장
+        // 모든 장바구니 항목을 세션에 저장
+        session.setAttribute("cartItems", cartItems);
 
         return "cart";
-    }
-
-
-    // 장바구니에 상품 추가
-    @PostMapping("/add")
-    @ResponseBody
-    public String addProductToCart(@RequestBody Cart cart) {
-        cartService.addProductToCart(cart);
-        log.info("상품이 장바구니에 추가되었습니다. 상품명: " + cart.getProducts().get(0).getProName());
-        return "상품이 장바구니에 추가되었습니다";
     }
 
 
