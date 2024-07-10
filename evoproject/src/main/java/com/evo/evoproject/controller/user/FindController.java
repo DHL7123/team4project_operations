@@ -24,30 +24,28 @@ public class FindController {
     @Autowired
     private JavaMailSender mailSender;
 
-    private static final Logger logger = LoggerFactory.getLogger(FindController.class);
-
     @Autowired
     private UserService userService;
 
+    // ID 찾기 메소드
     @PostMapping("/find-id")
     @ResponseBody
     public Map<String, String> findId(@RequestParam String userName, @RequestParam String userEmail) {
-        logger.info("Received findId request with userName: {} and userEmail: {}", userName, userEmail);
+
         User user = userService.findUserByUserEmail(userEmail);
         Map<String, String> response = new HashMap<>();
         if (user != null && user.getUserName().equals(userName)) {
-            response.put("userId", user.getUserId());  // userId 대신 user.getUsername() 사용
+            response.put("userId", user.getUserId());
         } else {
             response.put("error", "등록된 이메일이 없습니다.");
         }
         return response;
     }
 
-
+    // 비밀번호 찾기 메소드
     @PostMapping("/find-password")
     @ResponseBody
     public Map<String, String> findPassword(@RequestParam String userName, @RequestParam String userEmail, @RequestParam String userId) {
-        logger.info("Received findPassword request with userName: {}, userEmail: {}, and userId: {}", userName, userEmail, userId);
         User user = userService.findUserByUserEmail(userEmail);
         Map<String, String> response = new HashMap<>();
         if (user != null && user.getUserName().equals(userName) && user.getUserId().equals(userId)) {
@@ -60,12 +58,13 @@ public class FindController {
         }
         return response;
     }
+
+    // 비밀번호 변경 메소드
     @PostMapping("/change-password")
     @ResponseBody
     public Map<String, String> changePassword(@RequestParam String userId, @RequestParam String currentPassword,
                                               @RequestParam String newPassword) {
-        logger.info("Received changePassword request for userId: {}", userId);
-        User user = userService.findUserByUserId(userId);
+       User user = userService.findUserByUserId(userId);
         Map<String, String> response = new HashMap<>();
         if (user != null && userService.checkPassword(user, currentPassword)) {
             userService.updateUserPassword(user, newPassword);
@@ -75,12 +74,13 @@ public class FindController {
         }
         return response;
     }
+
+    // 사용자 정보 업데이트 메소드
     @PostMapping("/update-user")
     @ResponseBody
     public Map<String, String> updateUser(@RequestParam String userId, @RequestParam String userEmail,
                                           @RequestParam String userAddress1, @RequestParam String userAddress2,
                                           @RequestParam int userPhone, @RequestParam char userMarketing) {
-        logger.info("Received updateUser request for userId: {}", userId);
         User user = userService.findUserByUserId(userId);
         Map<String, String> response = new HashMap<>();
         if (user != null) {
@@ -97,12 +97,7 @@ public class FindController {
         return response;
     }
 
-
-
-
-
-
-
+    // 임시 비밀번호 이메일 발송 메소드
     private void sendTempPasswordEmail(String toEmail, String tempPassword) {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(toEmail);

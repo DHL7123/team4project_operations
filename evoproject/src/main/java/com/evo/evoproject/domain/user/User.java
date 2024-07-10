@@ -3,6 +3,8 @@ package com.evo.evoproject.domain.user;
 
 import lombok.Data;
 
+
+
 import java.sql.Timestamp;
 
 @Data
@@ -19,5 +21,4 @@ public class User {
     private char userMarketing;
     private char userWithdrawal = 'N';
     private char isAdmin = 'N';
-
 }

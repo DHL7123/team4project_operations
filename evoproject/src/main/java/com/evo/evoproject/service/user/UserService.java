@@ -18,7 +18,7 @@ public class UserService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    public boolean isUsernameTaken(String userId) {
+    public boolean isUserIdTaken(String userId) {
         return userRepository.findByUserId(userId) != null;
     }
 
@@ -30,6 +30,7 @@ public class UserService {
     public User findUserByUserId(String userId) {
         return userRepository.findByUserId(userId);
     }
+
     public User findUserByUserEmail(String userEmail) {
         return userRepository.findByUserEmail(userEmail);
     }
@@ -38,6 +39,7 @@ public class UserService {
         user.setUserPw(passwordEncoder.encode(newPassword));
         userRepository.updateUserPassword(user);
     }
+
     public boolean checkPassword(User user, String currentPassword) {
         return passwordEncoder.matches(currentPassword, user.getUserPw());
     }
@@ -45,6 +47,5 @@ public class UserService {
     public void updateUserDetails(User user) {
         userRepository.updateUserDetails(user);
     }
-
 
 }

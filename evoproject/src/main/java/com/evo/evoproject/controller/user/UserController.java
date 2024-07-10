@@ -28,7 +28,6 @@ public class UserController {
     public String acceptTerms() {
         return "redirect:/register";
     }
-
     // 회원가입 폼
     @GetMapping("/register")
     public String showRegisterForm(Model model) {
@@ -38,18 +37,19 @@ public class UserController {
     // 회원가입 처리 메소드
     @PostMapping("/register")
     public String registerUser(@ModelAttribute User user, Model model) {
-        if (userService.isUsernameTaken(user.getUserId())) {
+        if (userService.isUserIdTaken(user.getUserId())) {
             model.addAttribute("error", "이미 존재하는 아이디입니다.");
             return "register";
         }
         userService.registerUser(user);
         return "redirect:/login";
     }
+
     // 중복 아이디 체크 메소드
     @GetMapping("/check-username")
     @ResponseBody
     public Map<String, Object> checkUsername(@RequestParam String userId) {
-        boolean isTaken = userService.isUsernameTaken(userId);
+        boolean isTaken = userService.isUserIdTaken(userId);
         Map<String, Object> response = new HashMap<>();
         response.put("available", !isTaken);
         response.put("message", isTaken ? "이미 존재하는 아이디입니다." : "사용 가능한 아이디입니다.");
