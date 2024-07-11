@@ -1,41 +1,54 @@
 package com.evo.evoproject.controller;
 
+import com.evo.evoproject.model.Cart;
+import com.evo.evoproject.model.Product;
+import com.evo.evoproject.service.CartService;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Iterator;
+import java.util.List;
+import java.util.logging.Logger;
 
 @Controller
+@RequestMapping("/cart")
 public class CartController {
 
-//    @GetMapping("/cart")
-//    public String showCart(Model model, HttpSession session) {
-//        ArrayList<Product> cartList = (ArrayList<Product>) session.getAttribute("cartlist");
-//        if (cartList == null) {
-//            cartList = new ArrayList<>();
-//        }
-//
-//        // 계산 로직
-//        int sum = 0;
-//        for (Product product : cartList) {
-//            int total = product.getUnitPrice() * product.getQuantity();
-//            sum += total;
-//        }
-//
-//        model.addAttribute("cartList", cartList);
-//        model.addAttribute("sum", sum);
-//
-//        return "cart";
-//    }
+    private static final Logger log = Logger.getLogger(CartController.class.getName());
 
-    @GetMapping("/continue-shopping")
-    public String continueShopping() {
-//        메인페이지로 포워딩
-        return "forward:/main";
+    @Autowired
+    private CartService cartService;
+
+
+    //장바구니 전체 상품 조회_model _ model을 사용하여 cart.html에서 접근할 속성들을 추가
+    @GetMapping("/{userNo}")
+    public String viewCart(@PathVariable int userNo, Model model) {
+        List<Cart> cartItems = cartService.getCartItemsByUser(userNo);
+        model.addAttribute("userNo", userNo);
+        model.addAttribute("cartItems", cartItems);
+
+        log.info("사용자 " + userNo + "의 장바구니 항목 조회: " + cartItems.size() + "개의 상품");
+
+        return "cart";
     }
 
-    @GetMapping("/login")
-    public String showLoginPage() {
 
-        return "login";
+    // 장바구니에서 상품 제거 _ 쿼리 파라미터에서 userNo와 proNo를 받아온다.
+    @GetMapping("/delete")
+    public String deleteProductFromCart(@RequestParam int userNo, @RequestParam int proNo, HttpSession session) {
+        cartService.deleteProductFromCart(userNo, proNo);
+        log.info("장바구니에서 상품이 제거되었습니다. 상품 번호: " + proNo);
+
+        // 장바구니를 다시 조회 후 업데이트
+        List<Cart> updatedCartItems = cartService.getCartItemsByUser(userNo);
+        session.setAttribute("cartItems", updatedCartItems);
+
+        // 페이지 새로고침
+        return "redirect:/cart/" + userNo;
     }
+
 }

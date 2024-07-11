@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.evo.evoproject.repository.CartRepository">
+
+    <!-- Result Map for Cart -->
+    <resultMap id="CartResultMap" type="com.evo.evoproject.model.Cart">
+        <id property="cartId" column="cart_id"/>
+        <result property="userNo" column="user_no"/>
+        <result property="cartQuantity" column="cart_quantity"/>
+        <collection property="products" ofType="com.evo.evoproject.model.Product">
+            <id property="proNo" column="pro_no"/>
+            <result property="proName" column="pro_name"/>
+            <result property="proPrice" column="pro_price"/>
+            <result property="shipping" column="shipping"/>
+            <result property="soldout" column="soldout"/>
+        </collection>
+    </resultMap>
+
+    <!-- 회원아이디에 따라 카트 조회 -->
+    <select id="findByUserNo" resultMap="CartResultMap">
+        SELECT
+            c.cart_id as cart_id,
+            c.user_no as user_no,
+            c.cart_quantity as cart_quantity,
+            p.pro_no as pro_no,
+            p.pro_name as pro_name,
+            p.pro_price as pro_price,
+            p.shipping as shipping,
+            p.soldout as soldout
+        FROM cart c
+                 JOIN product p ON c.pro_no = p.pro_no
+        WHERE c.user_no = #{userNo}
+    </select>
+
+    <!-- 장바구니 상품 삭제 -->
+    <delete id="deleteProductFromCart">
+        DELETE FROM cart
+        WHERE user_no = #{userNo} AND pro_no = #{proNo}
+    </delete>
+
+    <!-- 장바구니 상품 추가 -->
+    <insert id="addProductToCart">
+        INSERT INTO cart (user_no, pro_no, cart_quantity)
+        VALUES (#{userNo}, #{products.proNo}, #{cartQuantity})
+    </insert>
+
+
+</mapper>

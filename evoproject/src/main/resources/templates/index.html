@@ -8,7 +8,7 @@
 </head>
 <body>
 <!-- 헤더 포함시키기 -->
-<header th:replace="header :: header"></header>
+<header th:replace="~{header :: header}"></header>
 
 <!--검색창-->
 <div id="modal" class="searchModal">
@@ -100,7 +100,7 @@
 
 
 <!-- 푸터 포함시키기 -->
-<footer th:replace="footer :: footer"></footer>
+<footer th:replace="~{footer :: footer}"></footer>
 
 <!-- JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js"></script>

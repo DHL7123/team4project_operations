@@ -41,6 +41,7 @@
                             <li class="menu-item" id="privacy"><a href="page3.html">Privacy Policy</a></li>
                             <li class="menu-item" id="refund"><a href="page3.html">배송 및 환불 정책</a></li>
                         </ul>
+                     
                     </li>
                 </ul>
             </nav>
@@ -48,15 +49,14 @@
         <div id="rightMenu">
             <ul>
                 <li>
-                    <a href="NonageShop?command=login_form" style="width:110px;">Account </a>
-                </li>
-                <li>
                     <a href="#" id="searchIcon">
-                        <img src="image/search.png" alt="search" height="27px" width="27px">
+                        <img th:src="@{/image/search.png}" alt="search" height="27px" width="27px">
                     </a>
                 </li>
                 <li>
-                    <a th:href="@{/cart}"><img alt="shopping_cart" src="image/shopping_cart.png" width="25" height="25"></a>
+                    <a th:href="@{/cart/{userNo}(userNo=1)}">
+                        <img th:src="@{/image/shopping_cart.png}" alt="shopping_cart" height="25px" width="25px">
+                    </a>
                 </li>
             </ul>
         </div>
