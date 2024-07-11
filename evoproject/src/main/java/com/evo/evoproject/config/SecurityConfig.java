@@ -27,7 +27,9 @@ public class SecurityConfig {
                         authorizeRequests
                                 .requestMatchers("/", "/index.html", "/header.html", "/footer.html", "/register",
                                         "/login", "/css/**", "/image/**","/js/**",
-                                        "/find-id","/find-password","/check-username","/terms","/snb.html","/mypage").permitAll()
+                                        "/find-id","/find-password","/check-username","/terms","/snb.html","/mypage",
+                                        "/notice", "/faq", "/servicePolicy", "/privacyPolicy","/deliveryNrefundPolicy",
+                                        "/product").permitAll()
                                 .requestMatchers("/admin/**").hasAuthority("ADMIN") // 관리자 전용 URL 패턴
                                 .anyRequest().authenticated() // 이 외의 요청은 인증 필요
                 )
