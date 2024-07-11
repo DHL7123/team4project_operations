@@ -64,10 +64,10 @@
       var url;
       if (categoryId) {
         // 카테고리별 조회
-        url = "/products/category/" + categoryId + "?sort=" + sort + "&page=" + currentPage + "&size=16";
+        url = "/product/category/" + categoryId + "?sort=" + sort + "&page=" + currentPage + "&size=16";
       } else {
         // 전체 상품 조회
-        url = "/products?sort=" + sort + "&page=" + currentPage + "&size=16";
+        url = "/product?sort=" + sort + "&page=" + currentPage + "&size=16";
       }
 
       window.location.href = url;
@@ -90,11 +90,14 @@
 
     // 상세 페이지로 리다이렉트하는 함수
     function redirectToDetailPage(productNo) {
-      window.location.href = '/products/detail/' + productNo;
+      window.location.href = '/product/detail/' + productNo;
     }
   </script>
 </head>
 <body>
+
+<header th:replace="header :: header"></header>
+
 <h1>Product List</h1>
 
 <!-- 정렬 드롭다운 -->
@@ -127,19 +130,22 @@
   <ul>
     <!-- 이전 페이지 버튼 -->
     <li th:if="${productsResponse.currentPage > 1}">
-      <a th:href="@{${categoryId != null ? '/products/category/' + categoryId : '/products'}(page=${productsResponse.currentPage - 1}, size=16, sort=${productsResponse.sort})}">Prev</a>
+      <a th:href="@{${categoryId != null ? '/product/category/' + categoryId : '/product'}(page=${productsResponse.currentPage - 1}, size=16, sort=${productsResponse.sort})}">Prev</a>
     </li>
 
     <!-- 페이지 번호 반복 -->
     <li th:each="pageNum : ${#numbers.sequence(1, productsResponse.totalPages)}" th:classappend="${pageNum == productsResponse.currentPage} ? 'active'">
-      <a th:href="@{${categoryId != null ? '/products/category/' + categoryId : '/products'}(page=${pageNum}, size=16, sort=${productsResponse.sort})}" th:text="${pageNum}">1</a>
+      <a th:href="@{${categoryId != null ? '/product/category/' + categoryId : '/product'}(page=${pageNum}, size=16, sort=${productsResponse.sort})}" th:text="${pageNum}">1</a>
     </li>
 
     <!-- 다음 페이지 버튼 -->
     <li th:if="${productsResponse.currentPage < productsResponse.totalPages}">
-      <a th:href="@{${categoryId != null ? '/products/category/' + categoryId : '/products'}(page=${productsResponse.currentPage + 1}, size=16, sort=${productsResponse.sort})}">Next</a>
+      <a th:href="@{${categoryId != null ? '/product/category/' + categoryId : '/product'}(page=${productsResponse.currentPage + 1}, size=16, sort=${productsResponse.sort})}">Next</a>
     </li>
   </ul>
 </div>
+
+<!-- 푸터 추가 -->
+<footer th:replace="footer :: footer"></footer>
 </body>
 </html>

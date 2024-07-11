@@ -81,7 +81,8 @@ public class ProductServiceImpl implements ProductService {
             int offset = (page - 1) * size;
             List<Product> products = productMapper.findProductsByCategory(sort, categoryId, offset, size);
             int totalProducts = productMapper.countProductsByCategory(categoryId);
-            return new RetrieveProductsResponse(products, sort, page, (totalProducts + size - 1) / size);
+            int totalPages = (totalProducts + size - 1) / size;
+            return new RetrieveProductsResponse(products, sort, page, totalPages);
         } catch (Exception e) {
             log.error("카테고리별 제품 목록을 가져오는 중 오류 발생", e);
             throw e;

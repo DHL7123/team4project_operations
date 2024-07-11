@@ -111,7 +111,11 @@
         }
     </script>
 </head>
+
 <body>
+
+<header th:replace="header :: header"></header>
+
 <h1>Product Detail</h1>
 
 <div class="product-images">
@@ -159,13 +163,13 @@
 <div class="related-products">
     <h2>Related Products</h2>
     <div th:each="product : ${relatedProducts}" class="related-product">
-        <a th:href="@{'/products/detail/' + ${product.productNo}}">
+        <a th:href="@{'/product/detail/' + ${product.productNo}}">
             <img th:src="${product.mainImage.imageName}" alt="Related Product Image">
             <h3 th:text="${product.productName}"></h3>
             <p th:text="${product.price} + '원'"></p>
         </a>
     </div>
 </div>
-
+<footer th:replace="footer :: footer"></footer>
 </body>
 </html>

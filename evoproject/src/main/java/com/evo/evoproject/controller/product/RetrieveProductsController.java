@@ -1,6 +1,5 @@
 package com.evo.evoproject.controller.product;
 
-import com.evo.evoproject.Mapper.product.ProductMapper;
 import com.evo.evoproject.controller.product.dto.RetrieveProductDetailResponse;
 import com.evo.evoproject.controller.product.dto.RetrieveProductsResponse;
 import com.evo.evoproject.service.product.ProductService;
@@ -16,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Slf4j
 @Controller
-@RequestMapping("/products")
+@RequestMapping("/product")
 @RequiredArgsConstructor
 public class RetrieveProductsController {
 
@@ -43,7 +42,7 @@ public class RetrieveProductsController {
             RetrieveProductsResponse response = productService.getAllProducts(sort, page, size);
             model.addAttribute("productsResponse", response);
             model.addAttribute("products", response.getProducts());
-            return "productList";
+            return "product/list";
         } catch (Exception e) {
             log.error("제품 목록을 가져오는 중 오류 발생", e);
             model.addAttribute("error", "제품 목록을 가져오는 중 오류가 발생했습니다.");
@@ -74,7 +73,7 @@ public class RetrieveProductsController {
             model.addAttribute("productsResponse", response);
             model.addAttribute("products", response.getProducts());
             model.addAttribute("categoryId", categoryId);
-            return "productList";
+            return "product/list";
         } catch (Exception e) {
             log.error("카테고리별 제품 목록을 가져오는 중 오류 발생", e);
             model.addAttribute("error", "카테고리별 제품 목록을 가져오는 중 오류가 발생했습니다.");
@@ -100,7 +99,7 @@ public class RetrieveProductsController {
 
             model.addAttribute("productDetailResponse", response);
             model.addAttribute("relatedProducts", relatedProductsResponse.getProducts());
-            return "productDetail";
+            return "product/detail";
         } catch (Exception e) {
             log.error("제품 상세 정보를 가져오는 중 오류 발생", e);
             model.addAttribute("error", "제품 상세 정보를 가져오는 중 오류가 발생했습니다.");
