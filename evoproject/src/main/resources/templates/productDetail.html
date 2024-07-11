@@ -15,20 +15,30 @@
             padding: 20px 0;
         }
         table {
-            width: 100%;
+            width: 80%;
             margin: 0 auto;
             text-align: left;
             border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
         th, td {
             padding: 15px;
             border-bottom: 1px solid #ddd;
         }
-        .product-image img {
+        th {
+            background-color: #f4f4f4;
+        }
+        .product-images {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .product-images img {
             width: 300px;
             height: auto;
-            display: block;
-            margin: 0 auto;
+            display: inline-block;
+            margin: 0 10px;
+            cursor: pointer;
         }
         .related-products {
             margin-top: 20px;
@@ -43,6 +53,8 @@
             margin: 10px;
             padding: 10px;
             border: 1px solid #ccc;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             text-align: center;
         }
         .related-product img {
@@ -58,14 +70,57 @@
             padding: 10px 20px;
             font-size: 16px;
             cursor: pointer;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .button-container button:hover {
+            background-color: #45a049;
+        }
+        .soldout {
+            color: red;
+            font-weight: bold;
+            text-align: center;
+            font-size: 20px;
         }
     </style>
+    <script>
+        function enlargeImage(img) {
+            var src = img.getAttribute("src");
+            var modal = document.createElement("div");
+            modal.style.display = "flex";
+            modal.style.justifyContent = "center";
+            modal.style.alignItems = "center";
+            modal.style.position = "fixed";
+            modal.style.top = "0";
+            modal.style.left = "0";
+            modal.style.width = "100%";
+            modal.style.height = "100%";
+            modal.style.backgroundColor = "rgba(0,0,0,0.8)";
+            modal.onclick = function() {
+                document.body.removeChild(modal);
+            };
+            var modalImg = document.createElement("img");
+            modalImg.src = src;
+            modalImg.style.maxWidth = "80%";
+            modalImg.style.maxHeight = "80%";
+            modal.appendChild(modalImg);
+            document.body.appendChild(modal);
+        }
+    </script>
 </head>
 <body>
 <h1>Product Detail</h1>
-<div class="product-image">
-    <img th:src="${productDetailResponse.product.imageUrl}" alt="Product Image">
+
+<div class="product-images">
+    <div th:each="image : ${productDetailResponse.images}">
+        <img th:if="${image != null}" th:src="${image.imageName}" alt="Product Image" onclick="enlargeImage(this)">
+    </div>
 </div>
+
+
 <table>
     <tr>
         <th>Product Name</th>
@@ -89,20 +144,23 @@
     </tr>
     <tr>
         <th>Stock</th>
-        <td th:text="${productDetailResponse.product.soldout ? 'Sold Out' : productDetailResponse.product.stock}"></td>
+        <td th:text="${productDetailResponse.product.soldout ? 'Sold Out' : productDetailResponse.product.stock}" th:classappend="${productDetailResponse.product.soldout ? 'soldout' : ''}"></td>
     </tr>
 </table>
 
-<div class="button-container">
+<div class="button-container" th:if="${!productDetailResponse.product.soldout}">
     <button onclick="location.href='/order.html'">구매하기</button>
     <button onclick="location.href='/cart.html'">장바구니 담기</button>
+</div>
+<div class="button-container" th:if="${productDetailResponse.product.soldout}">
+    <span class="soldout">Sold Out.</span>
 </div>
 
 <div class="related-products">
     <h2>Related Products</h2>
     <div th:each="product : ${relatedProducts}" class="related-product">
         <a th:href="@{'/products/detail/' + ${product.productNo}}">
-            <img th:src="${product.imageUrl}" alt="Related Product Image">
+            <img th:src="${product.mainImage.imageName}" alt="Related Product Image">
             <h3 th:text="${product.productName}"></h3>
             <p th:text="${product.price} + '원'"></p>
         </a>

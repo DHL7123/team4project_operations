@@ -1,7 +1,9 @@
 package com.evo.evoproject.service.product;
 
+import com.evo.evoproject.Mapper.image.ImageMapper;
 import com.evo.evoproject.controller.product.dto.RetrieveProductDetailResponse;
 import com.evo.evoproject.controller.product.dto.RetrieveProductsResponse;
+import com.evo.evoproject.domain.image.Image;
 import com.evo.evoproject.domain.product.Product;
 import com.evo.evoproject.Mapper.product.ProductMapper;
 import lombok.RequiredArgsConstructor;
@@ -21,84 +23,68 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class ProductServiceImpl implements ProductService {
 
     private final ProductMapper productMapper;
+    private final ImageMapper imageMapper;
     private final Map<Integer, AtomicInteger> viewCountMap = new ConcurrentHashMap<>();
-
-    /**
-     * 모든 제품을 가져오는 서비스 메서드
-     * @param sort  정렬 기준
-     * @param page 페이지 번호
-     * @param size 페이지당 항목 수
-     * @return 제품 목록 응답 객체
-     */
 
     @Transactional(readOnly = true)
     @Override
-    public RetrieveProductsResponse getAllProducts(String sort,int page, int size) {
-        log.info("모든 제품 목록을 가져오는 서비스 - 정렬기준: {}, 페이지: {}, 사이즈: {}",sort, page, size);
+    public RetrieveProductsResponse getAllProducts(String sort, int page, int size) {
+        log.info("모든 제품 목록을 가져오는 서비스 - 정렬기준: {}, 페이지: {}, 사이즈: {}", sort, page, size);
         try {
-            int offset = (page - 1) * size; // offset 계산
+            int offset = (page - 1) * size;
             List<Product> products = productMapper.findAllProducts(sort, offset, size);
             int totalProducts = productMapper.countAllProducts();
             int totalPages = (totalProducts + size - 1) / size;
-
-//            return RetrieveProductsResponse.builder()
-//                    .products(products)
-//                    .sort(sort)
-//                    .currentPage(page)
-//                    .totalPages(totalPages)
-//                    .build();
-//            return new RetrieveProductsResponse(products, sort, page, page);
-            return RetrieveProductsResponse.successfulResponse(products, sort, page, totalPages);
+            return new RetrieveProductsResponse(products, sort, page, totalPages);
         } catch (Exception e) {
             log.error("모든 제품 목록을 가져오는 중 오류 발생", e);
-            throw e;  // 예외를 다시 던져 호출한 곳에서 처리할 수 있게 합니다.
+            throw e;
         }
     }
-    /**
-     * 제품 번호로 특정 제품을 가져오는 서비스 메서드
-     *
-     * @param productNo 제품 번호
-     * @return 제품 상세 정보 응답 객체
-     */
+
+
     @Transactional
     @Override
     public RetrieveProductDetailResponse getProductByNo(int productNo) {
         log.info("특정 제품 상세 정보를 가져오는 서비스 - 제품 번호: {}", productNo);
         try {
             Product product = productMapper.findProductByNo(productNo);
+            if (product == null) {
+                log.error("제품 번호 {}에 해당하는 제품을 찾을 수 없습니다.", productNo);
+                throw new NullPointerException("Product with productNo " + productNo + " not found");
+            }
             increaseViewCount(productNo);
-            return new RetrieveProductDetailResponse(product);
+
+            log.info("이미지 쿼리 실행 전 - 제품 번호: {}", productNo);
+            List<Image> images = imageMapper.findImagesByProductNo(productNo);
+            log.info("이미지 데이터: {}", images);
+
+
+            product.setImages(images);
+            List<Product> relatedProducts = productMapper.findTopProductsByCategory(product.getCategoryId(), productNo);
+
+            return new RetrieveProductDetailResponse(product, images, relatedProducts);
         } catch (Exception e) {
             log.error("특정 제품 상세 정보를 가져오는 중 오류 발생", e);
-            throw e;  // 예외를 다시 던져 호출한 곳에서 처리할 수 있게 합니다.
+            throw e;
         }
     }
-    /**
-     * 카테고리별 제품을 가져오는 서비스 메서드
-     * @param sort 카테고리 ID
-     * @param categoryId 카테고리 ID
-     * @param page 페이지 번호
-     * @param size 페이지당 항목 수
-     * @return 카테고리별 제품 목록 응답 객체
-     */
+
+
+
+
     @Transactional(readOnly = true)
     @Override
-    public RetrieveProductsResponse getProductsByCategory(String sort,int categoryId, int page, int size) {
-        log.info("카테고리별 제품 목록을 가져오는 서비스 - 정렬 기준: {}, 카테고리 ID: {}, 페이지: {}, 사이즈: {}",sort, categoryId, page, size);
+    public RetrieveProductsResponse getProductsByCategory(String sort, int categoryId, int page, int size) {
+        log.info("카테고리별 제품 목록을 가져오는 서비스 - 정렬 기준: {}, 카테고리 ID: {}, 페이지: {}, 사이즈: {}", sort, categoryId, page, size);
         try {
-            int offset = (page - 1) * size; // offset 계산
+            int offset = (page - 1) * size;
             List<Product> products = productMapper.findProductsByCategory(sort, categoryId, offset, size);
             int totalProducts = productMapper.countProductsByCategory(categoryId);
-
-            RetrieveProductsResponse response = new RetrieveProductsResponse();
-            response.setSort(sort);
-            response.setProducts(products);
-            response.setCurrentPage(page);
-            response.setTotalPages((totalProducts + size - 1) / size);
-            return response;
+            return new RetrieveProductsResponse(products, sort, page, (totalProducts + size - 1) / size);
         } catch (Exception e) {
             log.error("카테고리별 제품 목록을 가져오는 중 오류 발생", e);
-            throw e;  // 예외를 다시 던져 호출한 곳에서 처리할 수 있게 합니다.
+            throw e;
         }
     }
 
@@ -108,35 +94,19 @@ public class ProductServiceImpl implements ProductService {
         log.info("카테고리별 상위 제품을 조회하는 서비스 - 카테고리 ID: {}", categoryId);
         try {
             List<Product> products = productMapper.findTopProductsByCategory(categoryId, productNo);
-
-            return RetrieveProductsResponse.builder()
-                    .products(products)
-                    .sort("viewCount_desc")
-                    .currentPage(1)
-                    .totalPages(1)
-                    .build();
+            return new RetrieveProductsResponse(products, "viewCount_desc", 1, 1);
         } catch (Exception e) {
             log.error("카테고리별 상위 제품을 조회하는 중 오류 발생", e);
             throw e;
         }
     }
 
-    /**
-     * 특정 제품의 조회수를 증가시키는 메서드
-     *
-     * @param productNo 제품 번호
-     */
     private void increaseViewCount(int productNo) {
         log.info("제품 번호 {}의 조회수를 증가시킵니다.", productNo);
         viewCountMap.computeIfAbsent(productNo, k -> new AtomicInteger(0)).incrementAndGet();
     }
 
-
-    /**
-     * 조회수를 데이터베이스에 업데이트하는 스케줄러 메서드
-     * 1분마다 실행되도록 설정됨
-     */
-    @Scheduled(fixedRate = 60000)  // 1분마다 실행
+    @Scheduled(fixedRate = 60000)
     public void updateViewCounts() {
         log.info("조회수 업데이트 작업을 시작합니다.");
         viewCountMap.forEach((productNo, count) -> {
@@ -149,4 +119,3 @@ public class ProductServiceImpl implements ProductService {
         log.info("조회수 업데이트 작업을 완료했습니다.");
     }
 }
-

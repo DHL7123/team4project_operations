@@ -1,72 +1,84 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
-PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.evo.evoproject.Mapper.product.ProductMapper">
 
-<resultMap id="ProductResultMap" type="com.evo.evoproject.domain.product.Product">
-    <id property="productNo" column="pro_no" />
-    <result property="productName" column="pro_name" />
-    <result property="productDes" column="pro_content" />
-    <result property="categoryId" column="category_id" />
-    <result property="price" column="pro_price" />
-    <result property="stock" column="pro_stock" />
-    <result property="date" column="pro_date" />
-    <result property="viewCount" column="view_count" />
-    <result property="shipping" column="shipping" />
-    <result property="soldout" column="soldout" />
-    <result property="imageId" column="image_id" />
-    <result property="imageUrl" column="image_name" />
-</resultMap>
+    <resultMap id="ProductResultMap" type="com.evo.evoproject.domain.product.Product">
+        <id property="productNo" column="pro_no"/>
+        <result property="productName" column="pro_name"/>
+        <result property="productDes" column="pro_content"/>
+        <result property="categoryId" column="category_id"/>
+        <result property="price" column="pro_price"/>
+        <result property="stock" column="pro_stock"/>
+        <result property="date" column="pro_date"/>
+        <result property="viewCount" column="view_count"/>
+        <result property="shipping" column="shipping"/>
+        <result property="soldout" column="soldout"/>
+        <association property="mainImage" javaType="com.evo.evoproject.domain.image.Image">
+            <id property="imageId" column="image_id"/>
+            <result property="imageName" column="image_name"/>
+            <result property="imageType" column="image_type"/>
+        </association>
+    </resultMap>
+
+    <resultMap id="ProductDetailResultMap" type="com.evo.evoproject.domain.product.Product" extends="ProductResultMap">
+        <collection property="images" ofType="com.evo.evoproject.domain.image.Image">
+            <id property="imageId" column="image_id"/>
+            <result property="imageName" column="image_name"/>
+            <result property="imageType" column="image_type"/>
+        </collection>
+    </resultMap>
+
 
     <select id="findAllProducts" resultMap="ProductResultMap">
-        SELECT p.*, i.image_name AS image_name
+        SELECT p.pro_no, p.pro_name, p.pro_content, p.category_id, p.pro_price, p.pro_stock, p.pro_date, p.view_count, p.shipping, p.soldout,
+        i.image_id AS image_id, i.image_name AS image_name, i.image_type AS image_type
         FROM product p
         LEFT JOIN image i ON p.image_id = i.image_id
-            <choose>
-                <when test="sort == 'price_asc'">
-                    ORDER BY pro_price ASC
-                </when>
-                <when test="sort == 'price_desc'">
-                    ORDER BY pro_price DESC
-                </when>
-                <when test="sort == 'viewCount_desc'">
-                    ORDER BY view_count DESC
-                </when>
-                <otherwise>
-                    ORDER BY pro_date DESC
-                </otherwise>
-            </choose>
-            LIMIT #{offset}, #{size}
-    </select>
-
-    <select id="findProductsByCategory" resultMap="ProductResultMap">
-        SELECT p.*, i.image_name AS image_name
-        FROM product p
-        LEFT JOIN image i ON p.image_id = i.image_id
-        WHERE category_id = #{categoryId}
         <choose>
             <when test="sort == 'price_asc'">
-                ORDER BY pro_price ASC
+                ORDER BY p.pro_price ASC
             </when>
             <when test="sort == 'price_desc'">
-                ORDER BY pro_price DESC
+                ORDER BY p.pro_price DESC
             </when>
             <when test="sort == 'viewCount_desc'">
-                ORDER BY view_count DESC
+                ORDER BY p.view_count DESC
             </when>
             <otherwise>
-                ORDER BY pro_date DESC
+                ORDER BY p.pro_date DESC
             </otherwise>
         </choose>
         LIMIT #{offset}, #{size}
     </select>
-    <!--다른 SQL 도 동적쿼리를 활용해보자-->
-    <select id="findProductByNo" resultMap="ProductResultMap">
-        SELECT p.*, i.image_name AS image_name
+
+    <select id="findProductsByCategory" resultMap="ProductResultMap">
+        SELECT p.pro_no, p.pro_name, p.pro_content, p.category_id, p.pro_price, p.pro_stock, p.pro_date, p.view_count, p.shipping, p.soldout,
+        i.image_id AS image_id, i.image_name AS image_name, i.image_type AS image_type
         FROM product p
-                 LEFT JOIN image i ON p.image_id = i.image_id
+        LEFT JOIN image i ON p.image_id = i.image_id
+        WHERE category_id =#{categoryId}
+        <choose>
+            <when test="sort == 'price_asc'">
+                ORDER BY p.pro_price ASC
+            </when>
+            <when test="sort == 'price_desc'">
+                ORDER BY p.pro_price DESC
+            </when>
+            <when test="sort == 'viewCount_desc'">
+                ORDER BY p.view_count DESC
+            </when>
+            <otherwise>
+                ORDER BY p.pro_date DESC
+            </otherwise>
+        </choose>
+        LIMIT #{offset}, #{size}
+    </select>
+
+    <select id="findProductByNo" resultMap="ProductDetailResultMap">
+        SELECT * FROM product_detail_view
         WHERE pro_no = #{productNo}
     </select>
 
@@ -83,17 +95,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </update>
 
     <select id="findTopProductsByCategory" resultMap="ProductResultMap">
-        SELECT p.*, i.image_name AS image_name
-        FROM product p
-                 LEFT JOIN product_image pi ON p.pro_no = pi.pro_no
-                 LEFT JOIN image i ON pi.image_id = i.image_id
-        WHERE p.category_id = #{categoryId} AND p.pro_no != #{productNo}
-        ORDER BY p.view_count DESC
-            LIMIT 4
+        SELECT *
+        FROM top_products_by_category_view
+        WHERE category_id = #{categoryId}
+        AND pro_no != #{productNo}
+        ORDER BY view_count DESC
+            LIMIT 4;
     </select>
 
-
 </mapper>
-
-
-

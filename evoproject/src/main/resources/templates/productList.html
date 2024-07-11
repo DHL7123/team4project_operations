@@ -115,13 +115,12 @@
 <!-- 상품 목록 -->
 <div id="product-container">
   <div th:each="product : ${products}" class="product" th:data-product-no="${product.productNo}">
-    <img th:src="${product.imageUrl}" alt="Product Image">
+    <img th:if="${product.mainImage != null}" th:src="@{${product.mainImage.imageName}}" alt="Product Image">
     <h2 th:text="${product.productName}">Product Name</h2>
     <p th:text="${product.soldout ? 'Sold Out' : product.price + ' 원'}"></p>
     <div class="add-to-cart" th:if="${!product.soldout}">Add to cart</div>
   </div>
 </div>
-
 
 <!-- 페이지네이션 -->
 <div class="pagination">

@@ -19,4 +19,12 @@
     <select id="findImageById" parameterType="int" resultMap="ImageResultMap">
         SELECT * FROM image WHERE image_id = #{imageId}
     </select>
+
+    <select id="findImagesByProductNo" parameterType="int" resultMap="ImageResultMap">
+        SELECT i.image_id, i.image_name, i.image_type
+        FROM image i
+        INNER JOIN product_image pi ON i.image_id = pi.image_id
+        WHERE pi.pro_no = #{productNo}
+    </select>
+
 </mapper>

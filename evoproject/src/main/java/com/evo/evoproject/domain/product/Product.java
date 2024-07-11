@@ -1,9 +1,11 @@
 package com.evo.evoproject.domain.product;
 
+import com.evo.evoproject.domain.image.Image;
 import lombok.Data;
 
 import java.time.LocalDateTime;
-
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 public class Product {
@@ -17,8 +19,8 @@ public class Product {
     private int viewCount;
     private int shipping;
     private boolean soldout;
-    private int imageId;
-    private String imageUrl;
 
 
+    private Image mainImage;
+    private List<Image> images;
 }
