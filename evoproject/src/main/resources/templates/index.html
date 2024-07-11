@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<meta charset="UTF-8">
+<link href="css/styles.css" rel="stylesheet">
 <head>
     <meta charset="UTF-8">
     <title>Evo Market</title>
@@ -23,6 +26,25 @@
         </button>
     </div>
 </div>
+<script>
+    window.addEventListener('load', function() {
+        var allElements = document.getElementsByTagName('*');
+        Array.prototype.forEach.call(allElements, function(el) {
+            var includePath = el.dataset.includePath;
+            if (includePath) {
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        el.outerHTML = this.responseText;
+                    }
+                };
+                xhttp.open('GET', includePath, true);
+                xhttp.send();
+            }
+        });
+    });
+</script>
+
 
 <!-- 메인배너  -->
 <div id="carouselExample" class="carousel slide">
@@ -104,6 +126,6 @@
 
 <!-- JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js"></script>
-<script src="js/script.js"></script>
+
 </body>
 </html>

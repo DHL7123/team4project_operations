@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Evo Market - 이용약관 동의</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <style>
+        .gradient-custom {
+            background-color: white;
+        }
+        .card-custom {
+            max-width: 600px;
+            width: 100%;
+            margin: 20px auto;
+        }
+        .btn-custom {
+            font-size: 1rem;
+            padding: 0.75rem 1.5rem;
+        }
+        .terms-content {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-top: 10px;
+            max-height: 100px;
+            overflow-y: auto;
+            background-color: #f9f9f9;
+        }
+        .all-agree {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        .terms-banner {
+            position: relative;
+            background-image: url('/image/banner.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        .terms-banner h1 {
+            margin: 0;
+        }
+    </style>
+</head>
+<body class="gradient-custom">
+<header th:replace="~{header :: header}"></header>
+<div class="terms-banner">
+    <h1>서비스 약관 동의</h1>
+</div>
+
+
+<div class="container-fluid d-flex justify-content-center align-items-center vh-100">
+    <div class="card bg-light card-custom" style="border-radius: 1rem;">
+        <div class="card-body p-5">
+            <h2 class="text-center">이용약관 동의</h2>
+            <form id="terms-form" th:action="@{/terms}" method="post">
+                <div class="terms">
+                    <label>
+                        <input type="checkbox" id="service-terms" required>
+                        서비스 이용 약관 동의
+                    </label>
+                    <div class="terms-content">
+                        서비스 이용 약관 내용이 여기에 표시됩니다. 서비스 이용 약관 내용이 여기에 표시됩니다.
+                        서비스 이용 약관 내용이 여기에 표시됩니다. 서비스 이용 약관 내용이 여기에 표시됩니다.
+                    </div>
+                </div>
+                <div class="terms mt-3">
+                    <label>
+                        <input type="checkbox" id="privacy-policy" required>
+                        개인정보 처리방침 동의
+                    </label>
+                    <div class="terms-content">
+                        개인정보 처리방침 내용이 여기에 표시됩니다. 개인정보 처리방침 내용이 여기에 표시됩니다.
+                        개인정보 처리방침 내용이 여기에 표시됩니다. 개인정보 처리방침 내용이 여기에 표시됩니다.
+                    </div>
+                </div>
+                <div class="terms mt-3">
+                    <label>
+                        <input type="checkbox" id="data-delegation" required>
+                        개인정보 위탁 동의
+                    </label>
+                    <div class="terms-content">
+                        개인정보 위탁 내용이 여기에 표시됩니다. 개인정보 위탁 내용이 여기에 표시됩니다.
+                        개인정보 위탁 내용이 여기에 표시됩니다. 개인정보 위탁 내용이 여기에 표시됩니다.
+                    </div>
+                </div>
+                <div class="terms mt-3">
+                    <label>
+                        <input type="checkbox" id="marketing-consent">
+                        마케팅 정보 제공 동의 (선택)
+                    </label>
+                    <div class="terms-content">
+                        마케팅 정보 제공 내용이 여기에 표시됩니다. 마케팅 정보 제공 내용이 여기에 표시됩니다.
+                        마케팅 정보 제공 내용이 여기에 표시됩니다. 마케팅 정보 제공 내용이 여기에 표시됩니다.
+                    </div>
+                </div>
+                <div class="all-agree mt-3">
+                    <label>
+                        <input type="checkbox" id="agree-all">
+                        모두 동의함
+                    </label>
+                </div>
+                <div class="buttons mt-4 text-center">
+                    <button type="button" class="btn btn-secondary btn-custom cancel">취소</button>
+                    <button type="submit" class="btn btn-primary btn-custom confirm" disabled>회원가입</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById('agree-all').addEventListener('change', function() {
+        var checkboxes = document.querySelectorAll('.terms input[type="checkbox"]');
+        for (var checkbox of checkboxes) {
+            checkbox.checked = this.checked;
+        }
+        checkRequiredCheckboxes();
+    });
+
+    var termsCheckboxes = document.querySelectorAll('.terms input[type="checkbox"]:not(#marketing-consent)');
+    for (var checkbox of termsCheckboxes) {
+        checkbox.addEventListener('change', function() {
+            var allChecked = true;
+            for (var checkbox of termsCheckboxes) {
+                if (!checkbox.checked) {
+                    allChecked = false;
+                    break;
+                }
+            }
+            document.getElementById('agree-all').checked = allChecked;
+            checkRequiredCheckboxes();
+        });
+    }
+
+    function checkRequiredCheckboxes() {
+        var allRequiredChecked = true;
+        for (var checkbox of termsCheckboxes) {
+            if (!checkbox.checked) {
+                allRequiredChecked = false;
+                break;
+            }
+        }
+        document.querySelector('.btn-custom.confirm').disabled = !allRequiredChecked;
+    }
+
+    // 초기 상태에서는 버튼을 비활성화
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelector('.btn-custom.confirm').disabled = true;
+    });
+</script>
+
+<footer th:replace="footer :: footer"></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js"></script>
+</body>
+</html>
