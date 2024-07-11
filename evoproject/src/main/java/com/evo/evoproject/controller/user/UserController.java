@@ -3,14 +3,12 @@ package com.evo.evoproject.controller.user;
 import com.evo.evoproject.domain.user.User;
 import com.evo.evoproject.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import jakarta.servlet.http.HttpSession;
 
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 

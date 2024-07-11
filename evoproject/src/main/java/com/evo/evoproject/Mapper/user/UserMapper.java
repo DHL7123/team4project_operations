@@ -1,4 +1,4 @@
-package com.evo.evoproject.repository.user;
+package com.evo.evoproject.Mapper.user;
 
 import com.evo.evoproject.domain.user.User;
 import org.apache.ibatis.annotations.Mapper;
@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 @Mapper
-public interface UserRepository {
+public interface UserMapper {
 
     void deleteUser(String userId);
 

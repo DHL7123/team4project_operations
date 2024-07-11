@@ -1,7 +1,7 @@
 package com.evo.evoproject.service.user;
 
 import com.evo.evoproject.domain.user.User;
-import com.evo.evoproject.repository.user.UserRepository;
+import com.evo.evoproject.Mapper.user.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -13,11 +13,11 @@ import java.util.Collections;
 @Service
 public class UserServiceImpl implements UserDetailsService {
 
-    private final UserRepository userRepository;
+    private final UserMapper userMapper;
 
     @Autowired
-    public UserServiceImpl(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public UserServiceImpl(UserMapper userMapper) {
+        this.userMapper = userMapper;
     }
 
 
@@ -32,7 +32,7 @@ public class UserServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String userId) throws UsernameNotFoundException {
-        User user = userRepository.findByUserId(userId);
+        User user = userMapper.findByUserId(userId);
         if (user == null) {
             // 사용자 ID로 사용자를 찾을 수 없는 경우 예외 발생
             throw new UsernameNotFoundException("사용자를 찾을 수 없습니다.");
