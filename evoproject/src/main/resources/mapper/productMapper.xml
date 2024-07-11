@@ -5,7 +5,7 @@
 
 <mapper namespace="com.evo.evoproject.Mapper.product.ProductMapper">
 
-    <resultMap id="ProductResultMap" type="com.evo.evoproject.domain.product.Product">
+    <resultMap id="ProductResultMap" type="com.evo.evoproject.domain.product.RetrieveProduct">
         <id property="productNo" column="pro_no"/>
         <result property="productName" column="pro_name"/>
         <result property="productDes" column="pro_content"/>
@@ -23,7 +23,7 @@
         </association>
     </resultMap>
 
-    <resultMap id="ProductDetailResultMap" type="com.evo.evoproject.domain.product.Product" extends="ProductResultMap">
+    <resultMap id="ProductDetailResultMap" type="com.evo.evoproject.domain.product.RetrieveProduct" extends="ProductResultMap">
         <collection property="images" ofType="com.evo.evoproject.domain.image.Image">
             <id property="imageId" column="image_id"/>
             <result property="imageName" column="image_name"/>

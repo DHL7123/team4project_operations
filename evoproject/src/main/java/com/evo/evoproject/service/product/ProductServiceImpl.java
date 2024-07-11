@@ -1,11 +1,12 @@
 package com.evo.evoproject.service.product;
 
-import com.evo.evoproject.Mapper.image.ImageMapper;
+
+import com.evo.evoproject.Mapper.product.ImageMapper;
 import com.evo.evoproject.controller.product.dto.RetrieveProductDetailResponse;
 import com.evo.evoproject.controller.product.dto.RetrieveProductsResponse;
 import com.evo.evoproject.domain.image.Image;
-import com.evo.evoproject.domain.product.Product;
 import com.evo.evoproject.Mapper.product.ProductMapper;
+import com.evo.evoproject.domain.product.RetrieveProduct;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -32,7 +33,7 @@ public class ProductServiceImpl implements ProductService {
         log.info("모든 제품 목록을 가져오는 서비스 - 정렬기준: {}, 페이지: {}, 사이즈: {}", sort, page, size);
         try {
             int offset = (page - 1) * size;
-            List<Product> products = productMapper.findAllProducts(sort, offset, size);
+            List<RetrieveProduct> products = productMapper.findAllProducts(sort, offset, size);
             int totalProducts = productMapper.countAllProducts();
             int totalPages = (totalProducts + size - 1) / size;
             return new RetrieveProductsResponse(products, sort, page, totalPages);
@@ -48,7 +49,7 @@ public class ProductServiceImpl implements ProductService {
     public RetrieveProductDetailResponse getProductByNo(int productNo) {
         log.info("특정 제품 상세 정보를 가져오는 서비스 - 제품 번호: {}", productNo);
         try {
-            Product product = productMapper.findProductByNo(productNo);
+            RetrieveProduct product = productMapper.findProductByNo(productNo);
             if (product == null) {
                 log.error("제품 번호 {}에 해당하는 제품을 찾을 수 없습니다.", productNo);
                 throw new NullPointerException("Product with productNo " + productNo + " not found");
@@ -61,7 +62,7 @@ public class ProductServiceImpl implements ProductService {
 
 
             product.setImages(images);
-            List<Product> relatedProducts = productMapper.findTopProductsByCategory(product.getCategoryId(), productNo);
+            List<RetrieveProduct> relatedProducts = productMapper.findTopProductsByCategory(product.getCategoryId(), productNo);
 
             return new RetrieveProductDetailResponse(product, images, relatedProducts);
         } catch (Exception e) {
@@ -79,7 +80,7 @@ public class ProductServiceImpl implements ProductService {
         log.info("카테고리별 제품 목록을 가져오는 서비스 - 정렬 기준: {}, 카테고리 ID: {}, 페이지: {}, 사이즈: {}", sort, categoryId, page, size);
         try {
             int offset = (page - 1) * size;
-            List<Product> products = productMapper.findProductsByCategory(sort, categoryId, offset, size);
+            List<RetrieveProduct> products = productMapper.findProductsByCategory(sort, categoryId, offset, size);
             int totalProducts = productMapper.countProductsByCategory(categoryId);
             int totalPages = (totalProducts + size - 1) / size;
             return new RetrieveProductsResponse(products, sort, page, totalPages);
@@ -94,7 +95,7 @@ public class ProductServiceImpl implements ProductService {
     public RetrieveProductsResponse getTopProductsByCategory(int categoryId, int productNo) {
         log.info("카테고리별 상위 제품을 조회하는 서비스 - 카테고리 ID: {}", categoryId);
         try {
-            List<Product> products = productMapper.findTopProductsByCategory(categoryId, productNo);
+            List<RetrieveProduct> products = productMapper.findTopProductsByCategory(categoryId, productNo);
             return new RetrieveProductsResponse(products, "viewCount_desc", 1, 1);
         } catch (Exception e) {
             log.error("카테고리별 상위 제품을 조회하는 중 오류 발생", e);

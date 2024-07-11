@@ -4,11 +4,7 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-<<<<<<< HEAD
-@MapperScan("com.evo.evoproject.Mapper")
-@MapperScan("com.evo.evoproject.repository") //MyBatis 매퍼 인터페이스 패키지 경로
+@MapperScan("com.evo.evoproject.Mapper")//MyBatis 매퍼 인터페이스 패키지 경로
 public class MybatisConfig {
 
 }
-=======
-8a2ef4199a2769bde7a2520e584ba9e

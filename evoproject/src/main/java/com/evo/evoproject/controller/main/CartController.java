@@ -1,8 +1,9 @@
-package com.evo.evoproject.controller;
+package com.evo.evoproject.controller.main;
 
-import com.evo.evoproject.model.Cart;
-import com.evo.evoproject.model.Product;
-import com.evo.evoproject.service.CartService;
+
+
+import com.evo.evoproject.domain.cart.Cart;
+import com.evo.evoproject.service.cart.CartService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;

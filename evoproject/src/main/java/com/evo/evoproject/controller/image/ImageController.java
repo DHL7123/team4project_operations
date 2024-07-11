@@ -1,6 +1,6 @@
 package com.evo.evoproject.controller.image;
 
-import com.evo.evoproject.Mapper.image.ImageMapper;
+import com.evo.evoproject.Mapper.product.ImageMapper;
 import com.evo.evoproject.domain.image.Image;
 import com.evo.evoproject.service.image.ImageService;
 import lombok.RequiredArgsConstructor;

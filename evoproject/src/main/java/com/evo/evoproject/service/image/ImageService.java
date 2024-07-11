@@ -1,6 +1,7 @@
 package com.evo.evoproject.service.image;
 
-import com.evo.evoproject.Mapper.image.ImageMapper;
+
+import com.evo.evoproject.Mapper.product.ImageMapper;
 import com.evo.evoproject.domain.image.Image;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
