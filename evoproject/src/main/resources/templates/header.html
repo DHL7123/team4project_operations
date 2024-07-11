@@ -1,20 +1,15 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>Evo Market</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" />
-    <link href="css/styles.css" rel="stylesheet">
-
-
-    <script src="script.js"></script>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
 <body>
-
-<div class="container">
-
-    <div id="wrap">
+<!-- header -->
+<div id="wrap">
+    <header class="top-bar con-min-width">
         <div id="logo">
             <a href="#">
                 <img height="100"
@@ -22,54 +17,52 @@
                      width="100">
             </a>
         </div>
-
-        <header class="top-bar con-min-width">
-            <div class="con">
-                <nav class="top-bar__menu-box-1">
-                    <ul>
-                        <li>
-                            <a href="#">Shop</a>
-                            <ul>
-                                <li class="menu-item" id="all"><a href="page1.html">All</a></li>
-                                <li class="menu-item" id="chair"><a href="page2.html">Chair</a></li>
-                                <li class="menu-item" id="lamp"><a href="page3.html">Lamp</a></li>
-                                <li class="menu-item" id="tsd"><a href="page3.html">Table, Sideboards and Desks</a></li>
-                                <li class="menu-item" id="cabinet"><a href="page3.html">Cabinet</a></li>
-                                <li class="menu-item" id="decorative"><a href="page3.html">Decorative</a></li>
-                                <li class="menu-item" id="tableware"><a href="page3.html">Tableware</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="NonageShop?command=login_form" style="width:110px;">Knowledge</a>
-                            <ul>
-                                <li class="menu-item" id="announcement"><a href="page1.html">공지사항</a></li>
-                                <li class="menu-item" id="faq"><a href="page2.html">FAQ</a></li>
-                                <li class="menu-item" id="term"><a href="page3.html">Terms of Services</a></li>
-                                <li class="menu-item" id="privacy"><a href="page3.html">Privacy Policy</a></li>
-                                <li class="menu-item" id="refund"><a href="page3.html">배송 및 환불 정책</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-            <div id="rightMenu">
-                <ul>
+        <div class="con">
+            <nav class="top-bar__menu-box-1">
+                <ul class="menu">
                     <li>
-                        <a href="NonageShop?command=login_form" style="width:110px;">Account </a>
+                        <a href="#">Shop</a>
+                        <ul>
+                            <li class="menu-item" id="all"><a href="page1.html">All</a></li>
+                            <li class="menu-item" id="chair"><a href="page2.html">Chair</a></li>
+                            <li class="menu-item" id="lamp"><a href="page3.html">Lamp</a></li>
+                            <li class="menu-item" id="tsd"><a href="page3.html">Table, Sideboards and Desks</a></li>
+                            <li class="menu-item" id="cabinet"><a href="page3.html">Cabinet</a></li>
+                            <li class="menu-item" id="decorative"><a href="page3.html">Decorative</a></li>
+                            <li class="menu-item" id="tableware"><a href="page3.html">Tableware</a></li>
+                        </ul>
                     </li>
                     <li>
-                        <a href="#"><img alt="search" src="image/search.png" width="27" height="27"></a>
-                    </li>
-                    <li>
-                        <a href="#"><img alt="search" src="image/shopping_cart.png" width="25" height="25"></a>
+                        <a href="#">Knowledge</a>
+                        <ul>
+                            <li class="menu-item" id="announcement"><a href="page1.html">공지사항</a></li>
+                            <li class="menu-item" id="faq"><a href="page2.html">FAQ</a></li>
+                            <li class="menu-item" id="term"><a href="page3.html">Terms of Services</a></li>
+                            <li class="menu-item" id="privacy"><a href="page3.html">Privacy Policy</a></li>
+                            <li class="menu-item" id="refund"><a href="page3.html">배송 및 환불 정책</a></li>
+                        </ul>
                     </li>
                 </ul>
-            </div>
-        </header>
+            </nav>
+        </div>
+        <div id="rightMenu">
+            <ul>
+                <li>
+                    <a href="NonageShop?command=login_form" style="width:110px;">Account </a>
+                </li>
+                <li>
+                    <a href="#" id="searchIcon">
+                        <img src="image/search.png" alt="search" height="27px" width="27px">
+                    </a>
+                </li>
+                <li>
+                    <a th:href="@{/cart}"><img alt="shopping_cart" src="image/shopping_cart.png" width="25" height="25"></a>
+                </li>
+            </ul>
+        </div>
+    </header>
 
 </div>
-</div>
 
-
-<br><br>
-
+</body>
+</html>
