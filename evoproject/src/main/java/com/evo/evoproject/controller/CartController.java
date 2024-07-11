@@ -1,6 +1,7 @@
 package com.evo.evoproject.controller;
 
 import com.evo.evoproject.model.Cart;
+import com.evo.evoproject.model.Product;
 import com.evo.evoproject.service.CartService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -21,20 +23,21 @@ public class CartController {
     @Autowired
     private CartService cartService;
 
-    //장바구니 전체 상품 조회
-    @GetMapping("/{userNo}")
-    public String viewCart(@PathVariable int userNo, HttpSession session) {
-        List<Cart> cartItems = cartService.getCartItemsByUser(userNo);
-        // 모든 장바구니 항목을 세션에 저장
-        session.setAttribute("cartItems", cartItems);
 
-       // log.info("사용자 " + userNo + "의 장바구니 항목 조회: " + cartItems.size() + "개의 상품");
+    //장바구니 전체 상품 조회_model _ model을 사용하여 cart.html에서 접근할 속성들을 추가
+    @GetMapping("/{userNo}")
+    public String viewCart(@PathVariable int userNo, Model model) {
+        List<Cart> cartItems = cartService.getCartItemsByUser(userNo);
+        model.addAttribute("userNo", userNo);
+        model.addAttribute("cartItems", cartItems);
+
+        log.info("사용자 " + userNo + "의 장바구니 항목 조회: " + cartItems.size() + "개의 상품");
 
         return "cart";
     }
 
 
-    // 장바구니에서 상품 제거
+    // 장바구니에서 상품 제거 _ 쿼리 파라미터에서 userNo와 proNo를 받아온다.
     @GetMapping("/delete")
     public String deleteProductFromCart(@RequestParam int userNo, @RequestParam int proNo, HttpSession session) {
         cartService.deleteProductFromCart(userNo, proNo);
@@ -44,6 +47,8 @@ public class CartController {
         List<Cart> updatedCartItems = cartService.getCartItemsByUser(userNo);
         session.setAttribute("cartItems", updatedCartItems);
 
-        return "redirect:/cart/" + userNo;  // 페이지를 새로고침
+        // 페이지 새로고침
+        return "redirect:/cart/" + userNo;
     }
+
 }

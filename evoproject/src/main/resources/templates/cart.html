@@ -29,8 +29,8 @@
     </tr>
     </thead>
 
-    <tbody th:if="${session.cartItems != null}">
-    <tr th:each="cartItem : ${session.cartItems}">
+    <tbody th:if="${cartItems != null}">
+    <tr th:each="cartItem : ${cartItems}">
         <td th:each="product : ${cartItem.products}" th:text="${product.proName}"></td>
         <td th:each="product : ${cartItem.products}" th:text="${product.proPrice}"></td>
         <td th:text="${cartItem.cartQuantity}"></td>
@@ -40,24 +40,13 @@
             <span th:each="product : ${cartItem.products}" th:text="${product.proPrice * cartItem.cartQuantity + product.shipping}"></span>
         </td>
         <td>
-            <!-- 폼데이터가 전송될 URL userNo에 따라 동적으로 변경 -->
-            <!-- 이후에 post방식으로 변경 예정 -->
             <form th:each="product : ${cartItem.products}" th:action="@{/cart/delete}" method="get">
-                <input type="hidden" id="userNo" name="userNo" />
-                <input type="hidden" id="proNo" name="proNo" />
+                <input type="hidden" name="userNo" th:value="${userNo}" />
+                <input type="hidden" name="proNo" th:value="${product.proNo}" />
                 <button type="submit" class="btn btn-danger" style="background-color: transparent; border: none; padding: 0;">
                     <img th:src="@{/image/delete.png}" alt="Delete" height="15px" width="15px">
                 </button>
             </form>
-            <!--
-            <form th:each="product : ${cartItem.products}" th:action="@{/cart/delete}" method="post">
-                <input type="hidden" name="userNo" th:value="${cartItem.userNo}" />
-                <input type="hidden" name="proNo" th:value="${product.proNo}" />
-                <button type="submit" class="btn btn-danger" style="background-color: transparent; border: none; padding: 0;">
-                    <img th:src="@{/image/delete.png}" alt="Delete" height="15px" width="15px">
-                 </button>
-            </form>
-              -->
         </td>
     </tr>
     </tbody>
@@ -96,37 +85,9 @@
 <script th:inline="javascript">
 
     document.addEventListener('DOMContentLoaded', function() {
-        var deleteButtons = document.querySelectorAll('.btn-danger');
-        deleteButtons.forEach(function(button) {
-            button.addEventListener('click', function(event) {
-                event.preventDefault();
-                var form = button.closest('form');
-
-                var userNo = form.querySelector('input[name="userNo"]').value;
-                var proNo = form.querySelector('input[name="proNo"]').value;
-
-                console.log("UserNo: " + userNo + ", ProNo: " + proNo);
-
-                // userNo, proNo 유효성 검사
-                if (userNo.trim() !== "" && proNo.trim() !== "") {
-                    document.getElementById('userNo').value = userNo;
-                    document.getElementById('proNo').value = proNo;
-
-                    form.submit();
-                } else {
-                    console.error("Invalid userNo or proNo");
-                }
-            });
-        });
-    });
-
-
-    document.addEventListener('DOMContentLoaded', function() {
         var totalAmount = 0;
-        //세션에서 cartItem 데이터 가져오기
-        var cartItems = [[${session.cartItems}]];
+        var cartItems = [[${cartItems}]]; //서버에서 받아온 장바구니 데이터를 javascript의 배열로 변환하여 cartItems 변수에 할당
 
-        //Total 계산하기
         cartItems.forEach(function(cartItem) {
             cartItem.products.forEach(function(product) {
                 var productTotal = product.proPrice * cartItem.cartQuantity + product.shipping;
@@ -134,10 +95,11 @@
             });
         });
 
-        //세자리 단위로 콤마로 포맷 맞추기
+        //세 자리마다 콤마로 끊도록 포맷 맞추기
         var formattedTotal = totalAmount.toLocaleString('ko-KR');
-        document.getElementById('totalAmount').textContent = formattedTotal + ' 원';
+        document.getElementById('totalAmount').textContent = formattedTotal + ' ₩';
     });
+
 </script>
 
 </body>

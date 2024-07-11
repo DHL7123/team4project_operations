@@ -20,11 +20,14 @@
     <!-- 회원아이디에 따라 카트 조회 -->
     <select id="findByUserNo" resultMap="CartResultMap">
         SELECT
-            p.pro_name,
-            p.pro_price,
-            c.cart_quantity,
-            p.shipping,
-            p.pro_price * c.cart_quantity + p.shipping AS total_amount
+            c.cart_id as cart_id,
+            c.user_no as user_no,
+            c.cart_quantity as cart_quantity,
+            p.pro_no as pro_no,
+            p.pro_name as pro_name,
+            p.pro_price as pro_price,
+            p.shipping as shipping,
+            p.soldout as soldout
         FROM cart c
                  JOIN product p ON c.pro_no = p.pro_no
         WHERE c.user_no = #{userNo}
