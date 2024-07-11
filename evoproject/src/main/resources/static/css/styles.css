@@ -19,6 +19,9 @@ body {
 #wrap{
     /* 각 웹 페이지 크기에 맞게 사이즈 조정 */
     /*display: table-cell;*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: relative;
     text-align:center;
     background-repeat:repeat-y;
@@ -26,6 +29,12 @@ body {
     vertical-align: center;
     white-space: nowrap;
     width:1500pt;
+}
+
+header.top-bar {
+    display: flex;
+    align-items: center;
+    padding: 20px 0; /* 위아래 패딩을 추가하여 로고에 여백을 줍니다. */
 }
 
 a {
@@ -39,13 +48,16 @@ a {
     text-align: left;
     width:100px;
     height:100px;
+    margin-left: 200pt;
     /*margin-right:200pt;*/
 }
 
 div#rightMenu {
     display:inline-block;
-    margin-left: 200pt;
+    white-space: nowrap;
+    margin-right: 200pt;
     font-family: Arial, Helvetica, sans-serif;
+    font-size: 2em;
 }
 
 div#rightMenu ul{
@@ -73,6 +85,7 @@ div#rightMenu a:hover{
     display: inline;
     vertical-align: middle;
     text-align: center;
+    white-space: nowrap;
 }
 /* 라이브러리 끝 */
 
@@ -88,6 +101,7 @@ div#rightMenu a:hover{
 .top-bar > .con {
     width: var(--site-width);
 }
+
 
 /* 드롭다운 메뉴 시작 */
 .top-bar__menu-box-1 > ul ul {
@@ -106,7 +120,7 @@ div#rightMenu a:hover{
 
 .top-bar__menu-box-1 {
     position: relative;
-    z-index: 1;
+    white-space: nowrap;
     display: inline-block;
     margin: auto;
     font-family: Arial, Helvetica, sans-serif;
