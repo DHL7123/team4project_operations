@@ -3,30 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <title>Order List</title>
-    <link href="/css/order.css" rel="stylesheet" />
+    <link href="../static/css/order.css" rel="stylesheet" th:href="@{/css/order.css}">
 </head>
 <body>
-<div class="orderTitle">Order List</div>
-<table>
-    <thead>
-    <tr>
-        <th>Order ID</th>
-        <th>User Name</th>
-        <th>Item</th>
-        <th>Quantity</th>
-        <th>Price</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="order : ${orders}">
-        <td th:text="${order.id}">1</td>
-        <td th:text="${order.userName}">John Doe</td>
-        <td th:text="${order.item}">의자</td>
-        <td th:text="${order.quantity}">10</td>
-        <td th:text="${order.price}">$100.00</td>
-    </tr>
-    </tbody>
-</table>
-<a href="/orders/create">Create New Order</a>
+<header class="header">
+    <div class="headerCon  tent">
+        <div class="rectangle">
+            <div class="headerText">My Page</div>
+        </div>
+    </div>
+</header>
+<div class="bar">
+    <div class="barText">My Page</div>
+</div>
+<div class="bo">
+    <ul class="leftBar">
+        <li class="type1" id="all"><a href="page1.html">Order</a></li>
+        <li class="type" id="chair"><a href="page2.html">주문목록</a></li>
+        <li class="type" id="lamp"><a href="page3.html">취소/반품 내역</a></li>
+        <li class="type1" id="tsd"><a href="page3.html">Board</a></li>
+        <li class="type" id="inq"><a href="page3.html">문의</a></li>
+        <li class="type1" id="pri"><a href="page3.html">Privacy</a></li>
+    </ul>
+    <div class="k">
+        <table>
+            <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>User Name</th>
+                <th>Item</th>
+                <th>Quantity</th>
+                <th>Price</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="order : ${orders}">
+                <td th:text="${order.id}">1</td>
+                <td th:text="${order.userName}">John Doe</td>
+                <td th:text="${order.item}">의자</td>
+                <td th:text="${order.quantity}">10</td>
+                <td th:text="${order.price}">$100.00</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <a th:href="@{/orders/create}">Create New Order</a>
+
+    </div>
+</div>
 </body>
 </html>

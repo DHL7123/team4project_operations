@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.evo.evoproject.repository.OrderMapper">
+    <select id="getAllOrders" resultType="com.evo.evoproject.model.Order">
+        SELECT * FROM orders
+    </select>
+
+    <select id="getOrderById" parameterType="java.lang.Long" resultType="com.evo.evoproject.model.Order">
+        SELECT * FROM orders WHERE id = #{id}
+    </select>
+
+    <insert id="insertOrder" parameterType="com.evo.evoproject.model.Order">
+        INSERT INTO orders (user_name, item, quantity, price)
+        VALUES (#{userName}, #{item}, #{quantity}, #{price})
+    </insert>
+
+    <update id="updateOrder" parameterType="com.evo.evoproject.model.Order">
+        UPDATE orders SET user_name = #{userName}, item = #{item}, quantity = #{quantity}, price = #{price}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="deleteOrder" parameterType="java.lang.Long">
+        DELETE FROM orders WHERE id = #{id}
+    </delete>
+</mapper>
