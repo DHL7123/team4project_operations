@@ -20,6 +20,7 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
         User user = (User) authentication.getPrincipal();
         //세션에 로그인한 사용자 id 저장
         request.getSession().setAttribute("userId", user.getUsername());
+        // 루트 페이지로 리다이렉트
         response.sendRedirect("/");
     }
 }

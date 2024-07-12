@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>문의 게시판</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<style>
+    :root {
+        --orange: #DF4500;
+        --gray: #35302D;
+        --gray-shine: #3C3735;
+        --white-off: #DFDBD9;
+        --sans: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+    }
+
+    *,
+    ::before,
+    ::after {
+        box-sizing: border-box;
+    }
+
+    .unstyled {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .sidebar {
+        top: 580px;
+        left: 0;
+        width: 250px;
+        height: calc(100% - 400px);
+        background-color: #333;
+        color: #fff;
+        padding-top: 20px;
+    }
+
+
+    .unstyled a {
+        text-decoration: none;
+    }
+
+    .list-inline li {
+        float: left;
+    }
+
+    .main-nav ul {
+        border-top: solid 1px var(--gray-shine);
+    }
+
+    .main-nav li {
+        border-bottom: solid 1px var(--gray-shine);
+    }
+
+    .main-nav a {
+        padding: 1.1em 0;
+        color: var(--white-off);
+        font: 400 1.125em var(--sans);
+        text-align: center;
+        text-transform: lowercase;
+    }
+
+    .main-nav a:hover {
+        color: #fff;
+    }
+
+    .list-hover-slide li {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .list-hover-slide a {
+        display: block;
+        position: relative;
+        z-index: 1;
+        transition: .35s ease color;
+    }
+
+    .list-hover-slide a::before {
+        content: '';
+        display: block;
+        z-index: -1;
+        position: absolute;
+        left: -100%;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        border-right: solid 5px var(--orange);
+        background: var(--gray-shine);
+        transition: .35s ease left;
+    }
+
+    .list-hover-slide a.is-current::before,
+    .list-hover-slide a:hover::before {
+        left: 0;
+    }
+       .board-banner {
+        position: relative;
+        background-image: url('/image/banner.jpg');
+        background-size: cover;
+        background-position: center;
+        height: 400px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+    .board-banner h1 {
+        margin: 0;
+    }
+</style>
+<header th:replace="~{header :: header}"></header>
+<body>
+<div class="board-banner">
+    <h1>문의 내역</h1>
+</div>
+<div class="sidebar">
+    <nav class="main-nav" role="navigation">
+        <ul class="unstyled list-hover-slide">
+            <li><a href="#">주문목록</a></li>
+            <li><a href="#">취소/반품내역</a></li>
+            <li><a href="#">문의</a></li>
+            <li><a href="#">개인정보</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="container mt-5">
+    <h2>문의 게시판</h2>
+    <div class="text-right mb-3">
+        <a class="btn btn-primary" th:href="@{/boards/create}">문의하기</a>
+    </div>
+    <div th:if="${#lists.isEmpty(boards)}">
+        <p>등록된 게시물이 없습니다.</p>
+    </div>
+    <div th:unless="${#lists.isEmpty(boards)}">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>제목</th>
+                <th>날짜</th>
+                <th>수정/삭제</th>
+                <th>답변상태</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="board : ${boards}">
+                <td>
+                    <a th:href="@{/boards/view/{boardNo}(boardNo=${board.boardNo})}" th:text="${board.boardTitle}"></a>
+                </td>
+                <td th:text="${#dates.format(board.boardTimestamp, 'yyyy-MM-dd HH:mm')}"></td>
+                <td>
+                    <a th:href="@{/boards/edit/{boardNo}(boardNo=${board.boardNo})}" class="btn btn-warning btn-sm">수정</a>
+                    <a th:href="@{/boards/delete/{boardNo}(boardNo=${board.boardNo})}" class="btn btn-danger btn-sm">삭제</a>
+                </td>
+                <td th:text="${board.isAnswered == 'Y' ? '답변완료' : '답변대기'}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <ul class="pagination">
+            <!-- 이전 버튼 -->
+            <li class="page-item" th:classappend="${currentPage == 0} ? 'disabled'">
+                <a class="page-link" th:if="${currentPage > 0}" th:href="@{/boards(page=${currentPage - 1})}">이전</a>
+                <a class="page-link" th:if="${currentPage == 0}">이전</a>
+            </li>
+
+            <!-- 페이지 번호 -->
+            <li class="page-item" th:each="i : ${#numbers.sequence(0, totalPages - 1)}" th:classappend="${currentPage == i} ? 'active'">
+                <a class="page-link" th:href="@{/boards(page=${i})}" th:text="${i + 1}"></a>
+            </li>
+
+            <!-- 다음 버튼 -->
+            <li class="page-item" th:classappend="${currentPage == totalPages - 1} ? 'disabled'">
+                <a class="page-link" th:if="${currentPage < totalPages - 1}" th:href="@{/boards(page=${currentPage + 1})}">다음</a>
+                <a class="page-link" th:if="${currentPage == totalPages - 1}">다음</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<footer th:replace="~{footer :: footer}"></footer>
+</body>
+</html>

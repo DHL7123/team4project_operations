@@ -6,12 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.HashMap;
@@ -27,7 +23,13 @@ public class FindController {
     @Autowired
     private UserService userService;
 
-    // ID 찾기 메소드
+    /**
+     * 주어진 사용자 이름과 이메일로 사용자 ID를 찾는 메소드.
+     *
+     * @param userName 사용자 이름
+     * @param userEmail 사용자 이메일
+     * @return Map<String, String> 사용자 ID 또는 에러 메시지
+     */
     @PostMapping("/find-id")
     @ResponseBody
     public Map<String, String> findId(@RequestParam String userName, @RequestParam String userEmail) {
@@ -42,7 +44,14 @@ public class FindController {
         return response;
     }
 
-    // 비밀번호 찾기 메소드
+    /**
+     * 주어진 사용자 정보로 임시 비밀번호를 생성하여 이메일로 전송하는 메소드.
+     *
+     * @param userName 사용자 이름
+     * @param userEmail 사용자 이메일
+     * @param userId 사용자 ID
+     * @return Map<String, String> 성공 메시지 또는 에러 메시지
+     */
     @PostMapping("/find-password")
     @ResponseBody
     public Map<String, String> findPassword(@RequestParam String userName, @RequestParam String userEmail, @RequestParam String userId) {
@@ -59,7 +68,14 @@ public class FindController {
         return response;
     }
 
-    // 비밀번호 변경 메소드
+    /**
+     * 사용자의 현재 비밀번호를 확인하고 새 비밀번호로 변경하는 메소드.
+     *
+     * @param userId 사용자 ID
+     * @param currentPassword 현재 비밀번호
+     * @param newPassword 새 비밀번호
+     * @return Map<String, String> 성공 메시지 또는 에러 메시지
+     */
     @PostMapping("/change-password")
     @ResponseBody
     public Map<String, String> changePassword(@RequestParam String userId, @RequestParam String currentPassword,
@@ -75,7 +91,17 @@ public class FindController {
         return response;
     }
 
-    // 사용자 정보 업데이트 메소드
+    /**
+     * 사용자의 정보를 업데이트하는 메소드.
+     *
+     * @param userId 사용자 ID
+     * @param userEmail 사용자 이메일
+     * @param userAddress1 사용자 주소 1
+     * @param userAddress2 사용자 주소 2
+     * @param userPhone 사용자 전화번호
+     * @param userMarketing 사용자 마케팅 동의 여부
+     * @return Map<String, String> 성공 메시지 또는 에러 메시지
+     */
     @PostMapping("/update-user")
     @ResponseBody
     public Map<String, String> updateUser(@RequestParam String userId, @RequestParam String userEmail,
@@ -97,7 +123,12 @@ public class FindController {
         return response;
     }
 
-    // 임시 비밀번호 이메일 발송 메소드
+    /**
+     * 주어진 이메일로 임시 비밀번호를 전송하는 메소드.
+     *
+     * @param toEmail 수신자 이메일
+     * @param tempPassword 임시 비밀번호
+     */
     private void sendTempPasswordEmail(String toEmail, String tempPassword) {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(toEmail);
