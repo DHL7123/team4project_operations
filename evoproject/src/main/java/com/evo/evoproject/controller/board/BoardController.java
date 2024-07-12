@@ -1,8 +1,10 @@
 package com.evo.evoproject.controller.board;
 
 import com.evo.evoproject.domain.board.Board;
+import com.evo.evoproject.domain.board.Reply;
 import com.evo.evoproject.domain.user.User;
 import com.evo.evoproject.service.board.BoardService;
+import com.evo.evoproject.service.board.ReplyService;
 import com.evo.evoproject.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,11 +20,13 @@ public class BoardController {
 
     private final BoardService boardService;
     private final UserService userService;
+    private final ReplyService replyService;
 
     @Autowired
-    public BoardController(BoardService boardService, UserService userService) {
+    public BoardController(BoardService boardService, UserService userService , ReplyService replyService) {
         this.boardService = boardService;
         this.userService = userService;
+        this.replyService = replyService;
     }
 
     @GetMapping
@@ -126,8 +130,9 @@ public class BoardController {
         if (user.getIsAdmin() != 'Y' && board.getUserNo() != user.getUserNo()) {
             return "redirect:/boards";
         }
-
+        List<Reply> replies = replyService.getRepliesByBoardNo(boardNo);
         model.addAttribute("board", board);
+        model.addAttribute("replies", replies);
         return "board/view";
     }
 }

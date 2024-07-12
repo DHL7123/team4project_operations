@@ -1,13 +1,15 @@
-package com.evo.evoproject.repository.board;
+package com.evo.evoproject.mapper.board;
 
 import com.evo.evoproject.domain.board.Board;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public interface BoardRepository {
+@Mapper
+public interface BoardMapper {
 
     void insertBoard(Board board);
 

@@ -39,7 +39,6 @@
         padding-top: 20px;
     }
 
-
     .unstyled a {
         text-decoration: none;
     }
@@ -98,7 +97,7 @@
     .list-hover-slide a:hover::before {
         left: 0;
     }
-       .board-banner {
+    .board-banner {
         position: relative;
         background-image: url('/image/banner.jpg');
         background-size: cover;
@@ -126,7 +125,7 @@
             <li><a href="#">주문목록</a></li>
             <li><a href="#">취소/반품내역</a></li>
             <li><a href="#">문의</a></li>
-            <li><a href="#">개인정보</a></li>
+            <li><a href="/mypage">개인정보</a></li>
         </ul>
     </nav>
 </div>
@@ -158,7 +157,7 @@
                     <a th:href="@{/boards/edit/{boardNo}(boardNo=${board.boardNo})}" class="btn btn-warning btn-sm">수정</a>
                     <a th:href="@{/boards/delete/{boardNo}(boardNo=${board.boardNo})}" class="btn btn-danger btn-sm">삭제</a>
                 </td>
-                <td th:text="${board.isAnswered == 'Y' ? '답변완료' : '답변대기'}"></td>
+                <td th:text="${board.answeredStatus}"></td>
             </tr>
             </tbody>
         </table>

@@ -7,6 +7,7 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet"/>
   <link href="../static/css/styles.css" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
   <link rel="stylesheet" th:href="@{/css/styles.css}">
 
   <style>
@@ -119,7 +120,6 @@
       margin: 0;
     }
   </style>
-  <script src="script.js"></script>
 </head>
 
 <header th:replace="header :: header"></header>
@@ -133,8 +133,8 @@
     <ul class="unstyled list-hover-slide">
       <li><a href="#">주문목록</a></li>
       <li><a href="#">취소/반품내역</a></li>
-      <li><a href="#">문의</a></li>
-      <li><a href="#">개인정보</a></li>
+      <li><a href="/boards">문의</a></li>
+      <li><a href="/mypage">개인정보</a></li>
     </ul>
   </nav>
 </div>
@@ -156,11 +156,12 @@
           <input type="email" id="userEmail" th:value="${user.userEmail}" class="form-control" />
         </div>
         <div class="mb-3">
-          <label for="userAddress1" class="form-label">주소</label>
-          <input type="text" id="userAddress1" th:value="${user.userAddress1}" class="form-control" />
+          <label for="userAddress1" class="form-label">우편번호</label>
+          <input type="text" id="userAddress1" th:value="${user.userAddress1}" class="form-control" readonly />
+          <button type="button" class="btn btn-secondary mt-2" onclick="searchAddress()">주소 검색</button>
         </div>
         <div class="mb-3">
-          <label for="userAddress2" class="form-label">상세 주소</label>
+          <label for="userAddress2" class="form-label">주소</label>
           <input type="text" id="userAddress2" th:value="${user.userAddress2}" class="form-control" />
         </div>
         <div class="mb-3">
@@ -199,6 +200,30 @@
 <footer th:replace="footer :: footer"></footer>
 
 <script>
+  function searchAddress() {
+    new daum.Postcode({
+      oncomplete: function(data) {
+        var fullAddr = data.address;
+        var extraAddr = '';
+
+        if (data.addressType === 'R') {
+          if (data.bname !== '') {
+            extraAddr += data.bname;
+          }
+          if (data.buildingName !== '') {
+            extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+          }
+          fullAddr += (extraAddr !== '' ? ' (' + extraAddr + ')' : '');
+        }
+
+        document.getElementById('userAddress1').value = data.zonecode;
+        document.getElementById('userAddress2').value = fullAddr;
+      }
+    }).open();
+  }
+
+
+
   function changePassword() {
     const userId = document.getElementById('userId').value;
     const currentPassword = document.getElementById('currentPassword').value;

@@ -1,7 +1,7 @@
 package com.evo.evoproject.service.board;
 
 import com.evo.evoproject.domain.board.Board;
-import com.evo.evoproject.repository.board.BoardRepository;
+import com.evo.evoproject.mapper.board.BoardMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,43 +10,45 @@ import java.util.List;
 @Service
 public class BoardService {
 
-    private final BoardRepository boardRepository;
+    private final BoardMapper boardMapper;
 
     @Autowired
-    public BoardService(BoardRepository boardRepository) {
-        this.boardRepository = boardRepository;
+    public BoardService(BoardMapper boardMapper) {
+        this.boardMapper = boardMapper;
     }
 
     public void createBoard(Board board) {
-        boardRepository.insertBoard(board);
+        boardMapper.insertBoard(board);
     }
 
     public Board getBoardById(int boardNo) {
-        return boardRepository.findBoardById(boardNo);
+        return boardMapper.findBoardById(boardNo);
     }
 
     public List<Board> getBoardsByUserNo(int userNo, int offset, int limit) {
-        return boardRepository.findBoardsByUserNo(userNo, offset, limit);
+        return boardMapper.findBoardsByUserNo(userNo, offset, limit);
     }
 
     public List<Board> getAllBoards(int offset, int limit) {
-        return boardRepository.findAllBoards(offset, limit);
+        return boardMapper.findAllBoards(offset, limit);
     }
 
     public void updateBoard(Board board) {
-        boardRepository.updateBoard(board);
+
+        System.out.println("Updating board: " + board);
+        boardMapper.updateBoard(board);
     }
 
     public void deleteBoard(int boardNo) {
-        boardRepository.deleteBoard(boardNo);
+        boardMapper.deleteBoard(boardNo);
     }
 
     public int getTotalBoardCount() {
-        return boardRepository.countAllBoards();
+        return boardMapper.countAllBoards();
     }
 
     public int getUserBoardCount(int userNo) {
-        return boardRepository.countBoardsByUserNo(userNo);
+        return boardMapper.countBoardsByUserNo(userNo);
     }
 
 

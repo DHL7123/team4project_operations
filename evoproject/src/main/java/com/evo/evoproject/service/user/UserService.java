@@ -1,7 +1,7 @@
 package com.evo.evoproject.service.user;
 
 import com.evo.evoproject.domain.user.User;
-import com.evo.evoproject.repository.user.UserRepository;
+import com.evo.evoproject.mapper.user.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -9,35 +9,35 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserService {
 
-    private final UserRepository userRepository;
+    private final UserMapper userMapper;
     private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
-        this.userRepository = userRepository;
+    public UserService(UserMapper userMapper, PasswordEncoder passwordEncoder) {
+        this.userMapper = userMapper;
         this.passwordEncoder = passwordEncoder;
     }
 
     public boolean isUserIdTaken(String userId) {
-        return userRepository.findByUserId(userId) != null;
+        return userMapper.findByUserId(userId) != null;
     }
 
     public void registerUser(User user) {
         user.setUserPw(passwordEncoder.encode(user.getUserPw()));
-        userRepository.insertUser(user);
+        userMapper.insertUser(user);
     }
 
     public User findUserByUserId(String userId) {
-        return userRepository.findByUserId(userId);
+        return userMapper.findByUserId(userId);
     }
 
     public User findUserByUserEmail(String userEmail) {
-        return userRepository.findByUserEmail(userEmail);
+        return userMapper.findByUserEmail(userEmail);
     }
 
     public void updateUserPassword(User user, String newPassword) {
         user.setUserPw(passwordEncoder.encode(newPassword));
-        userRepository.updateUserPassword(user);
+        userMapper.updateUserPassword(user);
     }
 
     public boolean checkPassword(User user, String currentPassword) {
@@ -45,7 +45,7 @@ public class UserService {
     }
 
     public void updateUserDetails(User user) {
-        userRepository.updateUserDetails(user);
+        userMapper.updateUserDetails(user);
     }
 
 }

@@ -17,4 +17,8 @@ public class Board {
     private String boardContent;
     private Timestamp boardTimestamp;
     private char isAnswered ='N';
+
+    public String getAnsweredStatus() {
+        return isAnswered == 'Y' ? "답변완료" : "답변대기";
+    }
 }
