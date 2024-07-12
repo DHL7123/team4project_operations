@@ -102,6 +102,23 @@ public class ProductServiceImpl implements ProductService {
             throw e;
         }
     }
+    @Transactional(readOnly = true)
+    @Override
+    public RetrieveProductsResponse searchProductByName(String input, String sort, int page, int size) {
+        log.info("검색값에 맞는 상품을 가져오는 서비스 - 상품이름: {}, 정렬기준: {}, 페이지: {}, 사이즈: {}",input, sort, page, size);
+        try {
+            int offset = (page - 1) * size;
+            List<RetrieveProduct> products = productMapper.findProductByName(input, sort, offset, size);
+            int totalProducts = productMapper.countByProductsName(input);
+            int totalPages = (totalProducts + size - 1) / size;
+            return new RetrieveProductsResponse(products, sort, page, totalPages);
+        } catch (Exception e) {
+            log.error("모든 제품 목록을 가져오는 중 오류 발생", e);
+            throw e;
+        }
+    }
+
+
 
     private void increaseViewCount(int productNo) {
         log.info("제품 번호 {}의 조회수를 증가시킵니다.", productNo);

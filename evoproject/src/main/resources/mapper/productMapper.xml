@@ -86,7 +86,7 @@
         SELECT COUNT(*) FROM product
     </select>
 
-    <select id="countProductsByCategory" parameterType="int" resultType="int">
+    <select id="countProductsByCategory" resultType="int">
         SELECT COUNT(*) FROM product WHERE category_id = #{categoryId}
     </select>
 
@@ -101,6 +101,34 @@
         AND pro_no != #{productNo}
         ORDER BY view_count DESC
             LIMIT 4;
+    </select>
+
+    <select id="findProductByName" resultMap="ProductResultMap">
+            SELECT p.pro_no, p.pro_name, p.pro_content, p.category_id, p.pro_price, p.pro_stock, p.pro_date, p.view_count, p.shipping, p.soldout,
+            i.image_id AS image_id, i.image_name AS image_name, i.image_type AS image_type
+            FROM product p
+            LEFT JOIN image i ON p.image_id = i.image_id
+            WHERE p.pro_name LIKE CONCAT('%', #{productName}, '%')
+        <choose>
+            <when test="sort == 'price_asc'">
+                ORDER BY p.pro_price ASC
+            </when>
+            <when test="sort == 'price_desc'">
+                ORDER BY p.pro_price DESC
+            </when>
+            <when test="sort == 'viewCount_desc'">
+                ORDER BY p.view_count DESC
+            </when>
+            <otherwise>
+                ORDER BY p.pro_date DESC
+            </otherwise>
+        </choose>
+        LIMIT #{offset}, #{size}
+    </select>
+
+    <select id="countByProductsName" resultType="int">
+        SELECT COUNT(*) FROM product
+        WHERE pro_name LIKE CONCAT('%', #{productName}, '%')
     </select>
 
 </mapper>

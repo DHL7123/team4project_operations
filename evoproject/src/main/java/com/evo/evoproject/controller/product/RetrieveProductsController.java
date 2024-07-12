@@ -106,4 +106,35 @@ public class RetrieveProductsController {
             return "error";
         }
     }
+    /**
+     * 검색값에 맞는 제품을 가져오는 메서드
+     * @param sort         상품 정렬 (기본값: 등록일)
+     * @param page         페이지 번호 (기본값: 1)
+     * @param size         페이지당 항목 수 (기본값: 16)
+     * @param input  입력값
+     * @param model       뷰에 데이터를 전달하기 위한 모델 객체
+     * @return 검색값에 맞는 제품 목록 뷰 이름
+     */
+    @GetMapping("/search/{input}")
+    public String getProductByName(
+            @PathVariable String input,
+            @RequestParam(defaultValue = "pro_date_desc") String sort,
+            @RequestParam(defaultValue = "1") int page,
+            @RequestParam(defaultValue = "16") int size,
+            Model model) {
+        log.info("검색값에 맞는 제품 목록 요청 - 정렬기준: {} 상품이름: {}, 페이지: {}, 사이즈: {}", input, sort, page, size);
+        try {
+            RetrieveProductsResponse response = productService.searchProductByName(input, sort, page, size);
+            model.addAttribute("productsResponse", response);
+            model.addAttribute("products", response.getProducts());
+            model.addAttribute("productName", input);
+            return "product/list";
+        } catch (Exception e) {
+            log.error("검색값에 맞는 제품 목록을 가져오는 중 오류 발생", e);
+            model.addAttribute("error", "검색값에 맞는 제품 목록을 가져오는 중 오류가 발생했습니다.");
+            return "error";
+        }
+    }
+
 }
+
