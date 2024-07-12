@@ -1,6 +1,7 @@
 package com.evo.evoproject.config;
 
 import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -10,6 +11,9 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 public class SecurityConfig {
+
+    @Autowired
+    private CustomAuthenticationEntryPoint customAuthenticationEntryPoint;
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -42,14 +46,15 @@ public class SecurityConfig {
                 .logout(logout ->
                         logout
                                 .logoutUrl("/logout") // 로그아웃 URL 설정
-                                .logoutSuccessUrl("/login") // 로그아웃 성공 시 리다이렉트 URL
+                                .logoutSuccessUrl("/") // 로그아웃 성공 시 리다이렉트 URL
                                 .permitAll()
                 )
                 .exceptionHandling(exceptionHandling ->
                         exceptionHandling
                                 .accessDeniedPage("/403") // 접근 거부 시 이동할 페이지 설정
+                                .authenticationEntryPoint(customAuthenticationEntryPoint) // 커스텀 인증 진입점 설정
                                 // 인증되지 않은 사용자 처리
-                                .authenticationEntryPoint((request, response, authException) -> response.sendError(HttpServletResponse.SC_UNAUTHORIZED))
+                                //.authenticationEntryPoint((request, response, authException) -> response.sendError(HttpServletResponse.SC_UNAUTHORIZED))
                 )
                 .csrf(csrf -> csrf.disable()); // CSRF 보호 비활성화
 
