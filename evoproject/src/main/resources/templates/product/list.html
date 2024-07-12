@@ -2,6 +2,9 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <title>Product List</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" />
+  <link rel="stylesheet" th:href="@{/css/styles.css}">
+  <script src="script.js"></script>
   <style>
     .product {
       position: relative;
@@ -94,9 +97,10 @@
     }
   </script>
 </head>
+<header th:replace="header :: header"></header>
 <body>
 
-<header th:replace="header :: header"></header>
+
 
 <h1>Product List</h1>
 
@@ -146,6 +150,8 @@
 </div>
 
 <!-- 푸터 추가 -->
-<footer th:replace="footer :: footer"></footer>
+
 </body>
+
 </html>
+<footer th:replace="footer :: footer"></footer>

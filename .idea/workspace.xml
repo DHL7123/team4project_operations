@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="c3d7cf85-c82f-4d99-bfa0-82f0efec097a" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evoproject/src/main/java/com/evo/evoproject/controller/main/SearchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/evoproject/src/main/java/com/evo/evoproject/controller/main/SearchController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evoproject/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/evoproject/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evoproject/src/main/resources/mapper/imageMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/evoproject/src/main/resources/mapper/imageMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evoproject/src/main/resources/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/evoproject/src/main/resources/templates/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evoproject/src/main/resources/templates/mypage.html" beforeDir="false" afterPath="$PROJECT_DIR$/evoproject/src/main/resources/templates/mypage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evoproject/src/main/resources/templates/product/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/evoproject/src/main/resources/templates/product/list.html" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$/evoproject">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="evoproject" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+        <option value="spring-beans.schema" />
+        <option value="Class" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="2iwdQcNGkXJ7oAiEmcUGmWEw0M5" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "Gradle.Build evoproject.executor": "Run",
+    "Gradle.evoproject.executor": "Run",
+    "JavaScript Debug.ListBoard.html.executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Spring Boot.EvoprojectApplication.executor": "Run",
+    "git-widget-placeholder": "develop",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\EVO\evoproject\src\main\resources\templates\board" />
+      <recent name="D:\EVO\evoproject\src\main\resources\templates" />
+      <recent name="D:\EVO\evoproject\src\main\resources\templates\inquiries" />
+      <recent name="D:\EVO\evoproject\src\main\resources\static\css" />
+      <recent name="D:\EVO\evoproject\src\main\resources\templates\css" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.EvoprojectApplication">
+    <configuration name="ListBoard.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/EVO/evoproject/src/main/resources/templates/ListBoard.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="EvoprojectApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="evoproject.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.evo.evoproject.EvoprojectApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JavaScript Debug.ListBoard.html" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.18034.62" />
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.18034.62" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c3d7cf85-c82f-4d99-bfa0-82f0efec097a" name="Changes" comment="" />
+      <created>1720405559991</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1720405559991</updated>
+      <workItem from="1720405562301" duration="16781000" />
+      <workItem from="1720427102155" duration="2713000" />
+      <workItem from="1720483986407" duration="35488000" />
+      <workItem from="1720569980147" duration="27473000" />
+      <workItem from="1720656918606" duration="10205000" />
+      <workItem from="1720670844806" duration="20884000" />
+      <workItem from="1720742807778" duration="13161000" />
+      <workItem from="1720759215244" duration="398000" />
+      <workItem from="1720760628652" duration="29000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
