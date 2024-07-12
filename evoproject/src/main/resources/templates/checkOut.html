@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Order List</title>
+    <link href="../static/css/order.css" rel="stylesheet" th:href="@{/css/order.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css">
+    <style>
+        .container {
+            margin: 0 auto;
+            max-width: 800px;
+            padding: 0 15px;
+        }
+        .payment-form {
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-check-input {
+            margin-top: 5px;
+        }
+        .payment-buttons {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<header class="header">
+    <div class="headerCon  tent">
+        <div class="rectangle">
+            <div class="headerText">Check out</div>
+        </div>
+    </div>
+</header>
+<div class="container">
+    <h1 class="text-center">주문/결제</h1>
+    <div class="payment-form">
+        <div class="row mb-3">
+            <label for="inputName" class="col-sm-2 col-form-label">이름</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="inputName" placeholder="이름을 입력하세요">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="inputAddress" class="col-sm-2 col-form-label">배송지 주소</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" id="inputAddress" placeholder="주소를 입력하세요">
+            </div>
+            <div class="col-sm-4">
+                <button type="button" class="btn btn-primary">우편번호</button>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="inputDetailAddress" class="col-sm-2 col-form-label">상세주소</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="inputDetailAddress" placeholder="상세주소를 입력하세요">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="inputRecipient" class="col-sm-2 col-form-label">수령인</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="inputRecipient" placeholder="수령인의 이름을 입력하세요">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="inputPhone" class="col-sm-2 col-form-label">휴대폰번호</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="inputPhone" placeholder="휴대폰번호를 입력하세요 (000-0000-0000)">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="inputRequest" class="col-sm-2 col-form-label">요청사항</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="inputRequest" placeholder="특별한 요청사항이 있으면 입력하세요">
+            </div>
+        </div>
+        <hr>
+        <div class="row mb-3">
+            <label class="col-sm-2 col-form-label">상품 이미지</label>
+            <div class="col-sm-2">
+                <img src="/path/to/product-image.jpg" class="img-fluid" alt="상품 이미지">
+            </div>
+            <div class="col-sm-6">
+                <div class="mb-3">
+                    <div class="fw-bold">상품명</div>
+                    <div>상품명을 여기에 표시</div>
+                </div>
+                <div class="mb-3">
+                    <div class="fw-bold">상품수량</div>
+                    <div>상품 수량을 여기에 표시</div>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="inputPaymentMethod" class="col-sm-2 col-form-label">결제방법</label>
+            <div class="col-sm-10">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="paymentMethod" id="creditCard" value="creditCard">
+                    <label class="form-check-label" for="creditCard">
+                        신용카드 결제
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="paymentMethod" id="bankTransfer" value="bankTransfer">
+                    <label class="form-check-label" for="bankTransfer">
+                        계좌 이체
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="payment-buttons">
+            <button type="button" class="btn btn-primary">Check out</button>
+        </div>
+    </div>
+</div>
+</body>
+</html>

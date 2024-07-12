@@ -10,9 +10,9 @@ import lombok.Setter;
 public class Order {
     // Getters and Setters
     private Long id;
-    private String userName;
+    private String user_name;
     private String item;
     private int quantity;
-    private double price;
-
+    private int price;
+    private String status;
 }

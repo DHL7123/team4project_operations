@@ -26,15 +26,15 @@ public class OrderController {
         return "orders";
     }
 
-    @GetMapping("/create")
+    @GetMapping("/create")//상품 주문 신청 시 작동하도록 변경해야함. 해당 상품의 정보들을 추가하도록 작성
     public String showCreateOrderForm(Model model) {
         model.addAttribute("order", new Order());
         return "createOrder";
     }
 
-    @PostMapping("/create")
-    public String createOrder(@ModelAttribute Order order) {
-        orderService.createOrder(order);
-        return "redirect:/orders";
+    @PostMapping("/save")
+    public String saveOrder(@ModelAttribute Order order) {
+        orderService.createOrder(order); // 주문 저장
+        return "redirect:/orders"; // 주문 목록으로 리다이렉션
     }
 }
