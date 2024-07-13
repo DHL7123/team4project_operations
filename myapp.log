@@ -30119,3 +30119,340 @@ org.apache.ibatis.binding.BindingException: Invalid bound statement (not found):
 2024-07-12T13:33:00.713+09:00  INFO 16044 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
 2024-07-12T13:33:03.169+09:00  INFO 16044 --- [evoproject] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2024-07-12T13:33:03.223+09:00  INFO 16044 --- [evoproject] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-07-13T13:23:37.363+09:00  INFO 18988 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : Starting EvoprojectApplication using Java 17.0.11 with PID 18988 (D:\EVO\evoproject\build\classes\java\main started by skygv in D:\EVO)
+2024-07-13T13:23:37.365+09:00  INFO 18988 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : No active profile set, falling back to 1 default profile: "default"
+2024-07-13T13:23:38.625+09:00  INFO 18988 --- [evoproject] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8090 (http)
+2024-07-13T13:23:38.635+09:00  INFO 18988 --- [evoproject] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-07-13T13:23:38.635+09:00  INFO 18988 --- [evoproject] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-07-13T13:23:38.695+09:00  INFO 18988 --- [evoproject] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-07-13T13:23:38.696+09:00  INFO 18988 --- [evoproject] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1282 ms
+2024-07-13T13:23:39.675+09:00  INFO 18988 --- [evoproject] [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-07-13T13:23:39.854+09:00  INFO 18988 --- [evoproject] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@18483b8b, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@24fc2c80, org.springframework.security.web.context.SecurityContextHolderFilter@1851c7d2, org.springframework.security.web.header.HeaderWriterFilter@7f2ca6f8, org.springframework.web.filter.CorsFilter@965bcbc, org.springframework.security.web.authentication.logout.LogoutFilter@126a9a3d, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@69d667a5, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5fe5c68b, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3982206a, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7ab1ad9, org.springframework.security.web.access.ExceptionTranslationFilter@6141647f, org.springframework.security.web.access.intercept.AuthorizationFilter@38929da]
+2024-07-13T13:23:40.111+09:00  INFO 18988 --- [evoproject] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8090 (http) with context path ''
+2024-07-13T13:23:40.124+09:00  INFO 18988 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : Started EvoprojectApplication in 3.19 seconds (process running for 3.9)
+2024-07-13T13:23:40.130+09:00  INFO 18988 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-13T13:23:40.131+09:00  INFO 18988 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-13T13:23:54.839+09:00  INFO 18988 --- [evoproject] [http-nio-8090-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-07-13T13:23:54.839+09:00  INFO 18988 --- [evoproject] [http-nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-07-13T13:23:54.841+09:00  INFO 18988 --- [evoproject] [http-nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2024-07-13T13:24:41.585+09:00  INFO 3844 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : Starting EvoprojectApplication using Java 17.0.11 with PID 3844 (D:\EVO\evoproject\build\classes\java\main started by skygv in D:\EVO)
+2024-07-13T13:24:41.589+09:00  INFO 3844 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : No active profile set, falling back to 1 default profile: "default"
+2024-07-13T13:24:42.856+09:00  INFO 3844 --- [evoproject] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8090 (http)
+2024-07-13T13:24:42.869+09:00  INFO 3844 --- [evoproject] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-07-13T13:24:42.869+09:00  INFO 3844 --- [evoproject] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-07-13T13:24:42.938+09:00  INFO 3844 --- [evoproject] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-07-13T13:24:42.938+09:00  INFO 3844 --- [evoproject] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1286 ms
+2024-07-13T13:24:43.862+09:00  INFO 3844 --- [evoproject] [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-07-13T13:24:44.043+09:00  INFO 3844 --- [evoproject] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@18483b8b, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@24fc2c80, org.springframework.security.web.context.SecurityContextHolderFilter@1851c7d2, org.springframework.security.web.header.HeaderWriterFilter@7f2ca6f8, org.springframework.web.filter.CorsFilter@965bcbc, org.springframework.security.web.authentication.logout.LogoutFilter@126a9a3d, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@69d667a5, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5fe5c68b, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3982206a, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7ab1ad9, org.springframework.security.web.access.ExceptionTranslationFilter@6141647f, org.springframework.security.web.access.intercept.AuthorizationFilter@38929da]
+2024-07-13T13:24:44.301+09:00  INFO 3844 --- [evoproject] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8090 (http) with context path ''
+2024-07-13T13:24:44.312+09:00  INFO 3844 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : Started EvoprojectApplication in 3.159 seconds (process running for 3.817)
+2024-07-13T13:24:44.316+09:00  INFO 3844 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-13T13:24:44.317+09:00  INFO 3844 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-13T13:24:58.742+09:00  INFO 3844 --- [evoproject] [http-nio-8090-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-07-13T13:24:58.742+09:00  INFO 3844 --- [evoproject] [http-nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-07-13T13:24:58.743+09:00  INFO 3844 --- [evoproject] [http-nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-07-13T13:25:44.310+09:00  INFO 3844 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-13T13:25:44.311+09:00  INFO 3844 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-13T13:26:12.279+09:00 DEBUG 3844 --- [evoproject] [http-nio-8090-exec-10] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:26:12.281+09:00  INFO 3844 --- [evoproject] [http-nio-8090-exec-10] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-07-13T13:26:12.623+09:00  INFO 3844 --- [evoproject] [http-nio-8090-exec-10] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@703331e
+2024-07-13T13:26:12.626+09:00  INFO 3844 --- [evoproject] [http-nio-8090-exec-10] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-07-13T13:26:12.879+09:00  WARN 3844 --- [evoproject] [http-nio-8090-exec-10] o.a.c.util.SessionIdGeneratorBase        : Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [117] milliseconds.
+2024-07-13T13:26:13.989+09:00 DEBUG 3844 --- [evoproject] [http-nio-8090-exec-3] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:26:14.007+09:00  WARN 3844 --- [evoproject] [http-nio-8090-exec-3] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-3][mypage] Deprecated unwrapped fragment expression "header :: header" found in template mypage, line 124, col 9. Please use the complete syntax of fragment expressions instead ("~{header :: header}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-13T13:26:14.014+09:00  WARN 3844 --- [evoproject] [http-nio-8090-exec-3] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-3][mypage] Deprecated unwrapped fragment expression "footer :: footer" found in template mypage, line 202, col 9. Please use the complete syntax of fragment expressions instead ("~{footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-13T13:26:15.200+09:00 DEBUG 3844 --- [evoproject] [http-nio-8090-exec-2] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:26:15.212+09:00 DEBUG 3844 --- [evoproject] [http-nio-8090-exec-2] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:26:15.221+09:00 DEBUG 3844 --- [evoproject] [http-nio-8090-exec-2] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:26:17.978+09:00 DEBUG 3844 --- [evoproject] [http-nio-8090-exec-6] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:26:17.994+09:00  WARN 3844 --- [evoproject] [http-nio-8090-exec-6] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-6][mypage] Deprecated unwrapped fragment expression "header :: header" found in template mypage, line 124, col 9. Please use the complete syntax of fragment expressions instead ("~{header :: header}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-13T13:26:17.999+09:00  WARN 3844 --- [evoproject] [http-nio-8090-exec-6] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-6][mypage] Deprecated unwrapped fragment expression "footer :: footer" found in template mypage, line 202, col 9. Please use the complete syntax of fragment expressions instead ("~{footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-13T13:26:21.602+09:00 DEBUG 3844 --- [evoproject] [http-nio-8090-exec-10] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:26:21.616+09:00  WARN 3844 --- [evoproject] [http-nio-8090-exec-10] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-10][withdrawal] Deprecated unwrapped fragment expression "footer :: footer" found in template withdrawal, line 33, col 9. Please use the complete syntax of fragment expressions instead ("~{footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-13T13:26:25.370+09:00 DEBUG 3844 --- [evoproject] [http-nio-8090-exec-7] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:26:25.383+09:00  WARN 3844 --- [evoproject] [http-nio-8090-exec-7] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-7][mypage] Deprecated unwrapped fragment expression "header :: header" found in template mypage, line 124, col 9. Please use the complete syntax of fragment expressions instead ("~{header :: header}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-13T13:26:25.388+09:00  WARN 3844 --- [evoproject] [http-nio-8090-exec-7] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-7][mypage] Deprecated unwrapped fragment expression "footer :: footer" found in template mypage, line 202, col 9. Please use the complete syntax of fragment expressions instead ("~{footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-13T13:26:44.314+09:00  INFO 3844 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-13T13:26:44.314+09:00  INFO 3844 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-13T13:27:44.318+09:00  INFO 3844 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-13T13:27:44.318+09:00  INFO 3844 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-13T13:28:44.310+09:00  INFO 3844 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-13T13:28:44.310+09:00  INFO 3844 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-13T13:29:37.133+09:00  INFO 3844 --- [evoproject] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-07-13T13:29:37.193+09:00  INFO 3844 --- [evoproject] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-07-13T13:29:44.668+09:00  INFO 5652 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : Starting EvoprojectApplication using Java 17.0.11 with PID 5652 (D:\EVO\evoproject\build\classes\java\main started by skygv in D:\EVO)
+2024-07-13T13:29:44.671+09:00  INFO 5652 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : No active profile set, falling back to 1 default profile: "default"
+2024-07-13T13:29:45.755+09:00  INFO 5652 --- [evoproject] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8090 (http)
+2024-07-13T13:29:45.766+09:00  INFO 5652 --- [evoproject] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-07-13T13:29:45.766+09:00  INFO 5652 --- [evoproject] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-07-13T13:29:45.831+09:00  INFO 5652 --- [evoproject] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-07-13T13:29:45.831+09:00  INFO 5652 --- [evoproject] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1112 ms
+2024-07-13T13:29:45.882+09:00  WARN 5652 --- [evoproject] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'amazonS3Config': Injection of autowired dependencies failed
+2024-07-13T13:29:45.884+09:00  INFO 5652 --- [evoproject] [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2024-07-13T13:29:45.898+09:00  INFO 5652 --- [evoproject] [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-07-13T13:29:45.919+09:00 ERROR 5652 --- [evoproject] [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'amazonS3Config': Injection of autowired dependencies failed
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:514) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1421) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:599) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:975) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:962) ~[spring-context-6.1.10.jar:6.1.10]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624) ~[spring-context-6.1.10.jar:6.1.10]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.2.7.jar:3.2.7]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.2.7.jar:3.2.7]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.2.7.jar:3.2.7]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335) ~[spring-boot-3.2.7.jar:3.2.7]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363) ~[spring-boot-3.2.7.jar:3.2.7]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352) ~[spring-boot-3.2.7.jar:3.2.7]
+	at com.evo.evoproject.EvoprojectApplication.main(EvoprojectApplication.java:9) ~[main/:na]
+Caused by: java.lang.IllegalArgumentException: Could not resolve placeholder 'cloud.aws.credentials.accessKey' in value "${cloud.aws.credentials.accessKey}"
+	at org.springframework.util.PropertyPlaceholderHelper.parseStringValue(PropertyPlaceholderHelper.java:180) ~[spring-core-6.1.10.jar:6.1.10]
+	at org.springframework.util.PropertyPlaceholderHelper.replacePlaceholders(PropertyPlaceholderHelper.java:126) ~[spring-core-6.1.10.jar:6.1.10]
+	at org.springframework.core.env.AbstractPropertyResolver.doResolvePlaceholders(AbstractPropertyResolver.java:239) ~[spring-core-6.1.10.jar:6.1.10]
+	at org.springframework.core.env.AbstractPropertyResolver.resolveRequiredPlaceholders(AbstractPropertyResolver.java:210) ~[spring-core-6.1.10.jar:6.1.10]
+	at org.springframework.context.support.PropertySourcesPlaceholderConfigurer.lambda$processProperties$0(PropertySourcesPlaceholderConfigurer.java:200) ~[spring-context-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.resolveEmbeddedValue(AbstractBeanFactory.java:964) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1374) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:784) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:767) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:145) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:508) ~[spring-beans-6.1.10.jar:6.1.10]
+	... 17 common frames omitted
+
+2024-07-13T13:29:58.901+09:00  INFO 15604 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : Starting EvoprojectApplication using Java 17.0.11 with PID 15604 (D:\EVO\evoproject\build\classes\java\main started by skygv in D:\EVO)
+2024-07-13T13:29:58.904+09:00  INFO 15604 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : No active profile set, falling back to 1 default profile: "default"
+2024-07-13T13:30:00.040+09:00  INFO 15604 --- [evoproject] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8090 (http)
+2024-07-13T13:30:00.050+09:00  INFO 15604 --- [evoproject] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-07-13T13:30:00.051+09:00  INFO 15604 --- [evoproject] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-07-13T13:30:00.108+09:00  INFO 15604 --- [evoproject] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-07-13T13:30:00.108+09:00  INFO 15604 --- [evoproject] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1159 ms
+2024-07-13T13:30:01.058+09:00  INFO 15604 --- [evoproject] [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-07-13T13:30:01.218+09:00  INFO 15604 --- [evoproject] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@687b0ddc, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@42b4df5a, org.springframework.security.web.context.SecurityContextHolderFilter@311a0b3e, org.springframework.security.web.header.HeaderWriterFilter@aa0dbca, org.springframework.web.filter.CorsFilter@9f1ca74, org.springframework.security.web.authentication.logout.LogoutFilter@29b8df5, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@6a6e9289, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@21abda60, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6c70b7c3, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@67b8d45, org.springframework.security.web.access.ExceptionTranslationFilter@3d53e876, org.springframework.security.web.access.intercept.AuthorizationFilter@139089a4]
+2024-07-13T13:30:01.473+09:00  INFO 15604 --- [evoproject] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8090 (http) with context path ''
+2024-07-13T13:30:01.483+09:00  INFO 15604 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : Started EvoprojectApplication in 3.001 seconds (process running for 3.649)
+2024-07-13T13:30:01.488+09:00  INFO 15604 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-13T13:30:01.489+09:00  INFO 15604 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-13T13:30:04.744+09:00  INFO 15604 --- [evoproject] [http-nio-8090-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-07-13T13:30:04.744+09:00  INFO 15604 --- [evoproject] [http-nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-07-13T13:30:04.745+09:00  INFO 15604 --- [evoproject] [http-nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-07-13T13:36:18.993+09:00  INFO 1888 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : Starting EvoprojectApplication using Java 17.0.11 with PID 1888 (D:\EVO\evoproject\build\classes\java\main started by skygv in D:\EVO)
+2024-07-13T13:36:18.995+09:00  INFO 1888 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : No active profile set, falling back to 1 default profile: "default"
+2024-07-13T13:36:20.122+09:00  INFO 1888 --- [evoproject] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8090 (http)
+2024-07-13T13:36:20.131+09:00  INFO 1888 --- [evoproject] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-07-13T13:36:20.132+09:00  INFO 1888 --- [evoproject] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-07-13T13:36:20.187+09:00  INFO 1888 --- [evoproject] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-07-13T13:36:20.188+09:00  INFO 1888 --- [evoproject] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1148 ms
+2024-07-13T13:36:21.076+09:00  INFO 1888 --- [evoproject] [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-07-13T13:36:21.241+09:00  INFO 1888 --- [evoproject] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@10f20d38, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@538aa83f, org.springframework.security.web.context.SecurityContextHolderFilter@1008df1e, org.springframework.security.web.header.HeaderWriterFilter@393ae7a0, org.springframework.web.filter.CorsFilter@63e70bf9, org.springframework.security.web.authentication.logout.LogoutFilter@f76872f, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@3982206a, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@e72fb04, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4315fe1b, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@402a69f, org.springframework.security.web.access.ExceptionTranslationFilter@f9a5e3f, org.springframework.security.web.access.intercept.AuthorizationFilter@2ffb0d10]
+2024-07-13T13:36:21.481+09:00  INFO 1888 --- [evoproject] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8090 (http) with context path ''
+2024-07-13T13:36:21.491+09:00  INFO 1888 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : Started EvoprojectApplication in 2.923 seconds (process running for 3.573)
+2024-07-13T13:36:21.495+09:00  INFO 1888 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-13T13:36:21.496+09:00  INFO 1888 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-13T13:36:26.436+09:00  INFO 1888 --- [evoproject] [http-nio-8090-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-07-13T13:36:26.436+09:00  INFO 1888 --- [evoproject] [http-nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-07-13T13:36:26.437+09:00  INFO 1888 --- [evoproject] [http-nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-07-13T13:36:33.151+09:00 DEBUG 1888 --- [evoproject] [http-nio-8090-exec-7] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:36:33.151+09:00  INFO 1888 --- [evoproject] [http-nio-8090-exec-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-07-13T13:36:33.415+09:00  INFO 1888 --- [evoproject] [http-nio-8090-exec-7] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3188dba9
+2024-07-13T13:36:33.417+09:00  INFO 1888 --- [evoproject] [http-nio-8090-exec-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-07-13T13:36:33.654+09:00  WARN 1888 --- [evoproject] [http-nio-8090-exec-7] o.a.c.util.SessionIdGeneratorBase        : Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [112] milliseconds.
+2024-07-13T13:36:34.518+09:00 DEBUG 1888 --- [evoproject] [http-nio-8090-exec-1] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:36:34.538+09:00  WARN 1888 --- [evoproject] [http-nio-8090-exec-1] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-1][mypage] Deprecated unwrapped fragment expression "header :: header" found in template mypage, line 126, col 9. Please use the complete syntax of fragment expressions instead ("~{header :: header}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-13T13:36:34.549+09:00  WARN 1888 --- [evoproject] [http-nio-8090-exec-1] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-1][mypage] Deprecated unwrapped fragment expression "footer :: footer" found in template mypage, line 204, col 9. Please use the complete syntax of fragment expressions instead ("~{footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-13T13:37:19.401+09:00  INFO 1888 --- [evoproject] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-07-13T13:37:19.461+09:00  INFO 1888 --- [evoproject] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-07-13T13:37:22.787+09:00  INFO 2536 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : Starting EvoprojectApplication using Java 17.0.11 with PID 2536 (D:\EVO\evoproject\build\classes\java\main started by skygv in D:\EVO)
+2024-07-13T13:37:22.790+09:00  INFO 2536 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : No active profile set, falling back to 1 default profile: "default"
+2024-07-13T13:37:23.859+09:00  INFO 2536 --- [evoproject] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8090 (http)
+2024-07-13T13:37:23.869+09:00  INFO 2536 --- [evoproject] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-07-13T13:37:23.870+09:00  INFO 2536 --- [evoproject] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-07-13T13:37:23.934+09:00  INFO 2536 --- [evoproject] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-07-13T13:37:23.935+09:00  INFO 2536 --- [evoproject] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1101 ms
+2024-07-13T13:37:24.796+09:00  INFO 2536 --- [evoproject] [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-07-13T13:37:24.974+09:00  INFO 2536 --- [evoproject] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@4f3fec43, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@38dbeb39, org.springframework.security.web.context.SecurityContextHolderFilter@63326a3a, org.springframework.security.web.header.HeaderWriterFilter@f9a5e3f, org.springframework.web.filter.CorsFilter@10f20d38, org.springframework.security.web.authentication.logout.LogoutFilter@7e4ac598, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@5fe5c68b, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1008df1e, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@e72fb04, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@538aa83f, org.springframework.security.web.access.ExceptionTranslationFilter@52f43225, org.springframework.security.web.access.intercept.AuthorizationFilter@250a946]
+2024-07-13T13:37:25.215+09:00  INFO 2536 --- [evoproject] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8090 (http) with context path ''
+2024-07-13T13:37:25.225+09:00  INFO 2536 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : Started EvoprojectApplication in 2.939 seconds (process running for 3.611)
+2024-07-13T13:37:25.231+09:00  INFO 2536 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-13T13:37:25.231+09:00  INFO 2536 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-13T13:37:32.664+09:00  INFO 2536 --- [evoproject] [http-nio-8090-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-07-13T13:37:32.665+09:00  INFO 2536 --- [evoproject] [http-nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-07-13T13:37:32.666+09:00  INFO 2536 --- [evoproject] [http-nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-07-13T13:37:32.815+09:00  WARN 2536 --- [evoproject] [http-nio-8090-exec-1] o.a.c.util.SessionIdGeneratorBase        : Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [110] milliseconds.
+2024-07-13T13:37:36.228+09:00  WARN 2536 --- [evoproject] [http-nio-8090-exec-8] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-8][terms] Deprecated unwrapped fragment expression "footer :: footer" found in template terms, line 337, col 9. Please use the complete syntax of fragment expressions instead ("~{footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-13T13:37:39.803+09:00  WARN 2536 --- [evoproject] [http-nio-8090-exec-10] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-10][register] Deprecated unwrapped fragment expression "header :: header" found in template register, line 37, col 9. Please use the complete syntax of fragment expressions instead ("~{header :: header}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-13T13:37:39.819+09:00  WARN 2536 --- [evoproject] [http-nio-8090-exec-10] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-10][register] Deprecated unwrapped fragment expression "footer :: footer" found in template register, line 108, col 9. Please use the complete syntax of fragment expressions instead ("~{footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-13T13:37:56.206+09:00  WARN 2536 --- [evoproject] [http-nio-8090-exec-4] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-4][terms] Deprecated unwrapped fragment expression "footer :: footer" found in template terms, line 337, col 9. Please use the complete syntax of fragment expressions instead ("~{footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-13T13:38:08.344+09:00 DEBUG 2536 --- [evoproject] [http-nio-8090-exec-10] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:38:08.345+09:00  INFO 2536 --- [evoproject] [http-nio-8090-exec-10] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-07-13T13:38:08.590+09:00  INFO 2536 --- [evoproject] [http-nio-8090-exec-10] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@55023dc8
+2024-07-13T13:38:08.592+09:00  INFO 2536 --- [evoproject] [http-nio-8090-exec-10] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-07-13T13:38:09.922+09:00 DEBUG 2536 --- [evoproject] [http-nio-8090-exec-4] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:38:09.932+09:00  WARN 2536 --- [evoproject] [http-nio-8090-exec-4] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-4][mypage] Deprecated unwrapped fragment expression "header :: header" found in template mypage, line 126, col 9. Please use the complete syntax of fragment expressions instead ("~{header :: header}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-13T13:38:09.939+09:00  WARN 2536 --- [evoproject] [http-nio-8090-exec-4] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-4][mypage] Deprecated unwrapped fragment expression "footer :: footer" found in template mypage, line 204, col 9. Please use the complete syntax of fragment expressions instead ("~{footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-13T13:38:11.355+09:00 DEBUG 2536 --- [evoproject] [http-nio-8090-exec-10] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:38:11.365+09:00 DEBUG 2536 --- [evoproject] [http-nio-8090-exec-10] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:38:11.375+09:00 DEBUG 2536 --- [evoproject] [http-nio-8090-exec-10] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:38:16.354+09:00 DEBUG 2536 --- [evoproject] [http-nio-8090-exec-8] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:38:16.363+09:00 DEBUG 2536 --- [evoproject] [http-nio-8090-exec-8] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:38:16.368+09:00 DEBUG 2536 --- [evoproject] [http-nio-8090-exec-8] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:38:19.435+09:00 DEBUG 2536 --- [evoproject] [http-nio-8090-exec-5] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:38:19.445+09:00 DEBUG 2536 --- [evoproject] [http-nio-8090-exec-5] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:38:22.952+09:00 DEBUG 2536 --- [evoproject] [http-nio-8090-exec-1] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:38:22.968+09:00 DEBUG 2536 --- [evoproject] [http-nio-8090-exec-2] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:38:22.973+09:00 DEBUG 2536 --- [evoproject] [http-nio-8090-exec-2] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:38:22.980+09:00 DEBUG 2536 --- [evoproject] [http-nio-8090-exec-2] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:38:25.235+09:00  INFO 2536 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-13T13:38:25.235+09:00  INFO 2536 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-13T13:38:26.211+09:00 DEBUG 2536 --- [evoproject] [http-nio-8090-exec-9] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:38:26.220+09:00 DEBUG 2536 --- [evoproject] [http-nio-8090-exec-9] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:38:26.226+09:00 DEBUG 2536 --- [evoproject] [http-nio-8090-exec-9] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:38:28.863+09:00 DEBUG 2536 --- [evoproject] [http-nio-8090-exec-10] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:38:28.871+09:00 DEBUG 2536 --- [evoproject] [http-nio-8090-exec-10] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:38:28.877+09:00 DEBUG 2536 --- [evoproject] [http-nio-8090-exec-10] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:38:30.059+09:00 DEBUG 2536 --- [evoproject] [http-nio-8090-exec-5] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:38:30.067+09:00 DEBUG 2536 --- [evoproject] [http-nio-8090-exec-5] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:38:30.072+09:00 DEBUG 2536 --- [evoproject] [http-nio-8090-exec-5] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:38:32.762+09:00 DEBUG 2536 --- [evoproject] [http-nio-8090-exec-8] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:38:32.770+09:00 DEBUG 2536 --- [evoproject] [http-nio-8090-exec-8] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:38:32.776+09:00 DEBUG 2536 --- [evoproject] [http-nio-8090-exec-8] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:38:34.480+09:00 DEBUG 2536 --- [evoproject] [http-nio-8090-exec-2] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:38:34.490+09:00 DEBUG 2536 --- [evoproject] [http-nio-8090-exec-2] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:38:34.496+09:00 DEBUG 2536 --- [evoproject] [http-nio-8090-exec-2] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:38:36.400+09:00 DEBUG 2536 --- [evoproject] [http-nio-8090-exec-3] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:38:36.410+09:00 DEBUG 2536 --- [evoproject] [http-nio-8090-exec-3] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:38:36.415+09:00 DEBUG 2536 --- [evoproject] [http-nio-8090-exec-3] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:38:57.791+09:00 DEBUG 2536 --- [evoproject] [http-nio-8090-exec-7] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:38:57.801+09:00 DEBUG 2536 --- [evoproject] [http-nio-8090-exec-7] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:38:57.807+09:00 DEBUG 2536 --- [evoproject] [http-nio-8090-exec-7] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:39:25.229+09:00  INFO 2536 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-13T13:39:25.229+09:00  INFO 2536 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-13T13:39:25.645+09:00 DEBUG 2536 --- [evoproject] [http-nio-8090-exec-1] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:39:25.656+09:00 DEBUG 2536 --- [evoproject] [http-nio-8090-exec-1] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:39:25.661+09:00 DEBUG 2536 --- [evoproject] [http-nio-8090-exec-1] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:40:25.229+09:00  INFO 2536 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-13T13:40:25.229+09:00  INFO 2536 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-13T13:41:20.671+09:00 DEBUG 2536 --- [evoproject] [http-nio-8090-exec-1] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:41:20.687+09:00 DEBUG 2536 --- [evoproject] [http-nio-8090-exec-1] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:41:20.693+09:00 DEBUG 2536 --- [evoproject] [http-nio-8090-exec-1] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:41:25.238+09:00  INFO 2536 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-13T13:41:25.238+09:00  INFO 2536 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-13T13:41:26.161+09:00 DEBUG 2536 --- [evoproject] [http-nio-8090-exec-1] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:41:26.171+09:00 DEBUG 2536 --- [evoproject] [http-nio-8090-exec-1] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:41:26.177+09:00 DEBUG 2536 --- [evoproject] [http-nio-8090-exec-1] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:41:34.048+09:00 DEBUG 2536 --- [evoproject] [http-nio-8090-exec-3] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:41:34.058+09:00 DEBUG 2536 --- [evoproject] [http-nio-8090-exec-3] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:41:34.064+09:00 DEBUG 2536 --- [evoproject] [http-nio-8090-exec-3] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:41:35.683+09:00 DEBUG 2536 --- [evoproject] [http-nio-8090-exec-6] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:41:35.690+09:00 DEBUG 2536 --- [evoproject] [http-nio-8090-exec-6] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:41:36.978+09:00 DEBUG 2536 --- [evoproject] [http-nio-8090-exec-8] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:41:36.989+09:00 DEBUG 2536 --- [evoproject] [http-nio-8090-exec-8] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:41:36.995+09:00 DEBUG 2536 --- [evoproject] [http-nio-8090-exec-8] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:41:43.555+09:00 DEBUG 2536 --- [evoproject] [http-nio-8090-exec-10] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:41:43.564+09:00 DEBUG 2536 --- [evoproject] [http-nio-8090-exec-10] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:41:43.570+09:00 DEBUG 2536 --- [evoproject] [http-nio-8090-exec-10] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:42:25.572+09:00  INFO 2536 --- [evoproject] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-07-13T13:42:25.625+09:00  INFO 2536 --- [evoproject] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-07-13T13:42:28.455+09:00  INFO 21292 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : Starting EvoprojectApplication using Java 17.0.11 with PID 21292 (D:\EVO\evoproject\build\classes\java\main started by skygv in D:\EVO)
+2024-07-13T13:42:28.458+09:00  INFO 21292 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : No active profile set, falling back to 1 default profile: "default"
+2024-07-13T13:42:29.566+09:00  INFO 21292 --- [evoproject] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8090 (http)
+2024-07-13T13:42:29.575+09:00  INFO 21292 --- [evoproject] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-07-13T13:42:29.575+09:00  INFO 21292 --- [evoproject] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-07-13T13:42:29.637+09:00  INFO 21292 --- [evoproject] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-07-13T13:42:29.637+09:00  INFO 21292 --- [evoproject] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1132 ms
+2024-07-13T13:42:30.496+09:00  INFO 21292 --- [evoproject] [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-07-13T13:42:30.671+09:00  INFO 21292 --- [evoproject] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@6f6c8d45, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7f2ca6f8, org.springframework.security.web.context.SecurityContextHolderFilter@687b0ddc, org.springframework.security.web.header.HeaderWriterFilter@ff4b223, org.springframework.web.filter.CorsFilter@79d49790, org.springframework.security.web.authentication.logout.LogoutFilter@6de84336, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@191e654, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@9f1ca74, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@365e65bb, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@13dc6649, org.springframework.security.web.access.ExceptionTranslationFilter@139089a4, org.springframework.security.web.access.intercept.AuthorizationFilter@580ffea]
+2024-07-13T13:42:30.918+09:00  INFO 21292 --- [evoproject] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8090 (http) with context path ''
+2024-07-13T13:42:30.928+09:00  INFO 21292 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : Started EvoprojectApplication in 2.953 seconds (process running for 3.586)
+2024-07-13T13:42:30.934+09:00  INFO 21292 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-13T13:42:30.935+09:00  INFO 21292 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-13T13:42:38.367+09:00  INFO 21292 --- [evoproject] [http-nio-8090-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-07-13T13:42:38.367+09:00  INFO 21292 --- [evoproject] [http-nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-07-13T13:42:38.368+09:00  INFO 21292 --- [evoproject] [http-nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-07-13T13:42:38.520+09:00  WARN 21292 --- [evoproject] [http-nio-8090-exec-1] o.a.c.util.SessionIdGeneratorBase        : Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [113] milliseconds.
+2024-07-13T13:42:44.416+09:00 DEBUG 21292 --- [evoproject] [http-nio-8090-exec-8] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:42:44.416+09:00  INFO 21292 --- [evoproject] [http-nio-8090-exec-8] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-07-13T13:42:44.662+09:00  INFO 21292 --- [evoproject] [http-nio-8090-exec-8] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@76291b6
+2024-07-13T13:42:44.665+09:00  INFO 21292 --- [evoproject] [http-nio-8090-exec-8] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-07-13T13:42:47.123+09:00 DEBUG 21292 --- [evoproject] [http-nio-8090-exec-6] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:42:47.145+09:00  WARN 21292 --- [evoproject] [http-nio-8090-exec-6] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-6][mypage] Deprecated unwrapped fragment expression "header :: header" found in template mypage, line 126, col 9. Please use the complete syntax of fragment expressions instead ("~{header :: header}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-13T13:42:47.154+09:00  WARN 21292 --- [evoproject] [http-nio-8090-exec-6] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-6][mypage] Deprecated unwrapped fragment expression "footer :: footer" found in template mypage, line 204, col 9. Please use the complete syntax of fragment expressions instead ("~{footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-13T13:42:48.598+09:00 DEBUG 21292 --- [evoproject] [http-nio-8090-exec-3] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:42:48.610+09:00 DEBUG 21292 --- [evoproject] [http-nio-8090-exec-3] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:42:48.619+09:00 DEBUG 21292 --- [evoproject] [http-nio-8090-exec-3] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:42:51.367+09:00 DEBUG 21292 --- [evoproject] [http-nio-8090-exec-1] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:42:51.379+09:00 DEBUG 21292 --- [evoproject] [http-nio-8090-exec-1] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:42:51.385+09:00 DEBUG 21292 --- [evoproject] [http-nio-8090-exec-1] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:42:52.983+09:00 DEBUG 21292 --- [evoproject] [http-nio-8090-exec-9] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:42:53.005+09:00 DEBUG 21292 --- [evoproject] [http-nio-8090-exec-9] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:42:53.012+09:00 DEBUG 21292 --- [evoproject] [http-nio-8090-exec-9] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:42:54.787+09:00 DEBUG 21292 --- [evoproject] [http-nio-8090-exec-7] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:42:54.803+09:00 DEBUG 21292 --- [evoproject] [http-nio-8090-exec-7] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:42:54.810+09:00 DEBUG 21292 --- [evoproject] [http-nio-8090-exec-7] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:42:57.118+09:00 DEBUG 21292 --- [evoproject] [http-nio-8090-exec-6] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:42:57.129+09:00 DEBUG 21292 --- [evoproject] [http-nio-8090-exec-6] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:42:57.136+09:00 DEBUG 21292 --- [evoproject] [http-nio-8090-exec-6] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:42:58.169+09:00 DEBUG 21292 --- [evoproject] [http-nio-8090-exec-2] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:42:58.178+09:00 DEBUG 21292 --- [evoproject] [http-nio-8090-exec-2] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:42:58.186+09:00 DEBUG 21292 --- [evoproject] [http-nio-8090-exec-2] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:43:00.120+09:00 DEBUG 21292 --- [evoproject] [http-nio-8090-exec-4] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:43:00.129+09:00 DEBUG 21292 --- [evoproject] [http-nio-8090-exec-4] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:43:00.137+09:00 DEBUG 21292 --- [evoproject] [http-nio-8090-exec-4] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-13T13:43:07.974+09:00  INFO 21292 --- [evoproject] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-07-13T13:43:08.028+09:00  INFO 21292 --- [evoproject] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-07-13T13:43:27.585+09:00  INFO 1044 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : Starting EvoprojectApplication using Java 17.0.11 with PID 1044 (D:\EVO\evoproject\build\classes\java\main started by skygv in D:\EVO)
+2024-07-13T13:43:27.587+09:00  INFO 1044 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : No active profile set, falling back to 1 default profile: "default"
+2024-07-13T13:43:28.693+09:00  INFO 1044 --- [evoproject] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8090 (http)
+2024-07-13T13:43:28.702+09:00  INFO 1044 --- [evoproject] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-07-13T13:43:28.703+09:00  INFO 1044 --- [evoproject] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-07-13T13:43:28.756+09:00  INFO 1044 --- [evoproject] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-07-13T13:43:28.757+09:00  INFO 1044 --- [evoproject] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1123 ms
+2024-07-13T13:43:28.809+09:00  WARN 1044 --- [evoproject] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'amazonS3Config': Injection of autowired dependencies failed
+2024-07-13T13:43:28.812+09:00  INFO 1044 --- [evoproject] [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2024-07-13T13:43:28.825+09:00  INFO 1044 --- [evoproject] [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-07-13T13:43:28.843+09:00 ERROR 1044 --- [evoproject] [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'amazonS3Config': Injection of autowired dependencies failed
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:514) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1421) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:599) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:975) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:962) ~[spring-context-6.1.10.jar:6.1.10]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624) ~[spring-context-6.1.10.jar:6.1.10]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.2.7.jar:3.2.7]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.2.7.jar:3.2.7]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.2.7.jar:3.2.7]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335) ~[spring-boot-3.2.7.jar:3.2.7]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363) ~[spring-boot-3.2.7.jar:3.2.7]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352) ~[spring-boot-3.2.7.jar:3.2.7]
+	at com.evo.evoproject.EvoprojectApplication.main(EvoprojectApplication.java:9) ~[main/:na]
+Caused by: java.lang.IllegalArgumentException: Could not resolve placeholder 'cloud.aws.credentials.accessKey' in value "${cloud.aws.credentials.accessKey}"
+	at org.springframework.util.PropertyPlaceholderHelper.parseStringValue(PropertyPlaceholderHelper.java:180) ~[spring-core-6.1.10.jar:6.1.10]
+	at org.springframework.util.PropertyPlaceholderHelper.replacePlaceholders(PropertyPlaceholderHelper.java:126) ~[spring-core-6.1.10.jar:6.1.10]
+	at org.springframework.core.env.AbstractPropertyResolver.doResolvePlaceholders(AbstractPropertyResolver.java:239) ~[spring-core-6.1.10.jar:6.1.10]
+	at org.springframework.core.env.AbstractPropertyResolver.resolveRequiredPlaceholders(AbstractPropertyResolver.java:210) ~[spring-core-6.1.10.jar:6.1.10]
+	at org.springframework.context.support.PropertySourcesPlaceholderConfigurer.lambda$processProperties$0(PropertySourcesPlaceholderConfigurer.java:200) ~[spring-context-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.resolveEmbeddedValue(AbstractBeanFactory.java:964) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1374) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:784) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:767) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:145) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:508) ~[spring-beans-6.1.10.jar:6.1.10]
+	... 17 common frames omitted
+

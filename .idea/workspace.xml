@@ -5,15 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c3d7cf85-c82f-4d99-bfa0-82f0efec097a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evoproject/src/main/java/com/evo/evoproject/controller/main/SearchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/evoproject/src/main/java/com/evo/evoproject/controller/main/SearchController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/evoproject/src/main/resources/templates/board/form.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/evoproject/src/main/resources/templates/board/list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/evoproject/src/main/resources/templates/board/view.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/evoproject/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/evoproject/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evoproject/src/main/resources/mapper/imageMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/evoproject/src/main/resources/mapper/imageMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evoproject/src/main/resources/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/evoproject/src/main/resources/templates/login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/evoproject/src/main/resources/templates/mypage.html" beforeDir="false" afterPath="$PROJECT_DIR$/evoproject/src/main/resources/templates/mypage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evoproject/src/main/resources/templates/product/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/evoproject/src/main/resources/templates/product/list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evoproject/src/main/resources/templates/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/evoproject/src/main/resources/templates/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evoproject/src/main/resources/templates/terms.html" beforeDir="false" afterPath="$PROJECT_DIR$/evoproject/src/main/resources/templates/terms.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myapp.log" beforeDir="false" afterPath="$PROJECT_DIR$/myapp.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,8 +48,8 @@
       <list>
         <option value="CSS File" />
         <option value="spring-beans.schema" />
-        <option value="Class" />
         <option value="HTML File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -80,6 +81,7 @@
     "git-widget-placeholder": "develop",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/EVO/evoproject/src/main/java/com/evo/evoproject/service/board",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -94,6 +96,13 @@
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\EVO\evoproject\src\main\java\com\evo\evoproject\service\board" />
+      <recent name="D:\EVO\evoproject\src\main\resources\mapper" />
+      <recent name="D:\EVO\evoproject\src\main\java\com\evo\evoproject\Mapper\board" />
+      <recent name="D:\EVO\evoproject\src\main\java\com\evo\evoproject\controller\board" />
+      <recent name="D:\EVO\evoproject\src\main\java\com\evo\evoproject\domain\board" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\EVO\evoproject\src\main\resources\templates\board" />
       <recent name="D:\EVO\evoproject\src\main\resources\templates" />

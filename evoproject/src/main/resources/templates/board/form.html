@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>문의 작성</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<style>
+    :root {
+        --orange: #DF4500;
+        --gray: #35302D;
+        --gray-shine: #3C3735;
+        --white-off: #DFDBD9;
+        --sans: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+    }
+    *,
+    ::before,
+    ::after {
+        box-sizing: border-box;
+    }
+
+    .unstyled {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    .sidebar {
+        top: 580px;
+        left: 0;
+        width: 250px;
+        height: calc(100% - 400px);
+        background-color: #333;
+        color: #fff;
+        padding-top: 20px;
+    }
+
+    .unstyled a {
+        text-decoration: none;
+    }
+
+    .list-inline li {
+        float: left;
+    }
+
+    .main-nav ul {
+        border-top: solid 1px var(--gray-shine);
+    }
+
+    .main-nav li {
+        border-bottom: solid 1px var(--gray-shine);
+    }
+
+    .main-nav a {
+        padding: 1.1em 0;
+        color: var(--white-off);
+        font: 400 1.125em var(--sans);
+        text-align: center;
+        text-transform: lowercase;
+    }
+
+    .main-nav a:hover {
+        color: #fff;
+    }
+
+    .list-hover-slide li {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .list-hover-slide a {
+        display: block;
+        position: relative;
+        z-index: 1;
+        transition: .35s ease color;
+    }
+
+    .list-hover-slide a::before {
+        content: '';
+        display: block;
+        z-index: -1;
+        position: absolute;
+        left: -100%;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        border-right: solid 5px var(--orange);
+        background: var(--gray-shine);
+        transition: .35s ease left;
+    }
+    .list-hover-slide a.is-current::before,
+    .list-hover-slide a:hover::before {
+        left: 0;
+    }
+
+    .board-banner {
+        position: relative;
+        background-image: url('/image/banner.jpg');
+        background-size: cover;
+        background-position: center;
+        height: 400px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+    .board-banner h1 {
+        margin: 0;
+    }
+</style>
+<header th:replace="~{header :: header}"></header>
+<body>
+<div class="board-banner">
+    <h1>문의하기</h1>
+</div>
+<div class="sidebar">
+    <nav class="main-nav" role="navigation">
+        <ul class="unstyled list-hover-slide">
+            <li><a href="#">주문목록</a></li>
+            <li><a href="#">취소/반품내역</a></li>
+            <li><a href="/boards">문의</a></li>
+            <li><a href="/mypage">개인정보</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="container mt-5">
+    <h2 th:text="${action == 'create' ? '문의 작성' : '문의 수정'}">문의 작성</h2>
+    <form th:action="@{/boards/create}" th:if="${action == 'create'}" method="post">
+        <div class="form-group">
+            <label for="createBoardTitle">제목</label>
+            <input type="text" class="form-control" id="createBoardTitle" name="boardTitle" th:value="${board.boardTitle}" required>
+        </div>
+        <div class="form-group">
+            <label for="createBoardContent">내용</label>
+            <textarea class="form-control" id="createBoardContent" name="boardContent" rows="5" required th:text="${board.boardContent}"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="createCategoryId">문의 종류</label>
+            <select class="form-control" id="createCategoryId" name="categoryId" required>
+                <option value="">선택</option>
+                <option value="1" th:selected="${board.categoryId == 1}">상품</option>
+                <option value="2" th:selected="${board.categoryId == 2}">배송</option>
+                <option value="3" th:selected="${board.categoryId == 3}">기타</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">저장</button>
+        <a th:href="@{/boards}" class="btn btn-secondary">취소</a>
+    </form>
+
+    <form th:action="@{/boards/edit/{boardNo}(boardNo=${board.boardNo})}" th:if="${action == 'edit'}" method="post">
+        <div class="form-group">
+            <label for="editBoardTitle">제목</label>
+            <input type="text" class="form-control" id="editBoardTitle" name="boardTitle" th:value="${board.boardTitle}" required>
+        </div>
+        <div class="form-group">
+            <label for="editBoardContent">내용</label>
+            <textarea class="form-control" id="editBoardContent" name="boardContent" rows="5" required th:text="${board.boardContent}"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="editCategoryId">문의 종류</label>
+            <select class="form-control" id="editCategoryId" name="categoryId" required>
+                <option value="">선택</option>
+                <option value="1" th:selected="${board.categoryId == 1}">상품</option>
+                <option value="2" th:selected="${board.categoryId == 2}">배송</option>
+                <option value="3" th:selected="${board.categoryId == 3}">기타</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">저장</button>
+        <a th:href="@{/boards}" class="btn btn-secondary">취소</a>
+    </form>
+</div>
+<footer th:replace="~{footer :: footer}"></footer>
+<script th:src="@{/js/script.js}"></script>
+</body>
+</html>
