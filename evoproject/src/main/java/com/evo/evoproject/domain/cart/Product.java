@@ -10,5 +10,5 @@ public class Product {
     private int shipping;
     private int soldout;
 }
-
-
+//상품 수량 추가
+//soldout 삭제

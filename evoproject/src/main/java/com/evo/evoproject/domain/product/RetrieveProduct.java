@@ -12,7 +12,7 @@ public class RetrieveProduct {
     private String productName;
     private String productDes;
     private int categoryId;
-    private String price;
+    private String price; // 자료형 수정
     private int stock;
     private LocalDateTime date;
     private int viewCount;

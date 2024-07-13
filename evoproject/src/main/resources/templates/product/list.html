@@ -17,13 +17,13 @@
       const sort = document.getElementById("sortSelect").value;
       const currentPage = document.getElementById("currentPage").value;
       const categoryId = document.getElementById("categoryId").value;
-      const input = document.getElementById("input").value;
+      const input = document.getElementById("input").value.trim();
 
       let url;
       if (categoryId) {
         // 카테고리별 조회
         url = "/product/category/" + categoryId + "?sort=" + sort + "&page=" + currentPage + "&size=16";
-      } else if (input && input.trim() !== "") {
+      } else if (input) {
         // 검색 결과 조회
         url = "/product/search/" + encodeURIComponent(input) + "?sort=" + sort + "&page=" + currentPage + "&size=16";
       } else {
@@ -62,9 +62,6 @@
 <div class="container">
   <h1 class="text-center mb-4">Product List</h1>
 
-  <!-- 검색 입력 필드 -->
-  <input type="hidden" id="input" th:value="${productName}" />
-
   <!-- 정렬 드롭다운 -->
   <div class="mb-3">
     <select id="sortSelect" class="form-select" onchange="onSortChange()">
@@ -74,6 +71,7 @@
       <option value="viewCount_desc" th:selected="${productsResponse.sort == 'viewCount_desc'}">조회수순</option>
     </select>
     <input type="hidden" id="categoryId" th:value="${categoryId}">
+    <input type="hidden" id="input" th:value="${productName}">
   </div>
 
   <!-- 현재 페이지를 숨김 필드로 추가 -->
@@ -100,17 +98,17 @@
     <ul class="pagination">
       <!-- 이전 페이지 버튼 -->
       <li class="page-item" th:if="${productsResponse.currentPage > 1}">
-        <a class="page-link" th:href="@{${categoryId != null ? '/product/category/' + categoryId : '/product/search/' + productName}(page=${productsResponse.currentPage - 1}, size=16, sort=${productsResponse.sort})}">Prev</a>
+        <a class="page-link" th:href="@{${categoryId != null ? '/product/category/' + categoryId : (productName != null ? '/product/search/' + productName : '/product')}(page=${productsResponse.currentPage - 1}, size=16, sort=${productsResponse.sort})}">Prev</a>
       </li>
 
       <!-- 페이지 번호 반복 -->
       <li class="page-item" th:each="pageNum : ${#numbers.sequence(1, productsResponse.totalPages)}" th:classappend="${pageNum == productsResponse.currentPage} ? 'active'">
-        <a class="page-link" th:href="@{${categoryId != null ? '/product/category/' + categoryId : '/product/search/' + productName}(page=${pageNum}, size=16, sort=${productsResponse.sort})}" th:text="${pageNum}">1</a>
+        <a class="page-link" th:href="@{${categoryId != null ? '/product/category/' + categoryId : (productName != null ? '/product/search/' + productName : '/product')}(page=${pageNum}, size=16, sort=${productsResponse.sort})}" th:text="${pageNum}">1</a>
       </li>
 
       <!-- 다음 페이지 버튼 -->
       <li class="page-item" th:if="${productsResponse.currentPage < productsResponse.totalPages}">
-        <a class="page-link" th:href="@{${categoryId != null ? '/product/category/' + categoryId : '/product/search/' + productName}(page=${productsResponse.currentPage + 1}, size=16, sort=${productsResponse.sort})}">Next</a>
+        <a class="page-link" th:href="@{${categoryId != null ? '/product/category/' + categoryId : (productName != null ? '/product/search/' + productName : '/product')}(page=${productsResponse.currentPage + 1}, size=16, sort=${productsResponse.sort})}">Next</a>
       </li>
     </ul>
   </div>
