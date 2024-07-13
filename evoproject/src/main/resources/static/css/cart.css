@@ -41,6 +41,26 @@ th {
 td {
     background-color: #ffffff;
 }
+
+/*선택상품 삭제 버튼*/
+.text-right {
+    text-align: right; /* Ensure text alignment to the right */
+}
+
+.btn-light-brown {
+    background-color: #D2B48C;
+    color: #fff;
+    padding: 8px 16px;
+    font-size: 14px;
+    border: none;
+    margin-right: 120px;
+}
+
+.btn-light-brown:hover {
+    background-color: #B08B61;
+    color: #fff;
+}
+
 /*결제하기*/
 .btn-rounded {
     border-radius: 20px;

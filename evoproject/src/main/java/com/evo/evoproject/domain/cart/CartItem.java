@@ -3,7 +3,7 @@ package com.evo.evoproject.domain.cart;
 import lombok.Data;
 
 @Data
-public class Product {
+public class CartItem {
     private int proNo;
     private String proName;
     private int proPrice;

@@ -31,17 +31,19 @@ public class CartServiceImpl implements CartService {
      */
     @Transactional
     @Override
-    public void addProductToCart(Cart cart) { cartMapper.addProductToCart(cart);
+    public void addProductToCart(Cart cart) {
+        cartMapper.addProductToCart(cart);
     }
 
+
     /**
-     * 카트에서 상품을 삭제하는 메서드
-     * @param userNo 사용자 번호
-     * @param proNo 상품 번호
+     * 카트에서 여러 상품을 삭제하는 메서드
+     * @param userNo 사용자 번호 (User number)
+     * @param proNos 삭제할 상품 번호 목록 (List of product numbers to delete)
      */
     @Transactional
     @Override
-    public void deleteProductFromCart(int userNo, int proNo) {
-        cartMapper.deleteProductFromCart(userNo, proNo);
+    public void deleteProductsFromCart(int userNo, List<Integer> proNos) {
+        cartMapper.deleteProductsFromCart(userNo, proNos);
     }
 }
