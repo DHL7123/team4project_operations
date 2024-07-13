@@ -40,11 +40,11 @@
                 <input type="checkbox" class="itemCheckbox" th:id="'selectItem_' + ${cartItemStat.index}" name="proNos" th:value="${cartItem.products[0].proNo}">
             </td>
             <td th:each="product : ${cartItem.products}" th:text="${product.proName}"></td>
-            <td th:each="product : ${cartItem.products}" th:text="${product.proPrice}"></td>
+            <td th:each="product : ${cartItem.products}" th:data-price="${product.proPrice}" th:text="${product.proPrice}"></td>
             <td th:text="${cartItem.cartQuantity}"></td>
-            <td th:each="product : ${cartItem.products}" th:text="${product.shipping}"></td>
+            <td th:each="product : ${cartItem.products}" th:data-shipping="${product.shipping}" th:text="${product.shipping}"></td>
             <td>
-                <span th:each="product : ${cartItem.products}" th:text="${product.proPrice * cartItem.cartQuantity + product.shipping}"></span>
+                <span th:each="product : ${cartItem.products}" th:data-subtotal="${product.proPrice * cartItem.cartQuantity + product.shipping}" th:text="${product.proPrice * cartItem.cartQuantity + product.shipping}"></span>
             </td>
         </tr>
         </tbody>
@@ -90,8 +90,12 @@
 <script th:inline="javascript">
 
     document.addEventListener('DOMContentLoaded', function() {
-        var cartItems = /*[[${cartItems}]]*/ []; // 장바구니 항목 배열 초기화
-        var totalAmount = 0; // 총 금액 초기화
+        var cartItems = [];
+        var totalAmount = 0;
+
+        function formatNumber(number) {
+            return number.toLocaleString('ko-KR');
+        }
 
         function calculateTotal() {
             totalAmount = 0; // 총 금액 재설정
@@ -99,16 +103,17 @@
 
             checkboxes.forEach(function(checkbox) {
                 if (!checkbox.id.startsWith('selectItem_')) return; // selectAllCheckbox 건너뛰기
-                var index = checkbox.id.split('_')[1]; // 체크박스 ID에서 인덱스 추출
-                var cartItem = cartItems[index]; // 해당 인덱스의 장바구니 항목 가져오기
-                cartItem.products.forEach(function(product) {
-                    var productTotal = product.proPrice * cartItem.cartQuantity + product.shipping; // 제품 가격 계산
-                    totalAmount += productTotal; // 총 금액에 더하기
-                });
+                var row = checkbox.closest('tr'); // 체크박스가 속한 행 가져오기
+                var price = parseFloat(row.querySelector('[data-price]').dataset.price); // 가격 가져오기
+                var quantity = parseInt(row.querySelector('td:nth-child(4)').textContent); // 수량 가져오기
+                var shipping = parseFloat(row.querySelector('[data-shipping]').dataset.shipping); // 배송비 가져오기
+                var subTotal = price * quantity + shipping;
+                row.querySelector('[data-subtotal]').textContent = formatNumber(subTotal);
+                totalAmount += subTotal;
             });
 
-            var formattedTotal = totalAmount.toLocaleString('ko-KR'); // 총 금액을 한국어 형식으로 변환
-            document.getElementById('totalAmount').textContent = '₩' + formattedTotal; // 총 금액을 화면에 표시
+            var formattedTotal = formatNumber(totalAmount);
+            document.getElementById('totalAmount').textContent = '₩' + formattedTotal;
 
             // 체크박스가 선택되어 있으면 결제 버튼 표시
             var checkoutBtn = document.querySelector('.checkoutBtn a');
@@ -121,9 +126,22 @@
             checkbox.checked = true; // 모든 체크박스를 선택 상태로 설정
         });
 
+        // 페이지 로드 시 가격과 배송비를 포맷 맞추기
+        var prices = document.querySelectorAll('[data-price]');
+        prices.forEach(function(priceElement) {
+            var price = parseFloat(priceElement.dataset.price);
+            priceElement.textContent = formatNumber(price);
+        });
+
+        var shippings = document.querySelectorAll('[data-shipping]');
+        shippings.forEach(function(shippingElement) {
+            var shipping = parseFloat(shippingElement.dataset.shipping);
+            shippingElement.textContent = formatNumber(shipping);
+        });
+
         calculateTotal(); // 선택된 체크박스를 기반으로 총 금액 계산
 
-        // 체크박스 상태 변화를 감지하여 총 금액 재계산
+        // 체크박스 상태 변화를 감지해 총 금액 재계산
         checkboxes.forEach(function(checkbox) {
             checkbox.addEventListener('change', function() {
                 calculateTotal(); // 체크박스 상태가 변할 때 총 금액 재계산
