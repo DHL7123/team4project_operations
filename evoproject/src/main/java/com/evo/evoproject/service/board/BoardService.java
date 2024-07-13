@@ -28,16 +28,11 @@ public class BoardService {
     public List<Board> getBoardsByUserNo(int userNo, int offset, int limit) {
         return boardMapper.findBoardsByUserNo(userNo, offset, limit);
     }
-
     public List<Board> getAllBoards(int offset, int limit) {
         return boardMapper.findAllBoards(offset, limit);
     }
 
-    public void updateBoard(Board board) {
-
-        System.out.println("Updating board: " + board);
-        boardMapper.updateBoard(board);
-    }
+    public void updateBoard(Board board) {boardMapper.updateBoard(board);}
 
     public void deleteBoard(int boardNo) {
         boardMapper.deleteBoard(boardNo);
