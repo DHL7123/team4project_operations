@@ -18,9 +18,7 @@
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        .form-group {
-            margin-bottom: 15px;
-        }
+
         .form-check-input {
             margin-top: 5px;
         }
@@ -28,6 +26,17 @@
             text-align: center;
         }
     </style>
+    <!-- jQuery -->
+    <script
+            type="text/javascript"
+            src="https://code.jquery.com/jquery-1.12.4.min.js"
+    ></script>
+    <!-- iamport.payment.js -->
+    <script
+            type="text/javascript"
+            src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"
+    ></script>
+    <script src="../static/order.js" defer></script>
 </head>
 <body>
 <header class="header">
@@ -111,10 +120,15 @@
                         계좌 이체
                     </label>
                 </div>
+                <label class="form-check-label" id="info">
+                    * 계좌 번호: 국민 XXX-XX-XXXX-XXX<br>
+                    * 계좌 이체시 주문하신 후 3일이내 입금확인이 되지 않으면,<br>
+                    자동 주문취소 처리되므로, 3일 내로 입금을 꼭 해주셔야 합니다.
+                </label>
             </div>
         </div>
         <div class="payment-buttons">
-            <button type="button" class="btn btn-primary">Check out</button>
+            <button type="button" class="btn btn-primary" id="checkoutButton">Check out</button>
         </div>
     </div>
 </div>
