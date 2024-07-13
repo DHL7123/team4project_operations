@@ -12,8 +12,8 @@
     <div id="wrap">
         <header class="top-bar con-min-width">
             <div id="logo">
-                <a href="/">
-                    <img src="image/evo.png" alt="search" height="100px" width="100px">
+                <a th:href="@{/}">
+                    <img alt="search" height="100px" width="100px" th:src="@{/image/evo.png}">
                 </a>
             </div>
             <div class="con" sec:authorize="!hasAuthority('ADMIN')">
@@ -22,13 +22,13 @@
                         <li>
                             <a href="#">Shop</a>
                             <ul>
-                                <li class="menu-item" id="all"><a href="page1.html">All</a></li>
-                                <li class="menu-item" id="chair"><a href="page2.html">Chair</a></li>
-                                <li class="menu-item" id="lamp"><a href="page3.html">Lamp</a></li>
-                                <li class="menu-item" id="tsd"><a href="page3.html">Table, Sideboards and Desks</a></li>
-                                <li class="menu-item" id="cabinet"><a href="page3.html">Cabinet</a></li>
-                                <li class="menu-item" id="decorative"><a href="page3.html">Decorative</a></li>
-                                <li class="menu-item" id="tableware"><a href="page3.html">Tableware</a></li>
+                                <li class="menu-item" id="all"><a href="/product">ALL</a></li>
+                                <li class="menu-item" id="chair"><a href="/product/category/1">Chair</a></li>
+                                <li class="menu-item" id="lamp"><a href="/product/category/2">Lamp</a></li>
+                                <li class="menu-item" id="tsd"><a href="/product/category/3">Table, Sideboards and Desks</a></li>
+                                <li class="menu-item" id="cabinet"><a href="/product/category/4">Cabinet</a></li>
+                                <li class="menu-item" id="decorative"><a href="/product/category/5">Decorative</a></li>
+                                <li class="menu-item" id="tableware"><a href="/product/category/6">Tableware</a></li>
                             </ul>
                         </li>
                         <li>
@@ -70,16 +70,6 @@
                         <a href="#" id="searchIcon">
                             <img th:src="@{/image/search.png}" alt="search" height="27px" width="27px">
                         </a>
-                        <a href="#">Shop</a>
-                        <ul>
-                            <li class="menu-item" id="all"><a href="/product">ALL</a></li>
-                            <li class="menu-item" id="chair"><a href="/product/category/1">Chair</a></li>
-                            <li class="menu-item" id="lamp"><a href="/product/category/2">Lamp</a></li>
-                            <li class="menu-item" id="tsd"><a href="/product/category/3">Table, Sideboards and Desks</a></li>
-                            <li class="menu-item" id="cabinet"><a href="/product/category/4">Cabinet</a></li>
-                            <li class="menu-item" id="decorative"><a href="/product/category/5">Decorative</a></li>
-                            <li class="menu-item" id="tableware"><a href="/product/category/6">Tableware</a></li>
-                        </ul>
                     </li>
                     <li sec:authorize="!hasAuthority('ADMIN')">
                         <a th:href="@{/cart/{userNo}(userNo=1)}">
