@@ -127,12 +127,13 @@ public class BoardController {
         Board board = boardService.getBoardById(boardNo);
         User user = userService.findUserByUserId(userId);
 
-        if (user.getIsAdmin() != 'Y' && board.getUserNo() != user.getUserNo()) {
-            return "redirect:/boards";
-        }
+        // 작성자인지 확인
+        boolean isAuthor = board.getUserNo() == user.getUserNo();
+
         List<Reply> replies = replyService.getRepliesByBoardNo(boardNo);
         model.addAttribute("board", board);
         model.addAttribute("replies", replies);
+        model.addAttribute("isAuthor", isAuthor);
         return "board/view";
     }
 }

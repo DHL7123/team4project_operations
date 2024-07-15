@@ -66,7 +66,11 @@ public class ReplyController {
     public String deleteReply(@PathVariable int replyNo, HttpSession session) {
         String userId = (String) session.getAttribute("userId");
         User user = userService.findUserByUserId(userId);
-        Reply reply = replyService.getRepliesByBoardNo(replyNo).get(0); // assuming there is only one reply per board for simplicity
+
+        Reply reply = replyService.getReplyById(replyNo);
+        if (reply == null) {
+            return "redirect:/boards?error=replyNotFound";
+        }
 
         // 관리자만 댓글 삭제 가능
         if (user.getIsAdmin() != 'Y') {
@@ -74,8 +78,14 @@ public class ReplyController {
         }
 
         replyService.deleteReply(replyNo);
+
+        Board board = boardService.getBoardById(reply.getBoardNo());
+        board.setIsAnswered('N');
+        boardService.updateBoard(board);
+
         return "redirect:/boards/view/" + reply.getBoardNo();
     }
+
 
     @GetMapping("/board/{boardNo}")
     public String listReplies(@PathVariable int boardNo, Model model) {

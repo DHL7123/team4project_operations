@@ -11,12 +11,12 @@
 <body>
 <header th:replace="~{header :: header}"></header>
 <div class="container mt-5">
-    <h2 th:text="${board.boardTitle}">게시물 제목</h2>
-    <p th:text="${#dates.format(board.boardTimestamp, 'yyyy-MM-dd HH:mm')}">게시물 날짜</p>
-    <p th:text="${board.boardContent}">게시물 내용</p>
-    <div class="text-right">
-        <a th:href="@{/boards/edit/{boardNo}(boardNo=${board.boardNo})}" class="btn btn-warning">수정</a>
-        <a th:href="@{/boards/delete/{boardNo}(boardNo=${board.boardNo})}" class="btn btn-danger">삭제</a>
+    <h2 th:text="${board != null ? board.boardTitle : '게시물 제목'}">게시물 제목</h2>
+    <p th:text="${board != null ? #dates.format(board.boardTimestamp, 'yyyy-MM-dd HH:mm') : '게시물 날짜'}">게시물 날짜</p>
+    <p th:text="${board != null ? board.boardContent : '게시물 내용'}">게시물 내용</p>
+    <div class="text-right" th:if="${isAuthor}">
+        <a th:href="@{/boards/edit/{boardNo}(boardNo=${board.boardNo})}" class="btn btn-warning btn-sm">수정</a>
+        <a th:href="@{/boards/delete/{boardNo}(boardNo=${board.boardNo})}" class="btn btn-danger btn-sm">삭제</a>
     </div>
     <div class="replies mt-5">
         <h3>답글</h3>
@@ -30,9 +30,8 @@
         </div>
     </div>
     <div class="comment-form mt-5" sec:authorize="hasAuthority('ADMIN')">
-        <h3>댓글 작성</h3>
         <form th:action="@{/replies/create}" method="post">
-            <input type="hidden" name="boardNo" th:value="${board.boardNo}" />
+            <input type="hidden" name="boardNo" th:value="${board != null ? board.boardNo : ''}" />
             <div class="form-group">
                 <textarea class="form-control" name="replyContent" rows="3" required></textarea>
             </div>

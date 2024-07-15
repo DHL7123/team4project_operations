@@ -16,4 +16,6 @@ public interface ReplyMapper {
     List<Reply> findRepliesByBoardNo(@Param("boardNo") int boardNo);
 
     void deleteReply(@Param("replyNo") int replyNo);
+
+    Reply findReplyById(int replyNo);
 }
