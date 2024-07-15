@@ -4,21 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c3d7cf85-c82f-4d99-bfa0-82f0efec097a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evoproject/src/main/java/com/evo/evoproject/Mapper/board/ReplyMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/evoproject/src/main/java/com/evo/evoproject/Mapper/board/ReplyMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evoproject/src/main/java/com/evo/evoproject/controller/board/BoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/evoproject/src/main/java/com/evo/evoproject/controller/board/BoardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evoproject/src/main/java/com/evo/evoproject/controller/board/ReplyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/evoproject/src/main/java/com/evo/evoproject/controller/board/ReplyController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evoproject/src/main/java/com/evo/evoproject/domain/board/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/evoproject/src/main/java/com/evo/evoproject/domain/board/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evoproject/src/main/java/com/evo/evoproject/service/board/BoardService.java" beforeDir="false" afterPath="$PROJECT_DIR$/evoproject/src/main/java/com/evo/evoproject/service/board/BoardService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evoproject/src/main/java/com/evo/evoproject/service/board/ReplyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/evoproject/src/main/java/com/evo/evoproject/service/board/ReplyService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evoproject/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/evoproject/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evoproject/src/main/resources/mapper/ReplyMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/evoproject/src/main/resources/mapper/ReplyMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evoproject/src/main/resources/templates/admin.html" beforeDir="false" afterPath="$PROJECT_DIR$/evoproject/src/main/resources/templates/admin.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evoproject/src/main/resources/templates/board/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/evoproject/src/main/resources/templates/board/list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evoproject/src/main/resources/templates/board/view.html" beforeDir="false" afterPath="$PROJECT_DIR$/evoproject/src/main/resources/templates/board/view.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp.log" beforeDir="false" afterPath="$PROJECT_DIR$/myapp.log" afterDir="false" />
-    </list>
+    <list default="true" id="c3d7cf85-c82f-4d99-bfa0-82f0efec097a" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -157,7 +143,7 @@
       <workItem from="1720759215244" duration="398000" />
       <workItem from="1720760628652" duration="29000" />
       <workItem from="1720961243194" duration="162000" />
-      <workItem from="1721017999334" duration="1150000" />
+      <workItem from="1721017999334" duration="1415000" />
     </task>
     <servers />
   </component>
