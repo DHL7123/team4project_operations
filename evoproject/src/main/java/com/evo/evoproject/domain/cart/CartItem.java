@@ -1,5 +1,6 @@
 package com.evo.evoproject.domain.cart;
 
+import com.evo.evoproject.domain.image.Image;
 import lombok.Data;
 
 @Data
@@ -8,7 +9,7 @@ public class CartItem {
     private String proName;
     private int proPrice;
     private int shipping;
-    private int soldout;
+
+    private Image mainImage;
 }
-//상품 수량 추가
-//soldout 삭제
+

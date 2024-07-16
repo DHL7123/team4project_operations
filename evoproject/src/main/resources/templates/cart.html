@@ -35,16 +35,22 @@
 
         <tbody th:if="${cartItems != null}">
         <tr th:each="cartItem, cartItemStat : ${cartItems}">
-            <!-- 체크박스 -->
             <td>
                 <input type="checkbox" class="itemCheckbox" th:id="'selectItem_' + ${cartItemStat.index}" name="proNos" th:value="${cartItem.products[0].proNo}">
             </td>
-            <td th:each="product : ${cartItem.products}" th:text="${product.proName}"></td>
-            <td th:each="product : ${cartItem.products}" th:data-price="${product.proPrice}" th:text="${product.proPrice}"></td>
+            <td class="product-column">
+                <div class="product-container">
+                    <span th:each="product : ${cartItem.products}" class="product-item">
+                        <img th:src="${product.mainImage.imageName}" alt="Product Image">
+                        <span th:text="${product.proName}"></span>
+                    </span>
+                </div>
+            </td>
+            <td th:each="product : ${cartItem.products}" th:text="${product.proPrice}"></td>
             <td th:text="${cartItem.cartQuantity}"></td>
-            <td th:each="product : ${cartItem.products}" th:data-shipping="${product.shipping}" th:text="${product.shipping}"></td>
+            <td th:each="product : ${cartItem.products}" th:text="${product.shipping}"></td>
             <td>
-                <span th:each="product : ${cartItem.products}" th:data-subtotal="${product.proPrice * cartItem.cartQuantity + product.shipping}" th:text="${product.proPrice * cartItem.cartQuantity + product.shipping}"></span>
+                <span th:each="product : ${cartItem.products}" th:text="${product.proPrice * cartItem.cartQuantity + product.shipping}"></span>
             </td>
         </tr>
         </tbody>
@@ -52,9 +58,12 @@
 
     <!-- 선택 상품 삭제 버튼 -->
     <div class="text-right mt-3">
-        <button type="submit" class="btn btn-sm btn-light-brown">
-            <img th:src="@{/image/delete.png}" alt="Delete" height="30px" width="30px">
-        </button>
+        <form th:action="@{/cart/deleteSelected}" method="post">
+            <input type="hidden" name="userNo" th:value="${userNo}" />
+            <button type="submit" class="btn btn-sm btn-light-brown">
+                <img th:src="@{/image/delete.png}" alt="Delete" height="30px" width="30px">
+            </button>
+        </form>
     </div>
 </form>
 
@@ -93,58 +102,60 @@
         var cartItems = [];
         var totalAmount = 0;
 
-        function formatNumber(number) {
-            return number.toLocaleString('ko-KR');
-        }
-
         function calculateTotal() {
-            totalAmount = 0; // 총 금액 재설정
-            var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked'); // 선택된 체크박스들 가져오기
+            totalAmount = 0;
+            var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
 
             checkboxes.forEach(function(checkbox) {
-                if (!checkbox.id.startsWith('selectItem_')) return; // selectAllCheckbox 건너뛰기
-                var row = checkbox.closest('tr'); // 체크박스가 속한 행 가져오기
-                var price = parseFloat(row.querySelector('[data-price]').dataset.price); // 가격 가져오기
-                var quantity = parseInt(row.querySelector('td:nth-child(4)').textContent); // 수량 가져오기
-                var shipping = parseFloat(row.querySelector('[data-shipping]').dataset.shipping); // 배송비 가져오기
-                var subTotal = price * quantity + shipping;
-                row.querySelector('[data-subtotal]').textContent = formatNumber(subTotal);
-                totalAmount += subTotal;
+                if (!checkbox.id.startsWith('selectItem_')) return;
+
+                var row = checkbox.closest('tr');
+                var price = parseFloat(row.querySelector('td:nth-child(3)').textContent.trim().replace(',', '')); // Get price
+                var quantity = parseInt(row.querySelector('td:nth-child(4)').textContent.trim()); // Get quantity
+                var shipping = parseFloat(row.querySelector('td:nth-child(5)').textContent.trim().replace(',', '')); // Get shipping cost
+                var subTotal = price * quantity + shipping; // Calculate subtotal
+                row.querySelector('td:nth-child(6) span').textContent = formatNumber(subTotal); // Update subtotal display
+                totalAmount += subTotal; // Accumulate total amount
             });
 
-            var formattedTotal = formatNumber(totalAmount);
-            document.getElementById('totalAmount').textContent = '₩' + formattedTotal;
+            // Format total amount with Korean currency format and prepend '₩'
+            var formattedTotal = '₩' + totalAmount.toLocaleString('ko-KR');
+            document.getElementById('totalAmount').textContent = formattedTotal;
 
-            // 체크박스가 선택되어 있으면 결제 버튼 표시
+            // Display checkout button if items are selected
             var checkoutBtn = document.querySelector('.checkoutBtn a');
             checkoutBtn.style.display = checkboxes.length > 0 ? 'block' : 'none';
+        }
+
+        function formatNumber(number) {
+            return number.toLocaleString('ko-KR');
         }
 
         // 페이지 로드 시 모든 체크박스 선택 및 총 금액 계산
         var checkboxes = document.querySelectorAll('input[type="checkbox"]');
         checkboxes.forEach(function(checkbox) {
-            checkbox.checked = true; // 모든 체크박스를 선택 상태로 설정
+            checkbox.checked = true;
         });
 
-        // 페이지 로드 시 가격과 배송비를 포맷 맞추기
-        var prices = document.querySelectorAll('[data-price]');
+        // 가격과 배송비 포맷 맞추기
+        var prices = document.querySelectorAll('td:nth-child(3)');
         prices.forEach(function(priceElement) {
-            var price = parseFloat(priceElement.dataset.price);
+            var price = parseFloat(priceElement.textContent.trim().replace(',', ''));
             priceElement.textContent = formatNumber(price);
         });
 
-        var shippings = document.querySelectorAll('[data-shipping]');
+        var shippings = document.querySelectorAll('td:nth-child(5)');
         shippings.forEach(function(shippingElement) {
-            var shipping = parseFloat(shippingElement.dataset.shipping);
+            var shipping = parseFloat(shippingElement.textContent.trim().replace(',', ''));
             shippingElement.textContent = formatNumber(shipping);
         });
 
-        calculateTotal(); // 선택된 체크박스를 기반으로 총 금액 계산
+        calculateTotal();
 
         // 체크박스 상태 변화를 감지해 총 금액 재계산
         checkboxes.forEach(function(checkbox) {
             checkbox.addEventListener('change', function() {
-                calculateTotal(); // 체크박스 상태가 변할 때 총 금액 재계산
+                calculateTotal();
             });
         });
 
@@ -152,11 +163,11 @@
         window.toggleSelectAll = function(source) {
             var checkboxes = document.querySelectorAll('input[type="checkbox"]');
             checkboxes.forEach(function(checkbox) {
-                checkbox.checked = source.checked; // 전체 선택 체크박스 상태에 따라 개별 체크박스 상태 변경
+                checkbox.checked = source.checked;
             });
 
-            calculateTotal(); // 선택된 체크박스를 기반으로 총 금액 재계산
-        }
+            calculateTotal();
+        };
     });
 
 </script>
