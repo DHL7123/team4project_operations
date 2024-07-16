@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Order List</title>
+    <link href="../static/css/order.css" rel="stylesheet" th:href="@{/css/order.css}">
+    <style>
+        .container {
+            margin: 0 auto 0 230px; /* 페이지 가로 중앙에 위치 */
+        }
+        .product {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            border-radius: 10px; /* 모서리를 둥글게 만들었음 */
+            justify-content: space-between;
+            width: 1400px; /* 직사각형 너비 조정 */
+            height:400px;
+            background-color: #F7F7F7;
+        }
+        .product img {
+            max-width: 100px;
+            height: auto;
+            margin-left: 30px;
+        }
+        .product-details {
+            flex: 1;
+            padding: 0 10px;
+            text-align: center;
+        }
+        .product-name {
+            font-weight: normal;
+            font-size: 3em;
+            margin-bottom: 150px;
+        }
+        .product-price {
+            font-weight: normal;
+            margin-top: 5px;
+            font-size: 3em;
+        }
+        .product-actions {
+            text-align: center;
+            margin-top: 10px;
+        }
+        .status {
+            margin-top: 150px;
+            font-weight: normal;
+            font-size: 3em;
+        }
+        .btn-primary {
+            font-weight: normal;
+            font-size: 2em;
+        }
+    </style>
+</head>
+<body>
+<header class="header">
+    <div class="headerCon  tent">
+        <div class="rectangle">
+            <div class="headerText">My Page</div>
+        </div>
+    </div>
+</header>
+<div class="bar">
+    <div class="barText">My Page</div>
+</div>
+<div class="bo">
+    <ul class="leftBar">
+        <li class="type1" id="all"><a href="page1.html">Order</a></li>
+        <li class="type" id="chair"><a href="page2.html">주문목록</a></li>
+        <li class="type" id="lamp"><a href="page3.html">취소/반품 내역</a></li>
+        <li class="type1" id="tsd"><a href="page3.html">Board</a></li>
+        <li class="type" id="inq"><a href="page3.html">문의</a></li>
+        <li class="type1" id="pri"><a href="page3.html">Privacy</a></li>
+    </ul>
+    <div class="container">
+        <div th:if="${#lists.isEmpty(orders)}">
+            <p>주문한 목록이 없습니다.</p>
+        </div>
+        <div th:if="${not #lists.isEmpty(orders)}">
+            <div th:each="order : ${orders}" class="product">
+                <img th:src="@{/images/default-product-image.jpg}" alt="Product Image" />
+                <div class="product-details">
+                    <div class="product-name" th:text="${order.item}">Product Name</div>
+                    <div class="product-price" th:text="${order.price}+원">$100.00</div>
+                </div>
+                <div class="product-actions">
+                    <button type="button" class="btn btn-primary">결제 취소 신청</button>
+                    <div class="status" th:text="${order.status}">Pending</div>
+                </div>
+            </div>
+
+            <a th:href="@{/orders/create}">Create New Order</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
