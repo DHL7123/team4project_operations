@@ -1,6 +1,7 @@
 package com.evo.evoproject.Mapper.board;
 
 import com.evo.evoproject.domain.board.Board;
+import com.evo.evoproject.domain.board.BoardImage;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -26,4 +27,10 @@ public interface BoardMapper {
     int countAllBoards();
 
     int countBoardsByUserNo(@Param("userNo") int userNo);
+
+    void insertBoardImage(BoardImage boardImage);
+
+    List<Integer> findImageIdsByBoardNo(int boardNo);
+
+
 }

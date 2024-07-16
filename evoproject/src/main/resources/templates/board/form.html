@@ -129,7 +129,7 @@
 </div>
 <div class="container mt-5">
     <h2 th:text="${action == 'create' ? '문의 작성' : '문의 수정'}">문의 작성</h2>
-    <form th:action="@{/boards/create}" th:if="${action == 'create'}" method="post">
+    <form th:action="@{/boards/create}" th:if="${action == 'create'}" method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label for="createBoardTitle">제목</label>
             <input type="text" class="form-control" id="createBoardTitle" name="boardTitle" th:value="${board.boardTitle}" required>
@@ -147,11 +147,15 @@
                 <option value="3" th:selected="${board.categoryId == 3}">기타</option>
             </select>
         </div>
+        <div class="form-group">
+            <label for="createBoardImage">이미지 업로드</label>
+            <input type="file" class="form-control" id="createBoardImage" name="image">
+        </div>
         <button type="submit" class="btn btn-primary">저장</button>
         <a th:href="@{/boards}" class="btn btn-secondary">취소</a>
     </form>
 
-    <form th:action="@{/boards/edit/{boardNo}(boardNo=${board.boardNo})}" th:if="${action == 'edit'}" method="post">
+    <form th:action="@{/boards/edit/{boardNo}(boardNo=${board.boardNo})}" th:if="${action == 'edit'}" method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label for="editBoardTitle">제목</label>
             <input type="text" class="form-control" id="editBoardTitle" name="boardTitle" th:value="${board.boardTitle}" required>
@@ -168,6 +172,10 @@
                 <option value="2" th:selected="${board.categoryId == 2}">배송</option>
                 <option value="3" th:selected="${board.categoryId == 3}">기타</option>
             </select>
+        </div>
+        <div class="form-group">
+            <label for="editBoardImage">이미지 업로드</label>
+            <input type="file" class="form-control" id="editBoardImage" name="image">
         </div>
         <button type="submit" class="btn btn-primary">저장</button>
         <a th:href="@{/boards}" class="btn btn-secondary">취소</a>

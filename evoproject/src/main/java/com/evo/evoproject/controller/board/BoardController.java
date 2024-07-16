@@ -5,13 +5,16 @@ import com.evo.evoproject.domain.board.Reply;
 import com.evo.evoproject.domain.user.User;
 import com.evo.evoproject.service.board.BoardService;
 import com.evo.evoproject.service.board.ReplyService;
+import com.evo.evoproject.service.board.NaverImageUploadService;
 import com.evo.evoproject.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import jakarta.servlet.http.HttpSession;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -21,12 +24,14 @@ public class BoardController {
     private final BoardService boardService;
     private final UserService userService;
     private final ReplyService replyService;
+    private final NaverImageUploadService imageUploadService;
 
     @Autowired
-    public BoardController(BoardService boardService, UserService userService , ReplyService replyService) {
+    public BoardController(BoardService boardService, UserService userService , ReplyService replyService , NaverImageUploadService imageUploadService) {
         this.boardService = boardService;
         this.userService = userService;
         this.replyService = replyService;
+        this.imageUploadService = imageUploadService;
     }
 
     @GetMapping
@@ -67,11 +72,19 @@ public class BoardController {
     }
 
     @PostMapping("/create")
-    public String createBoard(@ModelAttribute Board board, HttpSession session) {
+    public String createBoard(@ModelAttribute Board board, @RequestParam("image") MultipartFile image, HttpSession session) {
         String userId = (String) session.getAttribute("userId");
         User user = userService.findUserByUserId(userId);
         board.setUserNo(user.getUserNo());
-        boardService.createBoard(board);
+
+        try {
+            // 트랜잭션 내에서 게시글과 이미지를 함께 처리
+            boardService.createBoardWithImage(board, image);
+        } catch (IOException e) {
+            e.printStackTrace();
+            // 필요시 오류 처리를 추가할 수 있습니다.
+        }
+
         return "redirect:/boards";
     }
 
@@ -94,7 +107,7 @@ public class BoardController {
     }
 
     @PostMapping("/edit/{boardNo}")
-    public String updateBoard(@PathVariable int boardNo, @ModelAttribute Board board, HttpSession session) {
+    public String updateBoard(@PathVariable int boardNo, @ModelAttribute Board board, @RequestParam("image") MultipartFile image, HttpSession session) {
         String userId = (String) session.getAttribute("userId");
         User user = userService.findUserByUserId(userId);
 
@@ -102,8 +115,14 @@ public class BoardController {
             return "redirect:/boards";
         }
 
-        board.setBoardNo(boardNo);
-        boardService.updateBoard(board);
+        try {
+            // 트랜잭션 내에서 게시글과 이미지를 함께 처리
+            boardService.updateBoardWithImage(board, image);
+        } catch (IOException e) {
+            e.printStackTrace();
+            // 필요시 오류 처리를 추가할 수 있습니다.
+        }
+
         return "redirect:/boards";
     }
 
