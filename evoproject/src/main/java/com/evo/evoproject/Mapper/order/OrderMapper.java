@@ -10,4 +10,5 @@ import java.util.List;
 public interface OrderMapper {
     List<Order> getOrdersByStatus(int status);
     List<Order> getAllOrders();
+    int countOrdersByStatus(int status);
 }

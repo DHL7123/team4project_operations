@@ -28,4 +28,9 @@ public class OrderServiceImpl implements OrderService {
     public List<Order> getAllOrders() {
         return orderMapper.getAllOrders();
     }
+
+    @Override
+    public int countOrdersByStatus(int status) {
+        return orderMapper.countOrdersByStatus(status);
+    }
 }

@@ -53,11 +53,11 @@
 
                     <div class="button-container">
                         <button onclick="location.href='/admin/manageOrder'">전체 주문 목록</button>
-                        <button onclick="location.href='/admin/manageOrder/0'">결제대기</button>
-                        <button onclick="location.href='/admin/manageOrder/1'">배송준비중</button>
-                        <button onclick="location.href='/admin/manageOrder/2'">배송중</button>
-                        <button onclick="location.href='/admin/manageOrder/3'">결제 취소/환불</button>
-                        <button onclick="location.href='/admin/manageOrder/4'">배송완료</button>
+                        <button onclick="location.href='/admin/manageOrder/0'">결제대기 (<span th:text="${countPending}"></span>)</button>
+                        <button onclick="location.href='/admin/manageOrder/1'">배송준비중 (<span th:text="${countPreparing}"></span>)</button>
+                        <button onclick="location.href='/admin/manageOrder/2'">배송중 (<span th:text="${countShipping}"></span>)</button>
+                        <button onclick="location.href='/admin/manageOrder/3'">결제 취소/환불 (<span th:text="${countRefunding}"></span>)</button>
+                        <button onclick="location.href='/admin/manageOrder/4'">배송완료 (<span th:text="${countCompleted}"></span>)</button>
                     </div>
 
                     <table>

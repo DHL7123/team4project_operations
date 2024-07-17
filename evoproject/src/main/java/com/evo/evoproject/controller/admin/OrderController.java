@@ -1,4 +1,3 @@
-// OrderController.java
 package com.evo.evoproject.controller.admin;
 
 import com.evo.evoproject.domain.order.Order;
@@ -28,12 +27,22 @@ public class OrderController {
     @GetMapping("/admin/manageOrder/{status}")
     public String getOrdersByStatus(@PathVariable int status, Model model) {
         model.addAttribute("orders", orderService.getOrdersByStatus(status));
+        model.addAttribute("countPending", orderService.countOrdersByStatus(0));
+        model.addAttribute("countPreparing", orderService.countOrdersByStatus(1));
+        model.addAttribute("countShipping", orderService.countOrdersByStatus(2));
+        model.addAttribute("countRefunding", orderService.countOrdersByStatus(3));
+        model.addAttribute("countCompleted", orderService.countOrdersByStatus(4));
         return "/admin/manageOrder";
     }
 
     @GetMapping("/admin/manageOrder")
     public String getAllOrders(Model model) {
         model.addAttribute("orders", orderService.getAllOrders());
+        model.addAttribute("countPending", orderService.countOrdersByStatus(0));
+        model.addAttribute("countPreparing", orderService.countOrdersByStatus(1));
+        model.addAttribute("countShipping", orderService.countOrdersByStatus(2));
+        model.addAttribute("countRefunding", orderService.countOrdersByStatus(3));
+        model.addAttribute("countCompleted", orderService.countOrdersByStatus(4));
         return "/admin/manageOrder";
     }
 }
