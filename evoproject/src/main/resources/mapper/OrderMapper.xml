@@ -42,9 +42,9 @@
     </update>
 
     <!-- 송장번호 입력 -->
-    <update id="updateDelivnum">
+    <update id="updateDelivnum" parameterType="Map">
         UPDATE orders
-        SET delivnum = #{delivnum}
+        SET order_delivnum = #{orderDelivnum}
         WHERE order_no = #{orderNo}
     </update>
 

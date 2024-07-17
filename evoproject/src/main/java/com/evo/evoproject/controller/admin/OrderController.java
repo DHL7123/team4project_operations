@@ -46,15 +46,18 @@ public class OrderController {
     }
 
     @PostMapping("/admin/manageOrder/{orderNo}/{status}")
-    public String updateOrderStatus(@PathVariable String orderNo, @PathVariable int status) {
+    public String updateOrderStatus(@PathVariable String orderNo, @PathVariable int status, @RequestParam("prevStatus") int prevStatus) {
         orderService.updateOrderStatus(orderNo, status);
-        return "redirect:/admin/manageOrder";
+        return "redirect:/admin/manageOrder/" + prevStatus;
     }
 
-    @PostMapping("/admin/manageOrder/{orderNo}/{status}/delivnum")
-    public String updateDelivnum(@PathVariable String orderNo, @PathVariable int status, @RequestParam String delivnum) {
-        orderService.updateDelivnum(orderNo, delivnum);
+    @PostMapping("/admin/manageOrder/{orderNo}/{status}/orderDelivnum")
+    public String updateDelivnum(@PathVariable String orderNo, @PathVariable int status, @RequestParam String orderDelivnum, @RequestParam("prevStatus") int prevStatus) {
+        Map<String, String> params = new HashMap<>();
+        params.put("orderNo", orderNo);
+        params.put("orderDelivnum", orderDelivnum);
+        orderService.updateDelivnum(params);
         orderService.updateOrderStatus(orderNo, status);
-        return "redirect:/admin/manageOrder";
+        return "redirect:/admin/manageOrder/" + prevStatus;
     }
 }

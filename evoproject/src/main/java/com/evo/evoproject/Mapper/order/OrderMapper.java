@@ -3,9 +3,9 @@ package com.evo.evoproject.Mapper.order;
 import com.evo.evoproject.domain.order.Order;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
+import java.util.Map;
 
 @Mapper
 public interface OrderMapper {
@@ -13,5 +13,5 @@ public interface OrderMapper {
     List<Order> getAllOrders();
     int countOrdersByStatus(int status);
     void updateOrderStatus(@Param("orderNo") String orderNo, @Param("status") int status);
-    void updateDelivnum(String orderNo, String delivnum);
+    void updateDelivnum(Map<String, String> params);
 }

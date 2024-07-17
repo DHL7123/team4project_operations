@@ -79,27 +79,38 @@
                             <td>
                                 <span th:if="${order.orderStatus == 0}">결제 대기</span>
                                 <form th:if="${order.orderStatus == 0}" method="post" th:action="@{/admin/manageOrder/{orderNo}/{status}(orderNo=${order.orderNo}, status=1)}" id="updateForm">
+                                    <input type="hidden" name="prevStatus" th:value="${selectedStatus}">
                                     <button type="button" onclick="confirmUpdate()" class="manageConfirmBtn">결제완료</button>
                                 </form>
 
                                 <span th:if="${order.orderStatus == 1}">
                                     배송 준비중 <br>
-                                    <button type="button" onclick="showPopup('${order.orderNo}')" class="manageConfirmBtn">송장번호입력</button>
-                                    <div id="popup-${order.orderNo}" class="popup" style="display: none;">
+                                    <button type="button" th:onclick="'showPopup(\'' + ${order.orderNo} + '\', \'inputPopup\');'">송장번호입력</button>
+                                    <div th:id="'inputPopup-' + ${order.orderNo}" class="popup" style="display: none;">
                                         <div class="popup-content">
-                                            <h2>운송장 번호</h2>
-                                            <form method="post" th:action="@{/admin/manageOrder/{orderNo}/{status}(orderNo=${order.orderNo}, status=2)}">
-                                                <input type="text" name="delivnum" placeholder="송장번호">
+                                            <form method="post" th:action="@{/admin/manageOrder/{orderNo}/{status}/orderDelivnum(orderNo=${order.orderNo}, status=2)}">
+                                                <h2>운송장 번호</h2>
+                                                <input type="text" name="orderDelivnum" placeholder="송장번호">
+                                                <input type="hidden" name="prevStatus" th:value="${selectedStatus}">
                                                 <div style="margin-top: 20px;">
                                                     <button type="submit" style="border: none; background-color: #0d6efd; color: white">확인</button>
-                                                    <button type="button" onclick="hidePopup('${order.orderNo}')" style="border: none; background-color: #939393; color: white">취소</button>
+                                                    <button type="button" th:onclick="'hidePopup(\'' + ${order.orderNo} + '\', \'inputPopup\');'" style="border: none; background-color: #939393; color: white">취소</button>
                                                 </div>
                                             </form>
                                         </div>
                                     </div>
                                 </span>
-
-                                <span th:if="${order.orderStatus == 2}">배송중</span>
+                                <span th:if="${order.orderStatus == 2}">
+                                    배송중 <br>
+                                    <button type="button" th:onclick="'showPopup(\'' + ${order.orderNo} + '\', \'viewPopup\');'">송장번호조회</button>
+                                    <div th:id="'viewPopup-' + ${order.orderNo}" class="popup" style="display: none;">
+                                        <div class="popup-content">
+                                            <h2>운송장 번호</h2>
+                                            <p th:text="${order.orderDelivnum}"></p>
+                                            <button type="button" th:onclick="'hidePopup(\'' + ${order.orderNo} + '\', \'viewPopup\');'" style="border: none; background-color: #939393; color: white">닫기</button>
+                                        </div>
+                                    </div>
+                                </span>
 
                                 <span th:if="${order.orderStatus == 3}">결제 취소/환불</span>
 
@@ -131,12 +142,12 @@
         }
     }
 
-    function showPopup(orderNo) {
-        document.getElementById('popup-' + orderNo).style.display = 'block';
+    function showPopup(orderNo, popupType) {
+        document.getElementById(popupType + '-' + orderNo).style.display = 'block';
     }
 
-    function hidePopup(orderNo) {
-        document.getElementById('popup-' + orderNo).style.display = 'none';
+    function hidePopup(orderNo, popupType) {
+        document.getElementById(popupType + '-' + orderNo).style.display = 'none';
     }
 
 </script>

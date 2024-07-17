@@ -7,6 +7,7 @@ import com.evo.evoproject.domain.order.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -40,7 +41,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public void updateDelivnum(String orderNo, String delivnum) {
-        orderMapper.updateDelivnum(orderNo, delivnum);
+    public void updateDelivnum(Map<String, String> params) {
+        orderMapper.updateDelivnum(params);
     }
 }
