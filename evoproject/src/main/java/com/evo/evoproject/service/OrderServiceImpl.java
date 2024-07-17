@@ -12,33 +12,20 @@ import java.util.Map;
 
 @Service
 public class OrderServiceImpl implements OrderService {
+    private final OrderMapper orderMapper;
 
     @Autowired
-    private OrderMapper orderMapper;
-
-    @Override
-    public List<Order> selectOrderList(Map<String, Object> map) {
-        return orderMapper.selectOrderList(map);
+    public OrderServiceImpl(OrderMapper orderMapper) {
+        this.orderMapper = orderMapper;
     }
 
     @Override
-    public int countAllOrders() {
-        return orderMapper.countAllOrders();
+    public List<Order> getOrdersByStatus(int status) {
+        return orderMapper.getOrdersByStatus(status);
     }
 
     @Override
-    public void updateDeliveryState(Order order) {
-        orderMapper.updateDeliveryState(order);
+    public List<Order> getAllOrders() {
+        return orderMapper.getAllOrders();
     }
-
-    @Override
-    public void insertDeliveryNumber(Order order) {
-        orderMapper.insertDeliveryNumber(order);
-    }
-
-    @Override
-    public void updateOrderToCancelRefund(Order order) {
-        orderMapper.updateOrderToCancelRefund(order);
-    }
-
 }

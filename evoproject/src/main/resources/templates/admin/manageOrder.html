@@ -51,32 +51,42 @@
                 <div class="container-fluid px-4">
                     <h1 class="mt-4">주문관리</h1>
 
-                    <table class="table table-striped">
-                        <thead>
+                    <div class="button-container">
+                        <button onclick="location.href='/admin/manageOrder'">전체 주문 목록</button>
+                        <button onclick="location.href='/admin/manageOrder/0'">결제대기</button>
+                        <button onclick="location.href='/admin/manageOrder/1'">배송준비중</button>
+                        <button onclick="location.href='/admin/manageOrder/2'">배송중</button>
+                        <button onclick="location.href='/admin/manageOrder/3'">결제 취소/환불</button>
+                        <button onclick="location.href='/admin/manageOrder/4'">배송완료</button>
+                    </div>
+
+                    <table>
                         <tr>
                             <th>주문일</th>
                             <th>주문번호</th>
                             <th>주문자</th>
+                            <th>총금액</th>
                             <th>결제금액</th>
+                            <th>상태</th>
                             <th>결제 취소/환불 처리</th>
                         </tr>
-                        </thead>
-
-                        <tbody>
                         <tr th:each="order : ${orders}">
-                            <td th:text="${order.orderTimestamp}"></td>
+                            <td th:text="${#dates.format(order.orderTimestamp, 'yyyy-MM-dd')}"></td>
                             <td th:text="${order.orderNo}"></td>
                             <td th:text="${order.orderName}"></td>
                             <td th:text="${order.orderPayment}"></td>
-                            <td th:text="${order.orderStatus}"></td>
+                            <td th:text="${order.orderPayment}"></td>
                             <td>
-                                <!-- Action buttons -->
-                                <button type="button" class="btn btn-danger">Cancel</button>
-                                <button type="button" class="btn btn-warning">Refund</button>
+                                <span th:if="${order.orderStatus == 0}">결제 대기</span>
+                                <span th:if="${order.orderStatus == 1}">배송 준비중</span>
+                                <span th:if="${order.orderStatus == 2}">배송중</span>
+                                <span th:if="${order.orderStatus == 3}">결제 취소/환불</span>
+                                <span th:if="${order.orderStatus == 4}">배송완료</span>
+                            </td>
+                            <td>
+                                <button th:if="${order.orderStatus == 3}">처리</button>
                             </td>
                         </tr>
-                        </tbody>
-
                     </table>
 
                 </div>
