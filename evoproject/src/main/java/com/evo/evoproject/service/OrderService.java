@@ -8,4 +8,6 @@ public interface OrderService {
     List<Order> getOrdersByStatus(int status);
     List<Order> getAllOrders();
     int countOrdersByStatus(int status);
+    void updateOrderStatus(String orderNo, int status);
+    void updateDelivnum(String orderNo, String delivnum);
 }

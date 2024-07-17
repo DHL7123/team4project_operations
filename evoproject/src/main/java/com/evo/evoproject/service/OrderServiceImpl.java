@@ -33,4 +33,14 @@ public class OrderServiceImpl implements OrderService {
     public int countOrdersByStatus(int status) {
         return orderMapper.countOrdersByStatus(status);
     }
+
+    @Override
+    public void updateOrderStatus(String orderNo, int status) {
+        orderMapper.updateOrderStatus(orderNo, status);
+    }
+
+    @Override
+    public void updateDelivnum(String orderNo, String delivnum) {
+        orderMapper.updateDelivnum(orderNo, delivnum);
+    }
 }
