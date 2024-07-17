@@ -1,5 +1,6 @@
 package com.evo.evoproject.service.product;
 
+import com.evo.evoproject.controller.product.dto.AdminRetrieveProductResponse;
 import com.evo.evoproject.controller.product.dto.RetrieveProductDetailResponse;
 import com.evo.evoproject.controller.product.dto.RetrieveProductsResponse;
 import com.evo.evoproject.domain.image.Image;
@@ -23,6 +24,7 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 @Slf4j
+
 public class ProductServiceImpl implements ProductService {
 
     private final ProductMapper productMapper;
@@ -32,13 +34,26 @@ public class ProductServiceImpl implements ProductService {
 
     @Transactional(readOnly = true)
     @Override
-    public RetrieveProductsResponse getAllProducts(String sort, int page, int size) {
+    public RetrieveProductsResponse getProductsUser(String sort, int page, int size) {
+        log.info("모든 제품 목록을 가져오는 서비스 - 정렬기준: {}, 페이지: {}, 사이즈: {}", sort, page, size);
+
+        int offset = (page - 1) * size;
+        int totalProducts = productMapper.countProducts();
+        int totalPages = (totalProducts + size - 1) / size;
+
+        List<RetrieveProduct> products = productMapper.findAllProductsUser(sort, offset, size);
+
+        return new RetrieveProductsResponse(products, sort, page, totalPages);
+    }
+
+    @Override
+    public AdminRetrieveProductResponse getProductsAdmin(String sort, int page, int size, Integer soldout) {
         log.info("모든 제품 목록을 가져오는 서비스 - 정렬기준: {}, 페이지: {}, 사이즈: {}", sort, page, size);
         int offset = (page - 1) * size;
-        List<RetrieveProduct> products = productMapper.findAllProducts(sort, offset, size);
-        int totalProducts = productMapper.countAllProducts();
+        List<RetrieveProduct> products = productMapper.findAllProductsAdmin(sort, offset, size,soldout);
+        int totalProducts = productMapper.countProductsAdmin(soldout);
         int totalPages = (totalProducts + size - 1) / size;
-        return new RetrieveProductsResponse(products, sort, page, totalPages);
+        return new AdminRetrieveProductResponse(products, sort,soldout, page, totalPages);
     }
 
     @Transactional
@@ -155,10 +170,9 @@ public class ProductServiceImpl implements ProductService {
             productMapper.saveProductImageMapping(product.getProductNo(), image.getImageId());
         }
     }
-
     @Transactional
     @Override
-    public void updateProductWithImages(RetrieveProduct product, List<MultipartFile> newImages) {
+    public void updateProductWithImages(RetrieveProduct product, List<MultipartFile> newImages, List<Integer> imagesToDelete) {
         log.info("updateProductWithImages called with product: {}", product.getProductName());
 
         // 기존 상품 정보 업데이트
@@ -168,38 +182,47 @@ public class ProductServiceImpl implements ProductService {
         List<Image> existingImages = imageMapper.findImagesByProductNo(product.getProductNo());
         log.info("Existing images: {}", existingImages);
 
-        // 새 이미지가 있을 경우 처리
-        if (newImages != null && !newImages.isEmpty()) {
-            List<Image> newImageEntities = newImages.stream()
-                    .filter(image -> !isDuplicateImage(image, product.getProductNo()))
-                    .map(image -> {
-                        log.info("Processing new image: {}", image.getOriginalFilename());
-                        Image imageEntity = imageService.convertToImageEntity(image);
-                        imageService.saveImage(imageEntity);
-                        return imageEntity;
-                    })
-                    .collect(Collectors.toList());
-
-            // 기존 이미지와 새 이미지를 결합
-            List<Image> allImages = new ArrayList<>(existingImages);
-            allImages.addAll(newImageEntities);
-
-            // 첫 번째 이미지를 메인 이미지로 설정
-            if (!allImages.isEmpty()) {
-                product.setMainImage(allImages.get(0));
-            }
-
-            // 이미지 매핑 저장
-            for (Image image : newImageEntities) {
-                productMapper.saveProductImageMapping(product.getProductNo(), image.getImageId());
-            }
-        } else {
-            // 새 이미지가 없을 경우 기존 이미지를 그대로 유지
-            if (!existingImages.isEmpty()) {
-                product.setMainImage(existingImages.get(0));
+        // 삭제할 이미지가 있을 경우 처리
+        if (imagesToDelete != null && !imagesToDelete.isEmpty()) {
+            for (Integer imageId : imagesToDelete) {
+                Image image = imageMapper.findImageById(imageId);
+                if (image != null) {
+                    // 클라우드 스토리지에서 이미지 삭제
+                    imageService.deleteImageByUrl(image.getImageName());
+                    // 이미지 매핑 삭제
+                    productMapper.deleteProductImageMapping(product.getProductNo(), imageId);
+                    // 이미지 레코드 삭제
+                    imageMapper.deleteImage(imageId);
+                }
             }
         }
 
+        // 새 이미지가 있을 경우 처리
+        List<Image> newImageEntities = new ArrayList<>();
+        if (newImages != null && !newImages.isEmpty()) {
+            for (MultipartFile newImage : newImages) {
+                if (newImage != null && !newImage.isEmpty()) {  // 파일이 있는 경우에만 처리
+                    log.info("Processing new image: {}", newImage.getOriginalFilename());
+                    Image imageEntity = imageService.convertToImageEntity(newImage);
+                    imageService.saveImage(imageEntity);
+                    newImageEntities.add(imageEntity);
+                }
+            }
+
+            // 새 이미지 매핑 저장
+            for (Image image : newImageEntities) {
+                productMapper.saveProductImageMapping(product.getProductNo(), image.getImageId());
+            }
+        }
+
+        // 첫 번째 이미지를 메인 이미지로 설정 (기존 이미지 + 새 이미지 중 첫 번째)
+        List<Image> allImages = new ArrayList<>(existingImages);
+        allImages.addAll(newImageEntities);
+        if (!allImages.isEmpty()) {
+            product.setMainImage(allImages.get(0));
+        }
+
+        // 메인 이미지 업데이트
         Map<String, Object> params = Map.of(
                 "productNo", product.getProductNo(),
                 "mainImage", product.getMainImage().getImageId()

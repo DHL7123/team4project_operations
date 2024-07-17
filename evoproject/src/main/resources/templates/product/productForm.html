@@ -2,77 +2,105 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title th:text="${isEdit} ? '상품 수정' : '새 상품 추가'">새 상품 추가</title>
-    <link rel="stylesheet" href="/css/styles.css">
+    <title th:text="${isEdit} ? '상품 수정' : '새 상품 추가'">상품 관리</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <style>
         .preview-img {
             width: 100px;
             height: 100px;
             margin: 10px;
         }
+        .modal-dialog {
+            max-width: 800px;
+            margin: auto;
+            overflow-y: auto;
+        }
+        .close {
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            font-size: 1.2rem;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
-<h1 th:text="${isEdit} ? '상품 수정' : '새 상품 추가'">새 상품 추가</h1>
-<form id="productForm" th:action="@{${isEdit} ? '/admin/product/update' : '/admin/product/save'}" method="post" enctype="multipart/form-data">
-    <input type="hidden" th:if="${isEdit}" name="productNo" th:value="${product.productNo}"/>
-    <input type="hidden" name="isEdit" th:value="${isEdit}"/>
+<div class="container mt-5">
+    <h1 th:text="${isEdit} ? '상품 수정' : '새 상품 추가'">상품 관리</h1>
+    <form id="productForm" th:action="@{${isEdit} ? '/admin/product/update' : '/admin/product/save'}" method="post" enctype="multipart/form-data">
+        <input type="hidden" th:if="${isEdit}" name="productNo" th:value="${product.productNo}"/>
+        <input type="hidden" name="isEdit" th:value="${isEdit}"/>
 
-    <label for="productName">상품 이름:</label>
-    <input type="text" id="productName" name="productName" th:value="${product.productName}" required/>
-
-    <label for="productDes">상품 설명:</label>
-    <textarea id="productDes" name="productDes" required th:text="${product.productDes}"></textarea>
-
-    <label for="categoryId">카테고리:</label>
-    <select id="categoryId" name="categoryId" required>
-        <option value="1" th:selected="${product.categoryId == 1}">Chair</option>
-        <option value="2" th:selected="${product.categoryId == 2}">Lamp</option>
-        <option value="3" th:selected="${product.categoryId == 3}">Table</option>
-        <option value="4" th:selected="${product.categoryId == 4}">Cabinet</option>
-        <option value="5" th:selected="${product.categoryId == 5}">Decorative</option>
-        <option value="6" th:selected="${product.categoryId == 6}">Tableware</option>
-    </select>
-
-    <label for="price">가격:</label>
-    <input type="number" id="price" name="price" th:value="${product.price}" required/>
-
-    <label for="shipping">배송:</label>
-    <input type="number" id="shipping" name="shipping" th:value="${product.shipping}" required/>
-
-    <label for="stock">재고:</label>
-    <input type="number" id="stock" name="stock" th:value="${product.stock}" required/>
-
-    <label for="images">이미지:</label>
-    <input type="file" id="images" name="images" multiple accept="image/*" onchange="previewImages()"/>
-    <div id="preview"></div>
-
-    <div th:if="${isEdit}">
-        <h3>기존 이미지</h3>
-        <div th:each="imageUrl : ${imageUrls}">
-            <img th:src="${imageUrl}" alt="상품 이미지" class="preview-img"/>
+        <div class="form-group">
+            <label for="productName">상품 명:</label>
+            <input type="text" class="form-control" id="productName" name="productName" th:value="${product.productName}" required/>
         </div>
-    </div>
 
-    <button type="submit" th:text="${isEdit} ? '상품 수정' : '상품 추가'">상품 추가</button>
-</form>
+        <div class="form-group">
+            <label for="categoryId">카테고리:</label>
+            <select class="form-control" id="categoryId" name="categoryId" required>
+                <option value="1" th:selected="${product.categoryId == 1}">Chair</option>
+                <option value="2" th:selected="${product.categoryId == 2}">Lamp</option>
+                <option value="3" th:selected="${product.categoryId == 3}">Table</option>
+                <option value="4" th:selected="${product.categoryId == 4}">Cabinet</option>
+                <option value="5" th:selected="${product.categoryId == 5}">Decorative</option>
+                <option value="6" th:selected="${product.categoryId == 6}">Tableware</option>
+            </select>
+        </div>
 
-<a th:href="@{/admin/product}">목록으로 돌아가기</a>
+        <div class="form-group">
+            <label for="price">상품 가격:</label>
+            <input type="number" class="form-control" id="price" name="price" th:value="${product.price}" required/>
+        </div>
+
+        <div class="form-group">
+            <label for="shipping">배송비:</label>
+            <input type="number" class="form-control" id="shipping" name="shipping" th:value="${product.shipping}" required/>
+        </div>
+
+        <div class="form-group">
+            <label for="images">이미지:</label>
+            <input type="file" class="form-control-file" id="images" name="images" multiple accept="image/*" onchange="previewImages()"/>
+            <div id="preview" class="d-flex flex-wrap"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="stock">재고:</label>
+            <input type="number" class="form-control" id="stock" name="stock" th:value="${product.stock}" required/>
+        </div>
+
+        <div class="form-group">
+            <label for="productDes">상품 설명:</label>
+            <textarea class="form-control" id="productDes" name="productDes" rows="3" required th:text="${product.productDes}"></textarea>
+        </div>
+
+        <div th:if="${isEdit}">
+            <h5>기존 이미지</h5>
+            <div class="d-flex flex-wrap" th:each="image : ${product.images}">
+                <div class="mr-2 mb-2">
+                    <img th:src="@{${image.imageName}}" alt="상품 이미지" class="preview-img"/>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="imagesToDelete" th:value="${image.imageId}">
+                        <label class="form-check-label">삭제</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary mt-3" th:text="${isEdit} ? '상품 수정' : '상품 추가'">상품 추가</button>
+    </form>
+</div>
 
 <script>
     let selectedFiles = [];
 
     function previewImages() {
         const files = document.getElementById('images').files;
-        selectedFiles = selectedFiles.concat(Array.from(files));
-        updatePreview();
-    }
-
-    function updatePreview() {
         const preview = document.getElementById('preview');
         preview.innerHTML = '';
 
-        selectedFiles.forEach((file, index) => {
+        Array.from(files).forEach(file => {
             const reader = new FileReader();
             reader.onload = (e) => {
                 const img = document.createElement('img');
@@ -80,20 +108,35 @@
                 img.classList.add('preview-img');
                 preview.appendChild(img);
 
-                // Add remove button
                 const removeButton = document.createElement('button');
                 removeButton.textContent = '이미지 삭제';
                 removeButton.type = 'button';
-                removeButton.onclick = () => removeImage(index);
+                removeButton.classList.add('btn', 'btn-danger', 'btn-sm', 'ml-2');
+                removeButton.onclick = () => removeImage(file);
                 preview.appendChild(removeButton);
             };
             reader.readAsDataURL(file);
         });
     }
 
-    function removeImage(index) {
-        selectedFiles.splice(index, 1);
+    function removeImage(file) {
+        selectedFiles = selectedFiles.filter(f => f !== file);
         updatePreview();
+    }
+
+    function updatePreview() {
+        const preview = document.getElementById('preview');
+        preview.innerHTML = '';
+        selectedFiles.forEach(file => {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                const img = document.createElement('img');
+                img.src = e.target.result;
+                img.classList.add('preview-img');
+                preview.appendChild(img);
+            };
+            reader.readAsDataURL(file);
+        });
     }
 
     document.getElementById('productForm').onsubmit = function(e) {
@@ -102,6 +145,8 @@
         document.getElementById('images').files = dataTransfer.files;
     }
 </script>
-
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 </html>

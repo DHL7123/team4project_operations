@@ -13,7 +13,7 @@ body, ul, li {
 }
 
 body {
-    background-color: #bababa;
+    background-color: white;
 }
 
 #wrap{
@@ -75,7 +75,7 @@ div#rightMenu a{
     color: black;
 }
 div#rightMenu a:hover{
-    color: gray;
+    color: white;
 }
 
 
@@ -143,7 +143,7 @@ div#rightMenu a:hover{
 }
 
 .top-bar__menu-box-1 ul > li:hover > a {
-    color: #555;
+    color: #f0f0f0;
 }
 
 .top-bar__menu-box-1 > ul > li {

@@ -35,7 +35,7 @@
 
 <body class="bg-light">
 
-<header th:replace="header :: header" class="mb-4"></header>
+<header th:replace="~{header :: header}"></header>
 
 <div class="container">
     <h1 class="text-center mb-4">Product Detail</h1>
@@ -55,8 +55,15 @@
                     <td th:text="${productDetailResponse.product.productName}"></td>
                 </tr>
                 <tr>
-                    <th>Category ID</th>
-                    <td th:text="${productDetailResponse.product.categoryId}"></td>
+                    <th>Category</th>
+                    <td th:switch="${productDetailResponse.product.categoryId}">
+                        <span th:case="1">Chair</span>
+                        <span th:case="2">Lamp</span>
+                        <span th:case="3">Table</span>
+                        <span th:case="4">Cabinet</span>
+                        <span th:case="5">Decorative</span>
+                        <span th:case="6">Tableware</span>
+                    </td>
                 </tr>
                 <tr>
                     <th>Shipping</th>
@@ -72,15 +79,16 @@
                 </tr>
                 <tr>
                     <th>Stock</th>
-                    <td th:text="${productDetailResponse.product.soldout ? 'Sold Out' : productDetailResponse.product.stock}" th:classappend="${productDetailResponse.product.soldout ? 'text-danger' : ''}"></td>
+                    <td th:text="${productDetailResponse.product.soldout == 1 ? 'Sold Out' : productDetailResponse.product.stock}"
+                        th:classappend="${productDetailResponse.product.soldout == 1 ? 'text-danger' : ''}"></td>
                 </tr>
             </table>
 
-            <div class="text-center mt-4" th:if="${!productDetailResponse.product.soldout}">
+            <div class="text-center mt-4" th:if="${productDetailResponse.product.soldout == 0}">
                 <button class="btn btn-custom mb-2" onclick="location.href='/order.html'">구매하기</button>
                 <button class="btn btn-custom" onclick="location.href='/cart.html'">장바구니 담기</button>
             </div>
-            <div class="text-center mt-4" th:if="${productDetailResponse.product.soldout}">
+            <div class="text-center mt-4" th:if="${productDetailResponse.product.soldout == 1}">
                 <span class="text-danger">Sold Out</span>
             </div>
         </div>
@@ -102,6 +110,8 @@
     </div>
 </div>
 
-<footer th:replace="footer :: footer" class="mt-5"></footer>
+<footer th:replace="~{footer :: footer}"></footer>
+<script th:src="@{/js/script.js}"></script>
+
 </body>
 </html>

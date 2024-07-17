@@ -32,14 +32,14 @@ public class RetrieveProductsController {
      * @return 제품 목록 뷰 이름
      */
     @GetMapping
-    public String getAllProducts(
+    public String getProducts(
             @RequestParam(defaultValue = "pro_date_desc") String sort,
             @RequestParam(defaultValue = "1") int page,
             @RequestParam(defaultValue = "16") int size,
             Model model) {
         log.info("모든 제품 목록 요청 - 정렬기준: {}, 페이지: {}, 사이즈: {}", sort, page, size);
         try {
-            RetrieveProductsResponse response = productService.getAllProducts(sort, page, size);
+            RetrieveProductsResponse response = productService.getProductsUser(sort, page, size);
             model.addAttribute("productsResponse", response);
             model.addAttribute("products", response.getProducts());
             return "product/list";

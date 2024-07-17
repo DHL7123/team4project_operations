@@ -33,10 +33,15 @@ public class ImageServiceImpl implements ImageService {
     @Value("${cloud.aws.s3.bucket}")
     private String bucket;
 
+    private static final long MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
+
     @Override
     public void uploadImages(int productNo, List<MultipartFile> files) {
         List<Image> existingImages = imageMapper.findImagesByProductNo(productNo);
         for (MultipartFile file : files) {
+            if (file.getSize() > MAX_FILE_SIZE) {
+                throw new IllegalStateException("File size exceeds 5MB");
+            }
             if (!isDuplicateImage(file, existingImages)) {
                 Image imageEntity = convertToImageEntity(file);
                 saveImage(imageEntity);

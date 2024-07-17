@@ -1,9 +1,8 @@
 package com.evo.evoproject.controller.product;
 
-import com.evo.evoproject.controller.product.dto.RegisterProductRequest;
+import com.evo.evoproject.controller.product.dto.AdminRetrieveProductResponse;
 import com.evo.evoproject.controller.product.dto.RetrieveProductsResponse;
 import com.evo.evoproject.domain.product.RetrieveProduct;
-import com.evo.evoproject.service.image.ImageService;
 import com.evo.evoproject.service.product.ProductService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -24,17 +23,16 @@ import java.util.List;
 public class AdminProductController {
 
     private final ProductService productService;
-    private final ImageService imageService;
 
     @GetMapping
-    public String getAllProducts(@RequestParam(defaultValue = "id") String sort,
+    public String getProducts(@RequestParam(defaultValue = "pro_date_desc") String sort,
                                  @RequestParam(defaultValue = "1") int page,
                                  @RequestParam(defaultValue = "10") int size,
+                                 @RequestParam(required = false) Integer soldout,
                                  Model model) {
-        RetrieveProductsResponse response = productService.getAllProducts(sort, page, size);
+        AdminRetrieveProductResponse response = productService.getProductsAdmin(sort, page, size,soldout);
+        model.addAttribute("productsResponse", response);
         model.addAttribute("products", response.getProducts());
-        model.addAttribute("currentPage", response.getCurrentPage());
-        model.addAttribute("totalPages", response.getTotalPages());
         return "product/adminProductList";
     }
 
@@ -52,7 +50,6 @@ public class AdminProductController {
         }
         return "product/productForm";
     }
-
     @PostMapping("/save")
     public String saveProduct(@Valid @ModelAttribute RetrieveProduct product,
                               @RequestParam("images") List<MultipartFile> images) {
@@ -62,8 +59,9 @@ public class AdminProductController {
 
     @PostMapping("/update")
     public String updateProduct(@Valid @ModelAttribute RetrieveProduct product,
-                                @RequestParam("images") List<MultipartFile> images) {
-        productService.updateProductWithImages(product, images);
+                                @RequestParam("images") List<MultipartFile> images,
+                                @RequestParam(value = "imagesToDelete", required = false) List<Integer> imagesToDelete) {
+        productService.updateProductWithImages(product, images, imagesToDelete);
         return "redirect:/admin/product";
     }
 

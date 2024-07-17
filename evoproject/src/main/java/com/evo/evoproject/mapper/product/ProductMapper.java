@@ -10,9 +10,10 @@ import java.util.Map;
 
 @Mapper
 public interface ProductMapper {
-    List<RetrieveProduct> findAllProducts(@Param("sort")String sort, @Param("offset")int offset, @Param("size")int size);
+    List<RetrieveProduct> findAllProductsUser(@Param("sort")String sort, @Param("offset")int offset, @Param("size")int size);
+    List<RetrieveProduct> findAllProductsAdmin(@Param("sort")String sort, @Param("offset")int offset, @Param("size")int size,@Param("soldout") Integer soldout);
     RetrieveProduct findProductByNo(@Param("productNo") int productNo);
-    int countAllProducts();
+    int countProducts();
     int countProductsByCategory(int categoryId);
     List<RetrieveProduct> findProductsByCategory(@Param("sort")String sort, @Param("categoryId") int categoryId, @Param("offset") int offset, @Param("size") int size);
     void incrementProductViewCount(@Param("productNo")int productNo, @Param("count")int count);
@@ -25,4 +26,6 @@ public interface ProductMapper {
     void deleteProductImages(int productNo);
     void deleteProduct(int productNo);
     void updateProduct(RetrieveProduct product);
+    int countProductsAdmin(Integer soldout);
+    void deleteProductImageMapping(@Param("productNo") int productNo, @Param("imageId") int imageId);
 }

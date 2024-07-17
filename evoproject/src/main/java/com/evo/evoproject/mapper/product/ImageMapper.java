@@ -11,4 +11,5 @@ public interface ImageMapper {
     void saveImage(Image image);
     List<Image> findImagesByProductNo(@Param("productNo") int productNo);
     void deleteImage(int imageId);
+    Image findImageById(int imageId);
 }
