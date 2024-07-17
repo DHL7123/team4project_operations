@@ -19,26 +19,47 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+
     // 약관 동의 폼
     @GetMapping("/terms")
-    public String showTermsForm() {
+    public String showTermsForm(HttpSession session) {
+        if (session.getAttribute("loggedInUser") != null) {
+            return "redirect:/index"; // 로그인 상태라면 인덱스 페이지로 리디렉트
+        }
+        session.setAttribute("acceptedTerms", false); // 약관 동의 초기화
         return "terms";
     }
+
     // 약관 동의 처리
     @PostMapping("/terms")
-    public String acceptTerms() {
+    public String acceptTerms(HttpSession session) {
+        if (session.getAttribute("loggedInUser") != null) {
+            return "redirect:/"; // 로그인 상태라면 인덱스 페이지로 리디렉트
+        }
+        session.setAttribute("acceptedTerms", true); // 약관 동의 표시
         return "redirect:/register";
     }
 
     // 회원가입 폼
     @GetMapping("/register")
-    public String showRegisterForm(Model model) {
+    public String showRegisterForm(HttpSession session, Model model) {
+        if (session.getAttribute("loggedInUser") != null) {
+            return "redirect:/"; // 로그인 상태라면 인덱스 페이지로 리디렉트
+        }
+        Boolean acceptedTerms = (Boolean) session.getAttribute("acceptedTerms");
+        if (acceptedTerms == null || !acceptedTerms) {
+            return "redirect:/terms"; // 약관에 동의하지 않았다면 약관 페이지로 리디렉트
+        }
         model.addAttribute("user", new User());
         return "register";
     }
+
     // 회원가입 처리 메소드
     @PostMapping("/register")
-    public String registerUser(@ModelAttribute User user, Model model) {
+    public String registerUser(@ModelAttribute User user, HttpSession session, Model model) {
+        if (session.getAttribute("loggedInUser") != null) {
+            return "redirect:/"; // 로그인 상태라면 인덱스 페이지로 리디렉트
+        }
         if (userService.isUserIdTaken(user.getUserId())) {
             model.addAttribute("error", "이미 존재하는 아이디입니다.");
             return "register";
@@ -46,7 +67,6 @@ public class UserController {
         userService.registerUser(user);
         return "redirect:/login";
     }
-
     // 중복 아이디 체크 메소드
     @GetMapping("/check-username")
     @ResponseBody

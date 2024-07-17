@@ -4742,3 +4742,977 @@ Caused by: org.xml.sax.SAXParseException: The content of elements must consist o
 2024-07-16T17:08:35.311+09:00  INFO 16320 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
 2024-07-16T17:09:03.336+09:00  INFO 16320 --- [evoproject] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2024-07-16T17:09:03.392+09:00  INFO 16320 --- [evoproject] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-07-17T15:07:28.314+09:00  INFO 27612 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : Starting EvoprojectApplication using Java 17.0.11 with PID 27612 (D:\EVO\evoproject\build\classes\java\main started by skygv in D:\EVO)
+2024-07-17T15:07:28.317+09:00  INFO 27612 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : No active profile set, falling back to 1 default profile: "default"
+2024-07-17T15:07:29.922+09:00  INFO 27612 --- [evoproject] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8090 (http)
+2024-07-17T15:07:29.936+09:00  INFO 27612 --- [evoproject] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-07-17T15:07:29.936+09:00  INFO 27612 --- [evoproject] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-07-17T15:07:30.001+09:00  INFO 27612 --- [evoproject] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-07-17T15:07:30.002+09:00  INFO 27612 --- [evoproject] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1622 ms
+2024-07-17T15:07:31.061+09:00  INFO 27612 --- [evoproject] [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-07-17T15:07:31.267+09:00  INFO 27612 --- [evoproject] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@b86cb18, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@29c244e, org.springframework.security.web.context.SecurityContextHolderFilter@63e70bf9, org.springframework.security.web.header.HeaderWriterFilter@38dbeb39, org.springframework.web.filter.CorsFilter@6cc8da1c, org.springframework.security.web.authentication.logout.LogoutFilter@1b60d324, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@3f9f8d23, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@419f0ea, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@59371066, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@39a3984c, org.springframework.security.web.access.ExceptionTranslationFilter@3e9fb485, org.springframework.security.web.access.intercept.AuthorizationFilter@1bbb42b4]
+2024-07-17T15:07:31.534+09:00  INFO 27612 --- [evoproject] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8090 (http) with context path ''
+2024-07-17T15:07:31.546+09:00  INFO 27612 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : Started EvoprojectApplication in 3.883 seconds (process running for 4.743)
+2024-07-17T15:07:31.554+09:00  INFO 27612 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T15:07:31.554+09:00  INFO 27612 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T15:07:36.949+09:00  INFO 27612 --- [evoproject] [http-nio-8090-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-07-17T15:07:36.949+09:00  INFO 27612 --- [evoproject] [http-nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-07-17T15:07:36.950+09:00  INFO 27612 --- [evoproject] [http-nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-07-17T15:07:46.217+09:00 DEBUG 27612 --- [evoproject] [http-nio-8090-exec-7] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-17T15:07:46.218+09:00  INFO 27612 --- [evoproject] [http-nio-8090-exec-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-07-17T15:07:46.511+09:00  INFO 27612 --- [evoproject] [http-nio-8090-exec-7] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1ec6dcf3
+2024-07-17T15:07:46.514+09:00  INFO 27612 --- [evoproject] [http-nio-8090-exec-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-07-17T15:07:46.771+09:00  WARN 27612 --- [evoproject] [http-nio-8090-exec-7] o.a.c.util.SessionIdGeneratorBase        : Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [126] milliseconds.
+2024-07-17T15:07:57.392+09:00  WARN 27612 --- [evoproject] [http-nio-8090-exec-5] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-5][register] Deprecated unwrapped fragment expression "header :: header" found in template register, line 37, col 9. Please use the complete syntax of fragment expressions instead ("~{header :: header}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-17T15:07:57.404+09:00  WARN 27612 --- [evoproject] [http-nio-8090-exec-5] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-5][register] Deprecated unwrapped fragment expression "footer :: footer" found in template register, line 108, col 9. Please use the complete syntax of fragment expressions instead ("~{footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-17T15:08:26.098+09:00  WARN 27612 --- [evoproject] [http-nio-8090-exec-9] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-9][terms] Deprecated unwrapped fragment expression "footer :: footer" found in template terms, line 337, col 9. Please use the complete syntax of fragment expressions instead ("~{footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-17T15:08:31.551+09:00  INFO 27612 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T15:08:31.551+09:00  INFO 27612 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T15:09:31.545+09:00  INFO 27612 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T15:09:31.545+09:00  INFO 27612 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T15:10:31.550+09:00  INFO 27612 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T15:10:31.550+09:00  INFO 27612 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T15:11:09.632+09:00  INFO 27612 --- [evoproject] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-07-17T15:11:09.700+09:00  INFO 27612 --- [evoproject] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-07-17T15:11:14.269+09:00  INFO 24856 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : Starting EvoprojectApplication using Java 17.0.11 with PID 24856 (D:\EVO\evoproject\build\classes\java\main started by skygv in D:\EVO)
+2024-07-17T15:11:14.272+09:00  INFO 24856 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : No active profile set, falling back to 1 default profile: "default"
+2024-07-17T15:11:15.446+09:00  INFO 24856 --- [evoproject] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8090 (http)
+2024-07-17T15:11:15.460+09:00  INFO 24856 --- [evoproject] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-07-17T15:11:15.460+09:00  INFO 24856 --- [evoproject] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-07-17T15:11:15.517+09:00  INFO 24856 --- [evoproject] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-07-17T15:11:15.517+09:00  INFO 24856 --- [evoproject] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1185 ms
+2024-07-17T15:11:16.487+09:00  INFO 24856 --- [evoproject] [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-07-17T15:11:16.679+09:00  INFO 24856 --- [evoproject] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@b86cb18, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@29c244e, org.springframework.security.web.context.SecurityContextHolderFilter@63e70bf9, org.springframework.security.web.header.HeaderWriterFilter@38dbeb39, org.springframework.web.filter.CorsFilter@6cc8da1c, org.springframework.security.web.authentication.logout.LogoutFilter@1b60d324, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@3f9f8d23, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@419f0ea, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@59371066, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@39a3984c, org.springframework.security.web.access.ExceptionTranslationFilter@3e9fb485, org.springframework.security.web.access.intercept.AuthorizationFilter@1bbb42b4]
+2024-07-17T15:11:16.931+09:00  INFO 24856 --- [evoproject] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8090 (http) with context path ''
+2024-07-17T15:11:16.941+09:00  INFO 24856 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : Started EvoprojectApplication in 3.102 seconds (process running for 3.825)
+2024-07-17T15:11:16.945+09:00  INFO 24856 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T15:11:16.946+09:00  INFO 24856 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T15:11:27.457+09:00  INFO 24856 --- [evoproject] [http-nio-8090-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-07-17T15:11:27.457+09:00  INFO 24856 --- [evoproject] [http-nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-07-17T15:11:27.458+09:00  INFO 24856 --- [evoproject] [http-nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-07-17T15:11:27.633+09:00  WARN 24856 --- [evoproject] [http-nio-8090-exec-1] o.a.c.util.SessionIdGeneratorBase        : Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [126] milliseconds.
+2024-07-17T15:11:27.976+09:00  WARN 24856 --- [evoproject] [http-nio-8090-exec-4] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-4][terms] Deprecated unwrapped fragment expression "footer :: footer" found in template terms, line 337, col 9. Please use the complete syntax of fragment expressions instead ("~{footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-17T15:11:37.446+09:00 DEBUG 24856 --- [evoproject] [http-nio-8090-exec-8] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-17T15:11:37.447+09:00  INFO 24856 --- [evoproject] [http-nio-8090-exec-8] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-07-17T15:11:37.722+09:00  INFO 24856 --- [evoproject] [http-nio-8090-exec-8] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4df1cda8
+2024-07-17T15:11:37.724+09:00  INFO 24856 --- [evoproject] [http-nio-8090-exec-8] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-07-17T15:11:40.785+09:00  WARN 24856 --- [evoproject] [http-nio-8090-exec-7] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-7][terms] Deprecated unwrapped fragment expression "footer :: footer" found in template terms, line 337, col 9. Please use the complete syntax of fragment expressions instead ("~{footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-17T15:11:43.935+09:00  WARN 24856 --- [evoproject] [http-nio-8090-exec-9] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-9][terms] Deprecated unwrapped fragment expression "footer :: footer" found in template terms, line 337, col 9. Please use the complete syntax of fragment expressions instead ("~{footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-17T15:11:47.254+09:00  WARN 24856 --- [evoproject] [http-nio-8090-exec-4] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-4][register] Deprecated unwrapped fragment expression "header :: header" found in template register, line 37, col 9. Please use the complete syntax of fragment expressions instead ("~{header :: header}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-17T15:11:47.267+09:00  WARN 24856 --- [evoproject] [http-nio-8090-exec-4] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-4][register] Deprecated unwrapped fragment expression "footer :: footer" found in template register, line 108, col 9. Please use the complete syntax of fragment expressions instead ("~{footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-17T15:12:16.942+09:00  INFO 24856 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T15:12:16.942+09:00  INFO 24856 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T15:13:16.948+09:00  INFO 24856 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T15:13:16.948+09:00  INFO 24856 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T15:13:48.893+09:00  INFO 24856 --- [evoproject] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-07-17T15:13:48.956+09:00  INFO 24856 --- [evoproject] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-07-17T15:13:53.170+09:00  INFO 3764 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : Starting EvoprojectApplication using Java 17.0.11 with PID 3764 (D:\EVO\evoproject\build\classes\java\main started by skygv in D:\EVO)
+2024-07-17T15:13:53.172+09:00  INFO 3764 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : No active profile set, falling back to 1 default profile: "default"
+2024-07-17T15:13:54.346+09:00  INFO 3764 --- [evoproject] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8090 (http)
+2024-07-17T15:13:54.358+09:00  INFO 3764 --- [evoproject] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-07-17T15:13:54.360+09:00  INFO 3764 --- [evoproject] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-07-17T15:13:54.418+09:00  INFO 3764 --- [evoproject] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-07-17T15:13:54.418+09:00  INFO 3764 --- [evoproject] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1199 ms
+2024-07-17T15:13:55.415+09:00  INFO 3764 --- [evoproject] [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-07-17T15:13:55.669+09:00  INFO 3764 --- [evoproject] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@39a3984c, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4404a6b, org.springframework.security.web.context.SecurityContextHolderFilter@2d47b06, org.springframework.security.web.header.HeaderWriterFilter@63e70bf9, org.springframework.web.filter.CorsFilter@671da0f9, org.springframework.security.web.authentication.logout.LogoutFilter@1e6d30c0, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@48b3b1b8, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@48106381, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@22e813fc, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4d2f9e3c, org.springframework.security.web.access.ExceptionTranslationFilter@10f20d38, org.springframework.security.web.access.intercept.AuthorizationFilter@95cecc5]
+2024-07-17T15:13:55.920+09:00  INFO 3764 --- [evoproject] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8090 (http) with context path ''
+2024-07-17T15:13:55.934+09:00  INFO 3764 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : Started EvoprojectApplication in 3.194 seconds (process running for 3.934)
+2024-07-17T15:13:55.939+09:00  INFO 3764 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T15:13:55.939+09:00  INFO 3764 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T15:13:56.539+09:00  INFO 3764 --- [evoproject] [http-nio-8090-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-07-17T15:13:56.539+09:00  INFO 3764 --- [evoproject] [http-nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-07-17T15:13:56.541+09:00  INFO 3764 --- [evoproject] [http-nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-07-17T15:13:56.831+09:00  WARN 3764 --- [evoproject] [http-nio-8090-exec-1] o.a.c.util.SessionIdGeneratorBase        : Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [197] milliseconds.
+2024-07-17T15:14:02.255+09:00 DEBUG 3764 --- [evoproject] [http-nio-8090-exec-6] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-17T15:14:02.256+09:00  INFO 3764 --- [evoproject] [http-nio-8090-exec-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-07-17T15:14:02.552+09:00  INFO 3764 --- [evoproject] [http-nio-8090-exec-6] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1ec18315
+2024-07-17T15:14:02.554+09:00  INFO 3764 --- [evoproject] [http-nio-8090-exec-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-07-17T15:14:06.405+09:00  WARN 3764 --- [evoproject] [http-nio-8090-exec-1] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-1][terms] Deprecated unwrapped fragment expression "footer :: footer" found in template terms, line 337, col 9. Please use the complete syntax of fragment expressions instead ("~{footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-17T15:14:10.330+09:00  WARN 3764 --- [evoproject] [http-nio-8090-exec-8] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-8][register] Deprecated unwrapped fragment expression "header :: header" found in template register, line 37, col 9. Please use the complete syntax of fragment expressions instead ("~{header :: header}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-17T15:14:10.347+09:00  WARN 3764 --- [evoproject] [http-nio-8090-exec-8] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-8][register] Deprecated unwrapped fragment expression "footer :: footer" found in template register, line 108, col 9. Please use the complete syntax of fragment expressions instead ("~{footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-17T15:14:25.126+09:00  INFO 3764 --- [evoproject] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-07-17T15:14:25.197+09:00  INFO 3764 --- [evoproject] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-07-17T15:14:57.728+09:00  INFO 8532 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : Starting EvoprojectApplication using Java 17.0.11 with PID 8532 (D:\EVO\evoproject\build\classes\java\main started by skygv in D:\EVO)
+2024-07-17T15:14:57.730+09:00  INFO 8532 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : No active profile set, falling back to 1 default profile: "default"
+2024-07-17T15:14:58.943+09:00  INFO 8532 --- [evoproject] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8090 (http)
+2024-07-17T15:14:58.953+09:00  INFO 8532 --- [evoproject] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-07-17T15:14:58.954+09:00  INFO 8532 --- [evoproject] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-07-17T15:14:59.017+09:00  INFO 8532 --- [evoproject] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-07-17T15:14:59.017+09:00  INFO 8532 --- [evoproject] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1239 ms
+2024-07-17T15:14:59.944+09:00  INFO 8532 --- [evoproject] [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-07-17T15:15:00.138+09:00  INFO 8532 --- [evoproject] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@39a3984c, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4404a6b, org.springframework.security.web.context.SecurityContextHolderFilter@2d47b06, org.springframework.security.web.header.HeaderWriterFilter@63e70bf9, org.springframework.web.filter.CorsFilter@671da0f9, org.springframework.security.web.authentication.logout.LogoutFilter@1e6d30c0, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@48b3b1b8, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@48106381, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@22e813fc, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4d2f9e3c, org.springframework.security.web.access.ExceptionTranslationFilter@10f20d38, org.springframework.security.web.access.intercept.AuthorizationFilter@95cecc5]
+2024-07-17T15:15:00.391+09:00  INFO 8532 --- [evoproject] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8090 (http) with context path ''
+2024-07-17T15:15:00.404+09:00  INFO 8532 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : Started EvoprojectApplication in 3.122 seconds (process running for 3.793)
+2024-07-17T15:15:00.412+09:00  INFO 8532 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T15:15:00.413+09:00  INFO 8532 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T15:15:09.054+09:00  INFO 8344 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : Starting EvoprojectApplication using Java 17.0.11 with PID 8344 (D:\EVO\evoproject\build\classes\java\main started by skygv in D:\EVO)
+2024-07-17T15:15:09.057+09:00  INFO 8344 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : No active profile set, falling back to 1 default profile: "default"
+2024-07-17T15:15:10.190+09:00  INFO 8344 --- [evoproject] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8090 (http)
+2024-07-17T15:15:10.202+09:00  INFO 8344 --- [evoproject] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-07-17T15:15:10.202+09:00  INFO 8344 --- [evoproject] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-07-17T15:15:10.259+09:00  INFO 8344 --- [evoproject] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-07-17T15:15:10.259+09:00  INFO 8344 --- [evoproject] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1154 ms
+2024-07-17T15:15:11.189+09:00  INFO 8344 --- [evoproject] [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-07-17T15:15:11.380+09:00  INFO 8344 --- [evoproject] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@39a3984c, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4404a6b, org.springframework.security.web.context.SecurityContextHolderFilter@2d47b06, org.springframework.security.web.header.HeaderWriterFilter@63e70bf9, org.springframework.web.filter.CorsFilter@671da0f9, org.springframework.security.web.authentication.logout.LogoutFilter@1e6d30c0, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@48b3b1b8, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@48106381, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@22e813fc, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4d2f9e3c, org.springframework.security.web.access.ExceptionTranslationFilter@10f20d38, org.springframework.security.web.access.intercept.AuthorizationFilter@95cecc5]
+2024-07-17T15:15:11.661+09:00  INFO 8344 --- [evoproject] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8090 (http) with context path ''
+2024-07-17T15:15:11.672+09:00  INFO 8344 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : Started EvoprojectApplication in 3.033 seconds (process running for 3.727)
+2024-07-17T15:15:11.676+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T15:15:11.677+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T15:15:14.899+09:00  INFO 8344 --- [evoproject] [http-nio-8090-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-07-17T15:15:14.900+09:00  INFO 8344 --- [evoproject] [http-nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-07-17T15:15:14.901+09:00  INFO 8344 --- [evoproject] [http-nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-07-17T15:15:15.079+09:00  WARN 8344 --- [evoproject] [http-nio-8090-exec-1] o.a.c.util.SessionIdGeneratorBase        : Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [134] milliseconds.
+2024-07-17T15:15:18.941+09:00 DEBUG 8344 --- [evoproject] [http-nio-8090-exec-8] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-17T15:15:18.943+09:00  INFO 8344 --- [evoproject] [http-nio-8090-exec-8] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-07-17T15:15:19.223+09:00  INFO 8344 --- [evoproject] [http-nio-8090-exec-8] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@e5bd5bc
+2024-07-17T15:15:19.225+09:00  INFO 8344 --- [evoproject] [http-nio-8090-exec-8] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-07-17T15:15:23.066+09:00  WARN 8344 --- [evoproject] [http-nio-8090-exec-3] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-3][terms] Deprecated unwrapped fragment expression "footer :: footer" found in template terms, line 337, col 9. Please use the complete syntax of fragment expressions instead ("~{footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-17T15:15:27.377+09:00  WARN 8344 --- [evoproject] [http-nio-8090-exec-6] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-6][register] Deprecated unwrapped fragment expression "header :: header" found in template register, line 37, col 9. Please use the complete syntax of fragment expressions instead ("~{header :: header}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-17T15:15:27.392+09:00  WARN 8344 --- [evoproject] [http-nio-8090-exec-6] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-6][register] Deprecated unwrapped fragment expression "footer :: footer" found in template register, line 108, col 9. Please use the complete syntax of fragment expressions instead ("~{footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-17T15:16:11.671+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T15:16:11.671+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T15:17:11.678+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T15:17:11.678+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T15:18:11.685+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T15:18:11.685+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T15:19:11.675+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T15:19:11.675+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T15:20:11.675+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T15:20:11.675+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T15:21:11.679+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T15:21:11.679+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T15:22:11.677+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T15:22:11.677+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T15:23:11.680+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T15:23:11.680+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T15:24:11.685+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T15:24:11.685+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T15:25:11.677+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T15:25:11.677+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T15:26:11.685+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T15:26:11.685+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T15:27:11.680+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T15:27:11.680+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T15:28:11.680+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T15:28:11.680+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T15:29:11.683+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T15:29:11.683+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T15:30:11.673+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T15:30:11.673+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T15:31:11.677+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T15:31:11.677+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T15:32:11.677+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T15:32:11.677+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T15:33:11.675+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T15:33:11.675+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T15:34:11.673+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T15:34:11.673+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T15:35:11.676+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T15:35:11.676+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T15:36:11.672+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T15:36:11.672+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T15:37:11.674+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T15:37:11.674+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T15:38:11.674+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T15:38:11.674+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T15:39:11.675+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T15:39:11.675+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T15:40:11.686+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T15:40:11.686+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T15:41:11.675+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T15:41:11.675+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T15:42:11.685+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T15:42:11.685+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T15:43:11.683+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T15:43:11.683+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T15:44:11.683+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T15:44:11.683+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T15:45:11.675+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T15:45:11.675+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T15:46:11.678+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T15:46:11.678+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T15:47:11.672+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T15:47:11.672+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T15:48:11.685+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T15:48:11.685+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T15:49:11.684+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T15:49:11.684+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T15:50:11.681+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T15:50:11.681+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T15:51:11.684+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T15:51:11.684+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T15:52:11.681+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T15:52:11.681+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T15:53:11.686+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T15:53:11.686+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T15:54:11.681+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T15:54:11.681+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T15:55:11.674+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T15:55:11.674+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T15:56:11.674+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T15:56:11.674+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T15:57:11.686+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T15:57:11.686+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T15:58:11.674+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T15:58:11.674+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T15:59:11.674+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T15:59:11.674+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T16:00:11.673+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T16:00:11.673+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T16:01:11.677+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T16:01:11.677+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T16:02:11.681+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T16:02:11.681+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T16:03:11.673+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T16:03:11.673+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T16:04:11.679+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T16:04:11.679+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T16:05:11.677+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T16:05:11.677+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T16:06:11.679+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T16:06:11.679+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T16:07:11.671+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T16:07:11.671+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T16:08:11.671+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T16:08:11.671+09:00  INFO 8344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T16:08:37.472+09:00  INFO 8344 --- [evoproject] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-07-17T16:08:37.561+09:00  INFO 8344 --- [evoproject] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-07-17T16:08:41.519+09:00  INFO 15256 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : Starting EvoprojectApplication using Java 17.0.11 with PID 15256 (D:\EVO\evoproject\build\classes\java\main started by skygv in D:\EVO)
+2024-07-17T16:08:41.522+09:00  INFO 15256 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : No active profile set, falling back to 1 default profile: "default"
+2024-07-17T16:08:42.664+09:00  INFO 15256 --- [evoproject] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8090 (http)
+2024-07-17T16:08:42.676+09:00  INFO 15256 --- [evoproject] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-07-17T16:08:42.676+09:00  INFO 15256 --- [evoproject] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-07-17T16:08:42.735+09:00  INFO 15256 --- [evoproject] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-07-17T16:08:42.735+09:00  INFO 15256 --- [evoproject] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1171 ms
+2024-07-17T16:08:43.659+09:00  INFO 15256 --- [evoproject] [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-07-17T16:08:43.843+09:00  INFO 15256 --- [evoproject] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@39a3984c, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4404a6b, org.springframework.security.web.context.SecurityContextHolderFilter@2d47b06, org.springframework.security.web.header.HeaderWriterFilter@63e70bf9, org.springframework.web.filter.CorsFilter@671da0f9, org.springframework.security.web.authentication.logout.LogoutFilter@1e6d30c0, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@48b3b1b8, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@48106381, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@22e813fc, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4d2f9e3c, org.springframework.security.web.access.ExceptionTranslationFilter@10f20d38, org.springframework.security.web.access.intercept.AuthorizationFilter@95cecc5]
+2024-07-17T16:08:44.082+09:00  INFO 15256 --- [evoproject] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8090 (http) with context path ''
+2024-07-17T16:08:44.094+09:00  INFO 15256 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : Started EvoprojectApplication in 2.981 seconds (process running for 3.628)
+2024-07-17T16:08:44.099+09:00  INFO 15256 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T16:08:44.100+09:00  INFO 15256 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T16:08:48.164+09:00  INFO 15256 --- [evoproject] [http-nio-8090-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-07-17T16:08:48.164+09:00  INFO 15256 --- [evoproject] [http-nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-07-17T16:08:48.165+09:00  INFO 15256 --- [evoproject] [http-nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-07-17T16:08:48.325+09:00  WARN 15256 --- [evoproject] [http-nio-8090-exec-1] o.a.c.util.SessionIdGeneratorBase        : Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [116] milliseconds.
+2024-07-17T16:08:48.613+09:00  WARN 15256 --- [evoproject] [http-nio-8090-exec-4] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-4][terms] Deprecated unwrapped fragment expression "footer :: footer" found in template terms, line 337, col 9. Please use the complete syntax of fragment expressions instead ("~{footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-17T16:08:51.214+09:00  WARN 15256 --- [evoproject] [http-nio-8090-exec-9] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-9][register] Deprecated unwrapped fragment expression "header :: header" found in template register, line 37, col 9. Please use the complete syntax of fragment expressions instead ("~{header :: header}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-17T16:08:51.235+09:00  WARN 15256 --- [evoproject] [http-nio-8090-exec-9] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-9][register] Deprecated unwrapped fragment expression "footer :: footer" found in template register, line 108, col 9. Please use the complete syntax of fragment expressions instead ("~{footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-17T16:08:56.961+09:00 DEBUG 15256 --- [evoproject] [http-nio-8090-exec-1] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-17T16:08:56.962+09:00  INFO 15256 --- [evoproject] [http-nio-8090-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-07-17T16:08:57.275+09:00  INFO 15256 --- [evoproject] [http-nio-8090-exec-1] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@31b1b5a9
+2024-07-17T16:08:57.276+09:00  INFO 15256 --- [evoproject] [http-nio-8090-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-07-17T16:09:00.882+09:00  WARN 15256 --- [evoproject] [http-nio-8090-exec-10] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-10][terms] Deprecated unwrapped fragment expression "footer :: footer" found in template terms, line 337, col 9. Please use the complete syntax of fragment expressions instead ("~{footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-17T16:09:06.319+09:00  WARN 15256 --- [evoproject] [http-nio-8090-exec-8] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-8][register] Deprecated unwrapped fragment expression "header :: header" found in template register, line 37, col 9. Please use the complete syntax of fragment expressions instead ("~{header :: header}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-17T16:09:06.325+09:00  WARN 15256 --- [evoproject] [http-nio-8090-exec-8] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-8][register] Deprecated unwrapped fragment expression "footer :: footer" found in template register, line 108, col 9. Please use the complete syntax of fragment expressions instead ("~{footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-17T16:09:44.097+09:00  INFO 15256 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T16:09:44.098+09:00  INFO 15256 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T16:10:44.101+09:00  INFO 15256 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T16:10:44.101+09:00  INFO 15256 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T16:10:46.204+09:00  INFO 15256 --- [evoproject] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-07-17T16:10:46.322+09:00  INFO 15256 --- [evoproject] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-07-17T16:10:50.187+09:00  INFO 6112 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : Starting EvoprojectApplication using Java 17.0.11 with PID 6112 (D:\EVO\evoproject\build\classes\java\main started by skygv in D:\EVO)
+2024-07-17T16:10:50.189+09:00  INFO 6112 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : No active profile set, falling back to 1 default profile: "default"
+2024-07-17T16:10:51.325+09:00  INFO 6112 --- [evoproject] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8090 (http)
+2024-07-17T16:10:51.338+09:00  INFO 6112 --- [evoproject] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-07-17T16:10:51.338+09:00  INFO 6112 --- [evoproject] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-07-17T16:10:51.403+09:00  INFO 6112 --- [evoproject] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-07-17T16:10:51.404+09:00  INFO 6112 --- [evoproject] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1162 ms
+2024-07-17T16:10:52.319+09:00  INFO 6112 --- [evoproject] [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-07-17T16:10:52.503+09:00  INFO 6112 --- [evoproject] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@29c244e, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6cc8da1c, org.springframework.security.web.context.SecurityContextHolderFilter@402a69f, org.springframework.security.web.header.HeaderWriterFilter@10f20d38, org.springframework.web.filter.CorsFilter@39a3984c, org.springframework.security.web.authentication.logout.LogoutFilter@182e4365, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@603d25db, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2d47b06, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@48106381, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4404a6b, org.springframework.security.web.access.ExceptionTranslationFilter@4f3fec43, org.springframework.security.web.access.intercept.AuthorizationFilter@3f9f8d23]
+2024-07-17T16:10:52.741+09:00  INFO 6112 --- [evoproject] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8090 (http) with context path ''
+2024-07-17T16:10:52.752+09:00  INFO 6112 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : Started EvoprojectApplication in 2.969 seconds (process running for 3.657)
+2024-07-17T16:10:52.757+09:00  INFO 6112 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T16:10:52.757+09:00  INFO 6112 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T16:10:55.014+09:00  INFO 6112 --- [evoproject] [http-nio-8090-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-07-17T16:10:55.014+09:00  INFO 6112 --- [evoproject] [http-nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-07-17T16:10:55.015+09:00  INFO 6112 --- [evoproject] [http-nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-07-17T16:10:55.173+09:00  WARN 6112 --- [evoproject] [http-nio-8090-exec-1] o.a.c.util.SessionIdGeneratorBase        : Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [117] milliseconds.
+2024-07-17T16:10:56.659+09:00  WARN 6112 --- [evoproject] [http-nio-8090-exec-2] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-2][terms] Deprecated unwrapped fragment expression "footer :: footer" found in template terms, line 337, col 9. Please use the complete syntax of fragment expressions instead ("~{footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-17T16:10:58.104+09:00  WARN 6112 --- [evoproject] [http-nio-8090-exec-6] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-6][register] Deprecated unwrapped fragment expression "header :: header" found in template register, line 37, col 9. Please use the complete syntax of fragment expressions instead ("~{header :: header}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-17T16:10:58.120+09:00  WARN 6112 --- [evoproject] [http-nio-8090-exec-6] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-6][register] Deprecated unwrapped fragment expression "footer :: footer" found in template register, line 108, col 9. Please use the complete syntax of fragment expressions instead ("~{footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-17T16:11:03.356+09:00 DEBUG 6112 --- [evoproject] [http-nio-8090-exec-7] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-17T16:11:03.356+09:00  INFO 6112 --- [evoproject] [http-nio-8090-exec-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-07-17T16:11:03.630+09:00  INFO 6112 --- [evoproject] [http-nio-8090-exec-7] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3f7c8c81
+2024-07-17T16:11:03.632+09:00  INFO 6112 --- [evoproject] [http-nio-8090-exec-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-07-17T16:11:52.761+09:00  INFO 6112 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T16:11:52.761+09:00  INFO 6112 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T16:11:58.909+09:00  INFO 6112 --- [evoproject] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-07-17T16:11:58.967+09:00  INFO 6112 --- [evoproject] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-07-17T16:12:02.997+09:00  INFO 7764 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : Starting EvoprojectApplication using Java 17.0.11 with PID 7764 (D:\EVO\evoproject\build\classes\java\main started by skygv in D:\EVO)
+2024-07-17T16:12:02.999+09:00  INFO 7764 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : No active profile set, falling back to 1 default profile: "default"
+2024-07-17T16:12:04.159+09:00  INFO 7764 --- [evoproject] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8090 (http)
+2024-07-17T16:12:04.170+09:00  INFO 7764 --- [evoproject] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-07-17T16:12:04.170+09:00  INFO 7764 --- [evoproject] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-07-17T16:12:04.230+09:00  INFO 7764 --- [evoproject] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-07-17T16:12:04.231+09:00  INFO 7764 --- [evoproject] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1169 ms
+2024-07-17T16:12:05.157+09:00  INFO 7764 --- [evoproject] [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-07-17T16:12:05.352+09:00  INFO 7764 --- [evoproject] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@24fc2c80, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@965bcbc, org.springframework.security.web.context.SecurityContextHolderFilter@250a946, org.springframework.security.web.header.HeaderWriterFilter@79d49790, org.springframework.web.filter.CorsFilter@7ab1ad9, org.springframework.security.web.authentication.logout.LogoutFilter@7db47323, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@7fe87c0e, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2ffb0d10, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3e9fb485, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5ee6fdc4, org.springframework.security.web.access.ExceptionTranslationFilter@6f6c8d45, org.springframework.security.web.access.intercept.AuthorizationFilter@69d667a5]
+2024-07-17T16:12:05.587+09:00  INFO 7764 --- [evoproject] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8090 (http) with context path ''
+2024-07-17T16:12:05.596+09:00  INFO 7764 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : Started EvoprojectApplication in 3.013 seconds (process running for 3.66)
+2024-07-17T16:12:05.601+09:00  INFO 7764 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T16:12:05.601+09:00  INFO 7764 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T16:12:09.169+09:00  INFO 7764 --- [evoproject] [http-nio-8090-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-07-17T16:12:09.169+09:00  INFO 7764 --- [evoproject] [http-nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-07-17T16:12:09.171+09:00  INFO 7764 --- [evoproject] [http-nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2024-07-17T16:12:09.335+09:00  WARN 7764 --- [evoproject] [http-nio-8090-exec-1] o.a.c.util.SessionIdGeneratorBase        : Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [125] milliseconds.
+2024-07-17T16:12:09.637+09:00  WARN 7764 --- [evoproject] [http-nio-8090-exec-2] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-2][terms] Deprecated unwrapped fragment expression "footer :: footer" found in template terms, line 337, col 9. Please use the complete syntax of fragment expressions instead ("~{footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-17T16:12:15.593+09:00 DEBUG 7764 --- [evoproject] [http-nio-8090-exec-9] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-17T16:12:15.594+09:00  INFO 7764 --- [evoproject] [http-nio-8090-exec-9] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-07-17T16:12:15.883+09:00  INFO 7764 --- [evoproject] [http-nio-8090-exec-9] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1ffbd89c
+2024-07-17T16:12:15.885+09:00  INFO 7764 --- [evoproject] [http-nio-8090-exec-9] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-07-17T16:13:05.602+09:00  INFO 7764 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T16:13:05.602+09:00  INFO 7764 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T16:14:05.601+09:00  INFO 7764 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T16:14:05.602+09:00  INFO 7764 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T16:15:05.597+09:00  INFO 7764 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T16:15:05.597+09:00  INFO 7764 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T16:16:05.601+09:00  INFO 7764 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T16:16:05.601+09:00  INFO 7764 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T16:17:05.598+09:00  INFO 7764 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T16:17:05.598+09:00  INFO 7764 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T16:18:05.602+09:00  INFO 7764 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T16:18:05.602+09:00  INFO 7764 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T16:19:05.604+09:00  INFO 7764 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T16:19:05.604+09:00  INFO 7764 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T16:20:05.606+09:00  INFO 7764 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T16:20:05.606+09:00  INFO 7764 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T16:21:05.606+09:00  INFO 7764 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T16:21:05.606+09:00  INFO 7764 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T16:22:05.598+09:00  INFO 7764 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T16:22:05.598+09:00  INFO 7764 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T16:23:05.606+09:00  INFO 7764 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T16:23:05.606+09:00  INFO 7764 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T16:24:05.608+09:00  INFO 7764 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T16:24:05.608+09:00  INFO 7764 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T16:25:05.604+09:00  INFO 7764 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T16:25:05.604+09:00  INFO 7764 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T16:26:05.606+09:00  INFO 7764 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T16:26:05.606+09:00  INFO 7764 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T16:27:05.610+09:00  INFO 7764 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T16:27:05.610+09:00  INFO 7764 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T16:27:47.831+09:00  INFO 7764 --- [evoproject] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-07-17T16:27:47.880+09:00  INFO 7764 --- [evoproject] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-07-17T16:27:51.088+09:00  INFO 11940 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : Starting EvoprojectApplication using Java 17.0.11 with PID 11940 (D:\EVO\evoproject\build\classes\java\main started by skygv in D:\EVO)
+2024-07-17T16:27:51.089+09:00  INFO 11940 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : No active profile set, falling back to 1 default profile: "default"
+2024-07-17T16:27:52.175+09:00  INFO 11940 --- [evoproject] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8090 (http)
+2024-07-17T16:27:52.184+09:00  INFO 11940 --- [evoproject] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-07-17T16:27:52.184+09:00  INFO 11940 --- [evoproject] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-07-17T16:27:52.238+09:00  INFO 11940 --- [evoproject] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-07-17T16:27:52.239+09:00  INFO 11940 --- [evoproject] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1110 ms
+2024-07-17T16:27:53.089+09:00  INFO 11940 --- [evoproject] [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-07-17T16:27:53.272+09:00  INFO 11940 --- [evoproject] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@18483b8b, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@24fc2c80, org.springframework.security.web.context.SecurityContextHolderFilter@1851c7d2, org.springframework.security.web.header.HeaderWriterFilter@7f2ca6f8, org.springframework.web.filter.CorsFilter@965bcbc, org.springframework.security.web.authentication.logout.LogoutFilter@126a9a3d, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@69d667a5, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5fe5c68b, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3982206a, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7ab1ad9, org.springframework.security.web.access.ExceptionTranslationFilter@6141647f, org.springframework.security.web.access.intercept.AuthorizationFilter@38929da]
+2024-07-17T16:27:53.503+09:00  INFO 11940 --- [evoproject] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8090 (http) with context path ''
+2024-07-17T16:27:53.514+09:00  INFO 11940 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : Started EvoprojectApplication in 2.847 seconds (process running for 3.464)
+2024-07-17T16:27:53.519+09:00  INFO 11940 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T16:27:53.519+09:00  INFO 11940 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T16:27:58.715+09:00  INFO 11940 --- [evoproject] [http-nio-8090-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-07-17T16:27:58.715+09:00  INFO 11940 --- [evoproject] [http-nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-07-17T16:27:58.716+09:00  INFO 11940 --- [evoproject] [http-nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-07-17T16:27:58.876+09:00  WARN 11940 --- [evoproject] [http-nio-8090-exec-1] o.a.c.util.SessionIdGeneratorBase        : Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [122] milliseconds.
+2024-07-17T16:27:59.161+09:00  WARN 11940 --- [evoproject] [http-nio-8090-exec-1] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-1][terms] Deprecated unwrapped fragment expression "footer :: footer" found in template terms, line 337, col 9. Please use the complete syntax of fragment expressions instead ("~{footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-17T16:28:05.444+09:00 DEBUG 11940 --- [evoproject] [http-nio-8090-exec-3] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-17T16:28:05.445+09:00  INFO 11940 --- [evoproject] [http-nio-8090-exec-3] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-07-17T16:28:05.702+09:00  INFO 11940 --- [evoproject] [http-nio-8090-exec-3] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2f713c4b
+2024-07-17T16:28:05.703+09:00  INFO 11940 --- [evoproject] [http-nio-8090-exec-3] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-07-17T16:28:53.515+09:00  INFO 11940 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T16:28:53.515+09:00  INFO 11940 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T16:29:10.293+09:00  INFO 11940 --- [evoproject] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-07-17T16:29:10.344+09:00  INFO 11940 --- [evoproject] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-07-17T16:29:13.617+09:00  INFO 27308 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : Starting EvoprojectApplication using Java 17.0.11 with PID 27308 (D:\EVO\evoproject\build\classes\java\main started by skygv in D:\EVO)
+2024-07-17T16:29:13.619+09:00  INFO 27308 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : No active profile set, falling back to 1 default profile: "default"
+2024-07-17T16:29:14.802+09:00  INFO 27308 --- [evoproject] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8090 (http)
+2024-07-17T16:29:14.812+09:00  INFO 27308 --- [evoproject] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-07-17T16:29:14.812+09:00  INFO 27308 --- [evoproject] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-07-17T16:29:14.864+09:00  INFO 27308 --- [evoproject] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-07-17T16:29:14.864+09:00  INFO 27308 --- [evoproject] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1195 ms
+2024-07-17T16:29:15.782+09:00  INFO 27308 --- [evoproject] [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-07-17T16:29:15.955+09:00  INFO 27308 --- [evoproject] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@686b1e2d, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6e7e0259, org.springframework.security.web.context.SecurityContextHolderFilter@22e813fc, org.springframework.security.web.header.HeaderWriterFilter@59371066, org.springframework.web.filter.CorsFilter@646e6d07, org.springframework.security.web.authentication.logout.LogoutFilter@8f4b803, com.evo.evoproject.config.LoginFilter@5501d1c8, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@39a3984c, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@87aec6a, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@43a59289, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@652b3733, org.springframework.security.web.access.ExceptionTranslationFilter@419f0ea, org.springframework.security.web.access.intercept.AuthorizationFilter@6cc8da1c]
+2024-07-17T16:29:16.182+09:00  INFO 27308 --- [evoproject] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8090 (http) with context path ''
+2024-07-17T16:29:16.191+09:00  INFO 27308 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : Started EvoprojectApplication in 2.979 seconds (process running for 3.632)
+2024-07-17T16:29:16.195+09:00  INFO 27308 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T16:29:16.196+09:00  INFO 27308 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T16:29:16.272+09:00  INFO 27308 --- [evoproject] [http-nio-8090-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-07-17T16:29:16.272+09:00  INFO 27308 --- [evoproject] [http-nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-07-17T16:29:16.274+09:00  INFO 27308 --- [evoproject] [http-nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2024-07-17T16:29:16.453+09:00  WARN 27308 --- [evoproject] [http-nio-8090-exec-1] o.a.c.util.SessionIdGeneratorBase        : Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [132] milliseconds.
+2024-07-17T16:29:16.781+09:00  WARN 27308 --- [evoproject] [http-nio-8090-exec-1] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-1][terms] Deprecated unwrapped fragment expression "footer :: footer" found in template terms, line 337, col 9. Please use the complete syntax of fragment expressions instead ("~{footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-17T16:29:21.776+09:00 DEBUG 27308 --- [evoproject] [http-nio-8090-exec-4] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-17T16:29:21.777+09:00  INFO 27308 --- [evoproject] [http-nio-8090-exec-4] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-07-17T16:29:22.044+09:00  INFO 27308 --- [evoproject] [http-nio-8090-exec-4] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4269ed43
+2024-07-17T16:29:22.046+09:00  INFO 27308 --- [evoproject] [http-nio-8090-exec-4] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-07-17T16:29:36.330+09:00  INFO 27308 --- [evoproject] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-07-17T16:29:36.375+09:00  INFO 27308 --- [evoproject] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-07-17T16:29:39.833+09:00  INFO 2296 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : Starting EvoprojectApplication using Java 17.0.11 with PID 2296 (D:\EVO\evoproject\build\classes\java\main started by skygv in D:\EVO)
+2024-07-17T16:29:39.835+09:00  INFO 2296 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : No active profile set, falling back to 1 default profile: "default"
+2024-07-17T16:29:40.909+09:00  INFO 2296 --- [evoproject] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8090 (http)
+2024-07-17T16:29:40.922+09:00  INFO 2296 --- [evoproject] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-07-17T16:29:40.922+09:00  INFO 2296 --- [evoproject] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-07-17T16:29:40.977+09:00  INFO 2296 --- [evoproject] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-07-17T16:29:40.978+09:00  INFO 2296 --- [evoproject] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1095 ms
+2024-07-17T16:29:41.866+09:00  INFO 2296 --- [evoproject] [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-07-17T16:29:42.042+09:00  INFO 2296 --- [evoproject] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@16df9bde, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@478530cb, org.springframework.security.web.context.SecurityContextHolderFilter@175ac243, org.springframework.security.web.header.HeaderWriterFilter@126a9a3d, org.springframework.web.filter.CorsFilter@5be7b749, org.springframework.security.web.authentication.logout.LogoutFilter@95cecc5, com.evo.evoproject.config.LoginFilter@44aeae34, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@6cc8c13c, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@fd4459b, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@517a46f3, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2ec5cc14, org.springframework.security.web.access.ExceptionTranslationFilter@6c2883b1, org.springframework.security.web.access.intercept.AuthorizationFilter@7b598d05]
+2024-07-17T16:29:42.268+09:00  INFO 2296 --- [evoproject] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8090 (http) with context path ''
+2024-07-17T16:29:42.277+09:00  INFO 2296 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : Started EvoprojectApplication in 2.852 seconds (process running for 3.524)
+2024-07-17T16:29:42.282+09:00  INFO 2296 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T16:29:42.283+09:00  INFO 2296 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T16:29:42.365+09:00  INFO 2296 --- [evoproject] [http-nio-8090-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-07-17T16:29:42.365+09:00  INFO 2296 --- [evoproject] [http-nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-07-17T16:29:42.366+09:00  INFO 2296 --- [evoproject] [http-nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-07-17T16:29:47.855+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-6] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-17T16:29:47.856+09:00  INFO 2296 --- [evoproject] [http-nio-8090-exec-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-07-17T16:29:48.111+09:00  INFO 2296 --- [evoproject] [http-nio-8090-exec-6] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@631c8d34
+2024-07-17T16:29:48.113+09:00  INFO 2296 --- [evoproject] [http-nio-8090-exec-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-07-17T16:29:48.356+09:00  WARN 2296 --- [evoproject] [http-nio-8090-exec-6] o.a.c.util.SessionIdGeneratorBase        : Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [117] milliseconds.
+2024-07-17T16:30:42.290+09:00  INFO 2296 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T16:30:42.290+09:00  INFO 2296 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T16:31:14.458+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-3] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-17T16:31:14.476+09:00  WARN 2296 --- [evoproject] [http-nio-8090-exec-3] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-3][mypage] Deprecated unwrapped fragment expression "header :: header" found in template mypage, line 126, col 9. Please use the complete syntax of fragment expressions instead ("~{header :: header}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-17T16:31:14.484+09:00  WARN 2296 --- [evoproject] [http-nio-8090-exec-3] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-3][mypage] Deprecated unwrapped fragment expression "footer :: footer" found in template mypage, line 204, col 9. Please use the complete syntax of fragment expressions instead ("~{footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-17T16:31:16.107+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-5] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-17T16:31:16.120+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-5] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-17T16:31:16.138+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-5] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-17T16:31:21.164+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-6] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-17T16:31:21.172+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-6] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-17T16:31:21.178+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-6] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-17T16:31:27.005+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-7] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-17T16:31:27.014+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-7] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-17T16:31:27.019+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-7] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-17T16:31:28.525+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-4] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-17T16:31:28.533+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-4] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-17T16:31:28.542+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-4] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-17T16:31:42.279+09:00  INFO 2296 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T16:31:42.279+09:00  INFO 2296 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T16:32:30.545+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-7] o.s.jdbc.support.JdbcTransactionManager  : Creating new transaction with name [com.evo.evoproject.service.cart.CartServiceImpl.getCartItemsByUser]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly
+2024-07-17T16:32:30.551+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-7] o.s.jdbc.support.JdbcTransactionManager  : Acquired Connection [HikariProxyConnection@1581011686 wrapping com.mysql.cj.jdbc.ConnectionImpl@631c8d34] for JDBC transaction
+2024-07-17T16:32:30.553+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-7] o.s.jdbc.datasource.DataSourceUtils      : Setting JDBC Connection [HikariProxyConnection@1581011686 wrapping com.mysql.cj.jdbc.ConnectionImpl@631c8d34] read-only
+2024-07-17T16:32:30.558+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-7] o.s.jdbc.support.JdbcTransactionManager  : Switching JDBC Connection [HikariProxyConnection@1581011686 wrapping com.mysql.cj.jdbc.ConnectionImpl@631c8d34] to manual commit
+2024-07-17T16:32:30.575+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-7] o.s.jdbc.support.JdbcTransactionManager  : Initiating transaction commit
+2024-07-17T16:32:30.575+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-7] o.s.jdbc.support.JdbcTransactionManager  : Committing JDBC transaction on Connection [HikariProxyConnection@1581011686 wrapping com.mysql.cj.jdbc.ConnectionImpl@631c8d34]
+2024-07-17T16:32:30.583+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-7] o.s.jdbc.datasource.DataSourceUtils      : Resetting read-only flag of JDBC Connection [HikariProxyConnection@1581011686 wrapping com.mysql.cj.jdbc.ConnectionImpl@631c8d34]
+2024-07-17T16:32:30.587+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-7] o.s.jdbc.support.JdbcTransactionManager  : Releasing JDBC Connection [HikariProxyConnection@1581011686 wrapping com.mysql.cj.jdbc.ConnectionImpl@631c8d34] after transaction
+2024-07-17T16:32:30.588+09:00  INFO 2296 --- [evoproject] [http-nio-8090-exec-7] c.e.e.controller.main.CartController     : 사용자 1의 장바구니 항목 조회: 4개의 상품
+2024-07-17T16:32:35.514+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-3] o.s.jdbc.support.JdbcTransactionManager  : Creating new transaction with name [com.evo.evoproject.service.cart.CartServiceImpl.getCartItemsByUser]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly
+2024-07-17T16:32:35.521+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-3] o.s.jdbc.support.JdbcTransactionManager  : Acquired Connection [HikariProxyConnection@1853299664 wrapping com.mysql.cj.jdbc.ConnectionImpl@631c8d34] for JDBC transaction
+2024-07-17T16:32:35.522+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-3] o.s.jdbc.datasource.DataSourceUtils      : Setting JDBC Connection [HikariProxyConnection@1853299664 wrapping com.mysql.cj.jdbc.ConnectionImpl@631c8d34] read-only
+2024-07-17T16:32:35.526+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-3] o.s.jdbc.support.JdbcTransactionManager  : Switching JDBC Connection [HikariProxyConnection@1853299664 wrapping com.mysql.cj.jdbc.ConnectionImpl@631c8d34] to manual commit
+2024-07-17T16:32:35.535+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-3] o.s.jdbc.support.JdbcTransactionManager  : Initiating transaction commit
+2024-07-17T16:32:35.535+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-3] o.s.jdbc.support.JdbcTransactionManager  : Committing JDBC transaction on Connection [HikariProxyConnection@1853299664 wrapping com.mysql.cj.jdbc.ConnectionImpl@631c8d34]
+2024-07-17T16:32:35.543+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-3] o.s.jdbc.datasource.DataSourceUtils      : Resetting read-only flag of JDBC Connection [HikariProxyConnection@1853299664 wrapping com.mysql.cj.jdbc.ConnectionImpl@631c8d34]
+2024-07-17T16:32:35.547+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-3] o.s.jdbc.support.JdbcTransactionManager  : Releasing JDBC Connection [HikariProxyConnection@1853299664 wrapping com.mysql.cj.jdbc.ConnectionImpl@631c8d34] after transaction
+2024-07-17T16:32:35.547+09:00  INFO 2296 --- [evoproject] [http-nio-8090-exec-3] c.e.e.controller.main.CartController     : 사용자 1의 장바구니 항목 조회: 4개의 상품
+2024-07-17T16:32:38.101+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-5] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-17T16:32:38.111+09:00  WARN 2296 --- [evoproject] [http-nio-8090-exec-5] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-5][mypage] Deprecated unwrapped fragment expression "header :: header" found in template mypage, line 126, col 9. Please use the complete syntax of fragment expressions instead ("~{header :: header}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-17T16:32:38.115+09:00  WARN 2296 --- [evoproject] [http-nio-8090-exec-5] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-5][mypage] Deprecated unwrapped fragment expression "footer :: footer" found in template mypage, line 204, col 9. Please use the complete syntax of fragment expressions instead ("~{footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-17T16:32:41.118+09:00  INFO 2296 --- [evoproject] [http-nio-8090-exec-4] c.e.e.c.p.RetrieveProductsController     : 카테고리별 제품 목록 요청 - 정렬기준: pro_date_desc 카테고리 ID: 1, 페이지: 1, 사이즈: 16
+2024-07-17T16:32:41.118+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-4] o.s.jdbc.support.JdbcTransactionManager  : Creating new transaction with name [com.evo.evoproject.service.product.ProductServiceImpl.getProductsByCategory]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly
+2024-07-17T16:32:41.122+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-4] o.s.jdbc.support.JdbcTransactionManager  : Acquired Connection [HikariProxyConnection@613276641 wrapping com.mysql.cj.jdbc.ConnectionImpl@631c8d34] for JDBC transaction
+2024-07-17T16:32:41.123+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-4] o.s.jdbc.datasource.DataSourceUtils      : Setting JDBC Connection [HikariProxyConnection@613276641 wrapping com.mysql.cj.jdbc.ConnectionImpl@631c8d34] read-only
+2024-07-17T16:32:41.126+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-4] o.s.jdbc.support.JdbcTransactionManager  : Switching JDBC Connection [HikariProxyConnection@613276641 wrapping com.mysql.cj.jdbc.ConnectionImpl@631c8d34] to manual commit
+2024-07-17T16:32:41.131+09:00  INFO 2296 --- [evoproject] [http-nio-8090-exec-4] c.e.e.s.product.ProductServiceImpl       : 카테고리별 제품 목록을 가져오는 서비스 - 정렬 기준: pro_date_desc, 카테고리 ID: 1, 페이지: 1, 사이즈: 16
+2024-07-17T16:32:41.167+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-4] o.s.jdbc.support.JdbcTransactionManager  : Initiating transaction commit
+2024-07-17T16:32:41.168+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-4] o.s.jdbc.support.JdbcTransactionManager  : Committing JDBC transaction on Connection [HikariProxyConnection@613276641 wrapping com.mysql.cj.jdbc.ConnectionImpl@631c8d34]
+2024-07-17T16:32:41.176+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-4] o.s.jdbc.datasource.DataSourceUtils      : Resetting read-only flag of JDBC Connection [HikariProxyConnection@613276641 wrapping com.mysql.cj.jdbc.ConnectionImpl@631c8d34]
+2024-07-17T16:32:41.179+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-4] o.s.jdbc.support.JdbcTransactionManager  : Releasing JDBC Connection [HikariProxyConnection@613276641 wrapping com.mysql.cj.jdbc.ConnectionImpl@631c8d34] after transaction
+2024-07-17T16:32:41.181+09:00  WARN 2296 --- [evoproject] [http-nio-8090-exec-4] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-4][product/list] Deprecated unwrapped fragment expression "header :: header" found in template product/list, line 60, col 9. Please use the complete syntax of fragment expressions instead ("~{header :: header}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-17T16:32:41.189+09:00  WARN 2296 --- [evoproject] [http-nio-8090-exec-4] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-4][product/list] Deprecated unwrapped fragment expression "footer :: footer" found in template product/list, line 117, col 9. Please use the complete syntax of fragment expressions instead ("~{footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-17T16:32:42.282+09:00  INFO 2296 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T16:32:42.282+09:00  INFO 2296 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T16:32:43.611+09:00  INFO 2296 --- [evoproject] [http-nio-8090-exec-9] c.e.e.c.p.RetrieveProductsController     : 카테고리별 제품 목록 요청 - 정렬기준: price_desc 카테고리 ID: 1, 페이지: 1, 사이즈: 16
+2024-07-17T16:32:43.611+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-9] o.s.jdbc.support.JdbcTransactionManager  : Creating new transaction with name [com.evo.evoproject.service.product.ProductServiceImpl.getProductsByCategory]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly
+2024-07-17T16:32:43.615+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-9] o.s.jdbc.support.JdbcTransactionManager  : Acquired Connection [HikariProxyConnection@1899317646 wrapping com.mysql.cj.jdbc.ConnectionImpl@631c8d34] for JDBC transaction
+2024-07-17T16:32:43.615+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-9] o.s.jdbc.datasource.DataSourceUtils      : Setting JDBC Connection [HikariProxyConnection@1899317646 wrapping com.mysql.cj.jdbc.ConnectionImpl@631c8d34] read-only
+2024-07-17T16:32:43.619+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-9] o.s.jdbc.support.JdbcTransactionManager  : Switching JDBC Connection [HikariProxyConnection@1899317646 wrapping com.mysql.cj.jdbc.ConnectionImpl@631c8d34] to manual commit
+2024-07-17T16:32:43.624+09:00  INFO 2296 --- [evoproject] [http-nio-8090-exec-9] c.e.e.s.product.ProductServiceImpl       : 카테고리별 제품 목록을 가져오는 서비스 - 정렬 기준: price_desc, 카테고리 ID: 1, 페이지: 1, 사이즈: 16
+2024-07-17T16:32:43.635+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-9] o.s.jdbc.support.JdbcTransactionManager  : Initiating transaction commit
+2024-07-17T16:32:43.635+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-9] o.s.jdbc.support.JdbcTransactionManager  : Committing JDBC transaction on Connection [HikariProxyConnection@1899317646 wrapping com.mysql.cj.jdbc.ConnectionImpl@631c8d34]
+2024-07-17T16:32:43.642+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-9] o.s.jdbc.datasource.DataSourceUtils      : Resetting read-only flag of JDBC Connection [HikariProxyConnection@1899317646 wrapping com.mysql.cj.jdbc.ConnectionImpl@631c8d34]
+2024-07-17T16:32:43.646+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-9] o.s.jdbc.support.JdbcTransactionManager  : Releasing JDBC Connection [HikariProxyConnection@1899317646 wrapping com.mysql.cj.jdbc.ConnectionImpl@631c8d34] after transaction
+2024-07-17T16:32:43.648+09:00  WARN 2296 --- [evoproject] [http-nio-8090-exec-9] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-9][product/list] Deprecated unwrapped fragment expression "header :: header" found in template product/list, line 60, col 9. Please use the complete syntax of fragment expressions instead ("~{header :: header}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-17T16:32:43.655+09:00  WARN 2296 --- [evoproject] [http-nio-8090-exec-9] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-9][product/list] Deprecated unwrapped fragment expression "footer :: footer" found in template product/list, line 117, col 9. Please use the complete syntax of fragment expressions instead ("~{footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-17T16:32:50.271+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-5] o.s.jdbc.support.JdbcTransactionManager  : Creating new transaction with name [com.evo.evoproject.service.cart.CartServiceImpl.getCartItemsByUser]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly
+2024-07-17T16:32:50.278+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-5] o.s.jdbc.support.JdbcTransactionManager  : Acquired Connection [HikariProxyConnection@1197764745 wrapping com.mysql.cj.jdbc.ConnectionImpl@631c8d34] for JDBC transaction
+2024-07-17T16:32:50.278+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-5] o.s.jdbc.datasource.DataSourceUtils      : Setting JDBC Connection [HikariProxyConnection@1197764745 wrapping com.mysql.cj.jdbc.ConnectionImpl@631c8d34] read-only
+2024-07-17T16:32:50.282+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-5] o.s.jdbc.support.JdbcTransactionManager  : Switching JDBC Connection [HikariProxyConnection@1197764745 wrapping com.mysql.cj.jdbc.ConnectionImpl@631c8d34] to manual commit
+2024-07-17T16:32:50.293+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-5] o.s.jdbc.support.JdbcTransactionManager  : Initiating transaction commit
+2024-07-17T16:32:50.293+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-5] o.s.jdbc.support.JdbcTransactionManager  : Committing JDBC transaction on Connection [HikariProxyConnection@1197764745 wrapping com.mysql.cj.jdbc.ConnectionImpl@631c8d34]
+2024-07-17T16:32:50.300+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-5] o.s.jdbc.datasource.DataSourceUtils      : Resetting read-only flag of JDBC Connection [HikariProxyConnection@1197764745 wrapping com.mysql.cj.jdbc.ConnectionImpl@631c8d34]
+2024-07-17T16:32:50.304+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-5] o.s.jdbc.support.JdbcTransactionManager  : Releasing JDBC Connection [HikariProxyConnection@1197764745 wrapping com.mysql.cj.jdbc.ConnectionImpl@631c8d34] after transaction
+2024-07-17T16:32:50.304+09:00  INFO 2296 --- [evoproject] [http-nio-8090-exec-5] c.e.e.controller.main.CartController     : 사용자 1의 장바구니 항목 조회: 4개의 상품
+2024-07-17T16:32:58.579+09:00  INFO 2296 --- [evoproject] [http-nio-8090-exec-9] c.e.e.c.p.RetrieveProductsController     : 검색값에 맞는 제품 목록 요청 - 정렬기준: 111 상품이름: pro_date_desc, 페이지: 1, 사이즈: 16
+2024-07-17T16:32:58.580+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-9] o.s.jdbc.support.JdbcTransactionManager  : Creating new transaction with name [com.evo.evoproject.service.product.ProductServiceImpl.searchProductByName]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly
+2024-07-17T16:32:58.583+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-9] o.s.jdbc.support.JdbcTransactionManager  : Acquired Connection [HikariProxyConnection@59639279 wrapping com.mysql.cj.jdbc.ConnectionImpl@631c8d34] for JDBC transaction
+2024-07-17T16:32:58.583+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-9] o.s.jdbc.datasource.DataSourceUtils      : Setting JDBC Connection [HikariProxyConnection@59639279 wrapping com.mysql.cj.jdbc.ConnectionImpl@631c8d34] read-only
+2024-07-17T16:32:58.588+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-9] o.s.jdbc.support.JdbcTransactionManager  : Switching JDBC Connection [HikariProxyConnection@59639279 wrapping com.mysql.cj.jdbc.ConnectionImpl@631c8d34] to manual commit
+2024-07-17T16:32:58.593+09:00  INFO 2296 --- [evoproject] [http-nio-8090-exec-9] c.e.e.s.product.ProductServiceImpl       : 검색값에 맞는 상품을 가져오는 서비스 - 상품이름: 111, 정렬기준: pro_date_desc, 페이지: 1, 사이즈: 16
+2024-07-17T16:32:58.605+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-9] o.s.jdbc.support.JdbcTransactionManager  : Initiating transaction commit
+2024-07-17T16:32:58.605+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-9] o.s.jdbc.support.JdbcTransactionManager  : Committing JDBC transaction on Connection [HikariProxyConnection@59639279 wrapping com.mysql.cj.jdbc.ConnectionImpl@631c8d34]
+2024-07-17T16:32:58.613+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-9] o.s.jdbc.datasource.DataSourceUtils      : Resetting read-only flag of JDBC Connection [HikariProxyConnection@59639279 wrapping com.mysql.cj.jdbc.ConnectionImpl@631c8d34]
+2024-07-17T16:32:58.616+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-9] o.s.jdbc.support.JdbcTransactionManager  : Releasing JDBC Connection [HikariProxyConnection@59639279 wrapping com.mysql.cj.jdbc.ConnectionImpl@631c8d34] after transaction
+2024-07-17T16:32:58.618+09:00  WARN 2296 --- [evoproject] [http-nio-8090-exec-9] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-9][product/list] Deprecated unwrapped fragment expression "header :: header" found in template product/list, line 60, col 9. Please use the complete syntax of fragment expressions instead ("~{header :: header}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-17T16:32:58.623+09:00  WARN 2296 --- [evoproject] [http-nio-8090-exec-9] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-9][product/list] Deprecated unwrapped fragment expression "footer :: footer" found in template product/list, line 117, col 9. Please use the complete syntax of fragment expressions instead ("~{footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-17T16:33:00.002+09:00  INFO 2296 --- [evoproject] [http-nio-8090-exec-10] c.e.e.c.p.RetrieveProductsController     : 검색값에 맞는 제품 목록 요청 - 정렬기준: 111 상품이름: pro_date_desc, 페이지: 0, 사이즈: 16
+2024-07-17T16:33:00.003+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-10] o.s.jdbc.support.JdbcTransactionManager  : Creating new transaction with name [com.evo.evoproject.service.product.ProductServiceImpl.searchProductByName]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly
+2024-07-17T16:33:00.009+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-10] o.s.jdbc.support.JdbcTransactionManager  : Acquired Connection [HikariProxyConnection@564449582 wrapping com.mysql.cj.jdbc.ConnectionImpl@631c8d34] for JDBC transaction
+2024-07-17T16:33:00.009+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-10] o.s.jdbc.datasource.DataSourceUtils      : Setting JDBC Connection [HikariProxyConnection@564449582 wrapping com.mysql.cj.jdbc.ConnectionImpl@631c8d34] read-only
+2024-07-17T16:33:00.015+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-10] o.s.jdbc.support.JdbcTransactionManager  : Switching JDBC Connection [HikariProxyConnection@564449582 wrapping com.mysql.cj.jdbc.ConnectionImpl@631c8d34] to manual commit
+2024-07-17T16:33:00.020+09:00  INFO 2296 --- [evoproject] [http-nio-8090-exec-10] c.e.e.s.product.ProductServiceImpl       : 검색값에 맞는 상품을 가져오는 서비스 - 상품이름: 111, 정렬기준: pro_date_desc, 페이지: 0, 사이즈: 16
+2024-07-17T16:33:00.137+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-10] o.s.jdbc.support.SQLErrorCodesFactory    : Looking up default SQLErrorCodes for DataSource [com.zaxxer.hikari.HikariDataSource@889a8a8]
+2024-07-17T16:33:00.139+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-10] o.s.jdbc.support.SQLErrorCodesFactory    : SQL error codes for 'MySQL' found
+2024-07-17T16:33:00.140+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-10] o.s.jdbc.support.SQLErrorCodesFactory    : Caching SQL error codes for DataSource [com.zaxxer.hikari.HikariDataSource@889a8a8]: database product name is 'MySQL'
+2024-07-17T16:33:00.144+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-10] s.j.s.SQLErrorCodeSQLExceptionTranslator : Translating SQLException with SQL state '42000', error code '1064', message [You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-16, 16' at line 9] for task [
+### Error querying database.  Cause: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-16, 16' at line 9
+### The error may exist in file [D:\EVO\evoproject\build\resources\main\mapper\productMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT p.pro_no, p.pro_name, p.pro_content, p.category_id, p.pro_price, p.pro_stock, p.pro_date, p.view_count, p.shipping, p.soldout,             i.image_id AS image_id, i.image_name AS image_name, i.image_type AS image_type             FROM product p             LEFT JOIN image i ON p.image_id = i.image_id             WHERE p.pro_name LIKE CONCAT('%', ?, '%')                           ORDER BY p.pro_date DESC                       LIMIT ?, ?
+### Cause: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-16, 16' at line 9
+]
+2024-07-17T16:33:00.144+09:00 ERROR 2296 --- [evoproject] [http-nio-8090-exec-10] c.e.e.s.product.ProductServiceImpl       : 모든 제품 목록을 가져오는 중 오류 발생
+
+org.springframework.jdbc.BadSqlGrammarException: 
+### Error querying database.  Cause: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-16, 16' at line 9
+### The error may exist in file [D:\EVO\evoproject\build\resources\main\mapper\productMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT p.pro_no, p.pro_name, p.pro_content, p.category_id, p.pro_price, p.pro_stock, p.pro_date, p.view_count, p.shipping, p.soldout,             i.image_id AS image_id, i.image_name AS image_name, i.image_type AS image_type             FROM product p             LEFT JOIN image i ON p.image_id = i.image_id             WHERE p.pro_name LIKE CONCAT('%', ?, '%')                           ORDER BY p.pro_date DESC                       LIMIT ?, ?
+### Cause: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-16, 16' at line 9
+; bad SQL grammar []
+	at org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate(SQLErrorCodeSQLExceptionTranslator.java:246) ~[spring-jdbc-6.1.10.jar:6.1.10]
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:107) ~[spring-jdbc-6.1.10.jar:6.1.10]
+	at org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:92) ~[mybatis-spring-3.0.3.jar:3.0.3]
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:439) ~[mybatis-spring-3.0.3.jar:3.0.3]
+	at jdk.proxy2/jdk.proxy2.$Proxy70.selectList(Unknown Source) ~[na:na]
+	at org.mybatis.spring.SqlSessionTemplate.selectList(SqlSessionTemplate.java:224) ~[mybatis-spring-3.0.3.jar:3.0.3]
+	at org.apache.ibatis.binding.MapperMethod.executeForMany(MapperMethod.java:147) ~[mybatis-3.5.14.jar:3.5.14]
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:80) ~[mybatis-3.5.14.jar:3.5.14]
+	at org.apache.ibatis.binding.MapperProxy$PlainMethodInvoker.invoke(MapperProxy.java:141) ~[mybatis-3.5.14.jar:3.5.14]
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:86) ~[mybatis-3.5.14.jar:3.5.14]
+	at jdk.proxy2/jdk.proxy2.$Proxy83.findProductByName(Unknown Source) ~[na:na]
+	at com.evo.evoproject.service.product.ProductServiceImpl.searchProductByName(ProductServiceImpl.java:111) ~[main/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:354) ~[spring-aop-6.1.10.jar:6.1.10]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196) ~[spring-aop-6.1.10.jar:6.1.10]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-6.1.10.jar:6.1.10]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:768) ~[spring-aop-6.1.10.jar:6.1.10]
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123) ~[spring-tx-6.1.10.jar:6.1.10]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:392) ~[spring-tx-6.1.10.jar:6.1.10]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-6.1.10.jar:6.1.10]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.10.jar:6.1.10]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:768) ~[spring-aop-6.1.10.jar:6.1.10]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:720) ~[spring-aop-6.1.10.jar:6.1.10]
+	at com.evo.evoproject.service.product.ProductServiceImpl$$SpringCGLIB$$0.searchProductByName(<generated>) ~[main/:na]
+	at com.evo.evoproject.controller.product.RetrieveProductsController.getProductByName(RetrieveProductsController.java:127) ~[main/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:188) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:926) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:831) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564) ~[tomcat-embed-core-10.1.25.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.25.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:365) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:100) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:227) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:221) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at com.evo.evoproject.config.LoginFilter.doFilter(LoginFilter.java:25) ~[main/:na]
+	at jakarta.servlet.http.HttpFilter.doFilter(HttpFilter.java:53) ~[tomcat-embed-core-10.1.25.jar:6.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$3(HandlerMappingIntrospector.java:195) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:230) ~[spring-security-config-6.2.5.jar:6.2.5]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:352) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:268) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:389) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:904) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at java.base/java.lang.Thread.run(Thread.java:842) ~[na:na]
+Caused by: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-16, 16' at line 9
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120) ~[mysql-connector-java-8.0.29.jar:8.0.29]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-java-8.0.29.jar:8.0.29]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916) ~[mysql-connector-java-8.0.29.jar:8.0.29]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.execute(ClientPreparedStatement.java:354) ~[mysql-connector-java-8.0.29.jar:8.0.29]
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.execute(HikariProxyPreparedStatement.java) ~[HikariCP-5.0.1.jar:na]
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:65) ~[mybatis-3.5.14.jar:3.5.14]
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:80) ~[mybatis-3.5.14.jar:3.5.14]
+	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:65) ~[mybatis-3.5.14.jar:3.5.14]
+	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:336) ~[mybatis-3.5.14.jar:3.5.14]
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:158) ~[mybatis-3.5.14.jar:3.5.14]
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:110) ~[mybatis-3.5.14.jar:3.5.14]
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:90) ~[mybatis-3.5.14.jar:3.5.14]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:154) ~[mybatis-3.5.14.jar:3.5.14]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:147) ~[mybatis-3.5.14.jar:3.5.14]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:142) ~[mybatis-3.5.14.jar:3.5.14]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:425) ~[mybatis-spring-3.0.3.jar:3.0.3]
+	... 124 common frames omitted
+
+2024-07-17T16:33:00.153+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-10] o.s.jdbc.support.JdbcTransactionManager  : Initiating transaction rollback
+2024-07-17T16:33:00.154+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-10] o.s.jdbc.support.JdbcTransactionManager  : Rolling back JDBC transaction on Connection [HikariProxyConnection@564449582 wrapping com.mysql.cj.jdbc.ConnectionImpl@631c8d34]
+2024-07-17T16:33:00.163+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-10] o.s.jdbc.datasource.DataSourceUtils      : Resetting read-only flag of JDBC Connection [HikariProxyConnection@564449582 wrapping com.mysql.cj.jdbc.ConnectionImpl@631c8d34]
+2024-07-17T16:33:00.166+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-10] o.s.jdbc.support.JdbcTransactionManager  : Releasing JDBC Connection [HikariProxyConnection@564449582 wrapping com.mysql.cj.jdbc.ConnectionImpl@631c8d34] after transaction
+2024-07-17T16:33:00.166+09:00 ERROR 2296 --- [evoproject] [http-nio-8090-exec-10] c.e.e.c.p.RetrieveProductsController     : 검색값에 맞는 제품 목록을 가져오는 중 오류 발생
+
+org.springframework.jdbc.BadSqlGrammarException: 
+### Error querying database.  Cause: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-16, 16' at line 9
+### The error may exist in file [D:\EVO\evoproject\build\resources\main\mapper\productMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT p.pro_no, p.pro_name, p.pro_content, p.category_id, p.pro_price, p.pro_stock, p.pro_date, p.view_count, p.shipping, p.soldout,             i.image_id AS image_id, i.image_name AS image_name, i.image_type AS image_type             FROM product p             LEFT JOIN image i ON p.image_id = i.image_id             WHERE p.pro_name LIKE CONCAT('%', ?, '%')                           ORDER BY p.pro_date DESC                       LIMIT ?, ?
+### Cause: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-16, 16' at line 9
+; bad SQL grammar []
+	at org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate(SQLErrorCodeSQLExceptionTranslator.java:246) ~[spring-jdbc-6.1.10.jar:6.1.10]
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:107) ~[spring-jdbc-6.1.10.jar:6.1.10]
+	at org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:92) ~[mybatis-spring-3.0.3.jar:3.0.3]
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:439) ~[mybatis-spring-3.0.3.jar:3.0.3]
+	at jdk.proxy2/jdk.proxy2.$Proxy70.selectList(Unknown Source) ~[na:na]
+	at org.mybatis.spring.SqlSessionTemplate.selectList(SqlSessionTemplate.java:224) ~[mybatis-spring-3.0.3.jar:3.0.3]
+	at org.apache.ibatis.binding.MapperMethod.executeForMany(MapperMethod.java:147) ~[mybatis-3.5.14.jar:3.5.14]
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:80) ~[mybatis-3.5.14.jar:3.5.14]
+	at org.apache.ibatis.binding.MapperProxy$PlainMethodInvoker.invoke(MapperProxy.java:141) ~[mybatis-3.5.14.jar:3.5.14]
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:86) ~[mybatis-3.5.14.jar:3.5.14]
+	at jdk.proxy2/jdk.proxy2.$Proxy83.findProductByName(Unknown Source) ~[na:na]
+	at com.evo.evoproject.service.product.ProductServiceImpl.searchProductByName(ProductServiceImpl.java:111) ~[main/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:354) ~[spring-aop-6.1.10.jar:6.1.10]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196) ~[spring-aop-6.1.10.jar:6.1.10]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-6.1.10.jar:6.1.10]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:768) ~[spring-aop-6.1.10.jar:6.1.10]
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123) ~[spring-tx-6.1.10.jar:6.1.10]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:392) ~[spring-tx-6.1.10.jar:6.1.10]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-6.1.10.jar:6.1.10]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.10.jar:6.1.10]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:768) ~[spring-aop-6.1.10.jar:6.1.10]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:720) ~[spring-aop-6.1.10.jar:6.1.10]
+	at com.evo.evoproject.service.product.ProductServiceImpl$$SpringCGLIB$$0.searchProductByName(<generated>) ~[main/:na]
+	at com.evo.evoproject.controller.product.RetrieveProductsController.getProductByName(RetrieveProductsController.java:127) ~[main/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:188) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:926) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:831) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564) ~[tomcat-embed-core-10.1.25.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.25.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:365) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:100) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:227) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:221) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at com.evo.evoproject.config.LoginFilter.doFilter(LoginFilter.java:25) ~[main/:na]
+	at jakarta.servlet.http.HttpFilter.doFilter(HttpFilter.java:53) ~[tomcat-embed-core-10.1.25.jar:6.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$3(HandlerMappingIntrospector.java:195) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:230) ~[spring-security-config-6.2.5.jar:6.2.5]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:352) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:268) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:389) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:904) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at java.base/java.lang.Thread.run(Thread.java:842) ~[na:na]
+Caused by: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-16, 16' at line 9
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120) ~[mysql-connector-java-8.0.29.jar:8.0.29]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-java-8.0.29.jar:8.0.29]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916) ~[mysql-connector-java-8.0.29.jar:8.0.29]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.execute(ClientPreparedStatement.java:354) ~[mysql-connector-java-8.0.29.jar:8.0.29]
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.execute(HikariProxyPreparedStatement.java) ~[HikariCP-5.0.1.jar:na]
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:65) ~[mybatis-3.5.14.jar:3.5.14]
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:80) ~[mybatis-3.5.14.jar:3.5.14]
+	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:65) ~[mybatis-3.5.14.jar:3.5.14]
+	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:336) ~[mybatis-3.5.14.jar:3.5.14]
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:158) ~[mybatis-3.5.14.jar:3.5.14]
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:110) ~[mybatis-3.5.14.jar:3.5.14]
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:90) ~[mybatis-3.5.14.jar:3.5.14]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:154) ~[mybatis-3.5.14.jar:3.5.14]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:147) ~[mybatis-3.5.14.jar:3.5.14]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:142) ~[mybatis-3.5.14.jar:3.5.14]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:425) ~[mybatis-spring-3.0.3.jar:3.0.3]
+	... 124 common frames omitted
+
+2024-07-17T16:33:02.536+09:00  INFO 2296 --- [evoproject] [http-nio-8090-exec-4] c.e.e.c.p.RetrieveProductsController     : 검색값에 맞는 제품 목록 요청 - 정렬기준: 111 상품이름: pro_date_desc, 페이지: 1, 사이즈: 16
+2024-07-17T16:33:02.536+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-4] o.s.jdbc.support.JdbcTransactionManager  : Creating new transaction with name [com.evo.evoproject.service.product.ProductServiceImpl.searchProductByName]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly
+2024-07-17T16:33:02.539+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-4] o.s.jdbc.support.JdbcTransactionManager  : Acquired Connection [HikariProxyConnection@599552948 wrapping com.mysql.cj.jdbc.ConnectionImpl@631c8d34] for JDBC transaction
+2024-07-17T16:33:02.540+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-4] o.s.jdbc.datasource.DataSourceUtils      : Setting JDBC Connection [HikariProxyConnection@599552948 wrapping com.mysql.cj.jdbc.ConnectionImpl@631c8d34] read-only
+2024-07-17T16:33:02.543+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-4] o.s.jdbc.support.JdbcTransactionManager  : Switching JDBC Connection [HikariProxyConnection@599552948 wrapping com.mysql.cj.jdbc.ConnectionImpl@631c8d34] to manual commit
+2024-07-17T16:33:02.547+09:00  INFO 2296 --- [evoproject] [http-nio-8090-exec-4] c.e.e.s.product.ProductServiceImpl       : 검색값에 맞는 상품을 가져오는 서비스 - 상품이름: 111, 정렬기준: pro_date_desc, 페이지: 1, 사이즈: 16
+2024-07-17T16:33:02.558+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-4] o.s.jdbc.support.JdbcTransactionManager  : Initiating transaction commit
+2024-07-17T16:33:02.558+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-4] o.s.jdbc.support.JdbcTransactionManager  : Committing JDBC transaction on Connection [HikariProxyConnection@599552948 wrapping com.mysql.cj.jdbc.ConnectionImpl@631c8d34]
+2024-07-17T16:33:02.566+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-4] o.s.jdbc.datasource.DataSourceUtils      : Resetting read-only flag of JDBC Connection [HikariProxyConnection@599552948 wrapping com.mysql.cj.jdbc.ConnectionImpl@631c8d34]
+2024-07-17T16:33:02.569+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-4] o.s.jdbc.support.JdbcTransactionManager  : Releasing JDBC Connection [HikariProxyConnection@599552948 wrapping com.mysql.cj.jdbc.ConnectionImpl@631c8d34] after transaction
+2024-07-17T16:33:02.571+09:00  WARN 2296 --- [evoproject] [http-nio-8090-exec-4] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-4][product/list] Deprecated unwrapped fragment expression "header :: header" found in template product/list, line 60, col 9. Please use the complete syntax of fragment expressions instead ("~{header :: header}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-17T16:33:02.575+09:00  WARN 2296 --- [evoproject] [http-nio-8090-exec-4] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-4][product/list] Deprecated unwrapped fragment expression "footer :: footer" found in template product/list, line 117, col 9. Please use the complete syntax of fragment expressions instead ("~{footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-17T16:33:03.981+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-9] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-17T16:33:03.992+09:00  WARN 2296 --- [evoproject] [http-nio-8090-exec-9] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-9][mypage] Deprecated unwrapped fragment expression "header :: header" found in template mypage, line 126, col 9. Please use the complete syntax of fragment expressions instead ("~{header :: header}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-17T16:33:03.994+09:00  WARN 2296 --- [evoproject] [http-nio-8090-exec-9] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-9][mypage] Deprecated unwrapped fragment expression "footer :: footer" found in template mypage, line 204, col 9. Please use the complete syntax of fragment expressions instead ("~{footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-17T16:33:05.325+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-6] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-17T16:33:05.335+09:00  WARN 2296 --- [evoproject] [http-nio-8090-exec-6] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-6][mypage] Deprecated unwrapped fragment expression "header :: header" found in template mypage, line 126, col 9. Please use the complete syntax of fragment expressions instead ("~{header :: header}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-17T16:33:05.338+09:00  WARN 2296 --- [evoproject] [http-nio-8090-exec-6] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-6][mypage] Deprecated unwrapped fragment expression "footer :: footer" found in template mypage, line 204, col 9. Please use the complete syntax of fragment expressions instead ("~{footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-17T16:33:06.994+09:00 DEBUG 2296 --- [evoproject] [http-nio-8090-exec-10] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-17T16:33:07.008+09:00  WARN 2296 --- [evoproject] [http-nio-8090-exec-10] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-10][mypage] Deprecated unwrapped fragment expression "header :: header" found in template mypage, line 126, col 9. Please use the complete syntax of fragment expressions instead ("~{header :: header}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-17T16:33:07.010+09:00  WARN 2296 --- [evoproject] [http-nio-8090-exec-10] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-10][mypage] Deprecated unwrapped fragment expression "footer :: footer" found in template mypage, line 204, col 9. Please use the complete syntax of fragment expressions instead ("~{footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-17T16:33:42.291+09:00  INFO 2296 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T16:33:42.291+09:00  INFO 2296 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T16:34:42.283+09:00  INFO 2296 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T16:34:42.283+09:00  INFO 2296 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T16:35:42.281+09:00  INFO 2296 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T16:35:42.281+09:00  INFO 2296 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T16:36:42.278+09:00  INFO 2296 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T16:36:42.278+09:00  INFO 2296 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T16:37:42.290+09:00  INFO 2296 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T16:37:42.291+09:00  INFO 2296 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T16:38:42.281+09:00  INFO 2296 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T16:38:42.281+09:00  INFO 2296 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T16:39:42.289+09:00  INFO 2296 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T16:39:42.289+09:00  INFO 2296 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T16:40:42.278+09:00  INFO 2296 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T16:40:42.278+09:00  INFO 2296 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T16:41:42.281+09:00  INFO 2296 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T16:41:42.281+09:00  INFO 2296 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T16:42:42.277+09:00  INFO 2296 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T16:42:42.277+09:00  INFO 2296 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T16:43:27.219+09:00  INFO 2296 --- [evoproject] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-07-17T16:43:27.275+09:00  INFO 2296 --- [evoproject] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-07-17T16:43:30.025+09:00  INFO 27468 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : Starting EvoprojectApplication using Java 17.0.11 with PID 27468 (D:\EVO\evoproject\build\classes\java\main started by skygv in D:\EVO)
+2024-07-17T16:43:30.027+09:00  INFO 27468 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : No active profile set, falling back to 1 default profile: "default"
+2024-07-17T16:43:31.173+09:00  INFO 27468 --- [evoproject] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8090 (http)
+2024-07-17T16:43:31.185+09:00  INFO 27468 --- [evoproject] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-07-17T16:43:31.185+09:00  INFO 27468 --- [evoproject] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-07-17T16:43:31.240+09:00  INFO 27468 --- [evoproject] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-07-17T16:43:31.241+09:00  INFO 27468 --- [evoproject] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1168 ms
+2024-07-17T16:43:32.109+09:00  INFO 27468 --- [evoproject] [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-07-17T16:43:32.289+09:00  INFO 27468 --- [evoproject] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@6e7e0259, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@646e6d07, org.springframework.security.web.context.SecurityContextHolderFilter@433d93e7, org.springframework.security.web.header.HeaderWriterFilter@48106381, org.springframework.web.filter.CorsFilter@5501d1c8, org.springframework.security.web.authentication.logout.LogoutFilter@42f9873e, com.evo.evoproject.config.LoginFilter@652b3733, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@4404a6b, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@213012a0, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6c2883b1, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7b598d05, org.springframework.security.web.access.ExceptionTranslationFilter@2d47b06, org.springframework.security.web.access.intercept.AuthorizationFilter@39a3984c]
+2024-07-17T16:43:32.523+09:00  INFO 27468 --- [evoproject] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8090 (http) with context path ''
+2024-07-17T16:43:32.535+09:00  INFO 27468 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : Started EvoprojectApplication in 2.912 seconds (process running for 3.567)
+2024-07-17T16:43:32.540+09:00  INFO 27468 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T16:43:32.540+09:00  INFO 27468 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T16:43:35.974+09:00  INFO 27468 --- [evoproject] [http-nio-8090-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-07-17T16:43:35.974+09:00  INFO 27468 --- [evoproject] [http-nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-07-17T16:43:35.975+09:00  INFO 27468 --- [evoproject] [http-nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-07-17T16:43:38.490+09:00  WARN 27468 --- [evoproject] [http-nio-8090-exec-7] o.a.c.util.SessionIdGeneratorBase        : Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [114] milliseconds.
+2024-07-17T16:43:38.502+09:00  WARN 27468 --- [evoproject] [http-nio-8090-exec-7] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-7][terms] Deprecated unwrapped fragment expression "footer :: footer" found in template terms, line 337, col 9. Please use the complete syntax of fragment expressions instead ("~{footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-17T16:43:40.519+09:00  WARN 27468 --- [evoproject] [http-nio-8090-exec-4] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-4][register] Deprecated unwrapped fragment expression "header :: header" found in template register, line 37, col 9. Please use the complete syntax of fragment expressions instead ("~{header :: header}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-17T16:43:40.538+09:00  WARN 27468 --- [evoproject] [http-nio-8090-exec-4] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-4][register] Deprecated unwrapped fragment expression "footer :: footer" found in template register, line 114, col 9. Please use the complete syntax of fragment expressions instead ("~{footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-17T16:43:52.673+09:00 DEBUG 27468 --- [evoproject] [http-nio-8090-exec-10] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-17T16:43:52.674+09:00  INFO 27468 --- [evoproject] [http-nio-8090-exec-10] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-07-17T16:43:52.977+09:00  INFO 27468 --- [evoproject] [http-nio-8090-exec-10] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6babfada
+2024-07-17T16:43:52.979+09:00  INFO 27468 --- [evoproject] [http-nio-8090-exec-10] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-07-17T16:43:55.065+09:00 DEBUG 27468 --- [evoproject] [http-nio-8090-exec-1] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-17T16:44:03.341+09:00 DEBUG 27468 --- [evoproject] [http-nio-8090-exec-2] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-17T16:44:32.545+09:00  INFO 27468 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T16:44:32.545+09:00  INFO 27468 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T16:44:36.791+09:00 DEBUG 27468 --- [evoproject] [http-nio-8090-exec-4] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-17T16:44:37.819+09:00 DEBUG 27468 --- [evoproject] [http-nio-8090-exec-8] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-17T16:44:37.919+09:00 DEBUG 27468 --- [evoproject] [http-nio-8090-exec-8] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-17T16:44:40.649+09:00  WARN 27468 --- [evoproject] [http-nio-8090-exec-2] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-2][terms] Deprecated unwrapped fragment expression "footer :: footer" found in template terms, line 337, col 9. Please use the complete syntax of fragment expressions instead ("~{footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-17T16:44:42.606+09:00  WARN 27468 --- [evoproject] [http-nio-8090-exec-6] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-6][register] Deprecated unwrapped fragment expression "header :: header" found in template register, line 37, col 9. Please use the complete syntax of fragment expressions instead ("~{header :: header}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-17T16:44:42.614+09:00  WARN 27468 --- [evoproject] [http-nio-8090-exec-6] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-6][register] Deprecated unwrapped fragment expression "footer :: footer" found in template register, line 114, col 9. Please use the complete syntax of fragment expressions instead ("~{footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-17T16:44:45.544+09:00 DEBUG 27468 --- [evoproject] [http-nio-8090-exec-9] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-17T16:44:48.229+09:00 DEBUG 27468 --- [evoproject] [http-nio-8090-exec-8] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-17T16:45:32.533+09:00  INFO 27468 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T16:45:32.533+09:00  INFO 27468 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T16:45:35.576+09:00 DEBUG 27468 --- [evoproject] [http-nio-8090-exec-7] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-17T16:45:35.666+09:00 DEBUG 27468 --- [evoproject] [http-nio-8090-exec-7] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-17T16:45:43.749+09:00 DEBUG 27468 --- [evoproject] [http-nio-8090-exec-4] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-17T16:45:45.116+09:00 DEBUG 27468 --- [evoproject] [http-nio-8090-exec-5] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-17T16:45:45.131+09:00  WARN 27468 --- [evoproject] [http-nio-8090-exec-5] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-5][mypage] Deprecated unwrapped fragment expression "header :: header" found in template mypage, line 126, col 9. Please use the complete syntax of fragment expressions instead ("~{header :: header}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-17T16:45:45.139+09:00  WARN 27468 --- [evoproject] [http-nio-8090-exec-5] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-5][mypage] Deprecated unwrapped fragment expression "footer :: footer" found in template mypage, line 204, col 9. Please use the complete syntax of fragment expressions instead ("~{footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-17T16:45:56.125+09:00 DEBUG 27468 --- [evoproject] [http-nio-8090-exec-6] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-17T16:45:56.140+09:00  WARN 27468 --- [evoproject] [http-nio-8090-exec-6] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-6][withdrawal] Deprecated unwrapped fragment expression "footer :: footer" found in template withdrawal, line 33, col 9. Please use the complete syntax of fragment expressions instead ("~{footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-17T16:46:00.805+09:00 DEBUG 27468 --- [evoproject] [http-nio-8090-exec-9] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-17T16:46:32.533+09:00  INFO 27468 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T16:46:32.533+09:00  INFO 27468 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T16:46:47.848+09:00 DEBUG 27468 --- [evoproject] [http-nio-8090-exec-3] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-17T16:46:47.864+09:00  WARN 27468 --- [evoproject] [http-nio-8090-exec-3] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-3][mypage] Deprecated unwrapped fragment expression "header :: header" found in template mypage, line 126, col 9. Please use the complete syntax of fragment expressions instead ("~{header :: header}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-17T16:46:47.868+09:00  WARN 27468 --- [evoproject] [http-nio-8090-exec-3] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-3][mypage] Deprecated unwrapped fragment expression "footer :: footer" found in template mypage, line 204, col 9. Please use the complete syntax of fragment expressions instead ("~{footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-17T16:46:54.043+09:00 DEBUG 27468 --- [evoproject] [http-nio-8090-exec-10] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-17T16:46:54.055+09:00  WARN 27468 --- [evoproject] [http-nio-8090-exec-10] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-10][mypage] Deprecated unwrapped fragment expression "header :: header" found in template mypage, line 126, col 9. Please use the complete syntax of fragment expressions instead ("~{header :: header}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-17T16:46:54.059+09:00  WARN 27468 --- [evoproject] [http-nio-8090-exec-10] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-10][mypage] Deprecated unwrapped fragment expression "footer :: footer" found in template mypage, line 204, col 9. Please use the complete syntax of fragment expressions instead ("~{footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-17T16:46:54.933+09:00 DEBUG 27468 --- [evoproject] [http-nio-8090-exec-4] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-17T16:46:54.946+09:00 DEBUG 27468 --- [evoproject] [http-nio-8090-exec-4] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-17T16:46:54.952+09:00 DEBUG 27468 --- [evoproject] [http-nio-8090-exec-4] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-17T16:46:56.986+09:00 DEBUG 27468 --- [evoproject] [http-nio-8090-exec-5] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-17T16:46:56.999+09:00 DEBUG 27468 --- [evoproject] [http-nio-8090-exec-5] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-17T16:46:57.004+09:00 DEBUG 27468 --- [evoproject] [http-nio-8090-exec-5] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-17T16:47:32.489+09:00 DEBUG 27468 --- [evoproject] [http-nio-8090-exec-8] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-17T16:47:32.512+09:00 DEBUG 27468 --- [evoproject] [http-nio-8090-exec-8] o.s.jdbc.support.JdbcTransactionManager  : Creating new transaction with name [com.evo.evoproject.service.board.BoardService.createBoardWithImage]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2024-07-17T16:47:32.514+09:00 DEBUG 27468 --- [evoproject] [http-nio-8090-exec-8] o.s.jdbc.support.JdbcTransactionManager  : Acquired Connection [HikariProxyConnection@169774487 wrapping com.mysql.cj.jdbc.ConnectionImpl@6babfada] for JDBC transaction
+2024-07-17T16:47:32.517+09:00 DEBUG 27468 --- [evoproject] [http-nio-8090-exec-8] o.s.jdbc.support.JdbcTransactionManager  : Switching JDBC Connection [HikariProxyConnection@169774487 wrapping com.mysql.cj.jdbc.ConnectionImpl@6babfada] to manual commit
+2024-07-17T16:47:32.538+09:00  INFO 27468 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T16:47:32.538+09:00  INFO 27468 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T16:47:32.552+09:00  WARN 27468 --- [evoproject] [http-nio-8090-exec-8] com.amazonaws.util.Base64                : JAXB is unavailable. Will fallback to SDK implementation which may be less performant.If you are using Java 9+, you will need to include javax.xml.bind:jaxb-api as a dependency.
+2024-07-17T16:47:32.928+09:00 DEBUG 27468 --- [evoproject] [http-nio-8090-exec-8] o.s.jdbc.support.JdbcTransactionManager  : Initiating transaction commit
+2024-07-17T16:47:32.929+09:00 DEBUG 27468 --- [evoproject] [http-nio-8090-exec-8] o.s.jdbc.support.JdbcTransactionManager  : Committing JDBC transaction on Connection [HikariProxyConnection@169774487 wrapping com.mysql.cj.jdbc.ConnectionImpl@6babfada]
+2024-07-17T16:47:32.939+09:00 DEBUG 27468 --- [evoproject] [http-nio-8090-exec-8] o.s.jdbc.support.JdbcTransactionManager  : Releasing JDBC Connection [HikariProxyConnection@169774487 wrapping com.mysql.cj.jdbc.ConnectionImpl@6babfada] after transaction
+2024-07-17T16:47:32.944+09:00 DEBUG 27468 --- [evoproject] [http-nio-8090-exec-10] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-17T16:47:32.952+09:00 DEBUG 27468 --- [evoproject] [http-nio-8090-exec-10] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-17T16:47:32.958+09:00 DEBUG 27468 --- [evoproject] [http-nio-8090-exec-10] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-17T16:48:32.533+09:00  INFO 27468 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-17T16:48:32.534+09:00  INFO 27468 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-17T16:49:24.221+09:00  INFO 27468 --- [evoproject] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-07-17T16:49:24.280+09:00  INFO 27468 --- [evoproject] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
