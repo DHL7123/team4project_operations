@@ -10,11 +10,17 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
 @RequestMapping("/orders")
 public class OrderController {
+    @PostMapping("/save")
+    public String saveOrder(@ModelAttribute Order order, HttpSession session) {
+        session.setAttribute("order", order); // 세션에 임시 저장
+        return "redirect:/payment"; // 결제 페이지로 리다이렉션
+    }
 
     @Autowired
     private OrderService orderService;
@@ -26,15 +32,23 @@ public class OrderController {
         return "orders";
     }
 
-    @GetMapping("/create")//상품 주문 신청 시 작동하도록 변경해야함. 해당 상품의 정보들을 추가하도록 작성
+    @GetMapping("/create")
     public String showCreateOrderForm(Model model) {
         model.addAttribute("order", new Order());
         return "createOrder";
     }
+    // 추가된 부분
+    @PostMapping("/order/complete")
+    public String completeOrder(HttpSession session) {
+        Order order = (Order) session.getAttribute("order");
 
-    @PostMapping("/save")
-    public String saveOrder(@ModelAttribute Order order) {
-        orderService.createOrder(order); // 주문 저장
-        return "redirect:/orders"; // 주문 목록으로 리다이렉션
+        if (order != null) {
+            order.setStatus("Completed");
+            orderService.createOrder(order);
+            session.removeAttribute("order"); // 세션에서 제거
+        }
+
+        return "orderComplete";
     }
+
 }

@@ -44,6 +44,29 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
+    $('#payButton').click(function () {
+        IMP.request_pay({
+            pg: 'html5_inicis',
+            pay_method: 'card',
+            merchant_uid: 'merchant_' + new Date().getTime(),
+            name: 라면,
+            amount: 1000,
+            buyer_email: 'your_email@example.com',
+            buyer_name: 'your_buyer_name',
+            buyer_tel: '010-1234-5678',
+            buyer_addr: 'your_buyer_address',
+            buyer_postcode: '123-456'
+        }, function (rsp) {
+            if (rsp.success) {
+                $.post('/order/complete', function () {
+                    window.location.href = '/orders';
+                });
+            } else {
+                alert('Payment failed: ' + rsp.error_msg);
+            }
+        });
+    });
+
     checkOutButton.addEventListener("click", onClickPay);
     creditCardRadio.addEventListener("change", updateButtonState);
     bankTransferRadio.addEventListener("change", updateButtonState);
