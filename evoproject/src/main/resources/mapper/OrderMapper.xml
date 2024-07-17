@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.evo.evoproject.Mapper.order.OrderMapper">
+
+    <!-- Result Map -->
+    <resultMap id="OrderResultMap" type="com.evo.evoproject.domain.order.Order">
+        <id property="orderNo" column="order_no" />
+        <result property="userNo" column="user_no" />
+        <result property="proNo" column="pro_no" />
+        <result property="orderName" column="order_name" />
+        <result property="orderAddress1" column="order_address_1" />
+        <result property="orderAddress2" column="order_address_2" />
+        <result property="orderPhone" column="order_phone" />
+        <result property="orderComment" column="order_comment" />
+        <result property="orderTimestamp" column="order_timestamp" />
+        <result property="orderPayment" column="order_payment" />
+        <result property="orderStatus" column="order_status" />
+        <result property="orderDelivnum" column="order_delivnum" />
+    </resultMap>
+
+    <!-- 전체 주문 목록 조회 -->
+    <select id="selectOrderList" resultMap="OrderResultMap">
+        <![CDATA[
+        SELECT
+            order_no, user_no, pro_no, order_name, order_address_1, order_address_2,
+            order_phone, order_comment, order_timestamp, order_payment,
+            order_status, order_delivnum
+        FROM orders
+        ORDER BY order_no ASC
+            LIMIT #{rowStart}, #{rowEnd}
+        ]]>
+    </select>
+
+    <!-- 전체 주문 수 조회 -->
+    <select id="countAllOrders" resultType="int">
+        <![CDATA[
+        SELECT COUNT(*)
+        FROM orders
+        ]]>
+    </select>
+
+    <!-- 배송 상태 업데이트 -->
+    <update id="updateDeliveryState" parameterType="com.evo.evoproject.domain.order.Order">
+        <![CDATA[
+        UPDATE orders
+        SET order_status = #{orderStatus}
+        WHERE order_no = #{orderNo}
+        ]]>
+    </update>
+
+    <!-- 배송 번호 입력 -->
+    <update id="insertDeliveryNumber" parameterType="com.evo.evoproject.domain.order.Order">
+        <![CDATA[
+        UPDATE orders
+        SET order_delivnum = #{orderDelivnum}
+        WHERE order_no = #{orderNo}
+        ]]>
+    </update>
+
+    <!-- 주문을 취소/환불 상태로 업데이트 -->
+    <update id="updateOrderToCancelRefund" parameterType="com.evo.evoproject.domain.order.Order">
+        <![CDATA[
+        UPDATE orders
+        SET order_status = 4
+        WHERE order_no = #{orderNo}
+        ]]>
+    </update>
+
+</mapper>
