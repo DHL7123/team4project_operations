@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Configuration;
 
 
 @Configuration
-@MapperScan("com.evo.evoproject.Mapper")//MyBatis 매퍼 인터페이스 패키지 경로
+@MapperScan("com.evo.evoproject.mapper")//MyBatis 매퍼 인터페이스 패키지 경로
 public class MybatisConfig {
 
 }

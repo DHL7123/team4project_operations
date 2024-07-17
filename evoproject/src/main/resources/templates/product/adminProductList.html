@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>관리자 상품 목록</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<h1>상품 목록</h1>
+<a th:href="@{/admin/product/form}">새 상품 추가</a>
+<table>
+  <thead>
+  <tr>
+    <th>상품 번호</th>
+    <th>상품 이름</th>
+    <th>상품 설명</th>
+    <th>가격</th>
+    <th>재고</th>
+    <th>이미지</th>
+    <th>삭제</th>
+    <th>수정</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="product : ${products}">
+    <td th:text="${product.productNo}">상품 번호</td>
+    <td>
+      <img th:src="@{${product.mainImage.imageName}}" alt="상품 이미지" width="100" height="100"/>
+    </td>
+    <td th:text="${product.productName}">상품 명</td>
+    <td th:text="${product.price}">가격</td>
+    <td th:text="${product.categoryId}">카테고리</td>
+    <td th:text="${product.soldout == 1 ? '품절' : '판매중'}">판매상태</td>
+    <td th:text="${product.date}">등록일</td>
+    <td>
+      <a th:href="@{/admin/product/form(id=${product.productNo})}">수정</a>
+    </td>
+    <td>
+      <form th:action="@{/admin/product/{id}/delete(id=${product.productNo})}" method="post">
+        <input type="hidden" name="_method" value="delete"/>
+        <button type="submit">삭제</button>
+      </form>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<div>
+  <ul class="pagination">
+    <li th:each="i : ${#numbers.sequence(1, totalPages)}"
+        th:classappend="${i == currentPage} ? 'active'">
+      <a th:href="@{/admin/product(sort=${sort}, page=${i}, size=${size})}" th:text="${i}">1</a>
+    </li>
+  </ul>
+</div>
+</body>
+</html>

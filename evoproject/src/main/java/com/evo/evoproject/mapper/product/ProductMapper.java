@@ -1,4 +1,4 @@
-package com.evo.evoproject.Mapper.product;
+package com.evo.evoproject.mapper.product;
 
 
 import com.evo.evoproject.domain.product.RetrieveProduct;
@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 @Mapper
 public interface ProductMapper {
@@ -18,4 +19,10 @@ public interface ProductMapper {
     List<RetrieveProduct> findTopProductsByCategory(@Param("categoryId") int categoryId, @Param("productNo") int productNo);
     List<RetrieveProduct> findProductByName(@Param("productName") String input,@Param("sort")String sort, @Param("offset")int offset, @Param("size")int size);
     int countByProductsName(String productName);
+    void addProduct(RetrieveProduct product);
+    void updateProductMainImage(Map<String, Object> params);
+    void saveProductImageMapping(@Param("productNo") int productNo, @Param("imageId") int imageId);
+    void deleteProductImages(int productNo);
+    void deleteProduct(int productNo);
+    void updateProduct(RetrieveProduct product);
 }
