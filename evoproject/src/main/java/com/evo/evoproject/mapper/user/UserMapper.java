@@ -21,4 +21,6 @@ public interface UserMapper {
     void updateUserPassword(User user);
 
     void updateUserDetails(User user);
+
+    void getLatestTerms(@Param("content") String[] content, @Param("version") String[] version, @Param("termsType") String termsType);
 }

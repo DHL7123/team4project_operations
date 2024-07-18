@@ -1,6 +1,7 @@
 package com.evo.evoproject.controller.user;
 
 import com.evo.evoproject.domain.user.User;
+import com.evo.evoproject.service.user.TermsService;
 import com.evo.evoproject.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,16 +20,32 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private TermsService termsService;
 
     // 약관 동의 폼
     @GetMapping("/terms")
-    public String showTermsForm(HttpSession session) {
+    public String showTermsForm(HttpSession session, Model model) {
         if (session.getAttribute("loggedInUser") != null) {
             return "redirect:/index"; // 로그인 상태라면 인덱스 페이지로 리디렉트
         }
         session.setAttribute("acceptedTerms", false); // 약관 동의 초기화
+
+        Map<String, String> serviceTerms = termsService.getLatestTerms("service_term");
+        model.addAttribute("serviceTerms", serviceTerms.get("content"));
+
+        Map<String, String> privacyPolicy = termsService.getLatestTerms("privacy_policy");
+        model.addAttribute("privacyPolicy", privacyPolicy.get("content"));
+
+        Map<String, String> dataDelegationConsent = termsService.getLatestTerms("data_delegation_consent");
+        model.addAttribute("dataDelegationConsent", dataDelegationConsent.get("content"));
+
+        Map<String, String> marketingConsent = termsService.getLatestTerms("marketing_consent");
+        model.addAttribute("marketingConsent", marketingConsent.get("content"));
+
         return "terms";
     }
+
 
     // 약관 동의 처리
     @PostMapping("/terms")
