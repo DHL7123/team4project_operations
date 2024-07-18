@@ -123,3 +123,10 @@ document.addEventListener("DOMContentLoaded", function () {
 }
 
 
+function confirmDelete(button) {
+    const boardTitle = button.getAttribute('data-board-title');
+    const boardNo = button.getAttribute('data-board-no');
+    if (confirm(boardTitle + "을(를) 삭제하시겠습니까?")) {
+        window.location.href = "/admin/boards/delete/" + boardNo;
+    }
+}

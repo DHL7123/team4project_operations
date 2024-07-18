@@ -48,7 +48,7 @@ public class ReplyController {
 
         // 관리자만 댓글 작성 가능
         if (user == null || user.getIsAdmin() != 'Y') {
-            return "redirect:/boards/view/" + reply.getBoardNo();
+            return "redirect:/boards";
         }
 
         reply.setUserNo(user.getUserNo());
@@ -59,7 +59,7 @@ public class ReplyController {
         board.setIsAnswered('Y');
         boardService.updateBoard(board);
 
-        return "redirect:/boards/view/" + reply.getBoardNo();
+        return "redirect:/admin/boards";
     }
 
     @GetMapping("/delete/{replyNo}")

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.evo.evoproject.Mapper.order.OrderMapper">
+<mapper namespace="com.evo.evoproject.mapper.order.OrderMapper">
 
     <!-- Result Map -->
     <resultMap id="OrderResultMap" type="com.evo.evoproject.domain.order.Order">

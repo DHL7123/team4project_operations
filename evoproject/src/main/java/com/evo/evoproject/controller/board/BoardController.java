@@ -1,10 +1,8 @@
 package com.evo.evoproject.controller.board;
 
 import com.evo.evoproject.domain.board.Board;
-import com.evo.evoproject.domain.board.Reply;
 import com.evo.evoproject.domain.user.User;
 import com.evo.evoproject.service.board.BoardService;
-import com.evo.evoproject.service.board.ReplyService;
 import com.evo.evoproject.service.board.NaverImageUploadService;
 import com.evo.evoproject.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,14 +21,12 @@ public class BoardController {
 
     private final BoardService boardService;
     private final UserService userService;
-    private final ReplyService replyService;
     private final NaverImageUploadService imageUploadService;
 
     @Autowired
-    public BoardController(BoardService boardService, UserService userService , ReplyService replyService , NaverImageUploadService imageUploadService) {
+    public BoardController(BoardService boardService, UserService userService, NaverImageUploadService imageUploadService) {
         this.boardService = boardService;
         this.userService = userService;
-        this.replyService = replyService;
         this.imageUploadService = imageUploadService;
     }
 
@@ -47,13 +43,8 @@ public class BoardController {
         List<Board> boards;
         int totalBoards;
 
-        if (user.getIsAdmin() == 'Y') {
-            boards = boardService.getAllBoards(offset, 10);
-            totalBoards = boardService.getTotalBoardCount();
-        } else {
-            boards = boardService.getBoardsByUserNo(userNo, offset, 10);
-            totalBoards = boardService.getUserBoardCount(userNo);
-        }
+        boards = boardService.getBoardsByUserNo(userNo, offset, 10);
+        totalBoards = boardService.getUserBoardCount(userNo);
 
         int totalPages = (int) Math.ceil((double) totalBoards / 10);
 
@@ -62,7 +53,6 @@ public class BoardController {
         model.addAttribute("totalPages", totalPages);
         return "board/list";
     }
-
 
     @GetMapping("/create")
     public String showCreateForm(Model model) {
@@ -78,26 +68,21 @@ public class BoardController {
         board.setUserNo(user.getUserNo());
 
         try {
-            // 트랜잭션 내에서 게시글과 이미지를 함께 처리
             boardService.createBoardWithImage(board, image);
         } catch (IOException e) {
             e.printStackTrace();
-            // 필요시 오류 처리를 추가할 수 있습니다.
         }
 
         return "redirect:/boards";
     }
 
-    // 게시글 수정 폼 페이지
     @GetMapping("/edit/{boardNo}")
     public String showEditForm(@PathVariable int boardNo, HttpSession session, Model model) {
         String userId = (String) session.getAttribute("userId");
         Board board = boardService.getBoardById(boardNo);
         User user = userService.findUserByUserId(userId);
 
-
-        // 관리자이거나 본인의 게시글만 수정 가능
-        if (user.getIsAdmin() != 'Y' && board.getUserNo() != user.getUserNo()) {
+        if (board.getUserNo() != user.getUserNo()) {
             return "redirect:/boards";
         }
 
@@ -111,16 +96,14 @@ public class BoardController {
         String userId = (String) session.getAttribute("userId");
         User user = userService.findUserByUserId(userId);
 
-        if (user.getIsAdmin() != 'Y' && board.getUserNo() != user.getUserNo()) {
+        if (board.getUserNo() != user.getUserNo()) {
             return "redirect:/boards";
         }
 
         try {
-            // 트랜잭션 내에서 게시글과 이미지를 함께 처리
             boardService.updateBoardWithImage(board, image);
         } catch (IOException e) {
             e.printStackTrace();
-            // 필요시 오류 처리를 추가할 수 있습니다.
         }
 
         return "redirect:/boards";
@@ -132,7 +115,7 @@ public class BoardController {
         Board board = boardService.getBoardById(boardNo);
         User user = userService.findUserByUserId(userId);
 
-        if (user.getIsAdmin() != 'Y' && board.getUserNo() != user.getUserNo()) {
+        if (board.getUserNo() != user.getUserNo()) {
             return "redirect:/boards";
         }
 
@@ -146,12 +129,9 @@ public class BoardController {
         Board board = boardService.getBoardById(boardNo);
         User user = userService.findUserByUserId(userId);
 
-        // 작성자인지 확인
         boolean isAuthor = board.getUserNo() == user.getUserNo();
 
-        List<Reply> replies = replyService.getRepliesByBoardNo(boardNo);
         model.addAttribute("board", board);
-        model.addAttribute("replies", replies);
         model.addAttribute("isAuthor", isAuthor);
         return "board/view";
     }

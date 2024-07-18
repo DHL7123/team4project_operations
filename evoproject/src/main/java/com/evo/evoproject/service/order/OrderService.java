@@ -1,4 +1,4 @@
-package com.evo.evoproject.service;
+package com.evo.evoproject.service.order;
 
 import com.evo.evoproject.domain.order.Order;
 
