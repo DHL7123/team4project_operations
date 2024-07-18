@@ -12,6 +12,7 @@ public interface OrderMapper {
     List<Order> getOrdersByStatus(int status);
     List<Order> getAllOrders();
     int countOrdersByStatus(int status);
-    void updateOrderStatus(@Param("orderNo") String orderNo, @Param("status") int status);
-    void updateDelivnum(Map<String, String> params);
+    void updateOrderStatus(@Param("orderNo") int orderNo, @Param("status") int status);
+    void updateDelivnum(Map<String, Object> params);
+    void updateRequestType(Map<String, Object> params);
 }

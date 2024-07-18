@@ -9,6 +9,7 @@ public interface OrderService {
     List<Order> getOrdersByStatus(int status);
     List<Order> getAllOrders();
     int countOrdersByStatus(int status);
-    void updateOrderStatus(String orderNo, int status);
-    void updateDelivnum(Map<String, String> params);
+    void updateOrderStatus(int orderNo, int status);
+    void updateDelivnum(int orderNo, String orderDelivnum);
+    void updateRequestType(int orderNo, int requestType);
 }

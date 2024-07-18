@@ -21,41 +21,61 @@ public class OrderController {
 
     @GetMapping("/admin/manageOrder/{status}")
     public String getOrdersByStatus(@PathVariable int status, Model model) {
-        model.addAttribute("orders", orderService.getOrdersByStatus(status));
+        List<Order> orders = orderService.getOrdersByStatus(status);
+
+        model.addAttribute("orders", orders);
         model.addAttribute("selectedStatus", status);
         model.addAttribute("countPending", orderService.countOrdersByStatus(0));
         model.addAttribute("countPreparing", orderService.countOrdersByStatus(1));
         model.addAttribute("countShipping", orderService.countOrdersByStatus(2));
-        model.addAttribute("countRefunding", orderService.countOrdersByStatus(3));
+        model.addAttribute("countRequest", orderService.countOrdersByStatus(3));
         model.addAttribute("countCompleted", orderService.countOrdersByStatus(4));
         return "/admin/manageOrder";
     }
 
     @GetMapping("/admin/manageOrder")
     public String getAllOrders(Model model) {
-        model.addAttribute("orders", orderService.getAllOrders());
+        List<Order> orders = orderService.getAllOrders();
+
+        model.addAttribute("orders", orders);
         model.addAttribute("selectedStatus", "all");
         model.addAttribute("countPending", orderService.countOrdersByStatus(0));
         model.addAttribute("countPreparing", orderService.countOrdersByStatus(1));
         model.addAttribute("countShipping", orderService.countOrdersByStatus(2));
-        model.addAttribute("countRefunding", orderService.countOrdersByStatus(3));
+        model.addAttribute("countRequest", orderService.countOrdersByStatus(3));
         model.addAttribute("countCompleted", orderService.countOrdersByStatus(4));
         return "/admin/manageOrder";
     }
 
     @PostMapping("/admin/manageOrder/{orderNo}/{status}")
-    public String updateOrderStatus(@PathVariable String orderNo, @PathVariable int status, @RequestParam("prevStatus") int prevStatus) {
+    public String updateOrderStatus(@PathVariable int orderNo, @PathVariable int status, @RequestParam("prevStatus") String prevStatus) {
         orderService.updateOrderStatus(orderNo, status);
-        return "redirect:/admin/manageOrder/" + prevStatus;
+        if ("all".equals(prevStatus)) {
+            return "redirect:/admin/manageOrder";
+        } else {
+            return "redirect:/admin/manageOrder/" + prevStatus;
+        }
     }
 
     @PostMapping("/admin/manageOrder/{orderNo}/{status}/orderDelivnum")
-    public String updateDelivnum(@PathVariable String orderNo, @PathVariable int status, @RequestParam String orderDelivnum, @RequestParam("prevStatus") int prevStatus) {
-        Map<String, String> params = new HashMap<>();
-        params.put("orderNo", orderNo);
-        params.put("orderDelivnum", orderDelivnum);
-        orderService.updateDelivnum(params);
+    public String updateDelivnum(@PathVariable int orderNo, @PathVariable int status, @RequestParam String orderDelivnum, @RequestParam("prevStatus") String prevStatus) {
+        orderService.updateDelivnum(orderNo, orderDelivnum);
         orderService.updateOrderStatus(orderNo, status);
-        return "redirect:/admin/manageOrder/" + prevStatus;
+        if ("all".equals(prevStatus)) {
+            return "redirect:/admin/manageOrder";
+        } else {
+            return "redirect:/admin/manageOrder/" + prevStatus;
+        }
     }
+
+    @PostMapping("/admin/manageOrder/{orderNo}/requestType/{requestType}")
+    public String updateRequestType(@PathVariable int orderNo, @PathVariable int requestType, @RequestParam("prevStatus") String prevStatus) {
+        orderService.updateRequestType(orderNo, requestType);
+        if ("all".equals(prevStatus)) {
+            return "redirect:/admin/manageOrder";
+        } else {
+            return "redirect:/admin/manageOrder/" + prevStatus;
+        }
+    }
+
 }

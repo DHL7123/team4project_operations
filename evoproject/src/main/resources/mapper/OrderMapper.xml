@@ -17,6 +17,7 @@
         <result property="orderPayment" column="order_payment" />
         <result property="orderStatus" column="order_status" />
         <result property="orderDelivnum" column="order_delivnum" />
+        <result property="requestType" column="request_type" />
     </resultMap>
 
     <!-- 주문상태별 주문 목록 조회 -->
@@ -45,6 +46,13 @@
     <update id="updateDelivnum" parameterType="Map">
         UPDATE orders
         SET order_delivnum = #{orderDelivnum}
+        WHERE order_no = #{orderNo}
+    </update>
+
+    <!-- 요청 처리 상태 업데이트 -->
+    <update id="updateRequestType" parameterType="map">
+        UPDATE orders
+        SET request_type = #{requestType}
         WHERE order_no = #{orderNo}
     </update>
 

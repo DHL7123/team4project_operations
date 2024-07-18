@@ -75,6 +75,15 @@ button:hover {
     text-align: center;
     margin-bottom: 5px;
 }
+.manageConfirmBtnPlus {
+    background-color: #D6D6D6;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 150px;
+    text-align: center;
+    margin-bottom: 5px;
+}
 
 /*송장번호 입력 팝업*/
 .popup {
