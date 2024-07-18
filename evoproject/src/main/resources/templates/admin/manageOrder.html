@@ -120,9 +120,30 @@
 
                                 <span th:if="${order.orderStatus == 4}">배송완료</span>
                             </td>
+
                             <td>
-                                <button th:if="${order.orderStatus == 3 && order.requestType == 1}" class="manageConfirmBtnPlus">결제 취소 요청처리</button>
-                                <button th:if="${order.orderStatus == 3 && order.requestType == 2}" class="manageConfirmBtn">환불 요청처리</button>
+                                <!-- 결제 취소 요청 처리 버튼 -->
+                                <button th:if="${order.orderStatus == 3 && order.requestType == 1}" th:onclick="'showConfirmPopup(' + ${order.orderNo} + ')'" class="manageConfirmBtnPlus">결제 취소 요청처리</button>
+                                <span th:if="${order.orderStatus == 3 && order.requestType == 3}">결제 취소 처리 완료</span>
+
+                                <!-- 결제 취소 요청 처리 팝업 -->
+                                <div id="confirmPopup" class="popup" style="display: none;">
+                                    <div class="popup-content">
+                                        <h2>결제 취소 요청 처리</h2>
+                                        <form id="confirmForm" method="post">
+                                            <input type="hidden" name="prevStatus" th:value="${selectedStatus}">
+                                            <button type="button" onclick="confirmRequest()" style="border: none; background-color: #0d6efd; color: white">승인</button>
+                                        </form>
+                                    </div>
+                                </div>
+
+                                <!-- 환불 요청 처리 버튼 -->
+                                <form th:if="${order.orderStatus == 3 && order.requestType == 2}" method="post" th:action="@{/admin/manageOrder/{orderNo}/requestType/{requestType}(orderNo=${order.orderNo}, requestType=0)}">
+                                    <input type="hidden" name="prevStatus" th:value="${selectedStatus}">
+                                    <button type="submit" class="manageConfirmBtn">환불 요청처리</button>
+                                </form>
+
+
                             </td>
                         </tr>
                     </table>
@@ -159,9 +180,27 @@
         document.getElementById(popupType + '-' + orderNo).style.display = 'block';
     }
 
-    function hidePopup(orderNo, popupType) {
-        document.getElementById(popupType + '-' + orderNo).style.display = 'none';
+    function hidePopup(popupId) {
+        document.getElementById(popupId).style.display = 'none';
     }
+
+    function showConfirmPopup(orderNo) {
+        // 팝업을 표시하고 form의 action을 설정합니다.
+        document.getElementById('confirmPopup').style.display = 'block';
+        document.getElementById('confirmForm').action = '/admin/manageOrder/' + orderNo + '/requestType/3';
+        currentOrderNo = orderNo;  // 현재 주문 번호를 저장합니다.
+    }
+
+    function confirmRequest() {
+        if (confirm("승인하시겠습니까?")) {
+            // form을 제출하여 requestType을 업데이트합니다.
+            document.getElementById('confirmForm').submit();
+        } else {
+            // "취소"를 클릭하면 팝업을 닫습니다.
+            hidePopup('confirmPopup');  // 현재 주문 번호를 사용하여 팝업을 닫습니다.
+        }
+    }
+
 
 </script>
 

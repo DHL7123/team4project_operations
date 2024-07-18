@@ -50,7 +50,7 @@ public class OrderController {
     }
 
     @PostMapping("/admin/manageOrder/{orderNo}/{status}")
-    public String updateOrderStatus(@PathVariable String orderNo, @PathVariable int status, @RequestParam("prevStatus") String prevStatus) {
+    public String updateOrderStatus(@PathVariable int orderNo, @PathVariable int status, @RequestParam("prevStatus") String prevStatus) {
         orderService.updateOrderStatus(orderNo, status);
         if ("all".equals(prevStatus)) {
             return "redirect:/admin/manageOrder";
@@ -60,11 +60,8 @@ public class OrderController {
     }
 
     @PostMapping("/admin/manageOrder/{orderNo}/{status}/orderDelivnum")
-    public String updateDelivnum(@PathVariable String orderNo, @PathVariable int status, @RequestParam String orderDelivnum, @RequestParam("prevStatus") String prevStatus) {
-        Map<String, String> params = new HashMap<>();
-        params.put("orderNo", orderNo);
-        params.put("orderDelivnum", orderDelivnum);
-        orderService.updateDelivnum(params);
+    public String updateDelivnum(@PathVariable int orderNo, @PathVariable int status, @RequestParam String orderDelivnum, @RequestParam("prevStatus") String prevStatus) {
+        orderService.updateDelivnum(orderNo, orderDelivnum);
         orderService.updateOrderStatus(orderNo, status);
         if ("all".equals(prevStatus)) {
             return "redirect:/admin/manageOrder";
@@ -72,4 +69,15 @@ public class OrderController {
             return "redirect:/admin/manageOrder/" + prevStatus;
         }
     }
+
+    @PostMapping("/admin/manageOrder/{orderNo}/requestType/{requestType}")
+    public String updateRequestType(@PathVariable int orderNo, @PathVariable int requestType, @RequestParam("prevStatus") String prevStatus) {
+        orderService.updateRequestType(orderNo, requestType);
+        if ("all".equals(prevStatus)) {
+            return "redirect:/admin/manageOrder";
+        } else {
+            return "redirect:/admin/manageOrder/" + prevStatus;
+        }
+    }
+
 }

@@ -49,4 +49,11 @@
         WHERE order_no = #{orderNo}
     </update>
 
+    <!-- 요청 처리 상태 업데이트 -->
+    <update id="updateRequestType" parameterType="map">
+        UPDATE orders
+        SET request_type = #{requestType}
+        WHERE order_no = #{orderNo}
+    </update>
+
 </mapper>

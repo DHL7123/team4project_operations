@@ -36,12 +36,23 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public void updateOrderStatus(String orderNo, int status) {
+    public void updateOrderStatus(int orderNo, int status) {
         orderMapper.updateOrderStatus(orderNo, status);
     }
 
     @Override
-    public void updateDelivnum(Map<String, String> params) {
+    public void updateDelivnum(int orderNo, String orderDelivnum) {
+        Map<String, Object> params = new HashMap<>();
+        params.put("orderNo", orderNo);
+        params.put("orderDelivnum", orderDelivnum);
         orderMapper.updateDelivnum(params);
+    }
+
+    @Override
+    public void updateRequestType(int orderNo, int requestType) {
+        Map<String, Object> params = new HashMap<>();
+        params.put("orderNo", orderNo);
+        params.put("requestType", requestType);
+        orderMapper.updateRequestType(params);
     }
 }
