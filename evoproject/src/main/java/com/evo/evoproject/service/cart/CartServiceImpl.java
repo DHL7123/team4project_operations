@@ -2,6 +2,7 @@ package com.evo.evoproject.service.cart;
 
 import com.evo.evoproject.domain.cart.Cart;
 import com.evo.evoproject.mapper.cart.CartMapper;
+import com.evo.evoproject.mapper.user.UserMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,6 +14,7 @@ import java.util.List;
 public class CartServiceImpl implements CartService {
 
     private final CartMapper cartMapper;
+    private final UserMapper userMapper;
 
     /**
      * 사용자 번호에 따라 카트 아이템을 조회하는 메서드
@@ -54,5 +56,15 @@ public class CartServiceImpl implements CartService {
     @Override
     public void deleteProductsFromCart(int userNo, List<Integer> proNos) {
         cartMapper.deleteProductsFromCart(userNo, proNos);
+    }
+
+
+    @Override
+    public int getUserNoByUserId(String userId) {
+        Integer userNo = userMapper.getUserNoByUserId(userId);
+        if (userNo == null) {
+            throw new IllegalArgumentException("User not found for username: " + userId);
+        }
+        return userNo;
     }
 }

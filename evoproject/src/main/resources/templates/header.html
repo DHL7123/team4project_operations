@@ -72,10 +72,11 @@
                         </a>
                     </li>
                     <li sec:authorize="!hasAuthority('ADMIN')">
-                        <a th:href="@{/cart/{userNo}(userNo=1)}">
+                        <a th:href="@{/cart}">
                             <img th:src="@{/image/shopping_cart.png}" alt="shopping_cart" height="25px" width="25px">
                         </a>
                     </li>
+
 
                 </ul>
             </div>

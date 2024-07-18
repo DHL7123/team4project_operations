@@ -1,4 +1,6 @@
-<!DOCTYPE html><html xmlns:th="http://www.thymeleaf.org"><head>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
     <meta charset="UTF-8">
     <title>Evo Market - Shopping Cart</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" />
@@ -13,8 +15,6 @@
 <div class="CartBanner">
     <img th:src="@{/image/cart.png}" alt="Shopping Cart">
 </div>
-
-
 
 <form th:action="@{/cart/deleteSelected}" method="post">
     <input type="hidden" name="userNo" th:value="${userNo}" />
@@ -69,11 +69,9 @@
 
 <br><br><br><br>
 
-
 <div class="continueShopping">
     <a th:href="@{/}">쇼핑 계속하기</a>
 </div>
-
 
 <hr>
 <table class="table">
@@ -97,7 +95,6 @@
 <!-- JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js"></script>
 <script th:inline="javascript">
-
     document.addEventListener('DOMContentLoaded', function() {
         var cartItems = [];
         var totalAmount = 0;
@@ -169,7 +166,6 @@
             calculateTotal();
         };
     });
-
 </script>
 
 </body>

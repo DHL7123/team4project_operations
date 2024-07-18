@@ -36,6 +36,9 @@
         DELETE FROM user WHERE user_id = #{userId}
     </delete>
 
+    <select id="getUserNoByUserId" parameterType="string" resultType="java.lang.Integer">
+        SELECT user_no FROM user WHERE user_id = #{userId}
+    </select>
 
 </mapper>
 

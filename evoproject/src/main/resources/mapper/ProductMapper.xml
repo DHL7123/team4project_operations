@@ -43,7 +43,7 @@
             <when test="sort == 'price_desc'">
                 ORDER BY p.soldout ASC, p.pro_price DESC
             </when>
-            <when test="sort == 'date_desc'">
+            <when test="sort == 'pro_date_desc'">
                 ORDER BY p.soldout ASC, p.pro_date DESC
             </when>
             <otherwise>
@@ -94,7 +94,7 @@
             <when test="sort == 'price_desc'">
                 ORDER BY p.soldout ASC, p.pro_price DESC
             </when>
-            <when test="sort == 'date_desc'">
+            <when test="sort == 'pro_date_desc'">
                 ORDER BY p.soldout ASC, p.pro_date DESC
             </when>
             <otherwise>
@@ -153,7 +153,7 @@
             <when test="sort == 'price_desc'">
                 ORDER BY p.soldout ASC, p.pro_price DESC
             </when>
-            <when test="sort == 'date_desc'">
+            <when test="sort == 'pro_date_desc'">
                 ORDER BY p.soldout ASC, p.pro_date DESC
             </when>
             <otherwise>

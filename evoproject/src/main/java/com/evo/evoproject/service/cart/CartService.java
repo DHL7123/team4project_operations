@@ -11,4 +11,6 @@ public interface CartService {
     void addProductToCart(int userNo, int proNo, int quantity);
 
     void deleteProductsFromCart(int userNo, List<Integer> proNos);
+
+    int getUserNoByUserId(String userId);
 }

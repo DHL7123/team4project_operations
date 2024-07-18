@@ -6,7 +6,7 @@
   <link rel="stylesheet" th:href="@{/css/styles.css}">
   <link rel="stylesheet" th:href="@{/css/list.css}">
 </head>
-<body class="bg-light">
+<body class="bg-light" data-user-no="/*[[${userNo}]]*/">
 
 <header th:replace="~{header :: header}"></header>
 
@@ -111,7 +111,7 @@
         event.stopPropagation();
         const productNo = product.getAttribute('data-product-no');
         const price = product.getAttribute('data-product-price');
-        addToCart(1, productNo, price, 1);
+        addToCart(productNo, price, 1);
       });
     });
   });
@@ -122,7 +122,8 @@
   }
 
   // 장바구니에 상품 추가하는 함수
-  function addToCart(userNo, productNo, price, quantity) {
+  function addToCart(productNo, price, quantity) {
+    const userNo = document.body.getAttribute('data-user-no'); // HTML 요소의 data-* 속성에서 userNo를 가져옴
     fetch('/cart/add', {
       method: 'POST',
       headers: {
@@ -136,7 +137,7 @@
     }).then(response => {
       if (response.ok) {
         if (confirm('장바구니에 상품이 추가되었습니다. 장바구니로 이동하시겠습니까?')) {
-          window.location.href = '/cart/' + userNo;
+          window.location.href = '/cart';
         }
       } else {
         alert('상품 추가에 실패했습니다.');
