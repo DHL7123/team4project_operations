@@ -1,7 +1,7 @@
 package com.evo.evoproject.service;
 
 import com.evo.evoproject.model.Order;
-import com.evo.evoproject.repository.OrderMapper;
+import com.evo.evoproject.Mapper.order.OrderMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional; // 추가

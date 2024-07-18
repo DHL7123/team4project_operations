@@ -1,4 +1,4 @@
-package com.evo.evoproject.repository;
+package com.evo.evoproject.Mapper.order;
 
 import com.evo.evoproject.model.Order;
 import org.apache.ibatis.annotations.Mapper;
