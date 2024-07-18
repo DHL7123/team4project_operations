@@ -70,9 +70,10 @@ public class OrderController {
         }
     }
 
-    @PostMapping("/admin/manageOrder/{orderNo}/requestType/{requestType}")
-    public String updateRequestType(@PathVariable int orderNo, @PathVariable int requestType, @RequestParam("prevStatus") String prevStatus) {
+    @PostMapping("/admin/manageOrder/{orderNo}/requestType/{requestType}/orderStatus/{orderStatus}")
+    public String updateRequestTypeAndOrderStatus(@PathVariable int orderNo, @PathVariable int requestType, @PathVariable int orderStatus, @RequestParam("prevStatus") String prevStatus) {
         orderService.updateRequestType(orderNo, requestType);
+        orderService.updateOrderStatus(orderNo, orderStatus);
         if ("all".equals(prevStatus)) {
             return "redirect:/admin/manageOrder";
         } else {
