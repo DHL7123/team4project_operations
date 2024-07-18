@@ -1,7 +1,7 @@
 package com.evo.evoproject.service.board;
 
 import com.evo.evoproject.domain.board.Reply;
-import com.evo.evoproject.Mapper.board.ReplyMapper;
+import com.evo.evoproject.mapper.board.ReplyMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

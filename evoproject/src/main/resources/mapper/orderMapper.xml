@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.evo.evoproject.repository.OrderMapper">
+<mapper namespace="com.evo.evoproject.mapper.order.OrderMapper">
 
-    <insert id="insertOrder" parameterType="com.evo.evoproject.model.Order">
+    <insert id="insertOrder" parameterType="com.evo.evoproject.domain.order.Order">
         INSERT INTO list (user_name, item, quantity, price)
         VALUES (#{userName}, #{item}, #{quantity}, #{price})
     </insert>
 
-    <select id="findAllOrders" resultType="com.evo.evoproject.model.Order">
+    <select id="findAllOrders" resultType="com.evo.evoproject.domain.order.Order">
         SELECT * FROM list
     </select>
 
-    <select id="getOrderById" parameterType="java.lang.Long" resultType="com.evo.evoproject.model.Order">
+    <select id="getOrderById" parameterType="java.lang.Long" resultType="com.evo.evoproject.domain.order.Order">
         SELECT * FROM list WHERE id = #{id}
     </select>
 
-    <update id="updateOrder" parameterType="com.evo.evoproject.model.Order">
+    <update id="updateOrder" parameterType="com.evo.evoproject.domain.order.Order">
         UPDATE list SET user_name = #{userName}, item = #{item}, quantity = #{quantity}, price = #{price}
         WHERE id = #{id}
     </update>

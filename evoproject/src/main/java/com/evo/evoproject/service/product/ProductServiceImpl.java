@@ -1,11 +1,11 @@
 package com.evo.evoproject.service.product;
 
 
-import com.evo.evoproject.Mapper.product.ImageMapper;
+import com.evo.evoproject.mapper.product.ImageMapper;
 import com.evo.evoproject.controller.product.dto.RetrieveProductDetailResponse;
 import com.evo.evoproject.controller.product.dto.RetrieveProductsResponse;
 import com.evo.evoproject.domain.image.Image;
-import com.evo.evoproject.Mapper.product.ProductMapper;
+import com.evo.evoproject.mapper.product.ProductMapper;
 import com.evo.evoproject.domain.product.RetrieveProduct;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

@@ -1,7 +1,7 @@
 package com.evo.evoproject.controller;
 
-import com.evo.evoproject.model.Order;
-import com.evo.evoproject.service.OrderService;
+import com.evo.evoproject.domain.order.Order;
+import com.evo.evoproject.service.order.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

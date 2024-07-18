@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.evo.evoproject.Mapper.product.ImageMapper">
+<mapper namespace="com.evo.evoproject.mapper.product.ImageMapper">
 
     <resultMap id="ImageResultMap" type="com.evo.evoproject.domain.image.Image">
         <id property="imageId" column="image_id" />

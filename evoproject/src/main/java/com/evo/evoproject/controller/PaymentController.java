@@ -1,6 +1,6 @@
 package com.evo.evoproject.controller;
 
-import com.evo.evoproject.model.Order;
+import com.evo.evoproject.domain.order.Order;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

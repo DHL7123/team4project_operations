@@ -1,6 +1,6 @@
-package com.evo.evoproject.Mapper.order;
+package com.evo.evoproject.mapper.order;
 
-import com.evo.evoproject.model.Order;
+import com.evo.evoproject.domain.order.Order;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

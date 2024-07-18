@@ -182,3 +182,86 @@
 2024-07-15T13:41:21.127+09:00  INFO 12648 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
 2024-07-15T13:41:52.877+09:00  INFO 12648 --- [evoproject] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2024-07-15T13:41:53.143+09:00  INFO 12648 --- [evoproject] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-07-18T14:08:42.795+09:00  INFO 8876 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : Starting EvoprojectApplication using Java 17.0.11 with PID 8876 (D:\EVO\evoproject\build\classes\java\main started by skygv in D:\EVO)
+2024-07-18T14:08:42.796+09:00  INFO 8876 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : No active profile set, falling back to 1 default profile: "default"
+2024-07-18T14:08:43.992+09:00  INFO 8876 --- [evoproject] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8090 (http)
+2024-07-18T14:08:44.008+09:00  INFO 8876 --- [evoproject] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-07-18T14:08:44.008+09:00  INFO 8876 --- [evoproject] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-07-18T14:08:44.074+09:00  INFO 8876 --- [evoproject] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-07-18T14:08:44.075+09:00  INFO 8876 --- [evoproject] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1232 ms
+2024-07-18T14:08:44.127+09:00  WARN 8876 --- [evoproject] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'amazonS3Config': Injection of autowired dependencies failed
+2024-07-18T14:08:44.129+09:00  INFO 8876 --- [evoproject] [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2024-07-18T14:08:44.143+09:00  INFO 8876 --- [evoproject] [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-07-18T14:08:44.161+09:00 ERROR 8876 --- [evoproject] [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'amazonS3Config': Injection of autowired dependencies failed
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:514) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1421) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:599) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:975) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:962) ~[spring-context-6.1.10.jar:6.1.10]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624) ~[spring-context-6.1.10.jar:6.1.10]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.2.7.jar:3.2.7]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.2.7.jar:3.2.7]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.2.7.jar:3.2.7]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335) ~[spring-boot-3.2.7.jar:3.2.7]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363) ~[spring-boot-3.2.7.jar:3.2.7]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352) ~[spring-boot-3.2.7.jar:3.2.7]
+	at com.evo.evoproject.EvoprojectApplication.main(EvoprojectApplication.java:9) ~[main/:na]
+Caused by: java.lang.IllegalArgumentException: Could not resolve placeholder 'cloud.aws.credentials.accessKey' in value "${cloud.aws.credentials.accessKey}"
+	at org.springframework.util.PropertyPlaceholderHelper.parseStringValue(PropertyPlaceholderHelper.java:180) ~[spring-core-6.1.10.jar:6.1.10]
+	at org.springframework.util.PropertyPlaceholderHelper.replacePlaceholders(PropertyPlaceholderHelper.java:126) ~[spring-core-6.1.10.jar:6.1.10]
+	at org.springframework.core.env.AbstractPropertyResolver.doResolvePlaceholders(AbstractPropertyResolver.java:239) ~[spring-core-6.1.10.jar:6.1.10]
+	at org.springframework.core.env.AbstractPropertyResolver.resolveRequiredPlaceholders(AbstractPropertyResolver.java:210) ~[spring-core-6.1.10.jar:6.1.10]
+	at org.springframework.context.support.PropertySourcesPlaceholderConfigurer.lambda$processProperties$0(PropertySourcesPlaceholderConfigurer.java:200) ~[spring-context-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.resolveEmbeddedValue(AbstractBeanFactory.java:964) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1374) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:784) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:767) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:145) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:508) ~[spring-beans-6.1.10.jar:6.1.10]
+	... 17 common frames omitted
+
+2024-07-18T14:08:59.950+09:00  INFO 26028 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : Starting EvoprojectApplication using Java 17.0.11 with PID 26028 (D:\EVO\evoproject\build\classes\java\main started by skygv in D:\EVO)
+2024-07-18T14:08:59.952+09:00  INFO 26028 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : No active profile set, falling back to 1 default profile: "default"
+2024-07-18T14:09:01.064+09:00  INFO 26028 --- [evoproject] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8090 (http)
+2024-07-18T14:09:01.080+09:00  INFO 26028 --- [evoproject] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-07-18T14:09:01.080+09:00  INFO 26028 --- [evoproject] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-07-18T14:09:01.135+09:00  INFO 26028 --- [evoproject] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-07-18T14:09:01.136+09:00  INFO 26028 --- [evoproject] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1138 ms
+2024-07-18T14:09:02.063+09:00  INFO 26028 --- [evoproject] [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-07-18T14:09:02.253+09:00  INFO 26028 --- [evoproject] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@29c244e, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6cc8da1c, org.springframework.security.web.context.SecurityContextHolderFilter@402a69f, org.springframework.security.web.header.HeaderWriterFilter@10f20d38, org.springframework.web.filter.CorsFilter@39a3984c, org.springframework.security.web.authentication.logout.LogoutFilter@182e4365, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@603d25db, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2d47b06, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@48106381, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4404a6b, org.springframework.security.web.access.ExceptionTranslationFilter@4f3fec43, org.springframework.security.web.access.intercept.AuthorizationFilter@3f9f8d23]
+2024-07-18T14:09:02.542+09:00  INFO 26028 --- [evoproject] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8090 (http) with context path ''
+2024-07-18T14:09:02.552+09:00  INFO 26028 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : Started EvoprojectApplication in 3.009 seconds (process running for 3.671)
+2024-07-18T14:09:02.556+09:00  INFO 26028 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-18T14:09:02.557+09:00  INFO 26028 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-18T14:09:07.212+09:00  INFO 26028 --- [evoproject] [http-nio-8090-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-07-18T14:09:07.212+09:00  INFO 26028 --- [evoproject] [http-nio-8090-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-07-18T14:09:07.213+09:00  INFO 26028 --- [evoproject] [http-nio-8090-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-07-18T14:09:16.745+09:00 DEBUG 26028 --- [evoproject] [http-nio-8090-exec-9] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2024-07-18T14:09:16.745+09:00  INFO 26028 --- [evoproject] [http-nio-8090-exec-9] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-07-18T14:09:17.037+09:00  INFO 26028 --- [evoproject] [http-nio-8090-exec-9] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@75ea2036
+2024-07-18T14:09:17.041+09:00  INFO 26028 --- [evoproject] [http-nio-8090-exec-9] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-07-18T14:09:17.296+09:00  WARN 26028 --- [evoproject] [http-nio-8090-exec-9] o.a.c.util.SessionIdGeneratorBase        : Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [122] milliseconds.
+2024-07-18T14:10:02.564+09:00  INFO 26028 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-18T14:10:02.564+09:00  INFO 26028 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-18T14:11:02.552+09:00  INFO 26028 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-18T14:11:02.552+09:00  INFO 26028 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-18T14:12:02.553+09:00  INFO 26028 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-18T14:12:02.554+09:00  INFO 26028 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-18T14:13:02.558+09:00  INFO 26028 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-18T14:13:02.558+09:00  INFO 26028 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-18T14:14:02.563+09:00  INFO 26028 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-18T14:14:02.563+09:00  INFO 26028 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-18T14:15:02.562+09:00  INFO 26028 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-18T14:15:02.562+09:00  INFO 26028 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-18T14:15:08.998+09:00  INFO 26028 --- [evoproject] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-07-18T14:15:09.066+09:00  INFO 26028 --- [evoproject] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

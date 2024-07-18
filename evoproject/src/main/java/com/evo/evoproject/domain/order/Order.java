@@ -1,4 +1,4 @@
-package com.evo.evoproject.model;
+package com.evo.evoproject.domain.order;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

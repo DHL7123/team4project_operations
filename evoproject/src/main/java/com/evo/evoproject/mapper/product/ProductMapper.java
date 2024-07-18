@@ -1,4 +1,4 @@
-package com.evo.evoproject.Mapper.product;
+package com.evo.evoproject.mapper.product;
 
 
 import com.evo.evoproject.domain.product.RetrieveProduct;

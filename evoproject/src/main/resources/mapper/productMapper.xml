@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.evo.evoproject.Mapper.product.ProductMapper">
+<mapper namespace="com.evo.evoproject.mapper.product.ProductMapper">
 
     <resultMap id="ProductResultMap" type="com.evo.evoproject.domain.product.RetrieveProduct">
         <id property="productNo" column="pro_no"/>

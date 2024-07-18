@@ -1,4 +1,4 @@
-package com.evo.evoproject.Mapper.user;
+package com.evo.evoproject.mapper.user;
 
 import com.evo.evoproject.domain.user.User;
 import org.apache.ibatis.annotations.Mapper;
