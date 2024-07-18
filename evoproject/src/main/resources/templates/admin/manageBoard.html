@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>Evo Martket_Admin_Board 관리</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" th:href="@{/css/admin.css}">
+    <link rel="stylesheet" th:href="@{/css/dashboard.css}">
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<!--Header-->
+<header th:replace="~{header :: header}"></header>
+
+<div>
+    <div class="admin banner">
+        <img alt="admin" th:src="@{/image/admin.png}" width="1600px" height="350px">
+    </div>
+
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+        <a class="navbar-brand ps-5 text-black" href="#">Admin</a>
+    </nav>
+
+    <div id="layoutSidenav">
+        <!--  관리자 페이지 SNB  -->
+        <div id="layoutSidenav_nav">
+            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                <div class="sb-sidenav-menu">
+                    <div class="nav ps-3">
+                        <a class="nav-link text-decoration-none text-black fw-bold fs-4" th:href="@{/templates/admin}">
+                            상품관리
+                        </a>
+                        <a class="nav-link text-decoration-none text-black fw-bold fs-4" th:href="@{/admin/manageOrder}">
+                            주문관리
+                        </a>
+                        <a class="nav-link text-decoration-none text-black fw-bold fs-4" th:href="@{/admin/manageBoard}">
+                            Board 관리
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <!-- 대시보드 내용 -->
+        <div id="layoutSidenav_content">
+            <main>
+                <div class="container-fluid px-4">
+                    <h1 class="mt-4">Board 관리</h1>
+                </div>
+            </main>
+        </div>
+    </div>
+</div>
+
+
+
+<!--Footer-->
+<footer th:replace="~{footer :: footer}"></footer>
+
+<!-- JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<script th:src="@{/js/script.js}"></script>
+</body>
+</html>

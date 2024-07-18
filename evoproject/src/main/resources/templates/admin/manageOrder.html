@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>Evo Martket_Admin_주문관리</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" />
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" th:href="@{/css/admin.css}">
+    <link rel="stylesheet" th:href="@{/css/dashboard.css}">
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<!--Header-->
+<header th:replace="~{header :: header}"></header>
+
+<div>
+    <div class="admin banner">
+        <img alt="admin" th:src="@{/image/admin.png}" width="1600px" height="350px">
+    </div>
+
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+        <a class="navbar-brand ps-5 text-black" href="#">Admin</a>
+    </nav>
+
+    <div id="layoutSidenav">
+        <!--  관리자 페이지 SNB  -->
+        <div id="layoutSidenav_nav">
+            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                <div class="sb-sidenav-menu">
+                    <div class="nav ps-3">
+                        <a class="nav-link text-decoration-none text-black fw-bold fs-4" th:href="@{/templates/admin}">
+                            상품관리
+                        </a>
+                        <a class="nav-link text-decoration-none text-black fw-bold fs-4" th:href="@{/admin/manageOrder}">
+                            주문관리
+                        </a>
+                        <a class="nav-link text-decoration-none text-black fw-bold fs-4" th:href="@{/admin/manageBoard}">
+                            Board 관리
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <!-- 대시보드 내용 -->
+        <div id="layoutSidenav_content">
+            <main>
+                <div class="container-fluid px-4">
+                    <h1 class="mt-4">주문관리</h1>
+
+                    <div class="button-container">
+                        <button id="btn-all" th:class="${selectedStatus == 'all' ? 'selected' : ''}" onclick="location.href='/admin/manageOrder'">전체 주문 목록</button>
+                        <button id="btn-0" th:class="${selectedStatus == 0 ? 'selected' : ''}" onclick="location.href='/admin/manageOrder/0'">결제대기 (<span th:text="${countPending}"></span>)</button>
+                        <button id="btn-1" th:class="${selectedStatus == 1 ? 'selected' : ''}" onclick="location.href='/admin/manageOrder/1'">배송준비중 (<span th:text="${countPreparing}"></span>)</button>
+                        <button id="btn-2" th:class="${selectedStatus == 2 ? 'selected' : ''}" onclick="location.href='/admin/manageOrder/2'">배송중 (<span th:text="${countShipping}"></span>)</button>
+                        <button id="btn-3" th:class="${selectedStatus == 3 ? 'selected' : ''}" onclick="location.href='/admin/manageOrder/3'">결제 취소/환불 (<span th:text="${countRefunding}"></span>)</button>
+                        <button id="btn-4" th:class="${selectedStatus == 4 ? 'selected' : ''}" onclick="location.href='/admin/manageOrder/4'">배송완료 (<span th:text="${countCompleted}"></span>)</button>
+                    </div>
+
+                    <table>
+                        <tr>
+                            <th>주문일</th>
+                            <th>주문번호</th>
+                            <th>주문자</th>
+                            <th>총금액</th>
+                            <th>상태</th>
+                            <th>결제 취소/환불 처리</th>
+                        </tr>
+                        <tr th:each="order : ${orders}">
+                            <td th:text="${#dates.format(order.orderTimestamp, 'yyyy-MM-dd | HH:mm')}"></td>
+                            <td th:text="${order.orderNo}"></td>
+                            <td th:text="${order.orderName}"></td>
+                            <td th:text="${order.orderPayment}"></td>
+                            <td>
+                                <span th:if="${order.orderStatus == 0}">결제 대기</span>
+                                <form th:if="${order.orderStatus == 0}" method="post" th:action="@{/admin/manageOrder/{orderNo}/{status}(orderNo=${order.orderNo}, status=1)}" id="updateForm">
+                                    <input type="hidden" name="prevStatus" th:value="${selectedStatus}">
+                                    <button type="button" onclick="confirmUpdate()" class="manageConfirmBtn">결제완료</button>
+                                </form>
+
+                                <span th:if="${order.orderStatus == 1}">
+                                    배송 준비중 <br>
+                                    <button type="button" th:onclick="'showPopup(\'' + ${order.orderNo} + '\', \'inputPopup\');'" class="manageConfirmBtn">송장번호입력</button>
+                                    <div th:id="'inputPopup-' + ${order.orderNo}" class="popup" style="display: none;">
+                                        <div class="popup-content">
+                                            <form method="post" th:action="@{/admin/manageOrder/{orderNo}/{status}/orderDelivnum(orderNo=${order.orderNo}, status=2)}">
+                                                <h2>운송장 번호</h2>
+                                                <input type="text" name="orderDelivnum" placeholder="송장번호">
+                                                <input type="hidden" name="prevStatus" th:value="${selectedStatus}">
+                                                <div style="margin-top: 20px;">
+                                                    <button type="submit" style="border: none; background-color: #0d6efd; color: white">확인</button>
+                                                    <button type="button" th:onclick="'hidePopup(\'' + ${order.orderNo} + '\', \'inputPopup\');'" style="border: none; background-color: #939393; color: white">취소</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </span>
+                                <span th:if="${order.orderStatus == 2}">
+                                    배송중 <br>
+                                    <button type="button" th:onclick="'showPopup(\'' + ${order.orderNo} + '\', \'viewPopup\');'" class="manageConfirmBtn">송장번호조회</button>
+                                    <form method="post" th:action="@{/admin/manageOrder/{orderNo}/{status}(orderNo=${order.orderNo}, status=4)}" id="updateForm2">
+                                        <input type="hidden" name="prevStatus" th:value="${selectedStatus}">
+                                        <button type="submit" class="manageConfirmBtn">배송완료</button>
+                                    </form>
+                                    <div th:id="'viewPopup-' + ${order.orderNo}" class="popup" style="display: none;">
+                                        <div class="popup-content">
+                                            <h2>운송장 번호</h2>
+                                            <p th:text="${order.orderDelivnum}"></p>
+                                            <button type="button" th:onclick="'hidePopup(\'' + ${order.orderNo} + '\', \'viewPopup\');'" style="border: none; background-color: #939393; color: white">닫기</button>
+                                        </div>
+                                    </div>
+                                </span>
+
+                                <span th:if="${order.orderStatus == 3}">결제 취소/환불</span>
+
+                                <span th:if="${order.orderStatus == 4}">배송완료</span>
+                            </td>
+                            <td>
+                                <button th:if="${order.orderStatus == 3}" class="manageConfirmBtn">처리</button>
+                            </td>
+                        </tr>
+                    </table>
+
+
+                </div>
+            </main>
+        </div>
+    </div>
+</div>
+
+<!--Footer-->
+<footer th:replace="~{footer :: footer}"></footer>
+
+<!-- JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+<script>
+
+    <!--  결제완료확인confirm창  -->
+    function confirmUpdate() {
+        if (confirm("해당 상품의 결제를 확인하셨습니까?")) {
+            document.getElementById("updateForm").submit();
+        }
+    }
+
+    <!--  배송완료확인 confirm창  -->
+    function confirmUpdate2() {
+        if (confirm("해당 상품의 배송이 완료되었습니까?")) {
+            document.getElementById("updateForm").submit();
+        }
+    }
+
+    function showPopup(orderNo, popupType) {
+        document.getElementById(popupType + '-' + orderNo).style.display = 'block';
+    }
+
+    function hidePopup(orderNo, popupType) {
+        document.getElementById(popupType + '-' + orderNo).style.display = 'none';
+    }
+
+</script>
+
+</body>
+</html>
