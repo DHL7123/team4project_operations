@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
             buyer_postcode: '123-456'
         }, function (rsp) {
             if (rsp.success) {
-                $.post('/order/complete', function () {
+                $.post('/paymentOrders/complete', function () {
                     window.location.href = '/orders';
                 });
             } else {

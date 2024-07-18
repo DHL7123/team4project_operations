@@ -14,7 +14,7 @@ import jakarta.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
-@RequestMapping("/orders")
+@RequestMapping("/paymentOrders")
 public class OrderController {
     @PostMapping("/save")
     public String saveOrder(@ModelAttribute Order order, HttpSession session) {
