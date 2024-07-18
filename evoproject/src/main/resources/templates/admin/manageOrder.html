@@ -66,6 +66,7 @@
                             <th>주문번호</th>
                             <th>주문자</th>
                             <th>총금액</th>
+                            <th>결제금액</th>
                             <th>상태</th>
                             <th>결제 취소/환불 처리</th>
                         </tr>
@@ -73,6 +74,7 @@
                             <td th:text="${#dates.format(order.orderTimestamp, 'yyyy-MM-dd | HH:mm')}"></td>
                             <td th:text="${order.orderNo}"></td>
                             <td th:text="${order.orderName}"></td>
+                            <td th:text="${order.orderPayment}"></td>
                             <td th:text="${order.orderPayment}"></td>
                             <td>
                                 <span th:if="${order.orderStatus == 0}">결제 대기</span>
@@ -103,7 +105,7 @@
                                     <button type="button" th:onclick="'showPopup(\'' + ${order.orderNo} + '\', \'viewPopup\');'" class="manageConfirmBtn">송장번호조회</button>
                                     <form method="post" th:action="@{/admin/manageOrder/{orderNo}/{status}(orderNo=${order.orderNo}, status=4)}" id="updateForm2">
                                         <input type="hidden" name="prevStatus" th:value="${selectedStatus}">
-                                        <button type="submit" class="manageConfirmBtn">배송완료</button>
+                                        <button type="submit" onclick="confirmUpdate2()" class="manageConfirmBtn">배송완료</button>
                                     </form>
                                     <div th:id="'viewPopup-' + ${order.orderNo}" class="popup" style="display: none;">
                                         <div class="popup-content">
@@ -119,7 +121,8 @@
                                 <span th:if="${order.orderStatus == 4}">배송완료</span>
                             </td>
                             <td>
-                                <button th:if="${order.orderStatus == 3}" class="manageConfirmBtn">처리</button>
+                                <button th:if="${order.orderStatus == 3 && order.requestType == 1}" class="manageConfirmBtnPlus">결제 취소 요청처리</button>
+                                <button th:if="${order.orderStatus == 3 && order.requestType == 2}" class="manageConfirmBtn">환불 요청처리</button>
                             </td>
                         </tr>
                     </table>

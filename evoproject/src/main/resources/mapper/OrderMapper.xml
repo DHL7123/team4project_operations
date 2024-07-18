@@ -17,6 +17,7 @@
         <result property="orderPayment" column="order_payment" />
         <result property="orderStatus" column="order_status" />
         <result property="orderDelivnum" column="order_delivnum" />
+        <result property="requestType" column="request_type" />
     </resultMap>
 
     <!-- 주문상태별 주문 목록 조회 -->
