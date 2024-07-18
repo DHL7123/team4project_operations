@@ -3,25 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <title th:text="${isEdit} ? '상품 수정' : '새 상품 추가'">상품 관리</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .form-group label {
+            width: 150px;
+            margin-right: 10px;
+            text-align: right;
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            flex: 1;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .price-container {
+            display: flex;
+            align-items: center;
+        }
+        .price-unit {
+            margin-left: 5px;
+            font-size: 16px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            outline: none;
+            color: #fff;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .btn-danger {
+            background-color: #dc3545;
+        }
+        .btn-danger:hover {
+            background-color: #c82333;
+        }
         .preview-img {
             width: 100px;
             height: 100px;
             margin: 10px;
+            border: 1px solid #ccc;
+            padding: 5px;
+            border-radius: 4px;
+            box-sizing: border-box;
         }
-        .modal-dialog {
-            max-width: 800px;
-            margin: auto;
-            overflow-y: auto;
+        .image-preview-container {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 15px;
         }
-        .close {
-            position: absolute;
-            right: 15px;
-            top: 15px;
-            font-size: 1.2rem;
-            padding: 5px 10px;
-            cursor: pointer;
+        .image-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        .image-preview-header {
+            font-size: 18px;
+            margin-bottom: 10px;
+            width: 100%;
         }
     </style>
 </head>
@@ -34,12 +107,12 @@
 
         <div class="form-group">
             <label for="productName">상품 명:</label>
-            <input type="text" class="form-control" id="productName" name="productName" th:value="${product.productName}" required/>
+            <input type="text" id="productName" name="productName" th:value="${product.productName}" required/>
         </div>
 
         <div class="form-group">
             <label for="categoryId">카테고리:</label>
-            <select class="form-control" id="categoryId" name="categoryId" required>
+            <select id="categoryId" name="categoryId" required>
                 <option value="1" th:selected="${product.categoryId == 1}">Chair</option>
                 <option value="2" th:selected="${product.categoryId == 2}">Lamp</option>
                 <option value="3" th:selected="${product.categoryId == 3}">Table</option>
@@ -51,34 +124,42 @@
 
         <div class="form-group">
             <label for="price">상품 가격:</label>
-            <input type="number" class="form-control" id="price" name="price" th:value="${product.price}" required/>
+            <div class="price-container">
+                <input type="text" id="price" name="price" th:value="${#numbers.formatInteger(product.price, 0)}" required oninput="formatPrice(this)"/>
+                <span class="price-unit">원</span>
+            </div>
         </div>
 
         <div class="form-group">
             <label for="shipping">배송비:</label>
-            <input type="number" class="form-control" id="shipping" name="shipping" th:value="${product.shipping}" required/>
+            <div class="price-container">
+                <input type="text" id="shipping" name="shipping" th:value="${#numbers.formatInteger(product.shipping, 0)}" required oninput="formatPrice(this)"/>
+                <span class="price-unit">원</span>
+            </div>
         </div>
+
 
         <div class="form-group">
             <label for="images">이미지:</label>
-            <input type="file" class="form-control-file" id="images" name="images" multiple accept="image/*" onchange="previewImages()"/>
-            <div id="preview" class="d-flex flex-wrap"></div>
+            <input type="file" id="images" name="images" multiple accept="image/*" onchange="validateAndPreviewImages()"/>
         </div>
+
+
 
         <div class="form-group">
             <label for="stock">재고:</label>
-            <input type="number" class="form-control" id="stock" name="stock" th:value="${product.stock}" required/>
+            <input type="number" id="stock" name="stock" th:value="${product.stock}" required/>
         </div>
 
         <div class="form-group">
             <label for="productDes">상품 설명:</label>
-            <textarea class="form-control" id="productDes" name="productDes" rows="3" required th:text="${product.productDes}"></textarea>
+            <textarea id="productDes" name="productDes" rows="3" required th:text="${product.productDes}"></textarea>
         </div>
 
         <div th:if="${isEdit}">
             <h5>기존 이미지</h5>
-            <div class="d-flex flex-wrap" th:each="image : ${product.images}">
-                <div class="mr-2 mb-2">
+            <div id="existingImages" class="image-preview-container" th:each="image : ${product.images}">
+                <div class="image-container">
                     <img th:src="@{${image.imageName}}" alt="상품 이미지" class="preview-img"/>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" name="imagesToDelete" th:value="${image.imageId}">
@@ -88,32 +169,69 @@
             </div>
         </div>
 
-        <button type="submit" class="btn btn-primary mt-3" th:text="${isEdit} ? '상품 수정' : '상품 추가'">상품 추가</button>
+
+
+        <button type="submit" class="btn mt-3" th:text="${isEdit} ? '상품 수정' : '상품 추가'">상품 추가</button>
     </form>
+
+    <div id="preview" class="image-preview-container"></div>
 </div>
 
 <script>
+    const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
+    const MAX_FILE_COUNT = 5; // 최대 이미지 개수
     let selectedFiles = [];
 
-    function previewImages() {
-        const files = document.getElementById('images').files;
+    document.getElementById('images').addEventListener('change', (event) => {
+        const files = Array.from(event.target.files);
+        const preview = document.getElementById('preview');
+        preview.innerHTML = '';  // 기존 미리보기 초기화
+        selectedFiles = [];  // 기존 선택된 파일 초기화
+
+        let exceededFileSize = false;
+        for (let i = 0; i < files.length; i++) {
+            const file = files[i];
+
+            if (file.size > MAX_FILE_SIZE) {
+                exceededFileSize = true;
+                alert(`${file.name} 파일이 5MB를 초과합니다. 5MB 이하의 파일만 업로드 가능합니다.`);
+            } else {
+                selectedFiles.push(file);
+            }
+        }
+
+        if (files.length > MAX_FILE_COUNT) {
+            alert(`최대 ${MAX_FILE_COUNT}개의 이미지만 업로드할 수 있습니다.`);
+            selectedFiles = [];
+        }
+
+        updatePreview();
+        updateFileInput();
+    });
+
+    function updatePreview() {
         const preview = document.getElementById('preview');
         preview.innerHTML = '';
 
-        Array.from(files).forEach(file => {
+        selectedFiles.forEach(file => {
             const reader = new FileReader();
             reader.onload = (e) => {
                 const img = document.createElement('img');
                 img.src = e.target.result;
                 img.classList.add('preview-img');
-                preview.appendChild(img);
+
+                const imageContainer = document.createElement('div');
+                imageContainer.classList.add('image-container');
+                imageContainer.appendChild(img);
 
                 const removeButton = document.createElement('button');
                 removeButton.textContent = '이미지 삭제';
                 removeButton.type = 'button';
                 removeButton.classList.add('btn', 'btn-danger', 'btn-sm', 'ml-2');
                 removeButton.onclick = () => removeImage(file);
-                preview.appendChild(removeButton);
+
+                imageContainer.appendChild(removeButton);
+                preview.appendChild(imageContainer);
             };
             reader.readAsDataURL(file);
         });
@@ -122,31 +240,21 @@
     function removeImage(file) {
         selectedFiles = selectedFiles.filter(f => f !== file);
         updatePreview();
+        updateFileInput();
     }
 
-    function updatePreview() {
-        const preview = document.getElementById('preview');
-        preview.innerHTML = '';
-        selectedFiles.forEach(file => {
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                const img = document.createElement('img');
-                img.src = e.target.result;
-                img.classList.add('preview-img');
-                preview.appendChild(img);
-            };
-            reader.readAsDataURL(file);
-        });
+    function updateFileInput() {
+        const dt = new DataTransfer();
+        selectedFiles.forEach(file => dt.items.add(file));
+        document.getElementById('images').files = dt.files;
     }
 
-    document.getElementById('productForm').onsubmit = function(e) {
-        const dataTransfer = new DataTransfer();
-        selectedFiles.forEach(file => dataTransfer.items.add(file));
-        document.getElementById('images').files = dataTransfer.files;
-    }
+    document.getElementById('productForm').addEventListener('submit', (event) => {
+        if (selectedFiles.length > MAX_FILE_COUNT || selectedFiles.some(file => file.size > MAX_FILE_SIZE)) {
+            event.preventDefault();
+            alert('업로드할 파일의 수와 크기를 확인하세요.');
+        }
+    });
 </script>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 </html>

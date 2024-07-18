@@ -198,9 +198,9 @@
         WHERE pro_no = #{productNo}
     </update>
 
-    <delete id="deleteProductImageMapping" parameterType="map">
+    <delete id="deleteProductImageMapping" parameterType="int">
         DELETE FROM product_image
-        WHERE pro_no = #{productNo} AND image_id = #{imageId}
+        WHERE image_id = #{imageId}
     </delete>
 
 </mapper>

@@ -27,5 +27,5 @@ public interface ProductMapper {
     void deleteProduct(int productNo);
     void updateProduct(RetrieveProduct product);
     int countProductsAdmin(Integer soldout);
-    void deleteProductImageMapping(@Param("productNo") int productNo, @Param("imageId") int imageId);
+    void deleteProductImageMapping( @Param("imageId") int imageId);
 }

@@ -187,10 +187,12 @@ public class ProductServiceImpl implements ProductService {
             for (Integer imageId : imagesToDelete) {
                 Image image = imageMapper.findImageById(imageId);
                 if (image != null) {
+                    // 이미지 매핑 삭제
+                    productMapper.deleteProductImageMapping(imageId);
+
                     // 클라우드 스토리지에서 이미지 삭제
                     imageService.deleteImageByUrl(image.getImageName());
-                    // 이미지 매핑 삭제
-                    productMapper.deleteProductImageMapping(product.getProductNo(), imageId);
+
                     // 이미지 레코드 삭제
                     imageMapper.deleteImage(imageId);
                 }
