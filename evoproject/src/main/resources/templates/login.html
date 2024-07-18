@@ -152,8 +152,11 @@
             url: "/find-id",
             data: { userName: userName, userEmail: userEmail },
             success: function(response) {
-                // 서버로부터 userId를 받아와서 모달에 표시
-                document.getElementById('id_value').innerText = response.userId;
+                // 서버로부터 userId를 받아와서 마지막 세 자리를 ***로 변경
+                let userId = response.userId;
+                const maskedUserId = userId.length > 3 ? userId.slice(0, -3) + '***' : userId;
+                // 변경된 값을 모달에 표시
+                document.getElementById('id_value').innerText = maskedUserId;
                 $('#showIdModal').modal('show');  // 모달을 트리거합니다.
             },
             error: function(xhr, status, error) {

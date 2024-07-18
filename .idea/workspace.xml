@@ -5,13 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c3d7cf85-c82f-4d99-bfa0-82f0efec097a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/evoproject/src/main/java/com/evo/evoproject/config/LoginFilter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evoproject/src/main/java/com/evo/evoproject/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/evoproject/src/main/java/com/evo/evoproject/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evoproject/src/main/java/com/evo/evoproject/controller/user/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/evoproject/src/main/java/com/evo/evoproject/controller/user/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/evoproject/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/evoproject/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evoproject/src/main/resources/templates/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/evoproject/src/main/resources/templates/register.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evoproject/src/main/resources/templates/withdrawal.html" beforeDir="false" afterPath="$PROJECT_DIR$/evoproject/src/main/resources/templates/withdrawal.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evoproject/src/main/resources/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/evoproject/src/main/resources/templates/login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myapp.log" beforeDir="false" afterPath="$PROJECT_DIR$/myapp.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -76,7 +72,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;Spring Boot.EvoprojectApplication.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feature/modifyBoard&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/board#1&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;D:/EVO/evoproject/src/main/java/com/evo/evoproject/service/board&quot;,
@@ -159,6 +155,8 @@
       <workItem from="1721117867478" duration="16000" />
       <workItem from="1721196398599" duration="4851000" />
       <workItem from="1721203859866" duration="23000" />
+      <workItem from="1721262793451" duration="3655000" />
+      <workItem from="1721267103253" duration="21000" />
     </task>
     <servers />
   </component>
