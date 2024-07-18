@@ -8,5 +8,5 @@ public class Cart {
     private int cartId;
     private int userNo;
     private int cartQuantity;
-    private List<Product> products;
+    private List<CartItem> products;
 }

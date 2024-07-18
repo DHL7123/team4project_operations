@@ -10,5 +10,5 @@ public interface CartService {
 
     void addProductToCart(Cart cart);
 
-    void deleteProductFromCart(int userNo, int proNo);
+    void deleteProductsFromCart(int userNo, List<Integer> proNos);
 }

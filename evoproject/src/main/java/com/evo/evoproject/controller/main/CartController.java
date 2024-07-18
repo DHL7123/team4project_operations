@@ -1,7 +1,6 @@
 package com.evo.evoproject.controller.main;
 
 
-
 import com.evo.evoproject.domain.cart.Cart;
 import com.evo.evoproject.service.cart.CartService;
 import jakarta.servlet.http.HttpSession;
@@ -35,12 +34,11 @@ public class CartController {
         return "cart";
     }
 
-
-    // 장바구니에서 상품 제거 _ 쿼리 파라미터에서 userNo와 proNo를 받아온다.
-    @GetMapping("/delete")
-    public String deleteProductFromCart(@RequestParam int userNo, @RequestParam int proNo, HttpSession session) {
-        cartService.deleteProductFromCart(userNo, proNo);
-        log.info("장바구니에서 상품이 제거되었습니다. 상품 번호: " + proNo);
+    // 선택된 상품들을 장바구니에서 삭제
+    @PostMapping("/deleteSelected")
+    public String deleteSelectedProducts(@RequestParam int userNo, @RequestParam List<Integer> proNos, HttpSession session) {
+        cartService.deleteProductsFromCart(userNo, proNos);
+        log.info("장바구니에서 선택된 상품들이 삭제되었습니다.");
 
         // 장바구니를 다시 조회 후 업데이트
         List<Cart> updatedCartItems = cartService.getCartItemsByUser(userNo);

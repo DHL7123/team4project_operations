@@ -5,60 +5,121 @@ body {
     padding: 0;
 }
 
+/* 장바구니 배너 */
 .CartBanner {
     padding: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 20px;
 }
-.continueShopping{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/*쇼핑카트 테이블*/
+/* 장바구니 배너 이미지 */
 .CartBanner img {
     max-height: 100%;
     max-width: 100%;
 }
 
-table {
-    width: 100%;
+/* 쇼핑 계속하기 링크 */
+.continueShopping {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-top: 20px;
 }
+.continueShopping a {
+    color: initial;
+    text-decoration: none;
+}
+.continueShopping a:hover {
+    color: brown;
+}
 
+/* 장바구니 테이블 */
+table {
+    width: 80%;
+    max-width: 800px;
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+.product-column {
+    text-align: center;
+    vertical-align: middle;
+}
+.product-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 70px;
+}
+.product-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.product-item img {
+    max-width: 150px;
+    max-height: 150px;
+}
+
+.product-item span {
+    vertical-align: middle;
+}
+
+/* 테이블 공통 */
 th, td {
     text-align: center;
     padding: 10px;
+    vertical-align: middle;
 }
 
 th {
-    background-color: #F9F1E7;
+    background-color: #F9F1E7 !important;
     color: black;
 }
 
 td {
     background-color: #ffffff;
 }
-/*결제하기*/
-.btn-rounded {
-    border-radius: 20px;
+
+.text-right {
+    text-align: right;
 }
-.checkoutBtn{
+
+/* 삭제 버튼 */
+.btn-light-brown {
+    background-color: #F9F1E7;
+    color: #fff;
+    padding: 8px 16px;
+    font-size: 14px;
+    border: none;
+    margin-right: 500px;
+}
+
+.btn-light-brown:hover {
+    background-color: #D2B48C;
+    color: #fff;
+}
+
+/* check out 버튼 */
+.checkoutBtn {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 20px;
 }
-.btnBlock{
-    width: 100%; /* Adjust the width as needed */
-    max-width: 300px; /* Optional: Set a maximum width */
+
+.btn-block {
+    width: 100%;
+    max-width: 300px;
     padding: 10px;
 }
+
 .btn-lg {
-    font-size: 1.5rem; /* Adjust font size as needed */
+    font-size: 1.5rem;
 }
 
 .fw-bold {
-    font-weight: bold; /* Ensure font weight is bold */
+    font-weight: bold;
 }

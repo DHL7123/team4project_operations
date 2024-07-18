@@ -11,8 +11,8 @@
 <div id="wrap">
     <header class="top-bar con-min-width">
         <div id="logo">
-            <a href="/">
-                <img src="image/evo.png" alt="search" height="100px" width="100px">
+            <a th:href="@{/}">
+                <img th:src="@{/image/evo.png}" alt="search" height="100px" width="100px">
             </a>
         </div>
         <div class="con" sec:authorize="!hasAuthority('ADMIN')">
