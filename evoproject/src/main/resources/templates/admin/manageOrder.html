@@ -83,6 +83,7 @@
                                     <button type="button" onclick="confirmUpdate()" class="manageConfirmBtn">결제완료</button>
                                 </form>
 
+                                <!-- 배송 준비중 상태에서 송장번호 입력 버튼과 팝업창 -->
                                 <span th:if="${order.orderStatus == 1}">
                                     배송 준비중 <br>
                                     <button type="button" th:onclick="'showPopup(\'' + ${order.orderNo} + '\', \'inputPopup\');'" class="manageConfirmBtn">송장번호입력</button>
@@ -94,24 +95,26 @@
                                                 <input type="hidden" name="prevStatus" th:value="${selectedStatus}">
                                                 <div style="margin-top: 20px;">
                                                     <button type="submit" style="border: none; background-color: #0d6efd; color: white">확인</button>
-                                                    <button type="button" th:onclick="'hidePopup(\'' + ${order.orderNo} + '\', \'inputPopup\');'" style="border: none; background-color: #939393; color: white">취소</button>
+                                                    <button type="button" th:onclick="'hidePopup(\'inputPopup-' + ${order.orderNo} + '\');'" style="border: none; background-color: #939393; color: white">취소</button>
                                                 </div>
                                             </form>
                                         </div>
                                     </div>
                                 </span>
+
+                                <!-- 배송중 상태에서 송장번호 조회 버튼과 팝업창, 배송완료 버튼 -->
                                 <span th:if="${order.orderStatus == 2}">
                                     배송중 <br>
                                     <button type="button" th:onclick="'showPopup(\'' + ${order.orderNo} + '\', \'viewPopup\');'" class="manageConfirmBtn">송장번호조회</button>
                                     <form method="post" th:action="@{/admin/manageOrder/{orderNo}/{status}(orderNo=${order.orderNo}, status=4)}" id="updateForm2">
                                         <input type="hidden" name="prevStatus" th:value="${selectedStatus}">
-                                        <button type="submit" onclick="confirmUpdate2()" class="manageConfirmBtn">배송완료</button>
+                                        <button type="button" onclick="confirmUpdate2()" class="manageConfirmBtn">배송완료</button>
                                     </form>
                                     <div th:id="'viewPopup-' + ${order.orderNo}" class="popup" style="display: none;">
                                         <div class="popup-content">
                                             <h2>운송장 번호</h2>
                                             <p th:text="${order.orderDelivnum}"></p>
-                                            <button type="button" th:onclick="'hidePopup(\'' + ${order.orderNo} + '\', \'viewPopup\');'" style="border: none; background-color: #939393; color: white">닫기</button>
+                                            <button type="button" th:onclick="'hidePopup(\'viewPopup-' + ${order.orderNo} + '\');'" style="border: none; background-color: #939393; color: white">닫기</button>
                                         </div>
                                     </div>
                                 </span>
@@ -173,17 +176,21 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
 <script>
 
-    <!--  결제완료확인confirm창  -->
+    // 결제완료확인 confirm창
     function confirmUpdate() {
         if (confirm("해당 상품의 결제를 확인하셨습니까?")) {
             document.getElementById("updateForm").submit();
         }
     }
 
-    <!--  배송완료확인 confirm창  -->
+    // 배송완료확인 confirm창
     function confirmUpdate2() {
         if (confirm("해당 상품의 배송이 완료되었습니까?")) {
-            document.getElementById("updateForm").submit();
+            // "확인"을 클릭하면 form을 제출하여 orderStatus를 업데이트합니다.
+            document.getElementById("updateForm2").submit();
+        } else {
+            // "취소"를 클릭하면 팝업을 닫습니다.
+            hidePopup('viewPopup-' + currentOrderNo);
         }
     }
 
@@ -195,13 +202,14 @@
         document.getElementById(popupId).style.display = 'none';
     }
 
+    // 결제 취소 요청 처리 팝업
     function showConfirmPopup(orderNo) {
         // 팝업을 표시하고 form의 action을 설정합니다.
         document.getElementById('confirmPopup').style.display = 'block';
         document.getElementById('confirmForm').action = '/admin/manageOrder/' + orderNo + '/requestType/3';
         currentOrderNo = orderNo;  // 현재 주문 번호를 저장합니다.
     }
-
+    // 결제 취소 요청 처리 확인창
     function confirmRequest() {
         if (confirm("승인하시겠습니까?")) {
             // form을 제출하여 requestType을 업데이트합니다.
@@ -212,6 +220,7 @@
         }
     }
 
+    // 환불 요청 처리 팝업
     function showRefundPopup(orderNo) {
         // 팝업을 표시하고 form의 action을 설정합니다.
         document.getElementById('refundPopup').style.display = 'block';
@@ -219,6 +228,7 @@
         currentOrderNo = orderNo;  // 현재 주문 번호를 저장합니다.
     }
 
+    // 환불 요청 처리 확인창
     function confirmRefund() {
         if (confirm("환불을 승인하시겠습니까?")) {
             // form을 제출하여 requestType을 업데이트합니다.
@@ -228,7 +238,7 @@
             hidePopup('refundPopup');
         }
     }
-
+    // 환불 요청 거절 확인창
     function denyRefund() {
         if (confirm("환불을 거절하시겠습니까?")) {
             // form의 action을 수정하여 requestType을 5로, orderStatus를 4로 업데이트합니다.

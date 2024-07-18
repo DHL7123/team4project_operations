@@ -21,6 +21,12 @@ public class OrderController {
         this.orderService = orderService;
     }
 
+    /**
+     * 특정 상태에 따른 주문 목록을 조회하고 관리 페이지 반환
+     * @param status 조회할 주문 상태 코드
+     * @param model Spring MVC의 모델 객체
+     * @return 관리 페이지 뷰 이름
+     */
     @GetMapping("/admin/manageOrder/{status}")
     public String getOrdersByStatus(@PathVariable int status, Model model) {
         List<Order> orders = orderService.getOrdersByStatus(status);
@@ -35,6 +41,11 @@ public class OrderController {
         return "/admin/manageOrder";
     }
 
+    /**
+     * 모든 주문 목록을 조회하고 관리 페이지 반환
+     * @param model Spring MVC의 모델 객체
+     * @return 관리 페이지 뷰 이름
+     */
     @GetMapping("/admin/manageOrder")
     public String getAllOrders(Model model) {
         List<Order> orders = orderService.getAllOrders();
@@ -49,6 +60,13 @@ public class OrderController {
         return "/admin/manageOrder";
     }
 
+    /**
+     * 주문 상태를 업데이트하고 이전 페이지로 리다이렉트
+     * @param orderNo 업데이트할 주문 번호
+     * @param status 업데이트할 주문 상태 코드
+     * @param prevStatus 이전 페이지 상태 코드
+     * @return 이전 페이지 또는 관리 페이지 리다이렉트 경로
+     */
     @PostMapping("/admin/manageOrder/{orderNo}/{status}")
     public String updateOrderStatus(@PathVariable int orderNo, @PathVariable int status, @RequestParam("prevStatus") String prevStatus) {
         orderService.updateOrderStatus(orderNo, status);
@@ -59,6 +77,14 @@ public class OrderController {
         }
     }
 
+    /**
+     * 주문의 배송번호를 업데이트하고 주문 상태를 업데이트한 후 이전 페이지로 리다이렉트
+     * @param orderNo 업데이트할 주문 번호
+     * @param status 업데이트할 주문 상태 코드
+     * @param orderDelivnum 업데이트할 배송번호
+     * @param prevStatus 이전 페이지 상태 코드
+     * @return 이전 페이지 또는 관리 페이지 리다이렉트 경로
+     */
     @PostMapping("/admin/manageOrder/{orderNo}/{status}/orderDelivnum")
     public String updateDelivnum(@PathVariable int orderNo, @PathVariable int status, @RequestParam String orderDelivnum, @RequestParam("prevStatus") String prevStatus) {
         orderService.updateDelivnum(orderNo, orderDelivnum);
@@ -70,6 +96,14 @@ public class OrderController {
         }
     }
 
+    /**
+     * 주문의 요청 타입과 상태를 업데이트하고 이전 페이지로 리다이렉트
+     * @param orderNo 업데이트할 주문 번호
+     * @param requestType 업데이트할 요청 타입 코드
+     * @param orderStatus 업데이트할 주문 상태 코드
+     * @param prevStatus 이전 페이지 상태 코드
+     * @return 이전 페이지 또는 관리 페이지 리다이렉트 경로
+     */
     @PostMapping("/admin/manageOrder/{orderNo}/requestType/{requestType}/orderStatus/{orderStatus}")
     public String updateRequestTypeAndOrderStatus(@PathVariable int orderNo, @PathVariable int requestType, @PathVariable int orderStatus, @RequestParam("prevStatus") String prevStatus) {
         orderService.updateRequestType(orderNo, requestType);
