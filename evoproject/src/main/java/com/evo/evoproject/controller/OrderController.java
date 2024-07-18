@@ -1,7 +1,10 @@
 package com.evo.evoproject.controller;
 
 import com.evo.evoproject.domain.order.Order;
+import com.evo.evoproject.domain.user.User;
 import com.evo.evoproject.service.order.OrderService;
+import com.evo.evoproject.mapper.user.UserMapper;
+import com.evo.evoproject.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,14 +19,16 @@ import java.util.List;
 @Controller
 @RequestMapping("/paymentOrders")
 public class OrderController {
+    @Autowired
+    private OrderService orderService;
+    @Autowired
+    private UserService userService;
+
     @PostMapping("/save")
     public String saveOrder(@ModelAttribute Order order, HttpSession session) {
         session.setAttribute("order", order); // 세션에 임시 저장
         return "redirect:/payment"; // 결제 페이지로 리다이렉션
     }
-
-    @Autowired
-    private OrderService orderService;
 
     @GetMapping
     public String listOrders(Model model) {
@@ -49,6 +54,16 @@ public class OrderController {
         }
 
         return "orderComplete";
+    }
+
+    @GetMapping("/checkout")
+    public String showCheckoutPage(HttpSession session, Model model) {
+        String userId = (String) session.getAttribute("userId");
+        if (userId != null) {
+            User user = userService.findUserByUserId(userId);
+            model.addAttribute("user", user);
+        }
+        return "checkOut";  // checkOut.html 파일과 매핑
     }
 
 }
