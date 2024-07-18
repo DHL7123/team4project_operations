@@ -36,9 +36,7 @@ dependencies {
 	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-<<<<<<< HEAD
-	implementation 'javax.servlet:javax.servlet-api:4.0.1'
-=======
+
 
 //	user security
 	implementation 'org.springframework.boot:spring-boot-starter-security'
@@ -47,7 +45,6 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-mail'
 	implementation 'jakarta.validation:jakarta.validation-api:3.0.2'
 
->>>>>>> 0cdb7d26d0287b5c0fe9c1446ef0721c8a469a06
 }
 tasks.named('test') {
 	useJUnitPlatform()
