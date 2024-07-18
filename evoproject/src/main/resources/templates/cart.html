@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Evo Market - Shopping Cart</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" />
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" th:href="@{/css/cart.css}">
+</head>
+<body>
+
+<!-- 헤더 포함 -->
+<header th:replace="~{header :: header}"></header>
+
+<!-- 장바구니 콘텐츠 -->
+<div class="CartBanner">
+    <img th:src="@{/image/cart.png}" alt="장바구니">
+</div>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Product</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Shipping</th>
+        <th>SubTotal</th>
+        <th></th>
+    </tr>
+    </thead>
+
+    <tbody th:if="${cartItems != null}">
+    <tr th:each="cartItem : ${cartItems}">
+        <td th:each="product : ${cartItem.products}" th:text="${product.proName}"></td>
+        <td th:each="product : ${cartItem.products}" th:text="${product.proPrice}"></td>
+        <td th:text="${cartItem.cartQuantity}"></td>
+        <td th:each="product : ${cartItem.products}" th:text="${product.shipping}"></td>
+        <td>
+            <!-- 상품가격 + 상품의 배송비 합계 -->
+            <span th:each="product : ${cartItem.products}" th:text="${product.proPrice * cartItem.cartQuantity + product.shipping}"></span>
+        </td>
+        <td>
+            <form th:each="product : ${cartItem.products}" th:action="@{/cart/delete}" method="get">
+                <input type="hidden" name="userNo" th:value="${userNo}" />
+                <input type="hidden" name="proNo" th:value="${product.proNo}" />
+                <button type="submit" class="btn btn-danger" style="background-color: transparent; border: none; padding: 0;">
+                    <img th:src="@{/image/delete.png}" alt="Delete" height="15px" width="15px">
+                </button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+
+</table>
+
+<br><br><br><br>
+
+<!-- 쇼핑 계속하기  -->
+<div class="continueShopping">
+    <a th:href="@{/static}">쇼핑 계속하기</a>
+</div>
+
+<!-- 장바구니 총액 -->
+<hr>
+<table class="table">
+    <tbody>
+    <tr>
+        <td><strong>Total</strong></td>
+        <td id="totalAmount"></td>
+    </tr>
+    </tbody>
+</table>
+<hr>
+
+<!-- 체크아웃 버튼 -->
+<div class="checkoutBtn">
+    <a href="#" class="btn btn-primary btn-rounded btn-block btn-lg fw-bold">Check out</a>
+</div>
+
+<!-- 푸터 포함 -->
+<footer th:replace="~{footer :: footer}"></footer>
+
+<!-- JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js"></script>
+<script th:inline="javascript">
+
+    document.addEventListener('DOMContentLoaded', function() {
+        var totalAmount = 0;
+        var cartItems = [[${cartItems}]]; //서버에서 받아온 장바구니 데이터를 javascript의 배열로 변환하여 cartItems 변수에 할당
+
+        cartItems.forEach(function(cartItem) {
+            cartItem.products.forEach(function(product) {
+                var productTotal = product.proPrice * cartItem.cartQuantity + product.shipping;
+                totalAmount += productTotal;
+            });
+        });
+
+        //세 자리마다 콤마로 끊도록 포맷 맞추기
+        var formattedTotal = totalAmount.toLocaleString('ko-KR');
+        document.getElementById('totalAmount').textContent = formattedTotal + ' ₩';
+    });
+
+</script>
+
+</body>
+</html>

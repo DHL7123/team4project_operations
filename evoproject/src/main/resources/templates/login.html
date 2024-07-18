@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>로그인</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <style>
+        .card-custom {
+            max-width: 500px;
+            width: 100%;
+        }
+        .login-banner {
+            position: relative;
+            background-image: url('/image/banner.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        .login-banner h1 {
+            margin: 0;
+        }
+        .btn-custom {
+            font-size: 1.25rem;
+            padding: 0.75rem 1.5rem;
+        }
+    </style>
+</head>
+<body>
+<header th:replace="~{header :: header}"></header>
+<div class="login-banner">
+    <h1>Login</h1>
+</div>
+<section class="d-flex vh-100 align-items-center">
+    <div class="container-fluid d-flex justify-content-center">
+        <div class="card bg-dark card-custom" style="border-radius: 1rem;">
+            <div class="card-body p-5 text-center">
+                <h2 class="text-white">LOGIN</h2>
+                <div class="mb-2">
+                    <form th:action="@{/login}" method="post">
+                        <input type="hidden" th:name="${_csrf?.parameterName}" th:value="${_csrf?.token}" />
+                        <div class="mb-3">
+                            <input type="text" class="form-control" name="username" placeholder="ID" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="password" class="form-control" name="password" placeholder="PW" required>
+                        </div>
+                        <div class="mb-3 d-flex justify-content-between">
+                            <a href="#" class="text-white" data-toggle="modal" data-target="#findIdModal">아이디 찾기</a>
+                            <a href="#" class="text-white" data-toggle="modal" data-target="#findPasswordModal">비밀번호 찾기</a>
+                        </div>
+                        <div th:if="${param.error}" class="text-danger mb-3">아이디 또는 비밀번호가 일치하지 않습니다.</div>
+                        <div th:if="${param.logout}" class="text-success mb-3">계정이 로그아웃 되었습니다.</div>
+                        <button type="submit" class="btn btn-primary btn-custom">SIGN IN</button>
+                    </form>
+                    <button type="button" class="btn btn-secondary btn-custom mt-3" onclick="location.href='/terms'">회원가입</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 아이디 찾기 모달 -->
+<div class="modal fade" id="findIdModal" tabindex="-1" role="dialog" aria-labelledby="findIdModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="findIdModalLabel">아이디 찾기</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="findIdForm">
+                    <div class="form-group">
+                        <label for="findIdName">이름</label>
+                        <input type="text" class="form-control" id="findIdName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="findIdEmail">이메일</label>
+                        <input type="email" class="form-control" id="findIdEmail" required>
+                    </div>
+                    <button type="button" class="btn btn-primary" onclick="findId()">찾기</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 비밀번호 찾기 모달 -->
+<div class="modal fade" id="findPasswordModal" tabindex="-1" role="dialog" aria-labelledby="findPasswordModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="findPasswordModalLabel">비밀번호 찾기</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="findPasswordForm">
+                    <div class="form-group">
+                        <label for="findPasswordName">이름</label>
+                        <input type="text" class="form-control" id="findPasswordName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="findPasswordEmail">이메일</label>
+                        <input type="email" class="form-control" id="findPasswordEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="findPasswordUserId">아이디</label>
+                        <input type="text" class="form-control" id="findPasswordUserId" required>
+                    </div>
+                    <button type="button" class="btn btn-primary" onclick="findPassword()">찾기</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 아이디 조회 결과 모달 -->
+<div class="modal fade" id="showIdModal" tabindex="-1" role="dialog" aria-labelledby="showIdModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="showIdModalLabel">아이디 조회 결과</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>아이디: <span id="id_value"></span></p>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function findId() {
+        const userName = document.getElementById('findIdName').value;
+        const userEmail = document.getElementById('findIdEmail').value;
+
+        $.ajax({
+            type: "POST",
+            url: "/find-id",
+            data: { userName: userName, userEmail: userEmail },
+            success: function(response) {
+                // 서버로부터 userId를 받아와서 모달에 표시
+                document.getElementById('id_value').innerText = response.userId;
+                $('#showIdModal').modal('show');  // 모달을 트리거합니다.
+            },
+            error: function(xhr, status, error) {
+                console.error("Error: ", error);
+                alert("등록된 이메일이 없습니다.");
+            }
+        });
+    }
+
+    function findPassword() {
+        const userName = document.getElementById('findPasswordName').value;
+        const userEmail = document.getElementById('findPasswordEmail').value;
+        const userId = document.getElementById('findPasswordUserId').value;
+
+        $.ajax({
+            type: "POST",
+            url: "/find-password",
+            data: { userName: userName, userEmail: userEmail, userId: userId },
+            success: function(data) {
+                if (data.message) {
+                    alert(data.message);
+                    $('#findPasswordModal').modal('hide');
+                } else {
+                    alert(data.error);
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error("Error: ", error);
+                alert("등록된 이메일이 없습니다.");
+            }
+        });
+    }
+</script>
+
+<footer th:replace="~{footer :: footer}"></footer>
+</body>
+</html>

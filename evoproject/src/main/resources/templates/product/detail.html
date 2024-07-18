@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Detail</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" />
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" th:href="@{/css/detail.css}">
+
+    <script>
+        function enlargeImage(img) {
+            var src = img.getAttribute("src");
+            var modal = document.createElement("div");
+            modal.style.display = "flex";
+            modal.style.justifyContent = "center";
+            modal.style.alignItems = "center";
+            modal.style.position = "fixed";
+            modal.style.top = "0";
+            modal.style.left = "0";
+            modal.style.width = "100%";
+            modal.style.height = "100%";
+            modal.style.backgroundColor = "rgba(0,0,0,0.8)";
+            modal.onclick = function() {
+                document.body.removeChild(modal);
+            };
+            var modalImg = document.createElement("img");
+            modalImg.src = src;
+            modalImg.style.maxWidth = "80%";
+            modalImg.style.maxHeight = "80%";
+            modal.appendChild(modalImg);
+            document.body.appendChild(modal);
+        }
+    </script>
+</head>
+
+<body class="bg-light">
+
+<header th:replace="header :: header" class="mb-4"></header>
+
+<div class="container">
+    <h1 class="text-center mb-4">Product Detail</h1>
+
+    <div class="row">
+        <div class="col-md-8">
+            <div class="product-images mb-4">
+                <div th:each="image : ${productDetailResponse.images}" class="col-3">
+                    <img th:if="${image != null}" th:src="${image.imageName}" class="img-thumbnail" alt="Product Image" onclick="enlargeImage(this)">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <table class="table table-bordered table-striped">
+                <tr>
+                    <th>Product Name</th>
+                    <td th:text="${productDetailResponse.product.productName}"></td>
+                </tr>
+                <tr>
+                    <th>Category ID</th>
+                    <td th:text="${productDetailResponse.product.categoryId}"></td>
+                </tr>
+                <tr>
+                    <th>Shipping</th>
+                    <td th:text="${productDetailResponse.product.shipping}"></td>
+                </tr>
+                <tr>
+                    <th>Product Description</th>
+                    <td th:text="${productDetailResponse.product.productDes}"></td>
+                </tr>
+                <tr>
+                    <th>Price</th>
+                    <td th:text="${productDetailResponse.product.price}"></td>
+                </tr>
+                <tr>
+                    <th>Stock</th>
+                    <td th:text="${productDetailResponse.product.soldout ? 'Sold Out' : productDetailResponse.product.stock}" th:classappend="${productDetailResponse.product.soldout ? 'text-danger' : ''}"></td>
+                </tr>
+            </table>
+
+            <div class="text-center mt-4" th:if="${!productDetailResponse.product.soldout}">
+                <button class="btn btn-custom mb-2" onclick="location.href='/order.html'">구매하기</button>
+                <button class="btn btn-custom" onclick="location.href='/cart.html'">장바구니 담기</button>
+            </div>
+            <div class="text-center mt-4" th:if="${productDetailResponse.product.soldout}">
+                <span class="text-danger">Sold Out</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="related-products mt-5">
+        <h2 class="text-center mb-4">Related Products</h2>
+        <div class="d-flex flex-wrap justify-content-center">
+            <div th:each="product : ${relatedProducts}" class="card m-2" style="width: 18rem;">
+                <a th:href="@{'/product/detail/' + ${product.productNo}}">
+                    <img th:src="${product.mainImage.imageName}" class="card-img-top" alt="Related Product Image">
+                    <div class="card-body text-center">
+                        <h5 class="card-title" th:text="${product.productName}">Product Name</h5>
+                        <p class="card-text" th:text="${product.price + '원'}"></p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer th:replace="footer :: footer" class="mt-5"></footer>
+</body>
+</html>

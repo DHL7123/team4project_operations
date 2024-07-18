@@ -1,0 +1,87 @@
+!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Evo Market</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" />
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<!-- header -->
+<div id="wrap">
+    <header class="top-bar con-min-width">
+        <div id="logo">
+            <a href="/">
+                <img src="image/evo.png" alt="search" height="100px" width="100px">
+            </a>
+        </div>
+        <div class="con" sec:authorize="!hasAuthority('ADMIN')">
+            <nav class="top-bar__menu-box-1">
+                <ul class="menu">
+                    <li>
+                        <a href="#">Shop</a>
+                        <ul>
+                            <li class="menu-item" id="all"><a href="/product">ALL</a></li>
+                            <li class="menu-item" id="chair"><a href="/product/category/1">Chair</a></li>
+                            <li class="menu-item" id="lamp"><a href="/product/category/2">Lamp</a></li>
+                            <li class="menu-item" id="tsd"><a href="/product/category/3">Table, Sideboards and Desks</a></li>
+                            <li class="menu-item" id="cabinet"><a href="/product/category/4">Cabinet</a></li>
+                            <li class="menu-item" id="decorative"><a href="/product/category/5">Decorative</a></li>
+                            <li class="menu-item" id="tableware"><a href="/product/category/6">Tableware</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Knowledge</a>
+                        <ul>
+                            <li class="menu-item" id="announcement"><a href="/notice">공지사항</a></li>
+                            <li class="menu-item" id="faq"><a href="/faq">FAQ</a></li>
+                            <li class="menu-item" id="term"><a href="/servicePolicy">Terms of Services</a></li>
+                            <li class="menu-item" id="privacy"><a href="/privacyPolicy">Privacy Policy</a></li>
+                            <li class="menu-item" id="refund"><a href="/deliveryNrefundPolicy">배송 및 환불 정책</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <div id="rightMenu">
+            <ul>
+                <!-- 사용자가 로그인한 경우 -->
+                <li sec:authorize="isAuthenticated()">
+                    <a href="/mypage" sec:authorize="!hasAuthority('ADMIN')">Account</a>
+                    <a href="/admin" sec:authorize="hasAuthority('ADMIN')">Admin 환경입니다</a>
+                </li>
+                <!-- 사용자가 로그인한 경우 -->
+                <li sec:authorize="isAuthenticated()">
+                    <a href="/logout">Logout</a>
+                </li>
+                <!-- 사용자가 로그인하지 않은 경우 -->
+                <li sec:authorize="!isAuthenticated()">
+                    <a href="/login">Account</a>
+                </li>
+                <!-- 사용자가 관리자인 경우 -->
+                <!--                    <li sec:authorize="hasAuthority('ADMIN')">-->
+                <!--                        <a href="/admin">Admin</a>-->
+                <!--                    </li>-->
+
+
+                <li sec:authorize="!hasAuthority('ADMIN')">
+                    <a href="#" id="searchIcon">
+                        <img th:src="@{/image/search.png}" alt="search" height="27px" width="27px">
+                    </a>
+                </li>
+                <li sec:authorize="!hasAuthority('ADMIN')">
+                    <a th:href="@{/cart/{userNo}(userNo=1)}">
+                        <img th:src="@{/image/shopping_cart.png}" alt="shopping_cart" height="25px" width="25px">
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+
+    </header>
+
+</div>
+<script th:src="@{/js/script.js}"></script>
+</body>
+</html>

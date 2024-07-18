@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.evo.evoproject.Mapper.board.BoardMapper">
+
+    <resultMap id="BoardMap" type="com.evo.evoproject.domain.board.Board">
+        <id property="boardNo" column="board_no" />
+        <result property="userNo" column="user_no" />
+        <result property="orderNo" column="order_no" />
+        <result property="imageId" column="image_id" />
+        <result property="categoryId" column="category_id" />
+        <result property="boardTitle" column="board_title" />
+        <result property="boardContent" column="board_content" />
+        <result property="boardTimestamp" column="board_timestamp" />
+        <result property="isAnswered" column="is_answered" />
+    </resultMap>
+
+    <insert id="insertBoard" parameterType="com.evo.evoproject.domain.board.Board">
+        INSERT INTO Board (user_no, order_no, image_id, category_id, board_title, board_content, is_answered)
+        VALUES (#{userNo}, #{orderNo}, #{imageId}, #{categoryId}, #{boardTitle}, #{boardContent}, #{isAnswered})
+    </insert>
+
+    <select id="findBoardById" resultMap="BoardMap" parameterType="int">
+        SELECT * FROM Board WHERE board_no = #{boardNo}
+    </select>
+
+    <select id="findBoardsByUserNo" resultMap="BoardMap" parameterType="map">
+        SELECT * FROM Board WHERE user_no = #{userNo} ORDER BY board_timestamp DESC LIMIT #{limit} OFFSET #{offset}
+    </select>
+
+    <select id="findAllBoards" resultMap="BoardMap" parameterType="map">
+        SELECT * FROM Board ORDER BY board_timestamp DESC LIMIT #{limit} OFFSET #{offset}
+    </select>
+
+    <select id="countAllBoards" resultType="int">
+        SELECT COUNT(*) FROM Board
+    </select>
+
+    <select id="countBoardsByUserNo" parameterType="int" resultType="int">
+        SELECT COUNT(*) FROM Board WHERE user_no = #{userNo}
+    </select>
+
+    <update id="updateBoard" parameterType="com.evo.evoproject.domain.board.Board">
+        UPDATE Board
+        SET board_title = #{boardTitle}, board_content = #{boardContent}, is_answered = #{isAnswered}
+        WHERE board_no = #{boardNo}
+    </update>
+
+    <delete id="deleteBoard" parameterType="int">
+        DELETE FROM Board WHERE board_no = #{boardNo}
+    </delete>
+</mapper>

@@ -1,14 +1,18 @@
 package com.evo.evoproject.service.product;
 
-import com.evo.evoproject.domain.product.Product;
-
-import java.util.List;
+import com.evo.evoproject.controller.product.dto.RetrieveProductDetailResponse;
+import com.evo.evoproject.controller.product.dto.RetrieveProductsResponse;
+import org.springframework.transaction.annotation.Transactional;
 
 public interface ProductService {
+    RetrieveProductsResponse getAllProducts(String sort, int page, int size);
 
-    List<Product> getAllProducts(int page, int size);
+    RetrieveProductDetailResponse getProductByNo(int productNo);
 
-    Product getProductByNo(int productNo);
+    RetrieveProductsResponse getProductsByCategory(String sort, int categoryId, int page, int size);
 
-    int getTotalPages(int pageSize);
+    RetrieveProductsResponse getTopProductsByCategory(int categoryId, int productNo);
+
+    RetrieveProductsResponse searchProductByName(String input, String sort, int page, int size);
 }
+
