@@ -30,7 +30,7 @@ public class OrderController {
         model.addAttribute("countPending", orderService.countOrdersByStatus(0));
         model.addAttribute("countPreparing", orderService.countOrdersByStatus(1));
         model.addAttribute("countShipping", orderService.countOrdersByStatus(2));
-        model.addAttribute("countRequest", orderService.countOrdersByStatus(3)); // 결제 취소와 환불 합산
+        model.addAttribute("countRequest", orderService.countOrdersByStatus(3));
         model.addAttribute("countCompleted", orderService.countOrdersByStatus(4));
         return "/admin/manageOrder";
     }
@@ -44,7 +44,7 @@ public class OrderController {
         model.addAttribute("countPending", orderService.countOrdersByStatus(0));
         model.addAttribute("countPreparing", orderService.countOrdersByStatus(1));
         model.addAttribute("countShipping", orderService.countOrdersByStatus(2));
-        model.addAttribute("countRequest", orderService.countOrdersByStatus(3)); // 결제 취소와 환불 합산
+        model.addAttribute("countRequest", orderService.countOrdersByStatus(3));
         model.addAttribute("countCompleted", orderService.countOrdersByStatus(4));
         return "/admin/manageOrder";
     }
