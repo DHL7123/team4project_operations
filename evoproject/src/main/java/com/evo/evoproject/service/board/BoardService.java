@@ -1,7 +1,7 @@
 package com.evo.evoproject.service.board;
 
 import com.evo.evoproject.domain.board.Board;
-import com.evo.evoproject.Mapper.board.BoardMapper;
+import com.evo.evoproject.mapper.board.BoardMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

@@ -2,8 +2,9 @@ package com.evo.evoproject.domain.product;
 
 import com.evo.evoproject.domain.image.Image;
 import lombok.Data;
+import org.springframework.web.multipart.MultipartFile;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 @Data
@@ -12,14 +13,18 @@ public class RetrieveProduct {
     private String productName;
     private String productDes;
     private int categoryId;
-    private String price; // 자료형 수정
+    private int price;
     private int stock;
-    private LocalDateTime date;
+    private Date date;
     private int viewCount;
     private int shipping;
-    private boolean soldout;
-
+    private int soldout;
 
     private Image mainImage;
-    private List<Image> images;
+    private List<Image> existingImages;
+    private List<MultipartFile> images;
+
+    public void setExistingImages(List<Image> existingImages) {
+        this.existingImages = existingImages;
+    }
 }

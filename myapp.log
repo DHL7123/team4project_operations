@@ -6266,3 +6266,518 @@ java.lang.IllegalArgumentException: Invalid character found in method name [0x16
 2024-07-18T10:36:19.069+09:00  WARN 4012 --- [evoproject] [http-nio-8090-exec-7] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-7][mypage] Deprecated unwrapped fragment expression "footer :: footer" found in template mypage, line 204, col 9. Please use the complete syntax of fragment expressions instead ("~{footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
 2024-07-18T10:36:54.857+09:00  INFO 4012 --- [evoproject] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2024-07-18T10:36:54.912+09:00  INFO 4012 --- [evoproject] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-07-18T11:27:16.475+09:00  INFO 16840 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : Starting EvoprojectApplication using Java 17.0.11 with PID 16840 (D:\EVO\evoproject\build\classes\java\main started by skygv in D:\EVO)
+2024-07-18T11:27:16.478+09:00  INFO 16840 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : No active profile set, falling back to 1 default profile: "default"
+2024-07-18T11:27:17.773+09:00  INFO 16840 --- [evoproject] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8090 (http)
+2024-07-18T11:27:17.785+09:00  INFO 16840 --- [evoproject] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-07-18T11:27:17.785+09:00  INFO 16840 --- [evoproject] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-07-18T11:27:17.848+09:00  INFO 16840 --- [evoproject] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-07-18T11:27:17.848+09:00  INFO 16840 --- [evoproject] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1315 ms
+2024-07-18T11:27:17.919+09:00  WARN 16840 --- [evoproject] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'amazonS3Config': Injection of autowired dependencies failed
+2024-07-18T11:27:17.922+09:00  INFO 16840 --- [evoproject] [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2024-07-18T11:27:17.942+09:00  INFO 16840 --- [evoproject] [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-07-18T11:27:17.976+09:00 ERROR 16840 --- [evoproject] [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'amazonS3Config': Injection of autowired dependencies failed
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:514) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1421) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:599) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:975) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:962) ~[spring-context-6.1.10.jar:6.1.10]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624) ~[spring-context-6.1.10.jar:6.1.10]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.2.7.jar:3.2.7]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.2.7.jar:3.2.7]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.2.7.jar:3.2.7]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335) ~[spring-boot-3.2.7.jar:3.2.7]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363) ~[spring-boot-3.2.7.jar:3.2.7]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352) ~[spring-boot-3.2.7.jar:3.2.7]
+	at com.evo.evoproject.EvoprojectApplication.main(EvoprojectApplication.java:9) ~[main/:na]
+Caused by: java.lang.IllegalArgumentException: Could not resolve placeholder 'cloud.aws.credentials.accessKey' in value "${cloud.aws.credentials.accessKey}"
+	at org.springframework.util.PropertyPlaceholderHelper.parseStringValue(PropertyPlaceholderHelper.java:180) ~[spring-core-6.1.10.jar:6.1.10]
+	at org.springframework.util.PropertyPlaceholderHelper.replacePlaceholders(PropertyPlaceholderHelper.java:126) ~[spring-core-6.1.10.jar:6.1.10]
+	at org.springframework.core.env.AbstractPropertyResolver.doResolvePlaceholders(AbstractPropertyResolver.java:239) ~[spring-core-6.1.10.jar:6.1.10]
+	at org.springframework.core.env.AbstractPropertyResolver.resolveRequiredPlaceholders(AbstractPropertyResolver.java:210) ~[spring-core-6.1.10.jar:6.1.10]
+	at org.springframework.context.support.PropertySourcesPlaceholderConfigurer.lambda$processProperties$0(PropertySourcesPlaceholderConfigurer.java:200) ~[spring-context-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.resolveEmbeddedValue(AbstractBeanFactory.java:964) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1374) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:784) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:767) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:145) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:508) ~[spring-beans-6.1.10.jar:6.1.10]
+	... 17 common frames omitted
+
+2024-07-18T11:33:26.921+09:00  INFO 10916 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : Starting EvoprojectApplication using Java 17.0.11 with PID 10916 (D:\EVO\evoproject\build\classes\java\main started by skygv in D:\EVO)
+2024-07-18T11:33:26.923+09:00  INFO 10916 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : No active profile set, falling back to 1 default profile: "default"
+2024-07-18T11:33:28.141+09:00  INFO 10916 --- [evoproject] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8090 (http)
+2024-07-18T11:33:28.151+09:00  INFO 10916 --- [evoproject] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-07-18T11:33:28.151+09:00  INFO 10916 --- [evoproject] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-07-18T11:33:28.209+09:00  INFO 10916 --- [evoproject] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-07-18T11:33:28.211+09:00  INFO 10916 --- [evoproject] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1240 ms
+2024-07-18T11:33:29.226+09:00  INFO 10916 --- [evoproject] [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-07-18T11:33:29.442+09:00  INFO 10916 --- [evoproject] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@2c0dca15, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5560b64d, org.springframework.security.web.context.SecurityContextHolderFilter@1e6d30c0, org.springframework.security.web.header.HeaderWriterFilter@1b60d324, org.springframework.web.filter.CorsFilter@2da5fdc, org.springframework.security.web.authentication.logout.LogoutFilter@6e7e0259, com.evo.evoproject.config.LoginFilter@23321be7, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@269308cc, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@69d667a5, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@8f4b803, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@61ad30f6, org.springframework.security.web.access.ExceptionTranslationFilter@38fb151a, org.springframework.security.web.access.intercept.AuthorizationFilter@40a8a26f]
+2024-07-18T11:33:29.708+09:00  INFO 10916 --- [evoproject] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8090 (http) with context path ''
+2024-07-18T11:33:29.720+09:00  INFO 10916 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : Started EvoprojectApplication in 3.324 seconds (process running for 4.044)
+2024-07-18T11:33:29.725+09:00  INFO 10916 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-18T11:33:29.726+09:00  INFO 10916 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-18T11:33:35.789+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-07-18T11:33:35.789+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-07-18T11:33:35.790+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-07-18T11:33:35.951+09:00  WARN 10916 --- [evoproject] [http-nio-8090-exec-1] o.a.c.util.SessionIdGeneratorBase        : Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [119] milliseconds.
+2024-07-18T11:33:42.611+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-9] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-07-18T11:33:42.899+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-9] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2abb95fc
+2024-07-18T11:33:42.901+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-9] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-07-18T11:33:51.023+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-5] c.e.e.c.p.RetrieveProductsController     : 모든 제품 목록 요청 - 정렬기준: pro_date_desc, 페이지: 1, 사이즈: 16
+2024-07-18T11:33:51.045+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-5] c.e.e.s.product.ProductServiceImpl       : 모든 제품 목록을 가져오는 서비스 - 정렬기준: pro_date_desc, 페이지: 1, 사이즈: 16
+2024-07-18T11:34:29.725+09:00  INFO 10916 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-18T11:34:29.725+09:00  INFO 10916 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-18T11:34:49.285+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-9] c.e.e.s.product.ProductServiceImpl       : 모든 제품 목록을 가져오는 서비스 - 정렬기준: pro_date_desc, 페이지: 1, 사이즈: 10
+2024-07-18T11:35:29.718+09:00  INFO 10916 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-18T11:35:29.718+09:00  INFO 10916 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-18T11:36:17.074+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-4] c.e.e.s.product.ProductServiceImpl       : saveProductWithImages called with product: 포레스트
+2024-07-18T11:36:17.094+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-4] c.e.e.s.product.ProductServiceImpl       : Processing image: 다운로드.jpg
+2024-07-18T11:36:17.112+09:00  WARN 10916 --- [evoproject] [http-nio-8090-exec-4] com.amazonaws.util.Base64                : JAXB is unavailable. Will fallback to SDK implementation which may be less performant.If you are using Java 9+, you will need to include javax.xml.bind:jaxb-api as a dependency.
+2024-07-18T11:36:17.371+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-4] c.e.e.service.image.ImageServiceImpl     : Saving image: https://team4project-bucket.s3.ap-northeast-2.amazonaws.com/622975d0-74e6-48ec-baae-47fa7b461fd9_%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C.jpg
+2024-07-18T11:36:17.456+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-4] c.e.e.s.product.ProductServiceImpl       : 모든 제품 목록을 가져오는 서비스 - 정렬기준: pro_date_desc, 페이지: 1, 사이즈: 10
+2024-07-18T11:36:24.725+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-3] c.e.e.s.product.ProductServiceImpl       : 모든 제품 목록을 가져오는 서비스 - 정렬기준: pro_date_desc, 페이지: 2, 사이즈: 10
+2024-07-18T11:36:29.718+09:00  INFO 10916 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-18T11:36:29.718+09:00  INFO 10916 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-18T11:37:29.723+09:00  INFO 10916 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-18T11:37:29.723+09:00  INFO 10916 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-18T11:38:13.714+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-2] c.e.e.s.product.ProductServiceImpl       : saveProductWithImages called with product: Ducth Lamp
+2024-07-18T11:38:13.729+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-2] c.e.e.s.product.ProductServiceImpl       : Processing image: rn-image_picker_lib_temp_2c87ba20-fd58-4902-a3ef-3f73f4caa4c3_460x.jpg
+2024-07-18T11:38:13.844+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-2] c.e.e.service.image.ImageServiceImpl     : Saving image: https://team4project-bucket.s3.ap-northeast-2.amazonaws.com/cfd962a8-34a1-4b14-9482-33d963a6ca25_rn-image_picker_lib_temp_2c87ba20-fd58-4902-a3ef-3f73f4caa4c3_460x.jpg
+2024-07-18T11:38:13.890+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-2] c.e.e.s.product.ProductServiceImpl       : 모든 제품 목록을 가져오는 서비스 - 정렬기준: pro_date_desc, 페이지: 1, 사이즈: 10
+2024-07-18T11:38:23.522+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-9] c.e.e.s.product.ProductServiceImpl       : 모든 제품 목록을 가져오는 서비스 - 정렬기준: pro_date_desc, 페이지: 2, 사이즈: 10
+2024-07-18T11:38:25.419+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-4] c.e.e.s.product.ProductServiceImpl       : 모든 제품 목록을 가져오는 서비스 - 정렬기준: pro_date_desc, 페이지: 3, 사이즈: 10
+2024-07-18T11:38:27.448+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-8] c.e.e.s.product.ProductServiceImpl       : 모든 제품 목록을 가져오는 서비스 - 정렬기준: pro_date_desc, 페이지: 1, 사이즈: 10
+2024-07-18T11:38:29.728+09:00  INFO 10916 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-18T11:38:29.728+09:00  INFO 10916 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-18T11:38:39.051+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-6] c.e.e.s.product.ProductServiceImpl       : 모든 제품 목록을 가져오는 서비스 - 정렬기준: price_asc, 페이지: 1, 사이즈: 10
+2024-07-18T11:38:40.198+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-5] c.e.e.s.product.ProductServiceImpl       : 모든 제품 목록을 가져오는 서비스 - 정렬기준: price_desc, 페이지: 1, 사이즈: 10
+2024-07-18T11:38:41.933+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-10] c.e.e.s.product.ProductServiceImpl       : 모든 제품 목록을 가져오는 서비스 - 정렬기준: price_desc, 페이지: 1, 사이즈: 10
+2024-07-18T11:38:42.875+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-4] c.e.e.s.product.ProductServiceImpl       : 모든 제품 목록을 가져오는 서비스 - 정렬기준: price_desc, 페이지: 1, 사이즈: 10
+2024-07-18T11:38:44.734+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-8] c.e.e.s.product.ProductServiceImpl       : 모든 제품 목록을 가져오는 서비스 - 정렬기준: viewCount_desc, 페이지: 1, 사이즈: 10
+2024-07-18T11:38:46.934+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-6] c.e.e.s.product.ProductServiceImpl       : 모든 제품 목록을 가져오는 서비스 - 정렬기준: viewCount_desc, 페이지: 1, 사이즈: 10
+2024-07-18T11:39:29.728+09:00  INFO 10916 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-18T11:39:29.728+09:00  INFO 10916 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-18T11:39:48.846+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-3] c.e.e.s.product.ProductServiceImpl       : saveProductWithImages called with product: Brumbury Table Lamp by Luigi Massoni for Guzzini
+2024-07-18T11:39:48.991+09:00 ERROR 10916 --- [evoproject] [http-nio-8090-exec-3] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.springframework.dao.DataIntegrityViolationException: 
+### Error updating database.  Cause: com.mysql.cj.jdbc.exceptions.MysqlDataTruncation: Data truncation: Data too long for column 'pro_name' at row 1
+### The error may exist in file [D:\EVO\evoproject\build\resources\main\mapper\productMapper.xml]
+### The error may involve com.evo.evoproject.mapper.product.ProductMapper.addProduct-Inline
+### The error occurred while setting parameters
+### SQL: INSERT INTO product (pro_name, pro_content, category_id, pro_price, pro_stock, shipping, soldout)         VALUES (?, ?, ?, ?, ?, ?, ?)
+### Cause: com.mysql.cj.jdbc.exceptions.MysqlDataTruncation: Data truncation: Data too long for column 'pro_name' at row 1
+; Data truncation: Data too long for column 'pro_name' at row 1] with root cause
+
+com.mysql.cj.jdbc.exceptions.MysqlDataTruncation: Data truncation: Data too long for column 'pro_name' at row 1
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:104) ~[mysql-connector-java-8.0.29.jar:8.0.29]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916) ~[mysql-connector-java-8.0.29.jar:8.0.29]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.execute(ClientPreparedStatement.java:354) ~[mysql-connector-java-8.0.29.jar:8.0.29]
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.execute(HikariProxyPreparedStatement.java) ~[HikariCP-5.0.1.jar:na]
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.update(PreparedStatementHandler.java:48) ~[mybatis-3.5.14.jar:3.5.14]
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.update(RoutingStatementHandler.java:75) ~[mybatis-3.5.14.jar:3.5.14]
+	at org.apache.ibatis.executor.SimpleExecutor.doUpdate(SimpleExecutor.java:50) ~[mybatis-3.5.14.jar:3.5.14]
+	at org.apache.ibatis.executor.BaseExecutor.update(BaseExecutor.java:117) ~[mybatis-3.5.14.jar:3.5.14]
+	at org.apache.ibatis.executor.CachingExecutor.update(CachingExecutor.java:76) ~[mybatis-3.5.14.jar:3.5.14]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:197) ~[mybatis-3.5.14.jar:3.5.14]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.insert(DefaultSqlSession.java:184) ~[mybatis-3.5.14.jar:3.5.14]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:425) ~[mybatis-spring-3.0.3.jar:3.0.3]
+	at jdk.proxy2/jdk.proxy2.$Proxy68.insert(Unknown Source) ~[na:na]
+	at org.mybatis.spring.SqlSessionTemplate.insert(SqlSessionTemplate.java:272) ~[mybatis-spring-3.0.3.jar:3.0.3]
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:62) ~[mybatis-3.5.14.jar:3.5.14]
+	at org.apache.ibatis.binding.MapperProxy$PlainMethodInvoker.invoke(MapperProxy.java:141) ~[mybatis-3.5.14.jar:3.5.14]
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:86) ~[mybatis-3.5.14.jar:3.5.14]
+	at jdk.proxy2/jdk.proxy2.$Proxy81.addProduct(Unknown Source) ~[na:na]
+	at com.evo.evoproject.service.product.ProductServiceImpl.saveProductWithImages(ProductServiceImpl.java:144) ~[main/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:354) ~[spring-aop-6.1.10.jar:6.1.10]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196) ~[spring-aop-6.1.10.jar:6.1.10]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-6.1.10.jar:6.1.10]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:768) ~[spring-aop-6.1.10.jar:6.1.10]
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123) ~[spring-tx-6.1.10.jar:6.1.10]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:392) ~[spring-tx-6.1.10.jar:6.1.10]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-6.1.10.jar:6.1.10]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.10.jar:6.1.10]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:768) ~[spring-aop-6.1.10.jar:6.1.10]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:720) ~[spring-aop-6.1.10.jar:6.1.10]
+	at com.evo.evoproject.service.product.ProductServiceImpl$$SpringCGLIB$$0.saveProductWithImages(<generated>) ~[main/:na]
+	at com.evo.evoproject.controller.product.AdminProductController.saveProduct(AdminProductController.java:56) ~[main/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:188) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:926) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:831) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590) ~[tomcat-embed-core-10.1.25.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.25.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:365) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:100) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:227) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:221) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at com.evo.evoproject.config.LoginFilter.doFilter(LoginFilter.java:25) ~[main/:na]
+	at jakarta.servlet.http.HttpFilter.doFilter(HttpFilter.java:53) ~[tomcat-embed-core-10.1.25.jar:6.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$3(HandlerMappingIntrospector.java:195) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:230) ~[spring-security-config-6.2.5.jar:6.2.5]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:352) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:268) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:389) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:904) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at java.base/java.lang.Thread.run(Thread.java:842) ~[na:na]
+
+2024-07-18T11:39:52.829+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-10] c.e.e.s.product.ProductServiceImpl       : 모든 제품 목록을 가져오는 서비스 - 정렬기준: viewCount_desc, 페이지: 1, 사이즈: 10
+2024-07-18T11:39:55.649+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-7] c.e.e.s.product.ProductServiceImpl       : 모든 제품 목록을 가져오는 서비스 - 정렬기준: viewCount_desc, 페이지: 1, 사이즈: 10
+2024-07-18T11:40:29.732+09:00  INFO 10916 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-18T11:40:29.732+09:00  INFO 10916 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-18T11:40:59.163+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-10] c.e.e.s.product.ProductServiceImpl       : saveProductWithImages called with product: Brumbury Table Lamp by Luigi Massoni for Guzzini
+2024-07-18T11:40:59.186+09:00 ERROR 10916 --- [evoproject] [http-nio-8090-exec-10] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.springframework.dao.DataIntegrityViolationException: 
+### Error updating database.  Cause: com.mysql.cj.jdbc.exceptions.MysqlDataTruncation: Data truncation: Data too long for column 'pro_name' at row 1
+### The error may exist in file [D:\EVO\evoproject\build\resources\main\mapper\productMapper.xml]
+### The error may involve com.evo.evoproject.mapper.product.ProductMapper.addProduct-Inline
+### The error occurred while setting parameters
+### SQL: INSERT INTO product (pro_name, pro_content, category_id, pro_price, pro_stock, shipping, soldout)         VALUES (?, ?, ?, ?, ?, ?, ?)
+### Cause: com.mysql.cj.jdbc.exceptions.MysqlDataTruncation: Data truncation: Data too long for column 'pro_name' at row 1
+; Data truncation: Data too long for column 'pro_name' at row 1] with root cause
+
+com.mysql.cj.jdbc.exceptions.MysqlDataTruncation: Data truncation: Data too long for column 'pro_name' at row 1
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:104) ~[mysql-connector-java-8.0.29.jar:8.0.29]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916) ~[mysql-connector-java-8.0.29.jar:8.0.29]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.execute(ClientPreparedStatement.java:354) ~[mysql-connector-java-8.0.29.jar:8.0.29]
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.execute(HikariProxyPreparedStatement.java) ~[HikariCP-5.0.1.jar:na]
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.update(PreparedStatementHandler.java:48) ~[mybatis-3.5.14.jar:3.5.14]
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.update(RoutingStatementHandler.java:75) ~[mybatis-3.5.14.jar:3.5.14]
+	at org.apache.ibatis.executor.SimpleExecutor.doUpdate(SimpleExecutor.java:50) ~[mybatis-3.5.14.jar:3.5.14]
+	at org.apache.ibatis.executor.BaseExecutor.update(BaseExecutor.java:117) ~[mybatis-3.5.14.jar:3.5.14]
+	at org.apache.ibatis.executor.CachingExecutor.update(CachingExecutor.java:76) ~[mybatis-3.5.14.jar:3.5.14]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:197) ~[mybatis-3.5.14.jar:3.5.14]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.insert(DefaultSqlSession.java:184) ~[mybatis-3.5.14.jar:3.5.14]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:425) ~[mybatis-spring-3.0.3.jar:3.0.3]
+	at jdk.proxy2/jdk.proxy2.$Proxy68.insert(Unknown Source) ~[na:na]
+	at org.mybatis.spring.SqlSessionTemplate.insert(SqlSessionTemplate.java:272) ~[mybatis-spring-3.0.3.jar:3.0.3]
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:62) ~[mybatis-3.5.14.jar:3.5.14]
+	at org.apache.ibatis.binding.MapperProxy$PlainMethodInvoker.invoke(MapperProxy.java:141) ~[mybatis-3.5.14.jar:3.5.14]
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:86) ~[mybatis-3.5.14.jar:3.5.14]
+	at jdk.proxy2/jdk.proxy2.$Proxy81.addProduct(Unknown Source) ~[na:na]
+	at com.evo.evoproject.service.product.ProductServiceImpl.saveProductWithImages(ProductServiceImpl.java:144) ~[main/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:354) ~[spring-aop-6.1.10.jar:6.1.10]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196) ~[spring-aop-6.1.10.jar:6.1.10]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-6.1.10.jar:6.1.10]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:768) ~[spring-aop-6.1.10.jar:6.1.10]
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123) ~[spring-tx-6.1.10.jar:6.1.10]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:392) ~[spring-tx-6.1.10.jar:6.1.10]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-6.1.10.jar:6.1.10]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.10.jar:6.1.10]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:768) ~[spring-aop-6.1.10.jar:6.1.10]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:720) ~[spring-aop-6.1.10.jar:6.1.10]
+	at com.evo.evoproject.service.product.ProductServiceImpl$$SpringCGLIB$$0.saveProductWithImages(<generated>) ~[main/:na]
+	at com.evo.evoproject.controller.product.AdminProductController.saveProduct(AdminProductController.java:56) ~[main/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:188) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:926) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:831) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590) ~[tomcat-embed-core-10.1.25.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.25.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:365) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:100) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:227) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:221) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at com.evo.evoproject.config.LoginFilter.doFilter(LoginFilter.java:25) ~[main/:na]
+	at jakarta.servlet.http.HttpFilter.doFilter(HttpFilter.java:53) ~[tomcat-embed-core-10.1.25.jar:6.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$3(HandlerMappingIntrospector.java:195) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:230) ~[spring-security-config-6.2.5.jar:6.2.5]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:352) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:268) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:389) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:904) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at java.base/java.lang.Thread.run(Thread.java:842) ~[na:na]
+
+2024-07-18T11:41:29.728+09:00  INFO 10916 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-18T11:41:29.728+09:00  INFO 10916 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-18T11:42:29.728+09:00  INFO 10916 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-18T11:42:29.728+09:00  INFO 10916 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-18T11:43:29.727+09:00  INFO 10916 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-18T11:43:29.727+09:00  INFO 10916 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-18T11:43:37.827+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-9] c.e.e.s.product.ProductServiceImpl       : 모든 제품 목록을 가져오는 서비스 - 정렬기준: viewCount_desc, 페이지: 1, 사이즈: 10
+2024-07-18T11:43:42.141+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-4] c.e.e.s.product.ProductServiceImpl       : 모든 제품 목록을 가져오는 서비스 - 정렬기준: pro_date_desc, 페이지: 1, 사이즈: 10
+2024-07-18T11:44:29.722+09:00  INFO 10916 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-18T11:44:29.722+09:00  INFO 10916 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-18T11:44:30.088+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-9] c.e.e.s.product.ProductServiceImpl       : saveProductWithImages called with product: Czechoslovakian 
+2024-07-18T11:44:30.104+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-9] c.e.e.s.product.ProductServiceImpl       : Processing image: 0a5f4832110ce2eecc64e2daed98f62c_460x.jpg
+2024-07-18T11:44:30.229+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-9] c.e.e.service.image.ImageServiceImpl     : Saving image: https://team4project-bucket.s3.ap-northeast-2.amazonaws.com/c0087b15-43c9-4f51-8c8b-a4f0dd60fc69_0a5f4832110ce2eecc64e2daed98f62c_460x.jpg
+2024-07-18T11:44:30.279+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-9] c.e.e.s.product.ProductServiceImpl       : 모든 제품 목록을 가져오는 서비스 - 정렬기준: pro_date_desc, 페이지: 1, 사이즈: 10
+2024-07-18T11:44:34.900+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-4] c.e.e.s.product.ProductServiceImpl       : 특정 제품 상세 정보를 가져오는 서비스 - 제품 번호: 92
+2024-07-18T11:44:34.912+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-4] c.e.e.s.product.ProductServiceImpl       : 제품 번호 92의 조회수를 증가시킵니다.
+2024-07-18T11:44:39.618+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-2] c.e.e.s.product.ProductServiceImpl       : updateProductWithImages called with product: Ducth Lamp
+2024-07-18T11:44:39.636+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-2] c.e.e.s.product.ProductServiceImpl       : Existing images: [Image(imageId=159, imageName=https://team4project-bucket.s3.ap-northeast-2.amazonaws.com/cfd962a8-34a1-4b14-9482-33d963a6ca25_rn-image_picker_lib_temp_2c87ba20-fd58-4902-a3ef-3f73f4caa4c3_460x.jpg, imageType=상품)]
+2024-07-18T11:44:39.661+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-2] c.e.e.s.product.ProductServiceImpl       : 모든 제품 목록을 가져오는 서비스 - 정렬기준: pro_date_desc, 페이지: 1, 사이즈: 10
+2024-07-18T11:45:29.722+09:00  INFO 10916 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-18T11:45:29.722+09:00  INFO 10916 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 제품 번호 92의 조회수를 1만큼 업데이트합니다.
+2024-07-18T11:45:29.738+09:00  INFO 10916 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-18T11:46:29.721+09:00  INFO 10916 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-18T11:46:29.721+09:00  INFO 10916 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-18T11:46:33.371+09:00  WARN 10916 --- [evoproject] [http-nio-8090-exec-8] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public java.lang.String com.evo.evoproject.controller.product.AdminProductController.saveProduct(com.evo.evoproject.domain.product.RetrieveProduct,java.util.List<org.springframework.web.multipart.MultipartFile>): [Field error in object 'retrieveProduct' on field 'price': rejected value [0111111111111111111111111111111111]; codes [typeMismatch.retrieveProduct.price,typeMismatch.price,typeMismatch.int,typeMismatch]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [retrieveProduct.price,price]; arguments []; default message [price]]; default message [Failed to convert property value of type 'java.lang.String' to required type 'int' for property 'price'; For input string: "0111111111111111111111111111111111"]] ]
+2024-07-18T11:47:01.366+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-5] c.e.e.s.product.ProductServiceImpl       : 모든 제품 목록을 가져오는 서비스 - 정렬기준: pro_date_desc, 페이지: 1, 사이즈: 10
+2024-07-18T11:47:23.003+09:00  WARN 10916 --- [evoproject] [http-nio-8090-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public java.lang.String com.evo.evoproject.controller.product.AdminProductController.saveProduct(com.evo.evoproject.domain.product.RetrieveProduct,java.util.List<org.springframework.web.multipart.MultipartFile>) with 2 errors: [Field error in object 'retrieveProduct' on field 'price': rejected value [01111111111111111111111111111111111111]; codes [typeMismatch.retrieveProduct.price,typeMismatch.price,typeMismatch.int,typeMismatch]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [retrieveProduct.price,price]; arguments []; default message [price]]; default message [Failed to convert property value of type 'java.lang.String' to required type 'int' for property 'price'; For input string: "01111111111111111111111111111111111111"]] [Field error in object 'retrieveProduct' on field 'shipping': rejected value [0111111111111111111111111111111111111]; codes [typeMismatch.retrieveProduct.shipping,typeMismatch.shipping,typeMismatch.int,typeMismatch]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [retrieveProduct.shipping,shipping]; arguments []; default message [shipping]]; default message [Failed to convert property value of type 'java.lang.String' to required type 'int' for property 'shipping'; For input string: "0111111111111111111111111111111111111"]] ]
+2024-07-18T11:47:29.731+09:00  INFO 10916 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-18T11:47:29.731+09:00  INFO 10916 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-18T11:47:59.988+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-7] c.e.e.s.product.ProductServiceImpl       : 모든 제품 목록을 가져오는 서비스 - 정렬기준: pro_date_desc, 페이지: 1, 사이즈: 10
+2024-07-18T11:48:06.863+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-5] c.e.e.s.product.ProductServiceImpl       : 특정 제품 상세 정보를 가져오는 서비스 - 제품 번호: 91
+2024-07-18T11:48:06.869+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-5] c.e.e.s.product.ProductServiceImpl       : 제품 번호 91의 조회수를 증가시킵니다.
+2024-07-18T11:48:18.958+09:00  WARN 10916 --- [evoproject] [http-nio-8090-exec-3] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public java.lang.String com.evo.evoproject.controller.product.AdminProductController.updateProduct(com.evo.evoproject.domain.product.RetrieveProduct,java.util.List<org.springframework.web.multipart.MultipartFile>,java.util.List<java.lang.Integer>): [Field error in object 'retrieveProduct' on field 'price': rejected value [12000001111111111111111111111111111111]; codes [typeMismatch.retrieveProduct.price,typeMismatch.price,typeMismatch.int,typeMismatch]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [retrieveProduct.price,price]; arguments []; default message [price]]; default message [Failed to convert property value of type 'java.lang.String' to required type 'int' for property 'price'; For input string: "12000001111111111111111111111111111111"]] ]
+2024-07-18T11:48:29.728+09:00  INFO 10916 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-18T11:48:29.728+09:00  INFO 10916 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 제품 번호 91의 조회수를 1만큼 업데이트합니다.
+2024-07-18T11:48:29.748+09:00  INFO 10916 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-18T11:48:34.365+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-9] c.e.e.s.product.ProductServiceImpl       : 모든 제품 목록을 가져오는 서비스 - 정렬기준: pro_date_desc, 페이지: 1, 사이즈: 10
+2024-07-18T11:48:36.208+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-7] c.e.e.s.product.ProductServiceImpl       : 특정 제품 상세 정보를 가져오는 서비스 - 제품 번호: 91
+2024-07-18T11:48:36.214+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-7] c.e.e.s.product.ProductServiceImpl       : 제품 번호 91의 조회수를 증가시킵니다.
+2024-07-18T11:48:49.841+09:00  WARN 10916 --- [evoproject] [http-nio-8090-exec-4] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public java.lang.String com.evo.evoproject.controller.product.AdminProductController.updateProduct(com.evo.evoproject.domain.product.RetrieveProduct,java.util.List<org.springframework.web.multipart.MultipartFile>,java.util.List<java.lang.Integer>): [Field error in object 'retrieveProduct' on field 'shipping': rejected value [200001111111111111111111111111]; codes [typeMismatch.retrieveProduct.shipping,typeMismatch.shipping,typeMismatch.int,typeMismatch]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [retrieveProduct.shipping,shipping]; arguments []; default message [shipping]]; default message [Failed to convert property value of type 'java.lang.String' to required type 'int' for property 'shipping'; For input string: "200001111111111111111111111111"]] ]
+2024-07-18T11:48:51.507+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-2] c.e.e.s.product.ProductServiceImpl       : 모든 제품 목록을 가져오는 서비스 - 정렬기준: pro_date_desc, 페이지: 1, 사이즈: 10
+2024-07-18T11:48:53.066+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-3] c.e.e.s.product.ProductServiceImpl       : 특정 제품 상세 정보를 가져오는 서비스 - 제품 번호: 91
+2024-07-18T11:48:53.072+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-3] c.e.e.s.product.ProductServiceImpl       : 제품 번호 91의 조회수를 증가시킵니다.
+2024-07-18T11:48:57.291+09:00  WARN 10916 --- [evoproject] [http-nio-8090-exec-9] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public java.lang.String com.evo.evoproject.controller.product.AdminProductController.updateProduct(com.evo.evoproject.domain.product.RetrieveProduct,java.util.List<org.springframework.web.multipart.MultipartFile>,java.util.List<java.lang.Integer>): [Field error in object 'retrieveProduct' on field 'shipping': rejected value [200002222222]; codes [typeMismatch.retrieveProduct.shipping,typeMismatch.shipping,typeMismatch.int,typeMismatch]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [retrieveProduct.shipping,shipping]; arguments []; default message [shipping]]; default message [Failed to convert property value of type 'java.lang.String' to required type 'int' for property 'shipping'; For input string: "200002222222"]] ]
+2024-07-18T11:48:58.310+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-6] c.e.e.s.product.ProductServiceImpl       : 모든 제품 목록을 가져오는 서비스 - 정렬기준: pro_date_desc, 페이지: 1, 사이즈: 10
+2024-07-18T11:48:59.342+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-7] c.e.e.s.product.ProductServiceImpl       : 특정 제품 상세 정보를 가져오는 서비스 - 제품 번호: 91
+2024-07-18T11:48:59.348+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-7] c.e.e.s.product.ProductServiceImpl       : 제품 번호 91의 조회수를 증가시킵니다.
+2024-07-18T11:49:01.131+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-4] c.e.e.s.product.ProductServiceImpl       : updateProductWithImages called with product: 포레스트
+2024-07-18T11:49:01.147+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-4] c.e.e.s.product.ProductServiceImpl       : Existing images: [Image(imageId=158, imageName=https://team4project-bucket.s3.ap-northeast-2.amazonaws.com/622975d0-74e6-48ec-baae-47fa7b461fd9_%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C.jpg, imageType=상품)]
+2024-07-18T11:49:01.174+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-4] c.e.e.s.product.ProductServiceImpl       : 모든 제품 목록을 가져오는 서비스 - 정렬기준: pro_date_desc, 페이지: 1, 사이즈: 10
+2024-07-18T11:49:02.911+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-3] c.e.e.s.product.ProductServiceImpl       : 특정 제품 상세 정보를 가져오는 서비스 - 제품 번호: 91
+2024-07-18T11:49:02.916+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-3] c.e.e.s.product.ProductServiceImpl       : 제품 번호 91의 조회수를 증가시킵니다.
+2024-07-18T11:49:05.567+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-9] c.e.e.s.product.ProductServiceImpl       : 특정 제품 상세 정보를 가져오는 서비스 - 제품 번호: 92
+2024-07-18T11:49:05.574+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-9] c.e.e.s.product.ProductServiceImpl       : 제품 번호 92의 조회수를 증가시킵니다.
+2024-07-18T11:49:07.235+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-6] c.e.e.s.product.ProductServiceImpl       : 특정 제품 상세 정보를 가져오는 서비스 - 제품 번호: 95
+2024-07-18T11:49:07.241+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-6] c.e.e.s.product.ProductServiceImpl       : 제품 번호 95의 조회수를 증가시킵니다.
+2024-07-18T11:49:08.872+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-10] c.e.e.s.product.ProductServiceImpl       : 특정 제품 상세 정보를 가져오는 서비스 - 제품 번호: 91
+2024-07-18T11:49:08.878+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-10] c.e.e.s.product.ProductServiceImpl       : 제품 번호 91의 조회수를 증가시킵니다.
+2024-07-18T11:49:12.596+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-1] c.e.e.s.product.ProductServiceImpl       : 특정 제품 상세 정보를 가져오는 서비스 - 제품 번호: 19
+2024-07-18T11:49:12.602+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-1] c.e.e.s.product.ProductServiceImpl       : 제품 번호 19의 조회수를 증가시킵니다.
+2024-07-18T11:49:14.871+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-7] c.e.e.s.product.ProductServiceImpl       : 특정 제품 상세 정보를 가져오는 서비스 - 제품 번호: 91
+2024-07-18T11:49:14.877+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-7] c.e.e.s.product.ProductServiceImpl       : 제품 번호 91의 조회수를 증가시킵니다.
+2024-07-18T11:49:18.282+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-4] c.e.e.s.product.ProductServiceImpl       : updateProductWithImages called with product: 포레스트
+2024-07-18T11:49:18.298+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-4] c.e.e.s.product.ProductServiceImpl       : Existing images: [Image(imageId=158, imageName=https://team4project-bucket.s3.ap-northeast-2.amazonaws.com/622975d0-74e6-48ec-baae-47fa7b461fd9_%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C.jpg, imageType=상품)]
+2024-07-18T11:49:18.322+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-4] c.e.e.s.product.ProductServiceImpl       : 모든 제품 목록을 가져오는 서비스 - 정렬기준: pro_date_desc, 페이지: 1, 사이즈: 10
+2024-07-18T11:49:19.702+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-3] c.e.e.s.product.ProductServiceImpl       : 특정 제품 상세 정보를 가져오는 서비스 - 제품 번호: 91
+2024-07-18T11:49:19.708+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-3] c.e.e.s.product.ProductServiceImpl       : 제품 번호 91의 조회수를 증가시킵니다.
+2024-07-18T11:49:26.258+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-9] c.e.e.s.product.ProductServiceImpl       : updateProductWithImages called with product: 포레스트
+2024-07-18T11:49:26.277+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-9] c.e.e.s.product.ProductServiceImpl       : Existing images: [Image(imageId=158, imageName=https://team4project-bucket.s3.ap-northeast-2.amazonaws.com/622975d0-74e6-48ec-baae-47fa7b461fd9_%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C.jpg, imageType=상품)]
+2024-07-18T11:49:26.307+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-9] c.e.e.s.product.ProductServiceImpl       : 모든 제품 목록을 가져오는 서비스 - 정렬기준: pro_date_desc, 페이지: 1, 사이즈: 10
+2024-07-18T11:49:27.812+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-7] c.e.e.s.product.ProductServiceImpl       : 특정 제품 상세 정보를 가져오는 서비스 - 제품 번호: 91
+2024-07-18T11:49:27.819+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-7] c.e.e.s.product.ProductServiceImpl       : 제품 번호 91의 조회수를 증가시킵니다.
+2024-07-18T11:49:29.733+09:00  INFO 10916 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-18T11:49:29.733+09:00  INFO 10916 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 제품 번호 19의 조회수를 1만큼 업데이트합니다.
+2024-07-18T11:49:29.751+09:00  INFO 10916 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 제품 번호 91의 조회수를 8만큼 업데이트합니다.
+2024-07-18T11:49:29.766+09:00  INFO 10916 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 제품 번호 92의 조회수를 1만큼 업데이트합니다.
+2024-07-18T11:49:29.779+09:00  INFO 10916 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 제품 번호 95의 조회수를 1만큼 업데이트합니다.
+2024-07-18T11:49:29.793+09:00  INFO 10916 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-18T11:49:55.036+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-4] c.e.e.s.product.ProductServiceImpl       : updateProductWithImages called with product: 포레스트
+2024-07-18T11:49:55.055+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-4] c.e.e.s.product.ProductServiceImpl       : Existing images: [Image(imageId=158, imageName=https://team4project-bucket.s3.ap-northeast-2.amazonaws.com/622975d0-74e6-48ec-baae-47fa7b461fd9_%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C.jpg, imageType=상품)]
+2024-07-18T11:49:55.084+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-4] c.e.e.s.product.ProductServiceImpl       : 모든 제품 목록을 가져오는 서비스 - 정렬기준: pro_date_desc, 페이지: 1, 사이즈: 10
+2024-07-18T11:49:56.191+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-3] c.e.e.s.product.ProductServiceImpl       : 특정 제품 상세 정보를 가져오는 서비스 - 제품 번호: 91
+2024-07-18T11:49:56.198+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-3] c.e.e.s.product.ProductServiceImpl       : 제품 번호 91의 조회수를 증가시킵니다.
+2024-07-18T11:49:58.801+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-9] c.e.e.s.product.ProductServiceImpl       : 특정 제품 상세 정보를 가져오는 서비스 - 제품 번호: 91
+2024-07-18T11:49:58.809+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-9] c.e.e.s.product.ProductServiceImpl       : 제품 번호 91의 조회수를 증가시킵니다.
+2024-07-18T11:50:02.848+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-6] c.e.e.s.product.ProductServiceImpl       : updateProductWithImages called with product: 포레스트
+2024-07-18T11:50:02.867+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-6] c.e.e.s.product.ProductServiceImpl       : Existing images: [Image(imageId=158, imageName=https://team4project-bucket.s3.ap-northeast-2.amazonaws.com/622975d0-74e6-48ec-baae-47fa7b461fd9_%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C.jpg, imageType=상품)]
+2024-07-18T11:50:02.897+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-6] c.e.e.s.product.ProductServiceImpl       : 모든 제품 목록을 가져오는 서비스 - 정렬기준: pro_date_desc, 페이지: 1, 사이즈: 10
+2024-07-18T11:50:07.920+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-4] c.e.e.s.product.ProductServiceImpl       : 특정 제품 상세 정보를 가져오는 서비스 - 제품 번호: 91
+2024-07-18T11:50:07.928+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-4] c.e.e.s.product.ProductServiceImpl       : 제품 번호 91의 조회수를 증가시킵니다.
+2024-07-18T11:50:29.730+09:00  INFO 10916 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-18T11:50:29.730+09:00  INFO 10916 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 제품 번호 91의 조회수를 3만큼 업데이트합니다.
+2024-07-18T11:50:29.749+09:00  INFO 10916 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-18T11:51:03.816+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-2] c.e.e.s.product.ProductServiceImpl       : 모든 제품 목록을 가져오는 서비스 - 정렬기준: viewCount_desc, 페이지: 1, 사이즈: 10
+2024-07-18T11:51:05.638+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-1] c.e.e.s.product.ProductServiceImpl       : 모든 제품 목록을 가져오는 서비스 - 정렬기준: viewCount_desc, 페이지: 1, 사이즈: 10
+2024-07-18T11:51:23.639+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-8] c.e.e.c.p.RetrieveProductsController     : 검색값에 맞는 제품 목록 요청 - 정렬기준: 의자 상품이름: pro_date_desc, 페이지: 1, 사이즈: 16
+2024-07-18T11:51:23.657+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-8] c.e.e.s.product.ProductServiceImpl       : 검색값에 맞는 상품을 가져오는 서비스 - 상품이름: 의자, 정렬기준: pro_date_desc, 페이지: 1, 사이즈: 16
+2024-07-18T11:51:27.944+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-2] c.e.e.c.p.RetrieveProductsController     : 검색값에 맞는 제품 목록 요청 - 정렬기준: 의자 상품이름: price_desc, 페이지: 1, 사이즈: 16
+2024-07-18T11:51:27.961+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-2] c.e.e.s.product.ProductServiceImpl       : 검색값에 맞는 상품을 가져오는 서비스 - 상품이름: 의자, 정렬기준: price_desc, 페이지: 1, 사이즈: 16
+2024-07-18T11:51:29.722+09:00  INFO 10916 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-18T11:51:29.722+09:00  INFO 10916 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-18T11:51:31.251+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-5] c.e.e.controller.main.CartController     : 사용자 1의 장바구니 항목 조회: 4개의 상품
+2024-07-18T11:51:35.796+09:00  INFO 10916 --- [evoproject] [http-nio-8090-exec-6] c.e.e.controller.main.CartController     : 사용자 1의 장바구니 항목 조회: 4개의 상품
+2024-07-18T11:51:44.509+09:00  INFO 10916 --- [evoproject] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-07-18T11:51:44.577+09:00  INFO 10916 --- [evoproject] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

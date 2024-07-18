@@ -3,7 +3,7 @@ package com.evo.evoproject.service.board;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.amazonaws.services.s3.model.PutObjectRequest;
-import com.evo.evoproject.Mapper.board.BoardMapper;
+import com.evo.evoproject.mapper.board.BoardMapper;
 import com.evo.evoproject.domain.board.BoardImage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

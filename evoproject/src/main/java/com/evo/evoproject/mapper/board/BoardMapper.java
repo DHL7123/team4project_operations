@@ -1,4 +1,4 @@
-package com.evo.evoproject.Mapper.board;
+package com.evo.evoproject.mapper.board;
 
 import com.evo.evoproject.domain.board.Board;
 import com.evo.evoproject.domain.board.BoardImage;

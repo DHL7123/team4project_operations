@@ -57,7 +57,7 @@
 </head>
 <body class="bg-light">
 
-<header th:replace="header :: header" class="mb-4"></header>
+<header th:replace="~{header :: header}"></header>
 
 <div class="container">
   <h1 class="text-center mb-4">Product List</h1>
@@ -84,10 +84,11 @@
         <img th:if="${product.mainImage != null}" th:src="@{${product.mainImage.imageName}}" alt="Product Image" class="card-img-top">
         <div class="card-body">
           <h5 class="card-title" th:text="${product.productName}">Product Name</h5>
-          <p class="card-text" th:text="${product.soldout ? 'Sold Out' : product.price + ' 원'}"></p>
+       <p class="card-text" th:text="${product.soldout == 1 ? 'SoldOut' : product.price + ' 원'}">
+
         </div>
         <div class="card-footer text-center">
-          <div class="add-to-cart btn btn-primary" th:if="${!product.soldout}">Add to cart</div>
+          <div class="add-to-cart btn btn-primary" th:if="${product.soldout == 0}">Add to cart</div>
         </div>
       </div>
     </div>
@@ -113,7 +114,7 @@
     </ul>
   </div>
 </div>
-
-<footer th:replace="footer :: footer" class="mt-5"></footer>
+<footer th:replace="~{footer :: footer}"></footer>
+<script th:src="@{/js/script.js}"></script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-package com.evo.evoproject.Mapper.cart;
+package com.evo.evoproject.mapper.cart;
 
 import com.evo.evoproject.domain.cart.Cart;
 import org.apache.ibatis.annotations.Mapper;

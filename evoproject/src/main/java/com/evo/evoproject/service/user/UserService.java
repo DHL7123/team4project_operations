@@ -1,7 +1,7 @@
 package com.evo.evoproject.service.user;
 
 import com.evo.evoproject.domain.user.User;
-import com.evo.evoproject.Mapper.user.UserMapper;
+import com.evo.evoproject.mapper.user.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

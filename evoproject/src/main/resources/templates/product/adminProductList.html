@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>관리자 상품 목록</title>
+  <link rel="stylesheet" th:href="@{/css/styles.css}">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <style>
+    .modal {
+      display: none; /* 기본 display 설정 */
+      position: fixed; /* 화면에 고정 */
+      z-index: 1050; /* 부트스트랩 기본 z-index 값 */
+      padding-top: 60px; /* 위쪽에 패딩 추가 */
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto; /* 스크롤 가능하도록 설정 */
+      background-color: rgba(0,0,0,0.5); /* 배경 색상 */
+    }
+
+    .modal-dialog {
+      max-width: 800px;
+      margin: 5% auto; // 상단의 여백을 조정하여 화면 중앙에 더 가깝게
+    overflow-y: auto; // 내용이 많을 경우 스크롤 가능
+    }
+
+    .close {
+      position: absolute;
+      right: 15px;
+      top: 15px;
+      font-size: 1.2rem;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+
+    .preview-img {
+      width: 100px;
+      height: 100px;
+      margin: 10px;
+    }
+
+    .pagination .disabled {
+      pointer-events: none;
+      color: #ccc;
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<header th:replace="~{header :: header}"></header>
+<div class="container mt-5">
+  <h1>상품 목록</h1>
+  <button id="addProductBtn" class="btn btn-primary mb-3">새 상품 추가</button>
+  <form id="sortForm" action="/admin/product" method="get" class="form-inline mb-3">
+    <select name="sort" class="form-control mr-2" onchange="document.getElementById('sortForm').submit()">
+      <option value="pro_date_desc" th:selected="${productsResponse.sort == 'pro_date_desc'}">최근 등록순</option>
+      <option value="price_asc" th:selected="${productsResponse.sort == 'price_asc'}">가격 오름차순</option>
+      <option value="price_desc" th:selected="${productsResponse.sort == 'price_desc'}">가격 내림차순</option>
+      <option value="viewCount_desc" th:selected="${productsResponse.sort == 'viewCount_desc'}">조회수순</option>
+    </select>
+
+    <select name="soldout" class="form-control" onchange="document.getElementById('sortForm').submit()">
+      <option value="" th:selected="${productsResponse.soldout == null}">전체</option>
+      <option value="0" th:selected="${productsResponse.soldout == 0}">판매중</option>
+      <option value="1" th:selected="${productsResponse.soldout == 1}">품절</option>
+    </select>
+  </form>
+  <table class="table table-hover">
+    <thead class="thead-light">
+    <tr>
+      <th>No</th>
+      <th>상품 이미지</th>
+      <th>상품 명</th>
+      <th>가격</th>
+      <th>카테고리</th>
+      <th>판매상태</th>
+      <th>등록일</th>
+      <th>수정/삭제</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="product : ${productsResponse.products}">
+      <td th:text="${product.productNo}">상품 번호</td>
+      <td>
+        <img th:src="@{${product.mainImage.imageName}}" alt="상품 이미지" class="img-thumbnail" width="100" height="100"/>
+      </td>
+      <td th:text="${product.productName}">상품 명</td>
+      <td class="price-column" th:data-price="${product.price}"></td>
+      <td th:switch="${product.categoryId}">
+        <span th:case="1">Chair</span>
+        <span th:case="2">Lamp</span>
+        <span th:case="3">Table</span>
+        <span th:case="4">Cabinet</span>
+        <span th:case="5">Decorative</span>
+        <span th:case="6">Tableware</span>
+      </td>
+      <td th:text="${product.soldout == 1 ? '품절' : '판매중'}">판매상태</td>
+      <td th:text="${#dates.format(product.date, 'yyyy-MM-dd')}">등록일</td>
+      <td>
+        <button class="editProductBtn btn btn-sm btn-info" th:data-id="${product.productNo}">수정</button>
+        <form th:action="@{/admin/product/{id}/delete(id=${product.productNo})}" method="post" style="display:inline;">
+          <input type="hidden" name="_method" value="delete"/>
+          <button type="submit" class="btn btn-sm btn-danger">삭제</button>
+        </form>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <!-- Pagination -->
+  <nav th:if="${productsResponse.totalPages > 1}">
+    <ul class="pagination justify-content-center">
+      <!-- 이전 페이지 버튼 -->
+      <li class="page-item" th:classappend="${productsResponse.currentPage == 1} ? 'disabled'">
+        <a class="page-link" th:href="@{/admin/product(page=${productsResponse.currentPage - 1}, sort=${productsResponse.sort}, soldout=${productsResponse.soldout})}">Prev</a>
+      </li>
+
+      <!-- 페이지 번호 반복 -->
+      <li class="page-item" th:each="i : ${#numbers.sequence(1, productsResponse.totalPages)}" th:classappend="${productsResponse.currentPage == i} ? 'active'">
+        <a class="page-link" th:href="@{/admin/product(page=${i}, sort=${productsResponse.sort}, soldout=${productsResponse.soldout})}" th:text="${i}"></a>
+      </li>
+
+      <!-- 다음 페이지 버튼 -->
+      <li class="page-item" th:classappend="${productsResponse.currentPage == productsResponse.totalPages} ? 'disabled'">
+        <a class="page-link" th:href="@{/admin/product(page=${productsResponse.currentPage + 1}, sort=${productsResponse.sort}, soldout=${productsResponse.soldout})}">Next</a>
+      </li>
+    </ul>
+  </nav>
+</div>
+
+<!-- Modal -->
+<div id="productModal" class="modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function() {
+    function formatPrice(price) {
+      return new Intl.NumberFormat('ko-KR').format(price) + ' 원';
+    }
+
+    $('.price-column').each(function() {
+      var price = $(this).data('price');
+      var formattedPrice = formatPrice(price);
+      $(this).text(formattedPrice);
+    });
+
+    var modal = $('#productModal');
+    var modalBody = $('#modalBody');
+
+    // 모달 열기
+    $('#addProductBtn').on('click', function() {
+      modalBody.load('/admin/product/form', function() {
+        modal.show();
+      });
+    });
+
+    // 수정 버튼 클릭 시 모달 열기
+    $('.editProductBtn').on('click', function() {
+      var productNo = $(this).data('id');
+      modalBody.load('/admin/product/form?id=' + productNo, function(response, status, xhr) {
+        if (status == "error") {
+          alert("An error occurred: " + xhr.status + " " + xhr.statusText);
+        } else {
+          modal.show();
+        }
+      });
+    });
+
+    // 모달 닫기
+    $('.close').on('click', function() {
+      modal.hide();
+    });
+
+    $(window).on('click', function(event) {
+      if ($(event.target).is(modal)) {
+        modal.hide();
+      }
+    });
+  });
+</script>
+<footer th:replace="~{footer :: footer}"></footer>
+<script th:src="@{/js/script.js}"></script>
+</body>
+</html>
