@@ -74,7 +74,9 @@
 
 <!-- 체크아웃 버튼 -->
 <div class="checkoutBtn">
-    <a href="/paymentOrders/checkout" class="btn btn-primary btn-rounded btn-block btn-lg fw-bold">Check out</a>
+    <form action="/paymentOrders/save" method="post">
+        <button type="submit" class="btn btn-primary btn-rounded btn-block btn-lg fw-bold">Check out</button>
+    </form>
 </div>
 
 <!-- 푸터 포함 -->

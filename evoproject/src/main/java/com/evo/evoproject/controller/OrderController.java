@@ -3,7 +3,7 @@ package com.evo.evoproject.controller;
 import com.evo.evoproject.domain.order.Order;
 import com.evo.evoproject.domain.user.User;
 import com.evo.evoproject.service.order.OrderService;
-import com.evo.evoproject.mapper.user.UserMapper;
+import com.evo.evoproject.service.product.ProductService;
 import com.evo.evoproject.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,11 +23,13 @@ public class OrderController {
     private OrderService orderService;
     @Autowired
     private UserService userService;
+    @Autowired
+    private ProductService productService;
 
     @PostMapping("/save")
     public String saveOrder(@ModelAttribute Order order, HttpSession session) {
         session.setAttribute("order", order); // 세션에 임시 저장
-        return "redirect:/payment"; // 결제 페이지로 리다이렉션
+        return "redirect:/paymentOrders/checkout"; // 결제 페이지로 리다이렉션
     }
 
     @GetMapping
@@ -48,7 +50,7 @@ public class OrderController {
         Order order = (Order) session.getAttribute("order");
 
         if (order != null) {
-            order.setStatus("Completed");
+            order.setOrder_status(1);
             orderService.createOrder(order);
             session.removeAttribute("order"); // 세션에서 제거
         }
@@ -63,6 +65,11 @@ public class OrderController {
             User user = userService.findUserByUserId(userId);
             model.addAttribute("user", user);
         }
+        Order order = (Order) session.getAttribute("order");
+        if (order != null) {
+            model.addAttribute("order", order);
+        }
+
         return "checkOut";  // checkOut.html 파일과 매핑
     }
 
