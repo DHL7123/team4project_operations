@@ -8,7 +8,7 @@ public interface CartService {
 
     List<Cart> getCartItemsByUser(int userNo);
 
-    void addProductToCart(Cart cart);
+    void addProductToCart(int userNo, int proNo, int quantity);
 
     void deleteProductsFromCart(int userNo, List<Integer> proNos);
 }

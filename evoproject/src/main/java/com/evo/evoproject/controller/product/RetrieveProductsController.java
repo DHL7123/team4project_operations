@@ -25,7 +25,7 @@ public class RetrieveProductsController {
     /**
      * 모든 제품 목록을 가져오는 메서드
      *
-     * @param sort  상품 정렬 (기본값: 등록일)
+     * @param sort  상품 정렬 (기본값: 조회순)
      * @param page  페이지 번호 (기본값: 1)
      * @param size  페이지당 항목 수 (기본값: 16)
      * @param model 뷰에 데이터를 전달하기 위한 모델 객체
@@ -33,7 +33,7 @@ public class RetrieveProductsController {
      */
     @GetMapping
     public String getProducts(
-            @RequestParam(defaultValue = "pro_date_desc") String sort,
+            @RequestParam(defaultValue = "viewCount_desc") String sort,
             @RequestParam(defaultValue = "1") int page,
             @RequestParam(defaultValue = "16") int size,
             Model model) {
@@ -53,7 +53,7 @@ public class RetrieveProductsController {
     /**
      * 카테고리별 제품 목록을 가져오는 메서드
      *
-     * @param sort       상품 정렬 (기본값: 등록일)
+     * @param sort       상품 정렬 (기본값: 조회순)
      * @param page       페이지 번호 (기본값: 1)
      * @param size       페이지당 항목 수 (기본값: 16)
      * @param categoryId 카테고리 ID
@@ -62,7 +62,7 @@ public class RetrieveProductsController {
      */
     @GetMapping("/category/{categoryId}")
     public String getProductsByCategory(
-            @RequestParam(defaultValue = "pro_date_desc") String sort,
+            @RequestParam(defaultValue = "viewCount_desc") String sort,
             @RequestParam(defaultValue = "1") int page,
             @RequestParam(defaultValue = "16") int size,
             @PathVariable int categoryId,
@@ -108,17 +108,17 @@ public class RetrieveProductsController {
     }
     /**
      * 검색값에 맞는 제품을 가져오는 메서드
-     * @param sort         상품 정렬 (기본값: 등록일)
+     * @param sort         상품 정렬 (기본값: 조회순)
      * @param page         페이지 번호 (기본값: 1)
      * @param size         페이지당 항목 수 (기본값: 16)
-     * @param input  입력값
+     * @param input        입력값
      * @param model       뷰에 데이터를 전달하기 위한 모델 객체
      * @return 검색값에 맞는 제품 목록 뷰 이름
      */
     @GetMapping("/search/{input}")
     public String getProductByName(
             @PathVariable String input,
-            @RequestParam(defaultValue = "pro_date_desc") String sort,
+            @RequestParam(defaultValue = "viewCount_desc") String sort,
             @RequestParam(defaultValue = "1") int page,
             @RequestParam(defaultValue = "16") int size,
             Model model) {

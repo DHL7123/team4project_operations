@@ -69,8 +69,19 @@
     <!-- 장바구니 상품 추가 -->
     <insert id="addProductToCart">
         INSERT INTO cart (user_no, pro_no, cart_quantity)
-        VALUES (#{userNo}, #{products.proNo}, #{cartQuantity})
+        VALUES (#{userNo}, #{proNo}, #{quantity})
     </insert>
 
+    <!-- 제품의 재고 수량을 가져오는 쿼리 -->
+    <select id="getProductStock" resultType="int">
+        SELECT pro_stock FROM product
+        WHERE pro_no = #{proNo}
+    </select>
+
+    <!-- 사용자의 장바구니에 담긴 특정 상품의 수량을 가져오는 쿼리 -->
+    <select id="getCartProductQuantity" resultType="int">
+        SELECT COALESCE(SUM(cart_quantity), 0) FROM cart
+        WHERE user_no = #{userNo} AND pro_no = #{proNo}
+    </select>
 
 </mapper>

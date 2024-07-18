@@ -5,55 +5,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" />
   <link rel="stylesheet" th:href="@{/css/styles.css}">
   <link rel="stylesheet" th:href="@{/css/list.css}">
-  <script>
-    // URL 파라미터에서 특정 파라미터 값을 가져오는 함수
-    function getParameterByName(name) {
-      const url = new URL(window.location.href);
-      return url.searchParams.get(name);
-    }
-
-    // 정렬 기준 변경 함수
-    function onSortChange() {
-      const sort = document.getElementById("sortSelect").value;
-      const currentPage = document.getElementById("currentPage").value;
-      const categoryId = document.getElementById("categoryId").value;
-      const input = document.getElementById("input").value.trim();
-
-      let url;
-      if (categoryId) {
-        // 카테고리별 조회
-        url = "/product/category/" + categoryId + "?sort=" + sort + "&page=" + currentPage + "&size=16";
-      } else if (input) {
-        // 검색 결과 조회
-        url = "/product/search/" + encodeURIComponent(input) + "?sort=" + sort + "&page=" + currentPage + "&size=16";
-      } else {
-        // 전체 상품 조회
-        url = "/product?sort=" + sort + "&page=" + currentPage + "&size=16";
-      }
-
-      window.location.href = url;
-    }
-
-    // 각 상품에 클릭 리스너 추가
-    document.addEventListener('DOMContentLoaded', function () {
-      const products = document.querySelectorAll('.product');
-      products.forEach(function (product) {
-        const addToCartButton = product.querySelector('.add-to-cart');
-        product.addEventListener('click', function (event) {
-          if (event.target !== addToCartButton) {
-            const productNo = product.getAttribute('data-product-no');
-            console.log('Redirecting to product number:', productNo);
-            redirectToDetailPage(productNo);
-          }
-        });
-      });
-    });
-
-    // 상세 페이지로 리다이렉트하는 함수
-    function redirectToDetailPage(productNo) {
-      window.location.href = '/product/detail/' + productNo;
-    }
-  </script>
 </head>
 <body class="bg-light">
 
@@ -65,10 +16,10 @@
   <!-- 정렬 드롭다운 -->
   <div class="mb-3">
     <select id="sortSelect" class="form-select" onchange="onSortChange()">
+      <option value="viewCount_desc" th:selected="${productsResponse.sort == 'viewCount_desc'}">인기순</option>
       <option value="pro_date_desc" th:selected="${productsResponse.sort == 'pro_date_desc'}">최근 등록순</option>
       <option value="price_asc" th:selected="${productsResponse.sort == 'price_asc'}">가격 오름차순</option>
       <option value="price_desc" th:selected="${productsResponse.sort == 'price_desc'}">가격 내림차순</option>
-      <option value="viewCount_desc" th:selected="${productsResponse.sort == 'viewCount_desc'}">조회수순</option>
     </select>
     <input type="hidden" id="categoryId" th:value="${categoryId}">
     <input type="hidden" id="input" th:value="${productName}">
@@ -80,12 +31,11 @@
   <!-- 상품 목록 -->
   <div id="product-container" class="row row-cols-1 row-cols-md-4 g-4">
     <div th:each="product : ${products}" class="col">
-      <div class="product card h-100" th:data-product-no="${product.productNo}">
+      <div class="product card h-100" th:data-product-no="${product.productNo}" th:data-product-price="${product.price}">
         <img th:if="${product.mainImage != null}" th:src="@{${product.mainImage.imageName}}" alt="Product Image" class="card-img-top">
         <div class="card-body">
           <h5 class="card-title" th:text="${product.productName}">Product Name</h5>
-       <p class="card-text" th:text="${product.soldout == 1 ? 'SoldOut' : product.price + ' 원'}">
-
+          <p class="card-text" th:text="${product.soldout == 1 ? 'SoldOut' : #numbers.formatInteger(product.price, 0, 'COMMA') + ' 원'}"></p>
         </div>
         <div class="card-footer text-center">
           <div class="add-to-cart btn btn-primary" th:if="${product.soldout == 0}">Add to cart</div>
@@ -114,6 +64,89 @@
     </ul>
   </div>
 </div>
+
+<script>
+  // URL 파라미터에서 특정 파라미터 값을 가져오는 함수
+  function getParameterByName(name) {
+    const url = new URL(window.location.href);
+    return url.searchParams.get(name);
+  }
+
+  // 정렬 기준 변경 함수
+  function onSortChange() {
+    const sort = document.getElementById("sortSelect").value;
+    const currentPage = document.getElementById("currentPage").value;
+    const categoryId = document.getElementById("categoryId").value;
+    const input = document.getElementById("input").value.trim();
+
+    let url;
+    if (categoryId) {
+      // 카테고리별 조회
+      url = "/product/category/" + categoryId + "?sort=" + sort + "&page=" + currentPage + "&size=16";
+    } else if (input) {
+      // 검색 결과 조회
+      url = "/product/search/" + encodeURIComponent(input) + "?sort=" + sort + "&page=" + currentPage + "&size=16";
+    } else {
+      // 전체 상품 조회
+      url = "/product?sort=" + sort + "&page=" + currentPage + "&size=16";
+    }
+
+    window.location.href = url;
+  }
+
+  // 각 상품에 클릭 리스너 추가
+  document.addEventListener('DOMContentLoaded', function () {
+    const products = document.querySelectorAll('.product');
+    products.forEach(function (product) {
+      const addToCartButton = product.querySelector('.add-to-cart');
+      product.addEventListener('click', function (event) {
+        if (event.target !== addToCartButton) {
+          const productNo = product.getAttribute('data-product-no');
+          console.log('Redirecting to product number:', productNo);
+          redirectToDetailPage(productNo);
+        }
+      });
+      // 장바구니 추가 버튼 클릭 리스너 추가
+      addToCartButton.addEventListener('click', function(event) {
+        event.stopPropagation();
+        const productNo = product.getAttribute('data-product-no');
+        const price = product.getAttribute('data-product-price');
+        addToCart(1, productNo, price, 1);
+      });
+    });
+  });
+
+  // 상세 페이지로 리다이렉트하는 함수
+  function redirectToDetailPage(productNo) {
+    window.location.href = '/product/detail/' + productNo;
+  }
+
+  // 장바구니에 상품 추가하는 함수
+  function addToCart(userNo, productNo, price, quantity) {
+    fetch('/cart/add', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: new URLSearchParams({
+        'userNo': userNo,
+        'proNo': productNo,
+        'quantity': quantity
+      })
+    }).then(response => {
+      if (response.ok) {
+        if (confirm('장바구니에 상품이 추가되었습니다. 장바구니로 이동하시겠습니까?')) {
+          window.location.href = '/cart/' + userNo;
+        }
+      } else {
+        alert('상품 추가에 실패했습니다.');
+      }
+    }).catch(error => {
+      console.error('Error:', error);
+      alert('상품 추가 중 오류가 발생했습니다.');
+    });
+  }
+</script>
 <footer th:replace="~{footer :: footer}"></footer>
 <script th:src="@{/js/script.js}"></script>
 </body>

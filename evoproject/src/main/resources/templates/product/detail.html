@@ -6,31 +6,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" />
     <link rel="stylesheet" th:href="@{/css/styles.css}">
     <link rel="stylesheet" th:href="@{/css/detail.css}">
-
-    <script>
-        function enlargeImage(img) {
-            var src = img.getAttribute("src");
-            var modal = document.createElement("div");
-            modal.style.display = "flex";
-            modal.style.justifyContent = "center";
-            modal.style.alignItems = "center";
-            modal.style.position = "fixed";
-            modal.style.top = "0";
-            modal.style.left = "0";
-            modal.style.width = "100%";
-            modal.style.height = "100%";
-            modal.style.backgroundColor = "rgba(0,0,0,0.8)";
-            modal.onclick = function() {
-                document.body.removeChild(modal);
-            };
-            var modalImg = document.createElement("img");
-            modalImg.src = src;
-            modalImg.style.maxWidth = "80%";
-            modalImg.style.maxHeight = "80%";
-            modal.appendChild(modalImg);
-            document.body.appendChild(modal);
-        }
-    </script>
 </head>
 
 <body class="bg-light">
@@ -43,8 +18,13 @@
     <div class="row">
         <div class="col-md-8">
             <div class="product-images mb-4">
-                <div th:each="image : ${productDetailResponse.images}" class="col-3">
-                    <img th:if="${image != null}" th:src="${image.imageName}" class="img-thumbnail" alt="Product Image" onclick="enlargeImage(this)">
+                <div class="main-image mb-4">
+                    <img th:src="${productDetailResponse.images[0].imageName}" class="img-thumbnail" alt="Main Product Image" onclick="enlargeImage(this)">
+                </div>
+                <div class="thumbnail-images d-flex">
+                    <div th:each="image : ${productDetailResponse.images}" th:if="${image != null && image.imageName != productDetailResponse.images[0].imageName}" class="col-3">
+                        <img th:src="${image.imageName}" class="img-thumbnail" alt="Product Image" onclick="enlargeImage(this)">
+                    </div>
                 </div>
             </div>
         </div>
@@ -67,7 +47,7 @@
                 </tr>
                 <tr>
                     <th>Shipping</th>
-                    <td th:text="${productDetailResponse.product.shipping}"></td>
+                    <td th:text="${#numbers.formatInteger(productDetailResponse.product.shipping, 0, 'COMMA')} + '원'"></td>
                 </tr>
                 <tr>
                     <th>Product Description</th>
@@ -75,7 +55,7 @@
                 </tr>
                 <tr>
                     <th>Price</th>
-                    <td th:text="${productDetailResponse.product.price}"></td>
+                    <td th:text="${#numbers.formatInteger(productDetailResponse.product.price, 0, 'COMMA')} + '원'"></td>
                 </tr>
                 <tr>
                     <th>Stock</th>
@@ -84,9 +64,14 @@
                 </tr>
             </table>
 
-            <div class="text-center mt-4" th:if="${productDetailResponse.product.soldout == 0}">
+            <div class="btn-container" th:if="${productDetailResponse.product.soldout == 0}">
+                <div class="d-flex justify-content-center align-items-center mb-3">
+                    <button class="btn btn-secondary btn-number" type="button" onclick="document.getElementById('quantity').stepDown()">-</button>
+                    <input type="number" id="quantity" value="1" min="1" max="${productDetailResponse.product.stock}" class="form-control text-center mx-2" style="width: 60px;">
+                    <button class="btn btn-secondary btn-number" type="button" onclick="document.getElementById('quantity').stepUp()">+</button>
+                </div>
                 <button class="btn btn-custom mb-2" onclick="location.href='/order.html'">구매하기</button>
-                <button class="btn btn-custom" onclick="location.href='/cart.html'">장바구니 담기</button>
+                <button class="btn btn-custom" th:onclick="'addToCart(1, ' + ${productDetailResponse.product.productNo} + ', ' + ${productDetailResponse.product.price} + ', document.getElementById(\'quantity\').value, ' + ${productDetailResponse.product.stock} + ')'">장바구니 담기</button>
             </div>
             <div class="text-center mt-4" th:if="${productDetailResponse.product.soldout == 1}">
                 <span class="text-danger">Sold Out</span>
@@ -102,13 +87,67 @@
                     <img th:src="${product.mainImage.imageName}" class="card-img-top" alt="Related Product Image">
                     <div class="card-body text-center">
                         <h5 class="card-title" th:text="${product.productName}">Product Name</h5>
-                        <p class="card-text" th:text="${product.price + '원'}"></p>
+                        <p class="card-text" th:text="${#numbers.formatInteger(product.price, 0, 'COMMA')} + '원'"></p>
                     </div>
                 </a>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+    function enlargeImage(img) {
+        var src = img.getAttribute("src");
+        var modal = document.createElement("div");
+        modal.style.display = "flex";
+        modal.style.justifyContent = "center";
+        modal.style.alignItems = "center";
+        modal.style.position = "fixed";
+        modal.style.top = "0";
+        modal.style.left = "0";
+        modal.style.width = "100%";
+        modal.style.height = "100%";
+        modal.style.backgroundColor = "rgba(0,0,0,0.8)";
+        modal.onclick = function() {
+            document.body.removeChild(modal);
+        };
+        var modalImg = document.createElement("img");
+        modalImg.src = src;
+        modalImg.style.maxWidth = "80%";
+        modalImg.style.maxHeight = "80%";
+        modal.appendChild(modalImg);
+        document.body.appendChild(modal);
+    }
+
+    function addToCart(userNo, productNo, price, quantity, stock) {
+        if (quantity > stock) {
+            alert('재고 수량을 초과했습니다.');
+            return;
+        }
+        fetch('/cart/add', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: new URLSearchParams({
+                'userNo': userNo,
+                'proNo': productNo,
+                'quantity': quantity
+            })
+        }).then(response => {
+            if (response.ok) {
+                if (confirm('장바구니에 상품이 추가되었습니다. 장바구니로 이동하시겠습니까?')) {
+                    window.location.href = '/cart/' + userNo;
+                }
+            } else {
+                alert('상품 추가에 실패했습니다.');
+            }
+        }).catch(error => {
+            console.error('Error:', error);
+            alert('상품 추가 중 오류가 발생했습니다.');
+        });
+    }
+</script>
 
 <footer th:replace="~{footer :: footer}"></footer>
 <script th:src="@{/js/script.js}"></script>

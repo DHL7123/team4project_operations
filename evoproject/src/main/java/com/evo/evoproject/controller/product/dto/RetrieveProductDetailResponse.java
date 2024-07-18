@@ -1,11 +1,10 @@
 package com.evo.evoproject.controller.product.dto;
 
 import com.evo.evoproject.domain.image.Image;
-import com.evo.evoproject.domain.product.RetrieveProduct;
+import com.evo.evoproject.domain.product.Product;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -13,7 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class RetrieveProductDetailResponse {
-    private RetrieveProduct product;
+    private Product product;
     private List<Image> images;
-    private List<RetrieveProduct> relatedProducts;
+    private List<Product> relatedProducts;
 }

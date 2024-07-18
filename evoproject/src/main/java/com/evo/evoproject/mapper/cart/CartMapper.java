@@ -10,7 +10,11 @@ public interface CartMapper {
 
     List<Cart> findByUserNo(int userNo);
 
-    void addProductToCart(Cart cart);
+    void addProductToCart(int userNo, int proNo, int quantity);
 
     void deleteProductsFromCart(int userNo, List<Integer> proNos);
+
+    int getProductStock(int proNo);
+
+    int getCartProductQuantity(int userNo, int proNo);
 }

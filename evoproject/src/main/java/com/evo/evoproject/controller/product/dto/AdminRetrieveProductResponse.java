@@ -1,6 +1,6 @@
 package com.evo.evoproject.controller.product.dto;
 
-import com.evo.evoproject.domain.product.RetrieveProduct;
+import com.evo.evoproject.domain.product.Product;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,7 +12,7 @@ import java.util.List;
 @AllArgsConstructor
 
 public class AdminRetrieveProductResponse {
-    private List<RetrieveProduct> products;
+    private List<Product> products;
     private String sort;
     private Integer soldout;
     private int currentPage;

@@ -25,14 +25,23 @@ public class CartServiceImpl implements CartService {
         return cartMapper.findByUserNo(userNo);
     }
 
+
+
     /**
      * 카트에 상품을 추가하는 메서드
-     * @param cart 카트 객체
+     * @param userNo 사용자 번호
+     * @param proNo 상품 번호
+     * @param quantity 장바구니 상품 개수
      */
     @Transactional
     @Override
-    public void addProductToCart(Cart cart) {
-        cartMapper.addProductToCart(cart);
+    public void addProductToCart(int userNo, int proNo, int quantity) {
+        int stock = cartMapper.getProductStock(proNo); // 제품의 재고
+        int currentQuantity = cartMapper.getCartProductQuantity(userNo, proNo); // 현재 장바구니에 담긴 수량
+        if (quantity + currentQuantity > stock) {
+            throw new IllegalArgumentException("재고 수량을 초과했습니다.");
+        }
+        cartMapper.addProductToCart(userNo, proNo, quantity);
     }
 
 

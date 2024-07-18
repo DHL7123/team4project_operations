@@ -48,4 +48,19 @@ public class CartController {
         return "redirect:/cart/" + userNo;
     }
 
+
+    // 장바구니에 상품 추가
+    @PostMapping("/add")
+    public String addProductToCart(@RequestParam int userNo, @RequestParam int proNo, @RequestParam int quantity, HttpSession session) {
+        cartService.addProductToCart(userNo, proNo, quantity);
+        log.info("사용자 " + userNo + "의 장바구니에 상품이 추가되었습니다.");
+
+        // 장바구니를 다시 조회 후 업데이트
+        List<Cart> updatedCartItems = cartService.getCartItemsByUser(userNo);
+        session.setAttribute("cartItems", updatedCartItems);
+
+        // 장바구니 페이지로 리디렉션
+        return "redirect:/cart/" + userNo;
+    }
 }
+

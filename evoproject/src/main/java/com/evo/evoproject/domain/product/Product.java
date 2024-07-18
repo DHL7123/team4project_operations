@@ -8,7 +8,7 @@ import java.util.Date;
 import java.util.List;
 
 @Data
-public class RetrieveProduct {
+public class Product {
     private int productNo;
     private String productName;
     private String productDes;
@@ -24,7 +24,4 @@ public class RetrieveProduct {
     private List<Image> existingImages;
     private List<MultipartFile> images;
 
-    public void setExistingImages(List<Image> existingImages) {
-        this.existingImages = existingImages;
-    }
 }

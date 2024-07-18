@@ -5,7 +5,7 @@
 
 <mapper namespace="com.evo.evoproject.mapper.product.ProductMapper">
 
-    <resultMap id="ProductResultMap" type="com.evo.evoproject.domain.product.RetrieveProduct">
+    <resultMap id="ProductResultMap" type="com.evo.evoproject.domain.product.Product">
         <id property="productNo" column="pro_no"/>
         <result property="productName" column="pro_name"/>
         <result property="productDes" column="pro_content"/>
@@ -23,7 +23,7 @@
         </association>
     </resultMap>
 
-    <resultMap id="ProductDetailResultMap" type="com.evo.evoproject.domain.product.RetrieveProduct" extends="ProductResultMap">
+    <resultMap id="ProductDetailResultMap" type="com.evo.evoproject.domain.product.Product" extends="ProductResultMap">
         <collection property="images" ofType="com.evo.evoproject.domain.image.Image">
             <id property="imageId" column="image_id"/>
             <result property="imageName" column="image_name"/>
@@ -43,11 +43,11 @@
             <when test="sort == 'price_desc'">
                 ORDER BY p.soldout ASC, p.pro_price DESC
             </when>
-            <when test="sort == 'viewCount_desc'">
-                ORDER BY p.soldout ASC, p.view_count DESC
+            <when test="sort == 'date_desc'">
+                ORDER BY p.soldout ASC, p.pro_date DESC
             </when>
             <otherwise>
-                ORDER BY p.soldout ASC, p.pro_date DESC
+                ORDER BY p.soldout ASC, p.view_count DESC
             </otherwise>
         </choose>
         LIMIT #{offset}, #{size}
@@ -94,11 +94,11 @@
             <when test="sort == 'price_desc'">
                 ORDER BY p.soldout ASC, p.pro_price DESC
             </when>
-            <when test="sort == 'viewCount_desc'">
-                ORDER BY p.soldout ASC, p.view_count DESC
+            <when test="sort == 'date_desc'">
+                ORDER BY p.soldout ASC, p.pro_date DESC
             </when>
             <otherwise>
-                ORDER BY p.soldout ASC, p.pro_date DESC
+                ORDER BY p.soldout ASC, p.view_count DESC
             </otherwise>
         </choose>
         LIMIT #{offset}, #{size}
@@ -148,16 +148,16 @@
         WHERE p.pro_name LIKE CONCAT('%', #{productName}, '%')
         <choose>
             <when test="sort == 'price_asc'">
-                ORDER BY p.pro_price ASC
+                ORDER BY p.soldout ASC, p.pro_price ASC
             </when>
             <when test="sort == 'price_desc'">
-                ORDER BY p.pro_price DESC
+                ORDER BY p.soldout ASC, p.pro_price DESC
             </when>
-            <when test="sort == 'viewCount_desc'">
-                ORDER BY p.view_count DESC
+            <when test="sort == 'date_desc'">
+                ORDER BY p.soldout ASC, p.pro_date DESC
             </when>
             <otherwise>
-                ORDER BY p.pro_date DESC
+                ORDER BY p.soldout ASC, p.view_count DESC
             </otherwise>
         </choose>
         LIMIT #{offset}, #{size}
@@ -169,7 +169,7 @@
     </select>
 
 
-    <insert id="addProduct" parameterType="com.evo.evoproject.domain.product.RetrieveProduct" useGeneratedKeys="true" keyProperty="productNo">
+    <insert id="addProduct" parameterType="com.evo.evoproject.domain.product.Product" useGeneratedKeys="true" keyProperty="productNo">
         INSERT INTO product (pro_name, pro_content, category_id, pro_price, pro_stock, shipping, soldout)
         VALUES (#{productName}, #{productDes}, #{categoryId}, #{price}, #{stock}, #{shipping}, #{soldout})
     </insert>
@@ -192,7 +192,7 @@
         DELETE FROM product WHERE pro_no = #{productNo}
     </delete>
 
-    <update id="updateProduct" parameterType="com.evo.evoproject.domain.product.RetrieveProduct">
+    <update id="updateProduct" parameterType="com.evo.evoproject.domain.product.Product">
         UPDATE product
         SET pro_name = #{productName}, pro_content = #{productDes}, category_id = #{categoryId}, pro_price = #{price}, pro_stock = #{stock}
         WHERE pro_no = #{productNo}

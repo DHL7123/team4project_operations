@@ -1,8 +1,7 @@
 package com.evo.evoproject.controller.product;
 
 import com.evo.evoproject.controller.product.dto.AdminRetrieveProductResponse;
-import com.evo.evoproject.controller.product.dto.RetrieveProductsResponse;
-import com.evo.evoproject.domain.product.RetrieveProduct;
+import com.evo.evoproject.domain.product.Product;
 import com.evo.evoproject.service.product.ProductService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -39,10 +38,10 @@ public class AdminProductController {
     @GetMapping("/form")
     public String showProductForm(@RequestParam(required = false) Long id, Model model) {
         if (id == null) {
-            model.addAttribute("product", new RetrieveProduct());
+            model.addAttribute("product", new Product());
             model.addAttribute("isEdit", false);
         } else {
-            RetrieveProduct product = productService.getProductByNo(id.intValue()).getProduct();
+            Product product = productService.getProductByNo(id.intValue()).getProduct();
             List<String> imageUrls = productService.getProductImageUrls(id);
             model.addAttribute("product", product);
             model.addAttribute("isEdit", true);
@@ -51,14 +50,14 @@ public class AdminProductController {
         return "product/productForm";
     }
     @PostMapping("/save")
-    public String saveProduct(@Valid @ModelAttribute RetrieveProduct product,
+    public String saveProduct(@Valid @ModelAttribute Product product,
                               @RequestParam("images") List<MultipartFile> images) {
         productService.saveProductWithImages(product, images);
         return "redirect:/admin/product";
     }
 
     @PostMapping("/update")
-    public String updateProduct(@Valid @ModelAttribute RetrieveProduct product,
+    public String updateProduct(@Valid @ModelAttribute Product product,
                                 @RequestParam("images") List<MultipartFile> images,
                                 @RequestParam(value = "imagesToDelete", required = false) List<Integer> imagesToDelete) {
         productService.updateProductWithImages(product, images, imagesToDelete);

@@ -4,7 +4,7 @@ import com.evo.evoproject.controller.product.dto.AdminRetrieveProductResponse;
 import com.evo.evoproject.controller.product.dto.RetrieveProductDetailResponse;
 import com.evo.evoproject.controller.product.dto.RetrieveProductsResponse;
 import com.evo.evoproject.domain.image.Image;
-import com.evo.evoproject.domain.product.RetrieveProduct;
+import com.evo.evoproject.domain.product.Product;
 import com.evo.evoproject.mapper.product.ImageMapper;
 import com.evo.evoproject.mapper.product.ProductMapper;
 import com.evo.evoproject.service.image.ImageService;
@@ -41,7 +41,7 @@ public class ProductServiceImpl implements ProductService {
         int totalProducts = productMapper.countProducts();
         int totalPages = (totalProducts + size - 1) / size;
 
-        List<RetrieveProduct> products = productMapper.findAllProductsUser(sort, offset, size);
+        List<Product> products = productMapper.findAllProductsUser(sort, offset, size);
 
         return new RetrieveProductsResponse(products, sort, page, totalPages);
     }
@@ -50,7 +50,7 @@ public class ProductServiceImpl implements ProductService {
     public AdminRetrieveProductResponse getProductsAdmin(String sort, int page, int size, Integer soldout) {
         log.info("모든 제품 목록을 가져오는 서비스 - 정렬기준: {}, 페이지: {}, 사이즈: {}", sort, page, size);
         int offset = (page - 1) * size;
-        List<RetrieveProduct> products = productMapper.findAllProductsAdmin(sort, offset, size,soldout);
+        List<Product> products = productMapper.findAllProductsAdmin(sort, offset, size,soldout);
         int totalProducts = productMapper.countProductsAdmin(soldout);
         int totalPages = (totalProducts + size - 1) / size;
         return new AdminRetrieveProductResponse(products, sort,soldout, page, totalPages);
@@ -60,7 +60,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public RetrieveProductDetailResponse getProductByNo(int productNo) {
         log.info("특정 제품 상세 정보를 가져오는 서비스 - 제품 번호: {}", productNo);
-        RetrieveProduct product = productMapper.findProductByNo(productNo);
+        Product product = productMapper.findProductByNo(productNo);
         if (product == null) {
             log.error("제품 번호 {}에 해당하는 제품을 찾을 수 없습니다.", productNo);
             throw new NullPointerException("Product with productNo " + productNo + " not found");
@@ -69,7 +69,7 @@ public class ProductServiceImpl implements ProductService {
 
         List<Image> images = imageMapper.findImagesByProductNo(productNo);
         product.setExistingImages(images);
-        List<RetrieveProduct> relatedProducts = productMapper.findTopProductsByCategory(product.getCategoryId(), productNo);
+        List<Product> relatedProducts = productMapper.findTopProductsByCategory(product.getCategoryId(), productNo);
 
         return new RetrieveProductDetailResponse(product, images, relatedProducts);
     }
@@ -79,7 +79,7 @@ public class ProductServiceImpl implements ProductService {
     public RetrieveProductsResponse getProductsByCategory(String sort, int categoryId, int page, int size) {
         log.info("카테고리별 제품 목록을 가져오는 서비스 - 정렬 기준: {}, 카테고리 ID: {}, 페이지: {}, 사이즈: {}", sort, categoryId, page, size);
         int offset = (page - 1) * size;
-        List<RetrieveProduct> products = productMapper.findProductsByCategory(sort, categoryId, offset, size);
+        List<Product> products = productMapper.findProductsByCategory(sort, categoryId, offset, size);
         int totalProducts = productMapper.countProductsByCategory(categoryId);
         int totalPages = (totalProducts + size - 1) / size;
         return new RetrieveProductsResponse(products, sort, page, totalPages);
@@ -89,7 +89,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public RetrieveProductsResponse getTopProductsByCategory(int categoryId, int productNo) {
         log.info("카테고리별 상위 제품을 조회하는 서비스 - 카테고리 ID: {}", categoryId);
-        List<RetrieveProduct> products = productMapper.findTopProductsByCategory(categoryId, productNo);
+        List<Product> products = productMapper.findTopProductsByCategory(categoryId, productNo);
         return new RetrieveProductsResponse(products, "viewCount_desc", 1, 1);
     }
 
@@ -98,7 +98,7 @@ public class ProductServiceImpl implements ProductService {
     public RetrieveProductsResponse searchProductByName(String input, String sort, int page, int size) {
         log.info("검색값에 맞는 상품을 가져오는 서비스 - 상품이름: {}, 정렬기준: {}, 페이지: {}, 사이즈: {}", input, sort, page, size);
         int offset = (page - 1) * size;
-        List<RetrieveProduct> products = productMapper.findProductByName(input, sort, offset, size);
+        List<Product> products = productMapper.findProductByName(input, sort, offset, size);
         int totalProducts = productMapper.countByProductsName(input);
         int totalPages = (totalProducts + size - 1) / size;
         return new RetrieveProductsResponse(products, sort, page, totalPages);
@@ -137,7 +137,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Transactional
     @Override
-    public void saveProductWithImages(RetrieveProduct product, List<MultipartFile> images) {
+    public void saveProductWithImages(Product product, List<MultipartFile> images) {
         log.info("saveProductWithImages called with product: {}", product.getProductName());
 
         // 상품을 먼저 저장하여 productNo를 생성
@@ -172,7 +172,7 @@ public class ProductServiceImpl implements ProductService {
     }
     @Transactional
     @Override
-    public void updateProductWithImages(RetrieveProduct product, List<MultipartFile> newImages, List<Integer> imagesToDelete) {
+    public void updateProductWithImages(Product product, List<MultipartFile> newImages, List<Integer> imagesToDelete) {
         log.info("updateProductWithImages called with product: {}", product.getProductName());
 
         // 기존 상품 정보 업데이트
