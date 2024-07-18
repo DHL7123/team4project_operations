@@ -73,6 +73,7 @@ button:hover {
     cursor: pointer;
     width: 120px;
     text-align: center;
+    margin-bottom: 5px;
 }
 
 /*송장번호 입력 팝업*/

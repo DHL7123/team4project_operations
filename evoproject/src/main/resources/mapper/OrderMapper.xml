@@ -21,12 +21,12 @@
 
     <!-- 주문상태별 주문 목록 조회 -->
     <select id="getOrdersByStatus" parameterType="int" resultType="com.evo.evoproject.domain.order.Order">
-        SELECT * FROM orders WHERE order_status = #{status}
+        SELECT * FROM orders WHERE order_status = #{status} ORDER BY order_timestamp DESC
     </select>
 
     <!-- 전체 주문 목록 조회 -->
     <select id="getAllOrders" resultType="com.evo.evoproject.domain.order.Order">
-        SELECT * FROM orders
+        SELECT * FROM orders ORDER BY order_timestamp DESC
     </select>
 
     <!-- 주문 상태별 주문 개수를 조회 -->

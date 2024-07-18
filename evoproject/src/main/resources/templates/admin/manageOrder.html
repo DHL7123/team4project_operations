@@ -66,15 +66,13 @@
                             <th>주문번호</th>
                             <th>주문자</th>
                             <th>총금액</th>
-                            <th>결제금액</th>
                             <th>상태</th>
                             <th>결제 취소/환불 처리</th>
                         </tr>
                         <tr th:each="order : ${orders}">
-                            <td th:text="${#dates.format(order.orderTimestamp, 'yyyy-MM-dd')}"></td>
+                            <td th:text="${#dates.format(order.orderTimestamp, 'yyyy-MM-dd | HH:mm')}"></td>
                             <td th:text="${order.orderNo}"></td>
                             <td th:text="${order.orderName}"></td>
-                            <td th:text="${order.orderPayment}"></td>
                             <td th:text="${order.orderPayment}"></td>
                             <td>
                                 <span th:if="${order.orderStatus == 0}">결제 대기</span>
@@ -85,7 +83,7 @@
 
                                 <span th:if="${order.orderStatus == 1}">
                                     배송 준비중 <br>
-                                    <button type="button" th:onclick="'showPopup(\'' + ${order.orderNo} + '\', \'inputPopup\');'">송장번호입력</button>
+                                    <button type="button" th:onclick="'showPopup(\'' + ${order.orderNo} + '\', \'inputPopup\');'" class="manageConfirmBtn">송장번호입력</button>
                                     <div th:id="'inputPopup-' + ${order.orderNo}" class="popup" style="display: none;">
                                         <div class="popup-content">
                                             <form method="post" th:action="@{/admin/manageOrder/{orderNo}/{status}/orderDelivnum(orderNo=${order.orderNo}, status=2)}">
@@ -102,7 +100,11 @@
                                 </span>
                                 <span th:if="${order.orderStatus == 2}">
                                     배송중 <br>
-                                    <button type="button" th:onclick="'showPopup(\'' + ${order.orderNo} + '\', \'viewPopup\');'">송장번호조회</button>
+                                    <button type="button" th:onclick="'showPopup(\'' + ${order.orderNo} + '\', \'viewPopup\');'" class="manageConfirmBtn">송장번호조회</button>
+                                    <form method="post" th:action="@{/admin/manageOrder/{orderNo}/{status}(orderNo=${order.orderNo}, status=4)}" id="updateForm2">
+                                        <input type="hidden" name="prevStatus" th:value="${selectedStatus}">
+                                        <button type="submit" class="manageConfirmBtn">배송완료</button>
+                                    </form>
                                     <div th:id="'viewPopup-' + ${order.orderNo}" class="popup" style="display: none;">
                                         <div class="popup-content">
                                             <h2>운송장 번호</h2>
@@ -117,7 +119,7 @@
                                 <span th:if="${order.orderStatus == 4}">배송완료</span>
                             </td>
                             <td>
-                                <button th:if="${order.orderStatus == 3}">처리</button>
+                                <button th:if="${order.orderStatus == 3}" class="manageConfirmBtn">처리</button>
                             </td>
                         </tr>
                     </table>
@@ -135,9 +137,17 @@
 <!-- JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
 <script>
-    <!--  결제확인 confirm창  -->
+
+    <!--  결제완료확인confirm창  -->
     function confirmUpdate() {
         if (confirm("해당 상품의 결제를 확인하셨습니까?")) {
+            document.getElementById("updateForm").submit();
+        }
+    }
+
+    <!--  배송완료확인 confirm창  -->
+    function confirmUpdate2() {
+        if (confirm("해당 상품의 배송이 완료되었습니까?")) {
             document.getElementById("updateForm").submit();
         }
     }
