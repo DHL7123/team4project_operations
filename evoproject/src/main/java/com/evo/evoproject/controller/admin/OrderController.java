@@ -28,11 +28,26 @@ public class OrderController {
      * @return 관리 페이지 뷰 이름
      */
     @GetMapping("/admin/manageOrder/{status}")
-    public String getOrdersByStatus(@PathVariable int status, Model model) {
-        List<Order> orders = orderService.getOrdersByStatus(status);
+    public String getOrdersByStatus(@PathVariable int status, @RequestParam(defaultValue = "1") int page, Model model) {
+        int limit = 10;
+        int offset = (page - 1) * limit;
+        List<Order> orders;
+        int totalOrders;
+
+        if (status == 5) {
+            orders = orderService.getAllOrders(limit, offset);
+            totalOrders = orderService.countAllOrders();
+        } else {
+            orders = orderService.getOrdersByStatus(status, limit, offset);
+            totalOrders = orderService.countOrdersByStatus(status);
+        }
+
+        int totalPage = (int) Math.ceil((double) totalOrders / limit);
 
         model.addAttribute("orders", orders);
-        model.addAttribute("selectedStatus", status);
+        model.addAttribute("selectedStatus", status == 5 ? "all" : status);
+        model.addAttribute("currentPage", page);
+        model.addAttribute("totalPage", totalPage);
         model.addAttribute("countPending", orderService.countOrdersByStatus(0));
         model.addAttribute("countPreparing", orderService.countOrdersByStatus(1));
         model.addAttribute("countShipping", orderService.countOrdersByStatus(2));
@@ -47,11 +62,18 @@ public class OrderController {
      * @return 관리 페이지 뷰 이름
      */
     @GetMapping("/admin/manageOrder")
-    public String getAllOrders(Model model) {
-        List<Order> orders = orderService.getAllOrders();
+    public String getAllOrders(@RequestParam(defaultValue = "1") int page, Model model) {
+        int limit = 10;
+        int offset = (page - 1) * limit;
+        List<Order> orders = orderService.getAllOrders(limit, offset);
+
+        int totalOrders = orderService.countAllOrders();
+        int totalPage = (int) Math.ceil((double) totalOrders / limit);
 
         model.addAttribute("orders", orders);
         model.addAttribute("selectedStatus", "all");
+        model.addAttribute("currentPage", page);
+        model.addAttribute("totalPage", totalPage);
         model.addAttribute("countPending", orderService.countOrdersByStatus(0));
         model.addAttribute("countPreparing", orderService.countOrdersByStatus(1));
         model.addAttribute("countShipping", orderService.countOrdersByStatus(2));

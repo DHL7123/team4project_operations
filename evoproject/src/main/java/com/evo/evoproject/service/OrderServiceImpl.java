@@ -21,18 +21,23 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public List<Order> getOrdersByStatus(int status) {
-        return orderMapper.getOrdersByStatus(status);
+    public List<Order> getOrdersByStatus(int status, int limit, int offset) {
+        return orderMapper.getOrdersByStatus(status, limit, offset);
     }
 
     @Override
-    public List<Order> getAllOrders() {
-        return orderMapper.getAllOrders();
+    public List<Order> getAllOrders(int limit, int offset) {
+        return orderMapper.getAllOrders(limit, offset);
     }
 
     @Override
     public int countOrdersByStatus(int status) {
         return orderMapper.countOrdersByStatus(status);
+    }
+
+    @Override
+    public int countAllOrders() {
+        return orderMapper.countAllOrders();
     }
 
     /**
