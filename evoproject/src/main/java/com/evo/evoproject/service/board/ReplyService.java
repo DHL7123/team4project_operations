@@ -28,4 +28,9 @@ public class ReplyService {
     public void deleteReply(int replyNo) {
         replyMapper.deleteReply(replyNo);
     }
+
+
+    public Reply getReplyById(int replyNo) {
+        return replyMapper.findReplyById(replyNo);
+    }
 }

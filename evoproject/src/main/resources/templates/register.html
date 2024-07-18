@@ -65,6 +65,12 @@
                                    title="비밀번호는 최소 8자, 특수문자를 제외하고 하나 이상의 문자와 숫자를 포함해야 합니다." />
                         </div>
                         <div class="mb-3">
+                            <label for="userPwConfirm" class="form-label text-white">비밀번호 확인</label>
+                            <input type="password" id="userPwConfirm" class="form-control"
+                                   required pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
+                                   title="비밀번호 확인은 비밀번호와 동일해야 합니다." />
+                        </div>
+                        <div class="mb-3">
                             <label for="userName" class="form-label text-white">이름</label>
                             <input type="text" id="userName" th:field="*{userName}" class="form-control" required />
                         </div>
@@ -157,6 +163,7 @@
 
             const userId = $('#userId').val();
             const userPw = $('#userPw').val();
+            const userPwConfirm = $('#userPwConfirm').val();
             const userPhone = $('#userPhone').val();
 
             if (!userIdPattern.test(userId)) {
@@ -167,6 +174,11 @@
 
             if (!passwordPattern.test(userPw)) {
                 alert('비밀번호는 최소 8자, 하나 이상의 문자와 숫자를 포함해야 합니다.');
+                event.preventDefault();
+                return;
+            }
+            if (userPw !== userPwConfirm) {
+                alert('비밀번호와 비밀번호 확인이 일치하지 않습니다.');
                 event.preventDefault();
                 return;
             }

@@ -25,4 +25,10 @@
     <delete id="deleteReply" parameterType="int">
         DELETE FROM Reply WHERE reply_no = #{replyNo}
     </delete>
+
+    <!-- 특정 replyNo로 댓글 조회 -->
+    <select id="findReplyById" resultMap="ReplyMap" parameterType="int">
+        SELECT * FROM Reply WHERE reply_no = #{replyNo}
+    </select>
+
 </mapper>

@@ -8,7 +8,6 @@
     <title>Evo Market</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" />
     <link rel="stylesheet" th:href="@{/css/styles.css}">
-
 </head>
 <body>
 <!-- 헤더 포함시키기 -->
@@ -21,11 +20,44 @@
                 <img src="image/modal_close.png" alt="검색창 닫힘" height="40" width="40">
             </span>
             <input type="text" id="searchInput" placeholder="Type to search">
+            <!-- 지금은 검색버튼을 누르면 모달창이 닫히게 되어있지만, 이후 데이터 검색할 수 있도록 변경 예정 -->
             <button id="searchButton" onclick="performSearch()">
                 <img src="image/arrow.png" alt="arrow" height="20px" width="40px">
             </button>
         </div>
 </div>
+<script>
+    window.addEventListener('load', function() {
+        var allElements = document.getElementsByTagName('*');
+        Array.prototype.forEach.call(allElements, function(el) {
+            var includePath = el.dataset.includePath;
+            if (includePath) {
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        el.outerHTML = this.responseText;
+                    }
+                };
+                xhttp.open('GET', includePath, true);
+                xhttp.send();
+            }
+        });
+    });
+</script>
+
+        <script>
+            function performSearch() {
+                var searchInput = document.getElementById('searchInput').value;
+                if (searchInput) {
+                    // 입력값을 포함한 URL로 리디렉션
+                    var url = '/product/search/' + encodeURIComponent(searchInput);
+                    window.location.href = url;
+                } else {
+                    alert('검색어를 입력하세요.');
+                }
+            }
+        </script>
+
 <!-- 메인배너  -->
 <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
@@ -60,7 +92,7 @@
             <a href="#">
                 <img src="image/pop_cate1.png" alt="Image 1">
                 <div class="overlay">
-                    <button id="button1">More</button>
+                    <button>More</button>
                 </div>
             </a>
         </div>
@@ -68,7 +100,7 @@
             <a href="/product">
                 <img src="image/pop_cate2.png" alt="Image 2">
                 <div class="overlay">
-                    <button id="button2">More</button>
+                    <button>More</button>
                 </div>
             </a>
         </div>
@@ -76,7 +108,7 @@
             <a href="#">
                 <img src="image/pop_cate3.png" alt="Image 3">
                 <div class="overlay">
-                    <button id="button3">More</button>
+                    <button>More</button>
                 </div>
             </a>
         </div>
@@ -84,7 +116,7 @@
             <a href="#">
                 <img src="image/pop_cate4.png" alt="Image 4">
                 <div class="overlay">
-                    <button id="button4">More</button>
+                    <button>More</button>
                 </div>
             </a>
         </div>
@@ -92,7 +124,7 @@
             <a href="#">
                 <img src="image/pop_cate5.png" alt="Image 5">
                 <div class="overlay">
-                    <button id="button5">More</button>
+                    <button>More</button>
                 </div>
             </a>
         </div>
@@ -107,6 +139,6 @@
 <!-- JavaScript -->
 <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js"></script>-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
-<script th:src="@{/js/script.js}"></script>
+<script src="js/script.js"></script>
 </body>
 </html>

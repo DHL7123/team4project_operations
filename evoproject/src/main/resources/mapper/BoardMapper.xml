@@ -15,40 +15,71 @@
         <result property="boardContent" column="board_content" />
         <result property="boardTimestamp" column="board_timestamp" />
         <result property="isAnswered" column="is_answered" />
+        <result property="imageUrl" column="image_url" />
     </resultMap>
 
-    <insert id="insertBoard" parameterType="com.evo.evoproject.domain.board.Board">
-        INSERT INTO Board (user_no, order_no, image_id, category_id, board_title, board_content, is_answered)
-        VALUES (#{userNo}, #{orderNo}, #{imageId}, #{categoryId}, #{boardTitle}, #{boardContent}, #{isAnswered})
+    <!-- Board 삽입 -->
+    <insert id="insertBoard" parameterType="com.evo.evoproject.domain.board.Board" useGeneratedKeys="true" keyProperty="boardNo">
+        INSERT INTO board (user_no, order_no, image_id, category_id, board_title, board_content, board_timestamp, is_answered, image_url)
+        VALUES (#{userNo}, #{orderNo}, #{imageId}, #{categoryId}, #{boardTitle}, #{boardContent}, #{boardTimestamp}, #{isAnswered}, #{imageUrl})
     </insert>
 
-    <select id="findBoardById" resultMap="BoardMap" parameterType="int">
-        SELECT * FROM Board WHERE board_no = #{boardNo}
-    </select>
-
-    <select id="findBoardsByUserNo" resultMap="BoardMap" parameterType="map">
-        SELECT * FROM Board WHERE user_no = #{userNo} ORDER BY board_timestamp DESC LIMIT #{limit} OFFSET #{offset}
-    </select>
-
-    <select id="findAllBoards" resultMap="BoardMap" parameterType="map">
-        SELECT * FROM Board ORDER BY board_timestamp DESC LIMIT #{limit} OFFSET #{offset}
-    </select>
-
-    <select id="countAllBoards" resultType="int">
-        SELECT COUNT(*) FROM Board
-    </select>
-
-    <select id="countBoardsByUserNo" parameterType="int" resultType="int">
-        SELECT COUNT(*) FROM Board WHERE user_no = #{userNo}
-    </select>
-
+    <!-- Board 업데이트 -->
     <update id="updateBoard" parameterType="com.evo.evoproject.domain.board.Board">
-        UPDATE Board
-        SET board_title = #{boardTitle}, board_content = #{boardContent}, is_answered = #{isAnswered}
+        UPDATE board
+        SET user_no = #{userNo},
+            order_no = #{orderNo},
+            image_id = #{imageId},
+            category_id = #{categoryId},
+            board_title = #{boardTitle},
+            board_content = #{boardContent},
+            board_timestamp = #{boardTimestamp},
+            is_answered = #{isAnswered},
+            image_url = #{imageUrl}
         WHERE board_no = #{boardNo}
     </update>
 
+    <!-- Board 조회 -->
+    <select id="findBoardById" resultMap="BoardMap" parameterType="int">
+        SELECT * FROM board WHERE board_no = #{boardNo}
+    </select>
+
+    <!-- 사용자 별 Board 조회 -->
+    <select id="findBoardsByUserNo" resultMap="BoardMap" parameterType="map">
+        SELECT * FROM board WHERE user_no = #{userNo} ORDER BY board_timestamp DESC LIMIT #{limit} OFFSET #{offset}
+    </select>
+
+    <!-- 전체 Board 조회 -->
+    <select id="findAllBoards" resultMap="BoardMap" parameterType="map">
+        SELECT * FROM board ORDER BY board_timestamp DESC LIMIT #{limit} OFFSET #{offset}
+    </select>
+
+    <!-- 전체 Board 수 조회 -->
+    <select id="countAllBoards" resultType="int">
+        SELECT COUNT(*) FROM board
+    </select>
+
+    <!-- 사용자 별 Board 수 조회 -->
+    <select id="countBoardsByUserNo" parameterType="int" resultType="int">
+        SELECT COUNT(*) FROM board WHERE user_no = #{userNo}
+    </select>
+
+    <!-- Board 삭제 -->
     <delete id="deleteBoard" parameterType="int">
-        DELETE FROM Board WHERE board_no = #{boardNo}
+        DELETE FROM board WHERE board_no = #{boardNo}
     </delete>
+
+    <!-- 특정 게시글의 이미지 ID 목록 조회 -->
+    <select id="findImageIdsByBoardNo" resultType="int">
+        SELECT image_id FROM board_image WHERE board_no = #{boardNo}
+    </select>
+
+    <!-- BoardImage 삽입 -->
+    <insert id="insertBoardImage" parameterType="com.evo.evoproject.domain.board.BoardImage">
+        INSERT INTO board_image (board_no, image_id)
+        VALUES (#{boardNo}, #{imageId})
+    </insert>
+
+
+
 </mapper>

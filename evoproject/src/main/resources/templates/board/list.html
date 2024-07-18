@@ -141,19 +141,21 @@
         <table class="table table-striped">
             <thead>
             <tr>
+                <th>카테고리</th>
                 <th>제목</th>
                 <th>날짜</th>
-                <th>수정/삭제</th>
+                <th th:if="${isAuthor}">수정/삭제</th>
                 <th>답변상태</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="board : ${boards}">
+                <td th:text="${board.categoryId}"></td>
                 <td>
                     <a th:href="@{/boards/view/{boardNo}(boardNo=${board.boardNo})}" th:text="${board.boardTitle}"></a>
                 </td>
                 <td th:text="${#dates.format(board.boardTimestamp, 'yyyy-MM-dd HH:mm')}"></td>
-                <td>
+                <td th:if="${isAuthor}">
                     <a th:href="@{/boards/edit/{boardNo}(boardNo=${board.boardNo})}" class="btn btn-warning btn-sm">수정</a>
                     <a th:href="@{/boards/delete/{boardNo}(boardNo=${board.boardNo})}" class="btn btn-danger btn-sm">삭제</a>
                 </td>

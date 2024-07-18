@@ -5,15 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c3d7cf85-c82f-4d99-bfa0-82f0efec097a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/evoproject/src/main/resources/templates/board/form.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/evoproject/src/main/resources/templates/board/list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/evoproject/src/main/resources/templates/board/view.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/evoproject/src/main/java/com/evo/evoproject/Mapper/order/OrderMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/evoproject/src/main/java/com/evo/evoproject/controller/admin/OrderController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/evoproject/src/main/java/com/evo/evoproject/domain/order/Order.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/evoproject/src/main/java/com/evo/evoproject/service/OrderService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/evoproject/src/main/java/com/evo/evoproject/service/OrderServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/evoproject/src/main/resources/mapper/OrderMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/evoproject/src/main/resources/static/css/dashboard.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/evoproject/src/main/resources/templates/admin/admin.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/evoproject/src/main/resources/templates/admin/manageBoard.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/evoproject/src/main/resources/templates/admin/manageOrder.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evoproject/src/main/java/com/evo/evoproject/controller/admin/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/evoproject/src/main/java/com/evo/evoproject/controller/admin/AdminController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/evoproject/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/evoproject/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evoproject/src/main/resources/templates/mypage.html" beforeDir="false" afterPath="$PROJECT_DIR$/evoproject/src/main/resources/templates/mypage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evoproject/src/main/resources/templates/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/evoproject/src/main/resources/templates/register.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evoproject/src/main/resources/templates/terms.html" beforeDir="false" afterPath="$PROJECT_DIR$/evoproject/src/main/resources/templates/terms.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evoproject/src/main/resources/static/css/admin.css" beforeDir="false" afterPath="$PROJECT_DIR$/evoproject/src/main/resources/static/css/admin.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evoproject/src/main/resources/templates/admin.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/evoproject/src/main/resources/templates/cart.html" beforeDir="false" afterPath="$PROJECT_DIR$/evoproject/src/main/resources/templates/cart.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evoproject/src/main/resources/templates/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/evoproject/src/main/resources/templates/header.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evoproject/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/evoproject/src/main/resources/templates/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myapp.log" beforeDir="false" afterPath="$PROJECT_DIR$/myapp.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -78,7 +87,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "Spring Boot.EvoprojectApplication.executor": "Run",
-    "git-widget-placeholder": "develop",
+    "git-widget-placeholder": "Merging feature/board#1",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "D:/EVO/evoproject/src/main/java/com/evo/evoproject/service/board",
@@ -111,10 +120,7 @@
       <recent name="D:\EVO\evoproject\src\main\resources\templates\css" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.EvoprojectApplication">
-    <configuration name="ListBoard.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/EVO/evoproject/src/main/resources/templates/ListBoard.html" useBuiltInWebServerPort="true">
-      <method v="2" />
-    </configuration>
+  <component name="RunManager">
     <configuration name="EvoprojectApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="evoproject.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.evo.evoproject.EvoprojectApplication" />
@@ -122,11 +128,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="JavaScript Debug.ListBoard.html" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -153,10 +154,31 @@
       <workItem from="1720742807778" duration="13161000" />
       <workItem from="1720759215244" duration="398000" />
       <workItem from="1720760628652" duration="29000" />
+      <workItem from="1720961243194" duration="162000" />
+      <workItem from="1721017999334" duration="1415000" />
+      <workItem from="1721019991628" duration="1835000" />
+      <workItem from="1721089679275" duration="23873000" />
+      <workItem from="1721117590600" duration="17000" />
+      <workItem from="1721117867478" duration="16000" />
+      <workItem from="1721196398599" duration="4851000" />
+      <workItem from="1721203859866" duration="23000" />
+      <workItem from="1721262793451" duration="3655000" />
+      <workItem from="1721267103253" duration="21000" />
+      <workItem from="1721276152586" duration="1091000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.net.UnknownHostException" package="java.net" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

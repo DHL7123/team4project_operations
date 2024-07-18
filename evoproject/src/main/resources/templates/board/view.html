@@ -7,32 +7,114 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
     <link rel="stylesheet" th:href="@{/css/styles.css}">
+
+    <style>
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            background-color: #fff;
+        }
+
+        .title {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .content-box {
+            margin-bottom: 20px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+
+        .content-box1 {
+            font-size: 18px;
+        }
+
+        .image-box {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .text-right {
+            text-align: right;
+        }
+        .button-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        .replies {
+            margin-top: 20px;
+        }
+
+        .reply-box {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f1f1f1;
+        }
+
+        .comment-form {
+            margin-top: 20px;
+        }
+
+        .comment-form .form-group {
+            margin-bottom: 10px;
+        }
+
+        .comment-form textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+        .button-group {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+    </style>
 </head>
-<body>
 <header th:replace="~{header :: header}"></header>
+<body>
 <div class="container mt-5">
-    <h2 th:text="${board.boardTitle}">게시물 제목</h2>
-    <p th:text="${#dates.format(board.boardTimestamp, 'yyyy-MM-dd HH:mm')}">게시물 날짜</p>
-    <p th:text="${board.boardContent}">게시물 내용</p>
-    <div class="text-right">
-        <a th:href="@{/boards/edit/{boardNo}(boardNo=${board.boardNo})}" class="btn btn-warning">수정</a>
-        <a th:href="@{/boards/delete/{boardNo}(boardNo=${board.boardNo})}" class="btn btn-danger">삭제</a>
+    <h2 th:text="${board != null ? board.boardTitle : '게시물 제목'}" class="title">게시물 제목</h2>
+    <div class="content-box">
+        <p th:text="${board != null ? board.boardContent : '게시물 내용'}" class="content-box1">게시물 내용</p>
+    </div>
+    <div class="image-box">
+        <div th:if="${board != null && board.imageUrl != null}">
+            <!-- <img th:src="${board.imageUrl}" alt="업로드된 이미지" class="img-fluid" width="100" height="100" />-->
+            <a th:href="${board.imageUrl}" download th:attr="download='image-${board.boardNo}'" class="btn btn-secondary btn-sm mt-2">이미지 다운로드</a>
+        </div>
+        <div class="button-group" th:if="${isAuthor}">
+            <a th:href="@{/boards/edit/{boardNo}(boardNo=${board.boardNo})}" class="btn btn-warning btn-sm">수정</a>
+            <a th:href="@{/boards/delete/{boardNo}(boardNo=${board.boardNo})}" class="btn btn-danger btn-sm">삭제</a>
+        </div>
     </div>
     <div class="replies mt-5">
         <h3>답글</h3>
         <div th:if="${#lists.isEmpty(replies)}">
             <p>등록된 답글이 없습니다.</p>
         </div>
-        <div th:each="reply : ${replies}">
+        <div th:each="reply : ${replies}" class="reply-box">
             <p th:text="${reply.replyContent}"></p>
             <p th:text="${#dates.format(reply.replyTimestamp, 'yyyy-MM-dd HH:mm')}"></p>
             <a th:href="@{/replies/delete/{replyNo}(replyNo=${reply.replyNo})}" class="btn btn-danger btn-sm" sec:authorize="hasAuthority('ADMIN')">삭제</a>
         </div>
     </div>
     <div class="comment-form mt-5" sec:authorize="hasAuthority('ADMIN')">
-        <h3>댓글 작성</h3>
         <form th:action="@{/replies/create}" method="post">
-            <input type="hidden" name="boardNo" th:value="${board.boardNo}" />
+            <input type="hidden" name="boardNo" th:value="${board != null ? board.boardNo : ''}" />
             <div class="form-group">
                 <textarea class="form-control" name="replyContent" rows="3" required></textarea>
             </div>

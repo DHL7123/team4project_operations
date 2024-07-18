@@ -1,13 +1,15 @@
 package com.evo.evoproject.config;
 
-import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authorization.AuthorizationDecision;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
 
 @Configuration
 public class SecurityConfig {
@@ -29,13 +31,18 @@ public class SecurityConfig {
         http
                 .authorizeHttpRequests(authorizeRequests ->
                         authorizeRequests
-                                .requestMatchers("/", "/index.html", "/header.html", "/footer.html", "/register",
+                                .requestMatchers("/", "/index.html", "/header.html", "/footer.html",
                                         "/login", "/css/**", "/image/**","/js/**",
-                                        "/find-id","/find-password","/check-username","/terms","/snb.html","/mypage",
+                                        "/find-id","/find-password","/check-username","/snb.html","/mypage",
                                         "/notice", "/faq", "/servicePolicy", "/privacyPolicy","/deliveryNrefundPolicy",
                                         "/product/**").permitAll()
+                                .requestMatchers("/terms", "/register").access((authentication, context) -> {
+                                    boolean isAnonymous = authentication.get().getPrincipal().toString().equals("anonymousUser");
+                                    return new AuthorizationDecision(isAnonymous);
+                                }) // 로그인하지 않은 사용자만 접근 가능
                                 .requestMatchers("/admin/**").hasAuthority("ADMIN") // 관리자 전용 URL 패턴
                                 .anyRequest().authenticated() // 이 외의 요청은 인증 필요
+
                 )
                 .formLogin(formLogin ->
                         formLogin
@@ -58,6 +65,7 @@ public class SecurityConfig {
                 )
                 .csrf(csrf -> csrf.disable()); // CSRF 보호 비활성화
 
+        http.addFilterBefore(new LoginFilter(), UsernamePasswordAuthenticationFilter.class);
         return http.build();
     }
 
