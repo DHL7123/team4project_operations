@@ -11,6 +11,8 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class RegisterProductRequest {
+
+    @Builder.Default
     private List<Product> products = new ArrayList<>(); // 기본값으로 초기화
     private String imageUrl;
 }

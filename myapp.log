@@ -9920,3 +9920,124 @@ org.thymeleaf.exceptions.TemplateInputException: Error resolving template [admin
 2024-07-18T17:12:10.813+09:00  WARN 19388 --- [evoproject] [http-nio-8090-exec-9] o.a.i.s.AutoMappingUnknownColumnBehavior : Unknown column is detected on 'com.evo.evoproject.mapper.order.OrderMapper.getAllOrders' auto-mapping. Mapping parameters are [columnName=request_type,propertyName=request_type,propertyType=null]
 2024-07-18T17:12:36.176+09:00  INFO 19388 --- [evoproject] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2024-07-18T17:12:36.228+09:00  INFO 19388 --- [evoproject] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-07-19T14:02:45.885+09:00  INFO 13644 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : Starting EvoprojectApplication using Java 17.0.11 with PID 13644 (D:\EVO\evoproject\build\classes\java\main started by skygv in D:\EVO)
+2024-07-19T14:02:45.889+09:00  INFO 13644 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : No active profile set, falling back to 1 default profile: "default"
+2024-07-19T14:02:47.033+09:00  INFO 13644 --- [evoproject] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8090 (http)
+2024-07-19T14:02:47.043+09:00  INFO 13644 --- [evoproject] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-07-19T14:02:47.043+09:00  INFO 13644 --- [evoproject] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-07-19T14:02:47.100+09:00  INFO 13644 --- [evoproject] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-07-19T14:02:47.100+09:00  INFO 13644 --- [evoproject] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1168 ms
+2024-07-19T14:02:48.003+09:00  INFO 13644 --- [evoproject] [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-07-19T14:02:48.195+09:00  INFO 13644 --- [evoproject] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@87aec6a, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@213012a0, org.springframework.security.web.context.SecurityContextHolderFilter@269c7104, org.springframework.security.web.header.HeaderWriterFilter@4df0d9f8, org.springframework.web.filter.CorsFilter@43a59289, org.springframework.security.web.authentication.logout.LogoutFilter@1851c7d2, com.evo.evoproject.config.LoginFilter@6c2883b1, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@48106381, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@627bcd7e, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@350567f1, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@336e3be2, org.springframework.security.web.access.ExceptionTranslationFilter@2d5ae78e, org.springframework.security.web.access.intercept.AuthorizationFilter@59371066]
+2024-07-19T14:02:48.436+09:00  INFO 13644 --- [evoproject] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8090 (http) with context path ''
+2024-07-19T14:02:48.446+09:00  INFO 13644 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : Started EvoprojectApplication in 3.009 seconds (process running for 3.68)
+2024-07-19T14:02:48.452+09:00  INFO 13644 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-19T14:02:48.453+09:00  INFO 13644 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-19T14:02:58.809+09:00  INFO 13644 --- [evoproject] [http-nio-8090-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-07-19T14:02:58.810+09:00  INFO 13644 --- [evoproject] [http-nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-07-19T14:02:58.811+09:00  INFO 13644 --- [evoproject] [http-nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-07-19T14:03:04.060+09:00  INFO 13644 --- [evoproject] [http-nio-8090-exec-8] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-07-19T14:03:04.340+09:00  INFO 13644 --- [evoproject] [http-nio-8090-exec-8] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2168606c
+2024-07-19T14:03:04.342+09:00  INFO 13644 --- [evoproject] [http-nio-8090-exec-8] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-07-19T14:03:04.589+09:00  WARN 13644 --- [evoproject] [http-nio-8090-exec-8] o.a.c.util.SessionIdGeneratorBase        : Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [120] milliseconds.
+2024-07-19T14:03:35.815+09:00  INFO 13644 --- [evoproject] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-07-19T14:03:35.888+09:00  INFO 13644 --- [evoproject] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-07-19T14:03:39.122+09:00  INFO 1284 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : Starting EvoprojectApplication using Java 17.0.11 with PID 1284 (D:\EVO\evoproject\build\classes\java\main started by skygv in D:\EVO)
+2024-07-19T14:03:39.206+09:00  INFO 1284 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : No active profile set, falling back to 1 default profile: "default"
+2024-07-19T14:03:40.377+09:00  INFO 1284 --- [evoproject] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8090 (http)
+2024-07-19T14:03:40.389+09:00  INFO 1284 --- [evoproject] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-07-19T14:03:40.390+09:00  INFO 1284 --- [evoproject] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-07-19T14:03:40.449+09:00  INFO 1284 --- [evoproject] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-07-19T14:03:40.450+09:00  INFO 1284 --- [evoproject] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1204 ms
+2024-07-19T14:03:41.376+09:00  INFO 1284 --- [evoproject] [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-07-19T14:03:41.575+09:00  INFO 1284 --- [evoproject] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@4d825dbe, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@11180750, org.springframework.security.web.context.SecurityContextHolderFilter@4571cebe, org.springframework.security.web.header.HeaderWriterFilter@727453a3, org.springframework.web.filter.CorsFilter@210635fd, org.springframework.security.web.authentication.logout.LogoutFilter@32ba5c65, com.evo.evoproject.config.LoginFilter@63814bbe, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@780129bc, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@11cadb32, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@26f5e45d, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3cb195dd, org.springframework.security.web.access.ExceptionTranslationFilter@598778cc, org.springframework.security.web.access.intercept.AuthorizationFilter@13dd7887]
+2024-07-19T14:03:41.861+09:00  INFO 1284 --- [evoproject] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8090 (http) with context path ''
+2024-07-19T14:03:41.875+09:00  INFO 1284 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : Started EvoprojectApplication in 3.155 seconds (process running for 3.806)
+2024-07-19T14:03:41.879+09:00  INFO 1284 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-19T14:03:41.879+09:00  INFO 1284 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-19T14:03:43.273+09:00  INFO 1284 --- [evoproject] [http-nio-8090-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-07-19T14:03:43.273+09:00  INFO 1284 --- [evoproject] [http-nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-07-19T14:03:43.274+09:00  INFO 1284 --- [evoproject] [http-nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-07-19T14:03:47.711+09:00  INFO 1284 --- [evoproject] [http-nio-8090-exec-8] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-07-19T14:03:47.985+09:00  INFO 1284 --- [evoproject] [http-nio-8090-exec-8] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5943d050
+2024-07-19T14:03:47.988+09:00  INFO 1284 --- [evoproject] [http-nio-8090-exec-8] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-07-19T14:03:48.226+09:00  WARN 1284 --- [evoproject] [http-nio-8090-exec-8] o.a.c.util.SessionIdGeneratorBase        : Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [117] milliseconds.
+2024-07-19T14:03:52.769+09:00  WARN 1284 --- [evoproject] [http-nio-8090-exec-2] o.a.i.s.AutoMappingUnknownColumnBehavior : Unknown column is detected on 'com.evo.evoproject.mapper.order.OrderMapper.getAllOrders' auto-mapping. Mapping parameters are [columnName=pro_name,propertyName=pro_name,propertyType=null]
+2024-07-19T14:03:52.769+09:00  WARN 1284 --- [evoproject] [http-nio-8090-exec-2] o.a.i.s.AutoMappingUnknownColumnBehavior : Unknown column is detected on 'com.evo.evoproject.mapper.order.OrderMapper.getAllOrders' auto-mapping. Mapping parameters are [columnName=pro_stock,propertyName=pro_stock,propertyType=null]
+2024-07-19T14:04:03.598+09:00  INFO 1284 --- [evoproject] [http-nio-8090-exec-10] c.e.e.s.product.ProductServiceImpl       : 모든 제품 목록을 가져오는 서비스 - 정렬기준: pro_date_desc, 페이지: 1, 사이즈: 10
+2024-07-19T14:04:05.026+09:00  WARN 1284 --- [evoproject] [http-nio-8090-exec-2] o.a.i.s.AutoMappingUnknownColumnBehavior : Unknown column is detected on 'com.evo.evoproject.mapper.order.OrderMapper.getAllOrders' auto-mapping. Mapping parameters are [columnName=pro_name,propertyName=pro_name,propertyType=null]
+2024-07-19T14:04:05.026+09:00  WARN 1284 --- [evoproject] [http-nio-8090-exec-2] o.a.i.s.AutoMappingUnknownColumnBehavior : Unknown column is detected on 'com.evo.evoproject.mapper.order.OrderMapper.getAllOrders' auto-mapping. Mapping parameters are [columnName=pro_stock,propertyName=pro_stock,propertyType=null]
+2024-07-19T14:04:05.731+09:00  WARN 1284 --- [evoproject] [http-nio-8090-exec-8] o.a.i.s.AutoMappingUnknownColumnBehavior : Unknown column is detected on 'com.evo.evoproject.mapper.order.OrderMapper.getAllOrders' auto-mapping. Mapping parameters are [columnName=pro_name,propertyName=pro_name,propertyType=null]
+2024-07-19T14:04:05.731+09:00  WARN 1284 --- [evoproject] [http-nio-8090-exec-8] o.a.i.s.AutoMappingUnknownColumnBehavior : Unknown column is detected on 'com.evo.evoproject.mapper.order.OrderMapper.getAllOrders' auto-mapping. Mapping parameters are [columnName=pro_stock,propertyName=pro_stock,propertyType=null]
+2024-07-19T14:04:41.880+09:00  INFO 1284 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-19T14:04:41.880+09:00  INFO 1284 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-19T14:05:41.878+09:00  INFO 1284 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-19T14:05:41.878+09:00  INFO 1284 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-19T14:06:41.873+09:00  INFO 1284 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-19T14:06:41.874+09:00  INFO 1284 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-19T14:07:41.881+09:00  INFO 1284 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-19T14:07:41.881+09:00  INFO 1284 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-19T14:08:41.885+09:00  INFO 1284 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-19T14:08:41.885+09:00  INFO 1284 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-19T14:09:41.878+09:00  INFO 1284 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-19T14:09:41.878+09:00  INFO 1284 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-19T14:10:41.878+09:00  INFO 1284 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-19T14:10:41.878+09:00  INFO 1284 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-19T14:11:41.884+09:00  INFO 1284 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-19T14:11:41.884+09:00  INFO 1284 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-19T14:12:41.881+09:00  INFO 1284 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-19T14:12:41.881+09:00  INFO 1284 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-19T14:13:41.872+09:00  INFO 1284 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-19T14:13:41.872+09:00  INFO 1284 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-19T14:14:41.887+09:00  INFO 1284 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-19T14:14:41.887+09:00  INFO 1284 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-19T14:15:41.886+09:00  INFO 1284 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-19T14:15:41.886+09:00  INFO 1284 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-19T14:16:41.876+09:00  INFO 1284 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-19T14:16:41.877+09:00  INFO 1284 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-19T14:17:41.884+09:00  INFO 1284 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-19T14:17:41.885+09:00  INFO 1284 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-19T14:18:41.884+09:00  INFO 1284 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-19T14:18:41.884+09:00  INFO 1284 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-19T14:19:41.886+09:00  INFO 1284 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-19T14:19:41.886+09:00  INFO 1284 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-19T14:20:41.885+09:00  INFO 1284 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-19T14:20:41.885+09:00  INFO 1284 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-19T14:21:41.879+09:00  INFO 1284 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-19T14:21:41.879+09:00  INFO 1284 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-19T14:22:41.874+09:00  INFO 1284 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-19T14:22:41.874+09:00  INFO 1284 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-19T14:23:41.878+09:00  INFO 1284 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-19T14:23:41.878+09:00  INFO 1284 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-19T14:24:41.886+09:00  INFO 1284 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-19T14:24:41.886+09:00  INFO 1284 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-19T14:25:41.880+09:00  INFO 1284 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-19T14:25:41.880+09:00  INFO 1284 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-19T14:25:44.266+09:00  INFO 1284 --- [evoproject] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-07-19T14:25:44.326+09:00  INFO 1284 --- [evoproject] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-07-19T15:13:22.886+09:00  INFO 2344 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : Starting EvoprojectApplication using Java 17.0.11 with PID 2344 (D:\EVO\evoproject\build\classes\java\main started by skygv in D:\EVO)
+2024-07-19T15:13:22.888+09:00  INFO 2344 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : No active profile set, falling back to 1 default profile: "default"
+2024-07-19T15:13:24.244+09:00  INFO 2344 --- [evoproject] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8090 (http)
+2024-07-19T15:13:24.257+09:00  INFO 2344 --- [evoproject] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-07-19T15:13:24.257+09:00  INFO 2344 --- [evoproject] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-07-19T15:13:24.309+09:00  INFO 2344 --- [evoproject] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-07-19T15:13:24.309+09:00  INFO 2344 --- [evoproject] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1350 ms
+2024-07-19T15:13:25.219+09:00  INFO 2344 --- [evoproject] [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-07-19T15:13:25.408+09:00  INFO 2344 --- [evoproject] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@1ad1b737, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@342a1f84, org.springframework.security.web.context.SecurityContextHolderFilter@7a0f06ad, org.springframework.security.web.header.HeaderWriterFilter@55c03e4, org.springframework.web.filter.CorsFilter@77d0dbba, org.springframework.security.web.authentication.logout.LogoutFilter@5d96d434, com.evo.evoproject.config.LoginFilter@70b196d3, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@144e36ae, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@710afd47, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@667a467f, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@67ceeffd, org.springframework.security.web.access.ExceptionTranslationFilter@37986daf, org.springframework.security.web.access.intercept.AuthorizationFilter@7d7b4e04]
+2024-07-19T15:13:25.645+09:00  INFO 2344 --- [evoproject] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8090 (http) with context path ''
+2024-07-19T15:13:25.657+09:00  INFO 2344 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : Started EvoprojectApplication in 3.314 seconds (process running for 4.002)
+2024-07-19T15:13:25.661+09:00  INFO 2344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-19T15:13:25.661+09:00  INFO 2344 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-19T15:33:03.289+09:00  INFO 20372 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : Starting EvoprojectApplication using Java 17.0.11 with PID 20372 (D:\EVO\evoproject\build\classes\java\main started by skygv in D:\EVO)
+2024-07-19T15:33:03.292+09:00  INFO 20372 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : No active profile set, falling back to 1 default profile: "default"
+2024-07-19T15:33:04.382+09:00  INFO 20372 --- [evoproject] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8090 (http)
+2024-07-19T15:33:04.393+09:00  INFO 20372 --- [evoproject] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-07-19T15:33:04.394+09:00  INFO 20372 --- [evoproject] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-07-19T15:33:04.446+09:00  INFO 20372 --- [evoproject] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-07-19T15:33:04.446+09:00  INFO 20372 --- [evoproject] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1109 ms
+2024-07-19T15:33:05.333+09:00  INFO 20372 --- [evoproject] [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-07-19T15:33:05.526+09:00  INFO 20372 --- [evoproject] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@22ff1372, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@356341c9, org.springframework.security.web.context.SecurityContextHolderFilter@6df2a206, org.springframework.security.web.header.HeaderWriterFilter@46894dc5, org.springframework.web.filter.CorsFilter@3a70575, org.springframework.security.web.authentication.logout.LogoutFilter@710afd47, com.evo.evoproject.config.LoginFilter@5d96d434, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@10166230, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6f240187, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3e39f08c, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7283877, org.springframework.security.web.access.ExceptionTranslationFilter@2520aa05, org.springframework.security.web.access.intercept.AuthorizationFilter@702f4124]
+2024-07-19T15:33:05.756+09:00  INFO 20372 --- [evoproject] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8090 (http) with context path ''
+2024-07-19T15:33:05.766+09:00  INFO 20372 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : Started EvoprojectApplication in 2.876 seconds (process running for 3.51)
+2024-07-19T15:33:05.771+09:00  INFO 20372 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-19T15:33:05.772+09:00  INFO 20372 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
