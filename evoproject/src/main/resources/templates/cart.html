@@ -95,6 +95,7 @@
 <!-- JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js"></script>
 <script th:inline="javascript">
+
     document.addEventListener('DOMContentLoaded', function() {
         var cartItems = [];
         var totalAmount = 0;
@@ -107,16 +108,18 @@
                 if (!checkbox.id.startsWith('selectItem_')) return;
 
                 var row = checkbox.closest('tr');
-                var price = parseFloat(row.querySelector('td:nth-child(3)').textContent.trim().replace(',', ''));
+                var price = parseFloat(row.querySelector('td:nth-child(3)').textContent.trim().replace(/,/g, ''));
                 var quantity = parseInt(row.querySelector('td:nth-child(4)').textContent.trim());
-                var shipping = parseFloat(row.querySelector('td:nth-child(5)').textContent.trim().replace(',', ''));
-                var subTotal = price * quantity + shipping; // Calculate subtotal
+                var shipping = parseFloat(row.querySelector('td:nth-child(5)').textContent.trim().replace(/,/g, ''));
+                var subTotal = price * quantity + shipping;
                 row.querySelector('td:nth-child(6) span').textContent = formatNumber(subTotal);
-                totalAmount += subTotal; // Accumulate total amount
+                totalAmount += subTotal;
             });
+
 
             var formattedTotal = '₩' + totalAmount.toLocaleString('ko-KR');
             document.getElementById('totalAmount').textContent = formattedTotal;
+
 
             var checkoutBtn = document.querySelector('.checkoutBtn a');
             checkoutBtn.style.display = checkboxes.length > 0 ? 'block' : 'none';
@@ -135,13 +138,13 @@
         // 가격과 배송비 포맷 맞추기
         var prices = document.querySelectorAll('td:nth-child(3)');
         prices.forEach(function(priceElement) {
-            var price = parseFloat(priceElement.textContent.trim().replace(',', ''));
+            var price = parseFloat(priceElement.textContent.trim().replace(/,/g, ''));
             priceElement.textContent = formatNumber(price);
         });
 
         var shippings = document.querySelectorAll('td:nth-child(5)');
         shippings.forEach(function(shippingElement) {
-            var shipping = parseFloat(shippingElement.textContent.trim().replace(',', ''));
+            var shipping = parseFloat(shippingElement.textContent.trim().replace(/,/g, ''));
             shippingElement.textContent = formatNumber(shipping);
         });
 
@@ -164,6 +167,7 @@
             calculateTotal();
         };
     });
+
 </script>
 
 </body>
