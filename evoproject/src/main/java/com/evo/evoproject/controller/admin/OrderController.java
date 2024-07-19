@@ -5,8 +5,11 @@ import com.evo.evoproject.service.order.OrderService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.HashMap;
 import java.util.List;
@@ -15,6 +18,8 @@ import java.util.Map;
 @Controller
 public class OrderController {
     private final OrderService orderService;
+
+    public static final Logger log = LoggerFactory.getLogger(OrderController.class);
 
     @Autowired
     public OrderController(OrderService orderService) {
@@ -108,15 +113,32 @@ public class OrderController {
      * @return 이전 페이지 또는 관리 페이지 리다이렉트 경로
      */
     @PostMapping("/admin/manageOrder/{orderNo}/{status}/orderDelivnum")
-    public String updateDelivnum(@PathVariable int orderNo, @PathVariable int status, @RequestParam String orderDelivnum, @RequestParam("prevStatus") String prevStatus) {
-        orderService.updateDelivnum(orderNo, orderDelivnum);
-        orderService.updateOrderStatus(orderNo, status);
+    public String updateDelivnum(@PathVariable int orderNo, @PathVariable int status, @RequestParam String orderDelivnum, @RequestParam("prevStatus") String prevStatus, RedirectAttributes redirectAttributes) {
+        // 운송장 번호가 숫자인지 확인
+        if (orderDelivnum.matches("\\d+")) {
+            try {
+                orderService.updateDelivnum(orderNo, orderDelivnum);
+                orderService.updateOrderStatus(orderNo, status);
+            } catch (Exception e) {
+                log.error("운송장 번호 또는 주문 상태 업데이트 중 오류가 발생했습니다.", e);
+                redirectAttributes.addFlashAttribute("error", "운송장 번호 또는 주문 상태 업데이트 중 오류가 발생했습니다.");
+                return "redirect:/admin/manageOrder/1";
+            }
+        } else {
+            log.error("운송장 번호는 숫자여야 합니다.");
+            redirectAttributes.addFlashAttribute("error", "운송장 번호는 숫자여야 합니다.");
+            return "redirect:/admin/manageOrder/1";
+        }
+
         if ("all".equals(prevStatus)) {
             return "redirect:/admin/manageOrder";
         } else {
             return "redirect:/admin/manageOrder/" + prevStatus;
         }
     }
+
+
+
 
     /**
      * 주문의 요청 타입과 상태를 업데이트하고 이전 페이지로 리다이렉트

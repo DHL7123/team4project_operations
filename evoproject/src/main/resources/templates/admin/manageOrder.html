@@ -88,9 +88,9 @@
                                     <button type="button" th:onclick="'showPopup(\'' + ${order.orderNo} + '\', \'inputPopup\');'" class="manageConfirmBtn">송장번호입력</button>
                                     <div th:id="'inputPopup-' + ${order.orderNo}" class="popup" style="display: none;">
                                         <div class="popup-content">
-                                            <form method="post" th:action="@{/admin/manageOrder/{orderNo}/{status}/orderDelivnum(orderNo=${order.orderNo}, status=2)}">
+                                            <form method="post" onsubmit="return validateDelivnum();" th:action="@{/admin/manageOrder/{orderNo}/{status}/orderDelivnum(orderNo=${order.orderNo}, status=2)}">
                                                 <h2>운송장 번호</h2>
-                                                <input type="text" name="orderDelivnum" placeholder="송장번호">
+                                                <input type="text" id="delivnum" name="orderDelivnum" placeholder="송장번호">
                                                 <input type="hidden" name="prevStatus" th:value="${selectedStatus}">
                                                 <div style="margin-top: 20px;">
                                                     <button type="submit" style="border: none; background-color: #0d6efd; color: white">확인</button>
@@ -191,6 +191,19 @@
         if (confirm("해당 상품의 결제를 확인하셨습니까?")) {
             document.getElementById("updateForm").submit();
         }
+    }
+
+    //송장번호 입력 시 유효성 검사
+    function validateDelivnum() {
+        var delivnum = document.getElementById('delivnum').value;
+        var regex = /^[0-9]{1,12}$/;
+
+        if (!regex.test(delivnum)) {
+            alert("운송장 번호는 12자 이하의 숫자만 입력해야 합니다.");
+            return false;  // form의 제출을 방지합니다.
+        }
+
+        return true;  // form의 제출을 허용합니다.
     }
 
     // 배송완료확인 confirm창
