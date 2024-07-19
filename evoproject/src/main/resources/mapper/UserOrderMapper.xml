@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.evo.evoproject.mapper.order.UserOrderMapper">
+
+    <!-- Result Map -->
+    <resultMap id="OrderResultMap" type="com.evo.evoproject.domain.order.Order">
+        <id property="orderNo" column="order_no" />
+        <result property="userNo" column="user_no" />
+        <result property="proNo" column="pro_no" />
+        <result property="orderName" column="order_name" />
+        <result property="orderAddress1" column="order_address_1" />
+        <result property="orderAddress2" column="order_address_2" />
+        <result property="orderPhone" column="order_phone" />
+        <result property="orderComment" column="order_comment" />
+        <result property="orderTimestamp" column="order_timestamp" />
+        <result property="orderPayment" column="order_payment" />
+        <result property="orderStatus" column="order_status" />
+        <result property="orderDelivnum" column="order_delivnum" />
+        <result property="requestType" column="request_type" />
+    </resultMap>
+
+    <!-- 아이디로 주문 조회 -->
+    <select id="findOrdersById" parameterType="map" resultMap="OrderResultMap">
+        SELECT order_no, user_no, pro_no, order_name, order_timestamp, order_payment, order_status, order_delivnum, request_type
+        FROM orders
+        WHERE user_no = #{userNo}
+        ORDER BY order_timestamp DESC
+        LIMIT #{offset}, #{size}
+    </select>
+
+    <!-- 주문 상태별 주문 개수를 조회 -->
+    <select id="countOrdersById" parameterType="int" resultType="int">
+        SELECT COUNT(*) FROM orders WHERE user_no = #{userNo}
+    </select>
+
+</mapper>

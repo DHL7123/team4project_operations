@@ -58,6 +58,7 @@
         SELECT COUNT(*) FROM orders
     </select>
 
+
     <!-- 주문 상태를 업데이트 -->
     <update id="updateOrderStatus">
         UPDATE orders
@@ -78,5 +79,7 @@
         SET request_type = #{requestType}
         WHERE order_no = #{orderNo}
     </update>
+
+
 
 </mapper>

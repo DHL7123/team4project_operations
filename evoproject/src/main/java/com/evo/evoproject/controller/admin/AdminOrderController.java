@@ -11,18 +11,16 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Controller
-public class OrderController {
+public class AdminOrderController {
     private final OrderService orderService;
 
-    public static final Logger log = LoggerFactory.getLogger(OrderController.class);
+    public static final Logger log = LoggerFactory.getLogger(AdminOrderController.class);
 
     @Autowired
-    public OrderController(OrderService orderService) {
+    public AdminOrderController(OrderService orderService) {
         this.orderService = orderService;
     }
 

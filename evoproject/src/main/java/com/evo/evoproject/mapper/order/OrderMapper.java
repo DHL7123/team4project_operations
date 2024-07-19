@@ -58,4 +58,7 @@ public interface OrderMapper {
      * @param params 업데이트할 파라미터 (orderNo와 requestType)
      */
     void updateRequestType(Map<String, Object> params);
+
+    List<Order> findOrdersById (@Param("limit") int userNo,@Param("limit") int limit, @Param("offset") int offset);
+
 }
