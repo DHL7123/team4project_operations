@@ -70,7 +70,20 @@
                         <a href="#" id="searchIcon">
                             <img th:src="@{/image/search.png}" alt="search" height="27px" width="27px">
                         </a>
+                        <!--검색창-->
+                        <div id="modal" class="searchModal">
+                            <div id="modalContent">
+                                <span class="closeButton" onclick="closeModal()">
+                                    <img th:src="@{/image/modal_close.png}" alt="검색창 닫힘" height="40px" width="40px">
+                                </span>
+                                <input type="text" id="searchInput" placeholder="Type to search">
+                                <button id="searchButton" onclick="performSearch()">
+                                    <img th:src="@{/image/arrow.png}" alt="arrow" height="w0px" width="40px">
+                                </button>
+                            </div>
+                        </div>
                     </li>
+
                     <li sec:authorize="!hasAuthority('ADMIN')">
                         <a th:href="@{/cart}">
                             <img th:src="@{/image/shopping_cart.png}" alt="shopping_cart" height="25px" width="25px">
