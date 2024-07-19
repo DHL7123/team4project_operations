@@ -107,19 +107,17 @@
                 if (!checkbox.id.startsWith('selectItem_')) return;
 
                 var row = checkbox.closest('tr');
-                var price = parseFloat(row.querySelector('td:nth-child(3)').textContent.trim().replace(',', '')); // Get price
-                var quantity = parseInt(row.querySelector('td:nth-child(4)').textContent.trim()); // Get quantity
-                var shipping = parseFloat(row.querySelector('td:nth-child(5)').textContent.trim().replace(',', '')); // Get shipping cost
+                var price = parseFloat(row.querySelector('td:nth-child(3)').textContent.trim().replace(',', ''));
+                var quantity = parseInt(row.querySelector('td:nth-child(4)').textContent.trim());
+                var shipping = parseFloat(row.querySelector('td:nth-child(5)').textContent.trim().replace(',', ''));
                 var subTotal = price * quantity + shipping; // Calculate subtotal
-                row.querySelector('td:nth-child(6) span').textContent = formatNumber(subTotal); // Update subtotal display
+                row.querySelector('td:nth-child(6) span').textContent = formatNumber(subTotal);
                 totalAmount += subTotal; // Accumulate total amount
             });
 
-            // Format total amount with Korean currency format and prepend '₩'
             var formattedTotal = '₩' + totalAmount.toLocaleString('ko-KR');
             document.getElementById('totalAmount').textContent = formattedTotal;
 
-            // Display checkout button if items are selected
             var checkoutBtn = document.querySelector('.checkoutBtn a');
             checkoutBtn.style.display = checkboxes.length > 0 ? 'block' : 'none';
         }
