@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title th:text="${isEdit} ? '상품 수정' : '새 상품 추가'">상품 관리</title>
     <style>
         body {
@@ -96,6 +97,21 @@
             margin-bottom: 10px;
             width: 100%;
         }
+        @media (max-width: 768px) {
+            .container {
+                width: 100%;
+                padding: 10px;
+            }
+            .form-group {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .form-group label {
+                width: 100%;
+                margin-bottom: 5px;
+                text-align: left;
+            }
+        }
     </style>
 </head>
 <body>
@@ -138,17 +154,14 @@
             </div>
         </div>
 
-
         <div class="form-group">
             <label for="images">이미지:</label>
             <input type="file" id="images" name="images" multiple accept="image/*" onchange="validateAndPreviewImages()"/>
         </div>
 
-
-
         <div class="form-group">
             <label for="stock">재고:</label>
-            <input type="number" id="stock" name="stock" th:value="${product.stock}" required/>
+            <input type="number" id="stock" name="stock" value="1" th:value="${product.stock != null ? product.stock : 1}" required/>
         </div>
 
         <div class="form-group">
@@ -168,8 +181,6 @@
                 </div>
             </div>
         </div>
-
-
 
         <button type="submit" class="btn mt-3" th:text="${isEdit} ? '상품 수정' : '상품 추가'">상품 추가</button>
     </form>
@@ -249,11 +260,39 @@
         document.getElementById('images').files = dt.files;
     }
 
+    function formatPrice(input) {
+        // 현재 커서 위치를 저장
+        const cursorPosition = input.selectionStart;
+
+        // 입력값에서 모든 비숫자 문자 제거
+        let value = input.value.replace(/[^0-9]/g, '');
+
+        // 정수로 변환하여 포맷팅 적용
+        value = new Intl.NumberFormat('ko-KR').format(parseInt(value));
+
+        // 포맷팅된 값을 입력 필드에 설정
+        input.value = value;
+
+        // 저장된 커서 위치를 다시 설정
+        input.setSelectionRange(cursorPosition, cursorPosition);
+    }
+
+    function removeFormatting(value) {
+        return value.replace(/[^0-9]/g, '');
+    }
+
     document.getElementById('productForm').addEventListener('submit', (event) => {
         if (selectedFiles.length > MAX_FILE_COUNT || selectedFiles.some(file => file.size > MAX_FILE_SIZE)) {
             event.preventDefault();
             alert('업로드할 파일의 수와 크기를 확인하세요.');
         }
+
+        // 폼 제출 전에 가격 필드의 포맷팅을 제거
+        const priceInput = document.getElementById('price');
+        priceInput.value = removeFormatting(priceInput.value);
+
+        const shippingInput = document.getElementById('shipping');
+        shippingInput.value = removeFormatting(shippingInput.value);
     });
 </script>
 </body>

@@ -49,10 +49,16 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public AdminRetrieveProductResponse getProductsAdmin(String sort, int page, int size, Integer soldout) {
         log.info("모든 제품 목록을 가져오는 서비스 - 정렬기준: {}, 페이지: {}, 사이즈: {}", sort, page, size);
+
+        if (page < 1) {
+            page = 1;
+        }
+
         int offset = (page - 1) * size;
         List<Product> products = productMapper.findAllProductsAdmin(sort, offset, size,soldout);
         int totalProducts = productMapper.countProductsAdmin(soldout);
         int totalPages = (totalProducts + size - 1) / size;
+
         return new AdminRetrieveProductResponse(products, sort,soldout, page, totalPages);
     }
 
