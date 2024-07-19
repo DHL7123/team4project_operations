@@ -50,4 +50,21 @@ public class CartController {
         return "redirect:/cart/" + userNo;
     }
 
+    @PostMapping("/checkout")
+    public String checkout(@RequestParam int userNo, HttpSession session) {
+        List<Cart> cartItems = cartService.getCartItemsByUser(userNo);
+        session.setAttribute("cartItems", cartItems);
+        // 세션에서 장바구니 정보를 읽어와서 로그로 출력
+        List<Cart> savedCartItems = (List<Cart>) session.getAttribute("cartItems");
+        if (savedCartItems != null) {
+            log.info("세션에 저장된 장바구니 정보:");
+            for (Cart cart : savedCartItems) {
+                log.info("Cart ID: " + cart.getCartId() + ", User No: " + cart.getUserNo() + ", Quantity: " + cart.getCartQuantity() + ", Products: " + cart.getProducts());
+            }
+        } else {
+            log.info("세션에 장바구니 정보가 없습니다.");
+        }
+        return "redirect:/paymentOrders/checkout";
+    }
+
 }

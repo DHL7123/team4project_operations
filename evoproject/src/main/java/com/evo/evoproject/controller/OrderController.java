@@ -1,10 +1,13 @@
 package com.evo.evoproject.controller;
 
+import com.evo.evoproject.domain.cart.Cart;
 import com.evo.evoproject.domain.order.Order;
 import com.evo.evoproject.domain.user.User;
+import com.evo.evoproject.service.cart.CartService;
 import com.evo.evoproject.service.order.OrderService;
 import com.evo.evoproject.service.product.ProductService;
 import com.evo.evoproject.service.user.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,7 +18,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 
 import jakarta.servlet.http.HttpSession;
 import java.util.List;
-
+@Slf4j
 @Controller
 @RequestMapping("/paymentOrders")
 public class OrderController {
@@ -25,10 +28,13 @@ public class OrderController {
     private UserService userService;
     @Autowired
     private ProductService productService;
+    @Autowired
+    private CartService cartService;
 
     @PostMapping("/save")
     public String saveOrder(@ModelAttribute Order order, HttpSession session) {
         session.setAttribute("order", order); // 세션에 임시 저장
+        log.info("Order in session: {}", order);
         return "redirect:/paymentOrders/checkout"; // 결제 페이지로 리다이렉션
     }
 
@@ -64,10 +70,21 @@ public class OrderController {
         if (userId != null) {
             User user = userService.findUserByUserId(userId);
             model.addAttribute("user", user);
+            log.info("User retrieved from session: {}", user);
         }
+        // 세션에서 장바구니 정보를 읽어옴
+        List<Cart> cartItems = (List<Cart>) session.getAttribute("cartItems");
+        if (cartItems != null) {
+            model.addAttribute("cartItems", cartItems);
+        }
+
         Order order = (Order) session.getAttribute("order");
         if (order != null) {
             model.addAttribute("order", order);
+
+            log.info("Order retrieved from session: {}", order);
+        } else {
+            log.info("No order found in session.");
         }
 
         return "checkOut";  // checkOut.html 파일과 매핑
