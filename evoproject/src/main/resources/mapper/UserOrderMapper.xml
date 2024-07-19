@@ -5,19 +5,29 @@
 
     <!-- Result Map -->
     <resultMap id="OrderResultMap" type="com.evo.evoproject.domain.order.Order">
-        <id property="orderNo" column="order_no" />
-        <result property="userNo" column="user_no" />
-        <result property="proNo" column="pro_no" />
-        <result property="orderName" column="order_name" />
-        <result property="orderAddress1" column="order_address_1" />
-        <result property="orderAddress2" column="order_address_2" />
-        <result property="orderPhone" column="order_phone" />
-        <result property="orderComment" column="order_comment" />
-        <result property="orderTimestamp" column="order_timestamp" />
-        <result property="orderPayment" column="order_payment" />
-        <result property="orderStatus" column="order_status" />
-        <result property="orderDelivnum" column="order_delivnum" />
-        <result property="requestType" column="request_type" />
+        <id property="orderNo" column="order_no"/>
+        <result property="userNo" column="user_no"/>
+        <result property="proNo" column="pro_no"/>
+        <result property="orderName" column="order_name"/>
+        <result property="orderAddress1" column="order_address_1"/>
+        <result property="orderAddress2" column="order_address_2"/>
+        <result property="orderPhone" column="order_phone"/>
+        <result property="orderComment" column="order_comment"/>
+        <result property="orderTimestamp" column="order_timestamp"/>
+        <result property="orderPayment" column="order_payment"/>
+        <result property="orderStatus" column="order_status"/>
+        <result property="orderDelivnum" column="order_delivnum"/>
+        <result property="requestType" column="request_type"/>
+    </resultMap>
+
+    <!-- Result Map -->
+    <resultMap id="OrderItemResultMap" type="com.evo.evoproject.domain.order.Orderitem">
+        <id property="productNo" column="pro_no"/>
+        <result property="productName" column="pro_name"/>
+        <result property="quantity" column="pro_stock"/>
+        <result property="price" column="pro_price"/>
+        <result property="shippingCost" column="shipping"/>
+        <result property="image" column="image_name"/>
     </resultMap>
 
     <!-- 아이디로 주문 조회 -->
@@ -26,7 +36,7 @@
         FROM orders
         WHERE user_no = #{userNo}
         ORDER BY order_timestamp DESC
-        LIMIT #{offset}, #{size}
+            LIMIT #{offset}, #{size}
     </select>
 
     <!-- 주문 상태별 주문 개수를 조회 -->
@@ -34,4 +44,17 @@
         SELECT COUNT(*) FROM orders WHERE user_no = #{userNo}
     </select>
 
+    <!-- 주문 삽입 -->
+    <insert id="insertOrder" parameterType="com.evo.evoproject.domain.order.Orderitem">
+        INSERT INTO orders (user_no, pro_no, order_name, order_address1, order_address2, order_phone, order_comment, order_timestamp, order_payment, order_status, order_delivnum, request_type)
+        VALUES (#{userNo}, #{proNo}, #{orderName}, #{orderAddress1}, #{orderAddress2}, #{orderPhone}, #{orderComment}, #{orderTimestamp}, #{orderPayment}, #{orderStatus}, #{orderDelivnum}, #{requestType})
+    </insert>
+
+    <!-- 상품 번호로 주문 아이템 조회 -->
+    <select id="findOrderItemByProductNo" resultMap="OrderItemResultMap">
+        SELECT p.pro_no, p.pro_name, p.pro_stock, p.pro_price, p.shipping, i.image_name
+        FROM product p
+                 LEFT JOIN image i ON p.image_id = i.image_id
+        WHERE p.pro_no = #{pro_no}
+    </select>
 </mapper>

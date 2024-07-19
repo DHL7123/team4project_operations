@@ -1,107 +1,180 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>주문 목록</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Order List</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="../static/css/styles.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link rel="stylesheet" th:href="@{/css/styles.css}">
+
+  <style>
+    :root {
+      --orange: #DF4500;
+      --gray: #35302D;
+      --gray-shine: #3C3735;
+      --white-off: #DFDBD9;
+      --sans: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+    }
+
+    *,
+    ::before,
+    ::after {
+      box-sizing: border-box;
+    }
+
+    .unstyled {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .sidebar {
+      top: 580px;
+      left: 0;
+      width: 250px;
+      height: calc(100% - 400px);
+      background-color: #333;
+      color: #fff;
+      padding-top: 20px;
+    }
+
+    .unstyled a {
+      text-decoration: none;
+    }
+
+    .list-inline li {
+      float: left;
+    }
+
+    .main-nav ul {
+      border-top: solid 1px var(--gray-shine);
+    }
+
+    .main-nav li {
+      border-bottom: solid 1px var(--gray-shine);
+    }
+
+    .main-nav a {
+      padding: 1.1em 0;
+      color: var(--white-off);
+      font: 400 1.125em var(--sans);
+      text-align: center;
+      text-transform: lowercase;
+    }
+
+    .main-nav a:hover {
+      color: #fff;
+    }
+
+    .list-hover-slide li {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .list-hover-slide a {
+      display: block;
+      position: relative;
+      z-index: 1;
+      transition: .35s ease color;
+    }
+
+    .list-hover-slide a::before {
+      content: '';
+      display: block;
+      z-index: -1;
+      position: absolute;
+      left: -100%;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      border-right: solid 5px var(--orange);
+      background: var(--gray-shine);
+      transition: .35s ease left;
+    }
+
+    .list-hover-slide a.is-current::before,
+    .list-hover-slide a:hover::before {
+      left: 0;
+    }
+
+    .order-list-banner {
+      position: relative;
+      background-image: url('/image/banner.jpg');
+      background-size: cover;
+      background-position: center;
+      height: 400px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .order-list-banner h1 {
+      margin: 0;
+    }
+
+    .table-responsive {
+      margin-top: 20px;
+    }
+  </style>
+  <script src="script.js"></script>
 </head>
+
+<header th:replace="header :: header"></header>
 <body>
+
+<div class="order-list-banner">
+  <h1>Order List</h1>
+</div>
+<div class="sidebar">
+  <nav class="main-nav" role="navigation">
+    <ul class="unstyled list-hover-slide">
+      <li><a href="/orders/1" class="is-current">주문목록</a></li>
+      <li><a href="#">취소/반품내역</a></li>
+      <li><a href="/boards">문의</a></li>
+      <li><a href="/mypage">개인정보</a></li>
+    </ul>
+  </nav>
+</div>
 <div class="container mt-5">
-  <h1>주문 목록</h1>
-  <table class="table">
-    <thead>
-    <tr>
-      <th>주문번호</th>
-      <th>주문일</th>
-      <th>주문 상태</th>
-      <th>총 금액</th>
-      <th>상세 보기</th>
-      <th>취소</th>
-      <th>반품</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="order : ${orders}">
-      <td th:text="${order.orderNo}"></td>
-      <td th:text="${#dates.format(order.orderTimestamp, 'yyyy-MM-dd HH:mm')}"></td>
-      <td th:text="${order.orderStatus}"></td>
-      <td th:text="${order.orderPayment}"></td>
-      <td><a th:href="@{/order/detail/{orderNo}(orderNo=${order.orderNo})}" class="btn btn-info">상세 보기</a></td>
-      <td>
-        <button th:if="${order.orderStatus == '결제 대기' or order.orderStatus == '배송 준비중'}"
-                th:onclick="'showCancelPopup(' + ${order.orderNo} + ');'" class="btn btn-danger">취소</button>
-      </td>
-      <td>
-        <button th:if="${order.orderStatus == '배송 완료'}"
-                th:onclick="'showReturnPopup(' + ${order.orderNo} + ');'" class="btn btn-warning">반품</button>
-      </td>
-    </tr>
-    </tbody>
-  </table>
-
-  <!-- 취소 확인 팝업 -->
-  <div class="modal fade" id="cancelOrderModal" tabindex="-1" aria-labelledby="cancelOrderModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="cancelOrderModalLabel">주문 취소 확인</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          주문을 취소하시겠습니까?
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-          <button type="button" class="btn btn-danger" id="confirmCancelButton">취소</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 반품 요청 팝업 -->
-  <div class="modal fade" id="returnOrderModal" tabindex="-1" aria-labelledby="returnOrderModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="returnOrderModalLabel">반품 요청 확인</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          반품 요청을 하시겠습니까?
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-          <button type="button" class="btn btn-warning" id="confirmReturnButton">반품 요청</button>
-        </div>
+  <div class="card bg-light card-custom mx-auto" style="border-radius: 1rem; max-width: 800px;">
+    <div class="card-body p-5">
+      <h2 class="card-title text-center">Order List</h2>
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+          <tr>
+            <th>Order ID</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Total</th>
+            <th>Action</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr th:each="order : ${orders}">
+            <td th:text="${order.id}">1</td>
+            <td th:text="${order.date}">2024-07-20</td>
+            <td th:text="${order.status}">Completed</td>
+            <td th:text="${order.total}">$100.00</td>
+            <td>
+              <a href="#" class="btn btn-primary">Details</a>
+              <a href="#" class="btn btn-danger">Cancel</a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
 </div>
+<footer th:replace="footer :: footer"></footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
-<script>
-  function showCancelPopup(orderNo) {
-    const cancelButton = document.getElementById('confirmCancelButton');
-    cancelButton.onclick = function () {
-      // 여기에 주문 취소 요청을 서버로 전송하는 코드를 추가하세요.
-      console.log('주문 번호', orderNo, '취소 요청 전송');
-      // 서버로 요청을 보낸 후, 성공적으로 처리되면 페이지를 새로고침합니다.
-      location.reload();
-    };
-    new bootstrap.Modal(document.getElementById('cancelOrderModal')).show();
-  }
+<script src="js/script.js"></script>
 
-  function showReturnPopup(orderNo) {
-    const returnButton = document.getElementById('confirmReturnButton');
-    returnButton.onclick = function () {
-      // 여기에 반품 요청을 서버로 전송하는 코드를 추가하세요.
-      console.log('주문 번호', orderNo, '반품 요청 전송');
-      // 서버로 요청을 보낸 후, 성공적으로 처리되면 페이지를 새로고침합니다.
-      location.reload();
-    };
-    new bootstrap.Modal(document.getElementById('returnOrderModal')).show();
-  }
-</script>
 </body>
 </html>

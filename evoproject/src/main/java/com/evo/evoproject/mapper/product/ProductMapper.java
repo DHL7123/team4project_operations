@@ -1,6 +1,7 @@
 package com.evo.evoproject.mapper.product;
 
 
+import com.evo.evoproject.domain.order.Orderitem;
 import com.evo.evoproject.domain.product.Product;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -28,4 +29,5 @@ public interface ProductMapper {
     void updateProduct(Product product);
     int countProductsAdmin(Integer soldout);
     void deleteProductImageMapping( @Param("imageId") int imageId);
+
 }

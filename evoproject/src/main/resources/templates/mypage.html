@@ -122,7 +122,7 @@
   </style>
   <script src="script.js"></script>
 </head>
-
+<body class="bg-light" th:data-user-no="${userNo}">
 <header th:replace="header :: header"></header>
 <body>
 
@@ -132,7 +132,7 @@
 <div class="sidebar">
   <nav class="main-nav" role="navigation">
     <ul class="unstyled list-hover-slide">
-      <li><a href="/orders/1">주문목록</a></li>
+      <li><a href="/orders/{userNo}">주문목록</a></li>
       <li><a href="#">취소/반품내역</a></li>
       <li><a href="/boards">문의</a></li>
       <li><a href="/mypage">개인정보</a></li>
