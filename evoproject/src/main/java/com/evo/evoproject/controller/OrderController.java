@@ -1,6 +1,7 @@
 package com.evo.evoproject.controller;
 
 import com.evo.evoproject.domain.cart.Cart;
+import com.evo.evoproject.domain.cart.Product;
 import com.evo.evoproject.domain.order.Order;
 import com.evo.evoproject.domain.user.User;
 import com.evo.evoproject.service.cart.CartService;
@@ -11,10 +12,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.*;
+import java.time.LocalDateTime;
 
 import jakarta.servlet.http.HttpSession;
 import java.util.List;
@@ -64,7 +63,47 @@ public class OrderController {
         return "orderComplete";
     }
 
-    @GetMapping("/checkout")
+    @PostMapping("/cart")
+    public String checkout(@RequestParam int userNo, HttpSession session) {
+        List<Cart> cartItems = cartService.getCartItemsByUser(userNo);
+        session.setAttribute("cartItems", cartItems);
+
+        String userId = (String) session.getAttribute("userId");
+        User user = userService.findUserByUserId(userId);
+
+        for (Cart cart : cartItems) {
+            for (Product product : cart.getProducts()) {
+                // Order 객체 생성 및 설정
+                Order order = new Order();
+                order.setUser_no(user.getUserNo());
+                order.setPro_no(product.getProNo());
+                order.setOrder_name(user.getUserName());
+                order.setOrder_address1(user.getUserAddress1());
+                order.setOrder_address2(user.getUserAddress2());
+                order.setOrder_phone(user.getUserPhone());
+                order.setOrder_comment("Example comment"); // 필요 시 설정
+                order.setPro_name(product.getProName());
+                order.setOrder_timestamp(LocalDateTime.now());
+                order.setPro_stock(cart.getCartQuantity());
+                order.setOrder_payment(product.getProPrice()); // 기본값 설정
+                order.setOrder_status(0); // 기본값 설정
+                order.setRequestType(0); // 기본값 설정
+                order.setOrder_delivnum(0); // 기본값 설정
+
+                // 세션에 저장
+                session.setAttribute("order", order);
+
+                // 로그로 확인
+                log.info("세션에 저장된 주문 정보 순서대로: {} {} {} {} {} {} {} {} {} {} {} {} {} {}", order.getUser_no(),
+                        order.getPro_no(), order.getOrder_name(), order.getOrder_address1(), order.getOrder_address2(),
+                        order.getOrder_phone(), order.getOrder_comment(), order.getPro_name(),
+                        order.getOrder_timestamp(), order.getPro_stock(), order.getOrder_payment(), order.getOrder_status(), order.getRequestType(), order.getOrder_delivnum());
+            }
+        }
+        return "redirect:/paymentOrders/cart/checkout";
+    }
+
+    @GetMapping("/cart/checkout")
     public String showCheckoutPage(HttpSession session, Model model) {
         String userId = (String) session.getAttribute("userId");
         if (userId != null) {

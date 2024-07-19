@@ -4,11 +4,12 @@ import com.evo.evoproject.domain.product.RetrieveProduct;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
+import lombok.Data;
 import java.time.LocalDateTime;
 
 @Setter
 @Getter
+@Data
 @NoArgsConstructor
 public class Order {
     // Getters and Setters
@@ -18,7 +19,7 @@ public class Order {
     private String order_name;
     private String order_address1;
     private String order_address2;
-    private String order_phone;
+    private int order_phone;
     private String order_comment;
     private String pro_name;
     private LocalDateTime order_timestamp;

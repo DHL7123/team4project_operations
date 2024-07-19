@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <title>Order List</title>
     <link href="../static/css/order.css" rel="stylesheet" th:href="@{/css/order.css}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
     <style>
         .container {
             margin: 0 auto;
             max-width: 800px;
             padding: 0 15px;
         }
+
         .payment-form {
             margin-top: 20px;
             border: 1px solid #ccc;
@@ -22,22 +23,23 @@
         .form-check-input {
             margin-top: 5px;
         }
+
         .payment-buttons {
             text-align: center;
         }
     </style>
     <!-- jQuery -->
     <script
-            type="text/javascript"
             src="https://code.jquery.com/jquery-1.12.4.min.js"
+            type="text/javascript"
     ></script>
     <!-- iamport.payment.js -->
     <script
-            type="text/javascript"
             src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"
+            type="text/javascript"
     ></script>
     <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-    <script src="../static/order.js" defer></script>
+    <script defer th:src="@{../static/js/order.js}"></script>
 </head>
 <body>
 <header class="header">
@@ -51,93 +53,114 @@
     <h1 class="text-center">주문/결제</h1>
     <div class="payment-form">
         <div class="row mb-3">
-            <label for="inputName" class="col-sm-2 col-form-label">이름</label>
+            <label class="col-sm-2 col-form-label" for="inputName">이름</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="inputName" th:value="${user.userName}" placeholder="이름을 입력하세요">
+                <input class="form-control" id="inputName" placeholder="이름을 입력하세요" th:value="${user.userName}"
+                       type="text">
             </div>
         </div>
         <div class="row mb-3">
-            <label for="inputAddress" class="col-sm-2 col-form-label">배송지 주소</label>
+            <label class="col-sm-2 col-form-label" for="inputAddress">배송지 주소</label>
             <div class="col-sm-6">
-                <input type="text" class="form-control" id="inputAddress" th:name="order_address1" th:value="${user.userAddress1}" placeholder="주소를 입력하세요">
+                <input class="form-control" id="inputAddress" placeholder="주소를 입력하세요" th:name="order_address1"
+                       th:value="${user.userAddress1}" type="text">
             </div>
             <div class="col-sm-4">
-                <button type="button" class="btn btn-primary" onclick="searchAddress()">우편번호</button>
+                <button class="btn btn-primary" onclick="searchAddress()" type="button">우편번호</button>
             </div>
         </div>
         <div class="row mb-3">
-            <label for="inputDetailAddress" class="col-sm-2 col-form-label">상세주소</label>
+            <label class="col-sm-2 col-form-label" for="inputDetailAddress">상세주소</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="inputDetailAddress" th:name="order_address2" th:value="${user.userAddress2}" placeholder="상세주소를 입력하세요">
+                <input class="form-control" id="inputDetailAddress" placeholder="상세주소를 입력하세요" th:name="order_address2"
+                       th:value="${user.userAddress2}" type="text">
             </div>
         </div>
         <div class="row mb-3">
-            <label for="inputRecipient" class="col-sm-2 col-form-label">수령인</label>
+            <label class="col-sm-2 col-form-label" for="inputRecipient">수령인</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="inputRecipient" th:name="order_name" th:value="${user.userName}" placeholder="수령인의 이름을 입력하세요">
+                <input class="form-control" id="inputRecipient" placeholder="수령인의 이름을 입력하세요" th:name="order_name"
+                       th:value="${user.userName}" type="text">
             </div>
         </div>
         <div class="row mb-3">
-            <label for="inputPhone" class="col-sm-2 col-form-label">휴대폰번호</label>
+            <label class="col-sm-2 col-form-label" for="inputPhone">휴대폰번호</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="inputPhone" th:name="order_phone" th:value="${user.userPhone}" placeholder="휴대폰번호를 입력하세요 (000-0000-0000)">
+                <input class="form-control" id="inputPhone" placeholder="휴대폰번호를 입력하세요 (000-0000-0000)" th:name="order_phone"
+                       th:value="${user.userPhone}" type="text">
             </div>
         </div>
         <div class="row mb-3">
-            <label for="inputRequest" class="col-sm-2 col-form-label">요청사항</label>
+            <label class="col-sm-2 col-form-label" for="inputRequest">요청사항</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="inputRequest" placeholder="특별한 요청사항이 있으면 입력하세요">
+                <input class="form-control" id="inputRequest" placeholder="특별한 요청사항이 있으면 입력하세요" type="text">
             </div>
         </div>
         <hr>
         <div class="row mb-3">
-            <label class="col-sm-2 col-form-label">상품 이미지</label>
-            <div class="col-sm-2">
-                <img src="/path/to/product-image.jpg" class="img-fluid" alt="상품 이미지">
-            </div>
-            <div class="col-sm-6">
-                <div class="mb-3">
-                    <div class="fw-bold">상품명</div>
-                    <label class="col-sm-2 col-form-label" th:name="pro_name" th:text="${order.pro_name}"></label>
-                </div>
-                <div class="mb-3">
-                    <div class="fw-bold">상품수량</div>
-                    <div>상품 수량을 여기에 표시</div>
-                </div>
-            </div>
-        </div>
-        <div class="row mb-3">
-            <label for="inputPaymentMethod" class="col-sm-2 col-form-label">결제방법</label>
-            <div class="col-sm-10">
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="paymentMethod" id="creditCard" value="creditCard">
-                    <label class="form-check-label" for="creditCard">
-                        신용카드 결제
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="paymentMethod" id="bankTransfer" value="bankTransfer">
-                    <label class="form-check-label" for="bankTransfer">
-                        계좌 이체
-                    </label>
-                </div>
-                <label class="form-check-label" id="info">
-                    * 계좌 번호: 국민 XXX-XX-XXXX-XXX<br>
-                    * 계좌 이체시 주문하신 후 3일이내 입금확인이 되지 않으면,<br>
-                    자동 주문취소 처리되므로, 3일 내로 입금을 꼭 해주셔야 합니다.
-                </label>
-            </div>
-        </div>
-        <div class="payment-buttons">
-            <button type="button" class="btn btn-primary" id="checkoutButton">Check out</button>
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Shipping</th>
+                    <th>SubTotal</th>
+                    <th></th>
+                </tr>
+                </thead>
+
+                <tbody th:if="${cartItems != null}">
+                <tr th:each="cartItem : ${cartItems}">
+                    <td th:each="product : ${cartItem.products}" th:text="${product.proName}"></td>
+                    <td th:each="product : ${cartItem.products}" th:text="${product.proPrice}"></td>
+                    <td th:text="${cartItem.cartQuantity}"></td>
+                    <td th:each="product : ${cartItem.products}" th:text="${product.shipping}"></td>
+                    <td>
+                        <!-- 상품가격 + 상품의 배송비 합계 -->
+                        <span th:each="product : ${cartItem.products}"
+                              th:text="${product.proPrice * cartItem.cartQuantity + product.shipping}"></span>
+                    </td>
+                </tr>
+                </tbody>
+
+            </table>
         </div>
     </div>
+    <div class="row mb-3">
+        <label class="col-sm-2 col-form-label" for="inputPaymentMethod">결제방법</label>
+        <div class="col-sm-10">
+            <div class="form-check">
+                <input class="form-check-input" id="creditCard" name="paymentMethod" type="radio" value="creditCard">
+                <label class="form-check-label" for="creditCard">
+                    신용카드 결제
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" id="bankTransfer" name="paymentMethod" type="radio"
+                       value="bankTransfer">
+                <label class="form-check-label" for="bankTransfer">
+                    계좌 이체
+                </label>
+            </div>
+            <label class="form-check-label" id="info">
+                * 계좌 번호: 국민 XXX-XX-XXXX-XXX<br>
+                * 계좌 이체시 주문하신 후 3일이내 입금확인이 되지 않으면,<br>
+                자동 주문취소 처리되므로, 3일 내로 입금을 꼭 해주셔야 합니다.
+            </label>
+        </div>
+    </div>
+    <div class="payment-buttons">
+        <button class="btn btn-primary" id="checkoutButton" type="button">Check out</button>
+    </div>
+</div>
 </div>
 </body>
 <script>
     function searchAddress() {
         new daum.Postcode({
-            oncomplete: function(data) {
+            oncomplete: function (data) {
                 var fullAddr = data.address;
                 var extraAddr = '';
 

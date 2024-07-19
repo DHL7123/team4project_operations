@@ -74,7 +74,8 @@
 
 <!-- 체크아웃 버튼 -->
 <div class="checkoutBtn">
-    <form action="/cart/checkout" method="post">
+    <form action="/paymentOrders/cart" method="post">
+        <input type="hidden" name="userNo" th:value="${userNo}" />
         <button type="submit" class="btn btn-primary btn-rounded btn-block btn-lg fw-bold">Check out</button>
     </form>
 </div>
