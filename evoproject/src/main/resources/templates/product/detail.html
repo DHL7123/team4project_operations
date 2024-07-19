@@ -8,7 +8,7 @@
     <link rel="stylesheet" th:href="@{/css/detail.css}">
 </head>
 
-<body class="bg-light" data-user-no="/*[[${userNo}]]*/">
+<body class="bg-light" th:data-user-no="${userNo}">
 
 <header th:replace="~{header :: header}"></header>
 
@@ -122,10 +122,19 @@
     function addToCart(productNo, price, quantity, stock) {
         const userNo = document.body.getAttribute('data-user-no');
 
+        // 사용자 번호가 guest 경우
+        if (userNo === 'guest') {
+            alert('로그인이 필요합니다.');
+            window.location.href = '/login';
+            return;
+        }
+
+        // 요청된 수량이 재고 수량을 초과한 경우
         if (quantity > stock) {
             alert('재고 수량을 초과했습니다.');
             return;
         }
+
         fetch('/cart/add', {
             method: 'POST',
             headers: {
@@ -142,13 +151,16 @@
                     window.location.href = '/cart';
                 }
             } else {
-                alert('상품 추가에 실패했습니다.');
+                alert('상품 추가에 실패했습니다. 장바구니를 확인해주세요.');{
+                    window.location.href = '/cart';
+                }
             }
         }).catch(error => {
             console.error('Error:', error);
             alert('상품 추가 중 오류가 발생했습니다.');
         });
     }
+
 </script>
 
 <footer th:replace="~{footer :: footer}"></footer>

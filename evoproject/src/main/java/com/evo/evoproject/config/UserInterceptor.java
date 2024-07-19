@@ -15,22 +15,24 @@ public class UserInterceptor  implements HandlerInterceptor {
     @Autowired
     private CartService cartService;
 
+
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
         if (authentication != null && authentication.isAuthenticated() && !authentication.getName().equals("anonymousUser")) {
-            String currentUserId = authentication.getName(); // userId를 가져옴
+            String currentUserId = authentication.getName();
             int userNo = cartService.getUserNoByUserId(currentUserId);
             request.setAttribute("userNo", userNo);
+        } else {
+            request.setAttribute("userNo", "guest");
         }
 
         return true;
     }
 
     @Override
-    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
-                           ModelAndView modelAndView) throws Exception {
+    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
         if (modelAndView != null) {
             Object userNo = request.getAttribute("userNo");
             if (userNo != null) {
@@ -39,4 +41,3 @@ public class UserInterceptor  implements HandlerInterceptor {
         }
     }
 }
-
