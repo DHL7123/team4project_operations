@@ -107,15 +107,15 @@
 
 <script>
     document.getElementById('agree-all').addEventListener('change', function() {
-        var checkboxes = document.querySelectorAll('.terms input[type="checkbox"]');
+        var checkboxes = document.querySelectorAll('.terms input[type="checkbox"]:not(#marketing-consent)');
         for (var checkbox of checkboxes) {
             checkbox.checked = this.checked;
         }
         checkRequiredCheckboxes();
     });
 
-    var termsCheckboxes = document.querySelectorAll('.terms input[type="checkbox"]:not(#marketing-consent)");
-        for (var checkbox of termsCheckboxes) {
+    var termsCheckboxes = document.querySelectorAll('.terms input[type="checkbox"]:not(#marketing-consent)');
+    for (var checkbox of termsCheckboxes) {
         checkbox.addEventListener('change', function() {
             var allChecked = true;
             for (var checkbox of termsCheckboxes) {

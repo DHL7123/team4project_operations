@@ -177,7 +177,6 @@
         <div class="container-fluid px-4">
           <h1 class="mt-4">상품관리</h1>
           <div class="header-container">
-            <h1>상품 목록</h1>
             <form id="sortForm" action="/admin/product" method="get" class="form-inline mb-3">
               <select name="sort" class="form-control mr-2" onchange="document.getElementById('sortForm').submit()">
                 <option value="pro_date_desc" th:selected="${productsResponse.sort == 'pro_date_desc'}">최근 등록순</option>

@@ -70,7 +70,12 @@
                                 </thead>
                                 <tbody>
                                 <tr th:each="board : ${boards}">
-                                    <td th:text="${board.categoryId}"></td>
+                                    <!-- 카테고리 ID -->
+                                    <td>
+                                        <span th:if="${board.categoryId == 1}">상품</span>
+                                        <span th:if="${board.categoryId == 2}">배송</span>
+                                        <span th:if="${board.categoryId == 3}">기타</span>
+                                    </td>
                                     <!-- 제목 -->
                                     <td>
                                         <a th:href="@{/admin/boards/view/{boardNo}(boardNo=${board.boardNo})}" th:text="${board.boardTitle}"></a>
@@ -85,7 +90,7 @@
                                            onclick="confirmDelete(this)"
                                            class="btn btn-danger btn-sm">삭제</a>
                                     </td>
-                                    <!-- 담변상태 -->
+                                    <!-- 답변 상태 -->
                                     <td th:text="${board.answeredStatus}"></td>
                                 </tr>
                                 </tbody>

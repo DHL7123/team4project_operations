@@ -15,8 +15,11 @@
 <div class="CartBanner">
     <img th:src="@{/image/cart.png}" alt="Shopping Cart">
 </div>
+<div th:if="${errorMessage}" class="alert alert-danger" role="alert">
+    <span th:text="${errorMessage}"></span>
+</div>
 
-<form th:action="@{/cart/deleteSelected}" method="post">
+<form th:action="@{/cart/deleteSelected}" method="post" onsubmit="return validateSelection()">
     <input type="hidden" name="userNo" th:value="${userNo}" />
 
     <table class="table">
@@ -50,7 +53,7 @@
             <td th:text="${cartItem.cartQuantity}"></td>
             <td th:each="product : ${cartItem.products}" th:text="${product.shipping}"></td>
             <td>
-                <span th:each="product : ${cartItem.products}" th:text="${product.proPrice * cartItem.cartQuantity + product.shipping}"></span>
+                <span th:each="product : ${cartItem.products}" th:text="${(product.proPrice * cartItem.cartQuantity) + product.shipping}"></span>
             </td>
         </tr>
         </tbody>
@@ -58,12 +61,9 @@
 
     <!-- 선택 상품 삭제 버튼 -->
     <div class="text-right mt-3">
-        <form th:action="@{/cart/deleteSelected}" method="post">
-            <input type="hidden" name="userNo" th:value="${userNo}" />
-            <button type="submit" class="btn btn-sm btn-light-brown">
-                <img th:src="@{/image/delete.png}" alt="Delete" height="30px" width="30px">
-            </button>
-        </form>
+        <button type="submit" class="btn btn-sm btn-light-brown">
+            <img th:src="@{/image/delete.png}" alt="Delete" height="30px" width="30px">
+        </button>
     </div>
 </form>
 
@@ -98,7 +98,6 @@
 <script th:inline="javascript">
 
     document.addEventListener('DOMContentLoaded', function() {
-        var cartItems = [];
         var totalAmount = 0;
 
         function calculateTotal() {
@@ -112,15 +111,13 @@
                 var price = parseFloat(row.querySelector('td:nth-child(3)').textContent.trim().replace(/,/g, ''));
                 var quantity = parseInt(row.querySelector('td:nth-child(4)').textContent.trim());
                 var shipping = parseFloat(row.querySelector('td:nth-child(5)').textContent.trim().replace(/,/g, ''));
-                var subTotal = price * quantity + shipping;
+                var subTotal = (price * quantity) + shipping;
                 row.querySelector('td:nth-child(6) span').textContent = formatNumber(subTotal);
                 totalAmount += subTotal;
             });
 
-
             var formattedTotal = '₩' + totalAmount.toLocaleString('ko-KR');
             document.getElementById('totalAmount').textContent = formattedTotal;
-
 
             var checkoutBtn = document.querySelector('.checkoutBtn a');
             checkoutBtn.style.display = checkboxes.length > 0 ? 'block' : 'none';
@@ -166,6 +163,16 @@
             });
 
             calculateTotal();
+        };
+
+        // 폼 제출 시 선택된 상품이 있는지 확인하는 함수
+        window.validateSelection = function() {
+            var selectedCheckboxes = document.querySelectorAll('input.itemCheckbox:checked');
+            if (selectedCheckboxes.length === 0) {
+                alert('선택된 상품이 없습니다!');
+                return false;
+            }
+            return true;
         };
     });
 
