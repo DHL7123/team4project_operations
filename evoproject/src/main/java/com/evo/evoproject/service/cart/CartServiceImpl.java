@@ -43,7 +43,13 @@ public class CartServiceImpl implements CartService {
         if (quantity + currentQuantity > stock) {
             throw new IllegalArgumentException("재고 수량을 초과했습니다.");
         }
-        cartMapper.addProductToCart(userNo, proNo, quantity);
+        if (currentQuantity > 0) {
+            // 장바구니에 이미 상품이 있으면 수량을 증가시킵니다.
+            cartMapper.updateProductQuantityInCart(userNo, proNo, quantity + currentQuantity);
+        } else {
+            // 장바구니에 상품이 없으면 새로 추가합니다.
+            cartMapper.addProductToCart(userNo, proNo, quantity);
+        }
     }
 
 
