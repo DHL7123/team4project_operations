@@ -11,9 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-
 import java.util.List;
-
 
 @Controller
 @RequestMapping("/admin/product")
@@ -25,10 +23,10 @@ public class AdminProductController {
 
     @GetMapping
     public String getProducts(@RequestParam(defaultValue = "pro_date_desc") String sort,
-                                 @RequestParam(defaultValue = "1") int page,
-                                 @RequestParam(defaultValue = "10") int size,
-                                 @RequestParam(required = false) Integer soldout,
-                                 Model model) {
+                              @RequestParam(defaultValue = "1") int page,
+                              @RequestParam(defaultValue = "10") int size,
+                              @RequestParam(required = false) Integer soldout,
+                              Model model) {
         AdminRetrieveProductResponse response = productService.getProductsAdmin(sort, page, size,soldout);
         model.addAttribute("productsResponse", response);
         model.addAttribute("products", response.getProducts());
@@ -49,6 +47,7 @@ public class AdminProductController {
         }
         return "product/productForm";
     }
+
     @PostMapping("/save")
     public String saveProduct(@Valid @ModelAttribute Product product,
                               @RequestParam("images") List<MultipartFile> images) {

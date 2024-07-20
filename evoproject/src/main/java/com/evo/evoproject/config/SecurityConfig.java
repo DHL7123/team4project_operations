@@ -29,25 +29,25 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-//                .authorizeHttpRequests(authorizeRequests ->
-//                        authorizeRequests
-//                                .requestMatchers("/", "/index.html", "/header.html", "/footer.html",
-//                                        "/login", "/css/**", "/image/**","/js/**",
-//                                        "/find-id","/find-password","/check-username","/snb.html","/mypage",
-//                                        "/notice", "/faq", "/servicePolicy", "/privacyPolicy","/deliveryNrefundPolicy",
-//                                        "/product/**").permitAll()
-//                                .requestMatchers("/terms", "/register").access((authentication, context) -> {
-//                                    boolean isAnonymous = authentication.get().getPrincipal().toString().equals("anonymousUser");
-//                                    return new AuthorizationDecision(isAnonymous);
-//                                }) // 로그인하지 않은 사용자만 접근 가능
-//                                .requestMatchers("/admin/**").hasAuthority("ADMIN") // 관리자 전용 URL 패턴
-//                                .anyRequest().authenticated() // 이 외의 요청은 인증 필요
-//
-//                )
                 .authorizeHttpRequests(authorizeRequests ->
                         authorizeRequests
-                                .anyRequest().permitAll() // 모든 요청에 대해 인증을 요구하지 않도록 설정
+                                .requestMatchers("/", "/index.html", "/header.html", "/footer.html",
+                                        "/login", "/css/**", "/image/**","/js/**",
+                                        "/find-id","/find-password","/check-username","/snb.html","/mypage",
+                                        "/notice", "/faq", "/servicePolicy", "/privacyPolicy","/deliveryNrefundPolicy",
+                                        "/product/**").permitAll()
+                                .requestMatchers("/terms", "/register").access((authentication, context) -> {
+                                    boolean isAnonymous = authentication.get().getPrincipal().toString().equals("anonymousUser");
+                                    return new AuthorizationDecision(isAnonymous);
+                                }) // 로그인하지 않은 사용자만 접근 가능
+                                .requestMatchers("/admin/**").hasAuthority("ADMIN") // 관리자 전용 URL 패턴
+                                .anyRequest().authenticated() // 이 외의 요청은 인증 필요
+
                 )
+//                .authorizeHttpRequests(authorizeRequests ->
+//                        authorizeRequests
+//                                .anyRequest().permitAll() // 모든 요청에 대해 인증을 요구하지 않도록 설정
+//                )
                 .formLogin(formLogin ->
                         formLogin
                                 .loginPage("/login") // 커스텀 로그인 페이지 설정

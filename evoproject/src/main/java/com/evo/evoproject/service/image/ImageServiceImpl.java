@@ -1,23 +1,22 @@
 package com.evo.evoproject.service.image;
 
-import com.amazonaws.services.s3.AmazonS3;
-import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.evo.evoproject.domain.image.Image;
 import com.evo.evoproject.mapper.product.ImageMapper;
 import com.evo.evoproject.mapper.product.ProductMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
-import java.io.FileOutputStream;
+import jakarta.annotation.PostConstruct;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -26,19 +25,31 @@ import java.util.UUID;
 @Slf4j
 public class ImageServiceImpl implements ImageService {
 
-    private final AmazonS3 amazonS3;
     private final ImageMapper imageMapper;
     private final ProductMapper productMapper;
 
-    @Value("${cloud.aws.s3.bucket}")
-    private String bucket;
+    @Value("${image.upload.dir}")
+    private String uploadDir;
 
     private static final long MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
+
+    @PostConstruct
+    public void init() {
+        Path path = Paths.get(uploadDir);
+        if (!Files.exists(path)) {
+            try {
+                Files.createDirectories(path);
+            } catch (IOException e) {
+                throw new RuntimeException("디렉토리 생성 중 오류 발생: " + e.getMessage(), e);
+            }
+        }
+    }
 
     @Override
     public void uploadImages(int productNo, List<MultipartFile> files) {
         List<Image> existingImages = imageMapper.findImagesByProductNo(productNo);
         for (MultipartFile file : files) {
+            log.info("Uploading file: {}", file.getOriginalFilename());
             if (file.getSize() > MAX_FILE_SIZE) {
                 throw new IllegalStateException("File size exceeds 5MB");
             }
@@ -66,12 +77,28 @@ public class ImageServiceImpl implements ImageService {
     }
 
     @Override
-    public void deleteImageByUrl(String imageName) {
-        String fileName = imageName.substring(imageName.lastIndexOf("/") + 1);
+    public void deleteImageByUrl(String imageUrl) {
+        String fileName = imageUrl.substring(imageUrl.lastIndexOf("/") + 1);
         try {
-            amazonS3.deleteObject(bucket, fileName);
-        } catch (Exception e) {
+            Path path = Paths.get(uploadDir, fileName);
+            Files.deleteIfExists(path);
+        } catch (IOException e) {
             throw new RuntimeException("파일 삭제 중 오류 발생: " + e.getMessage(), e);
+        }
+    }
+
+    @Override
+    public Resource loadImage(String fileName) {
+        try {
+            Path filePath = Paths.get(uploadDir).resolve(fileName).normalize();
+            Resource resource = new UrlResource(filePath.toUri());
+            if (resource.exists()) {
+                return resource;
+            } else {
+                throw new RuntimeException("File not found " + fileName);
+            }
+        } catch (MalformedURLException e) {
+            throw new RuntimeException("File not found " + fileName, e);
         }
     }
 
@@ -81,28 +108,16 @@ public class ImageServiceImpl implements ImageService {
                 .anyMatch(existingImage -> existingImage.getImageName().endsWith(fileName));
     }
 
-    private File convertMultipartFileToFile(MultipartFile file) {
-        File convFile = new File(System.getProperty("java.io.tmpdir") + "/" + UUID.randomUUID() + "_" + file.getOriginalFilename());
-        try (FileOutputStream fos = new FileOutputStream(convFile)) {
-            fos.write(file.getBytes());
-        } catch (IOException e) {
-            throw new RuntimeException("파일 변환 중 오류 발생", e);
-        }
-        return convFile;
-    }
-
     private String uploadImage(MultipartFile file) {
         String fileName = UUID.randomUUID() + "_" + file.getOriginalFilename();
-        File tempFile = convertMultipartFileToFile(file);
+        Path path = Paths.get(uploadDir, fileName);
         try {
-            amazonS3.putObject(new PutObjectRequest(bucket, fileName, tempFile));
-            return amazonS3.getUrl(bucket, fileName).toString();
-        } catch (Exception e) {
+            log.info("Saving file to: {}", path.toString());
+            Files.createDirectories(path.getParent());
+            Files.write(path, file.getBytes());
+            return "/productimage/" + fileName;
+        } catch (IOException e) {
             throw new RuntimeException("파일 업로드 중 오류 발생: " + e.getMessage(), e);
-        } finally {
-            if (tempFile.exists()) {
-                tempFile.delete();
-            }
         }
     }
 }
