@@ -229,7 +229,7 @@
     function showConfirmPopup(orderNo) {
         // 팝업을 표시하고 form의 action을 설정합니다.
         document.getElementById('confirmPopup').style.display = 'block';
-        document.getElementById('confirmForm').action = '/admin/manageOrder/' + orderNo + '/requestType/3';
+        document.getElementById('confirmForm').action = '/admin/manageOrder/' + orderNo + '/requestType/3/orderStatus/3';
         currentOrderNo = orderNo;  // 현재 주문 번호를 저장합니다.
     }
     // 결제 취소 요청 처리 확인창
@@ -243,14 +243,6 @@
         }
     }
 
-    // 환불 요청 처리 팝업
-    function showRefundPopup(orderNo) {
-        // 팝업을 표시하고 form의 action을 설정합니다.
-        document.getElementById('refundPopup').style.display = 'block';
-        document.getElementById('refundForm').action = '/admin/manageOrder/' + orderNo + '/requestType/4';
-        currentOrderNo = orderNo;  // 현재 주문 번호를 저장합니다.
-    }
-
     // 환불 요청 처리 확인창
     function confirmRefund() {
         if (confirm("환불을 승인하시겠습니까?")) {
@@ -261,6 +253,15 @@
             hidePopup('refundPopup');
         }
     }
+
+    // 환불 요청 처리 팝업
+    function showRefundPopup(orderNo) {
+        // 팝업을 표시하고 form의 action을 설정합니다.
+        document.getElementById('refundPopup').style.display = 'block';
+        document.getElementById('refundForm').action = '/admin/manageOrder/' + orderNo + '/requestType/4/orderStatus/3';
+        currentOrderNo = orderNo;  // 현재 주문 번호를 저장합니다.
+    }
+
     // 환불 요청 거절 확인창
     function denyRefund() {
         if (confirm("환불을 거절하시겠습니까?")) {
