@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <title>Evo Martket_Admin_주문관리</title>
+    <meta http-equiv="refresh" content="600">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" />
     <link rel="stylesheet" th:href="@{/css/styles.css}">
     <link rel="stylesheet" th:href="@{/css/admin.css}">
@@ -66,7 +67,6 @@
                             <th>주문번호</th>
                             <th>주문자</th>
                             <th>총금액</th>
-                            <th>결제금액</th>
                             <th>상태</th>
                             <th>결제 취소/환불 처리</th>
                         </tr>
@@ -75,7 +75,6 @@
                             <td th:text="${order.orderNo}"></td>
                             <td th:text="${order.orderName}"></td>
                             <td th:text="${order.orderPayment}"></td>
-                            <td th:text="${order.orderPayment}"></td>
                             <td>
                                 <span th:if="${order.orderStatus == 0}">결제 대기</span>
                                 <form th:if="${order.orderStatus == 0}" method="post" th:action="@{/admin/manageOrder/{orderNo}/{status}(orderNo=${order.orderNo}, status=1)}" id="updateForm">
@@ -83,35 +82,38 @@
                                     <button type="button" onclick="confirmUpdate()" class="manageConfirmBtn">결제완료</button>
                                 </form>
 
+                                <!-- 배송 준비중 상태에서 송장번호 입력 버튼과 팝업창 -->
                                 <span th:if="${order.orderStatus == 1}">
                                     배송 준비중 <br>
                                     <button type="button" th:onclick="'showPopup(\'' + ${order.orderNo} + '\', \'inputPopup\');'" class="manageConfirmBtn">송장번호입력</button>
                                     <div th:id="'inputPopup-' + ${order.orderNo}" class="popup" style="display: none;">
                                         <div class="popup-content">
-                                            <form method="post" th:action="@{/admin/manageOrder/{orderNo}/{status}/orderDelivnum(orderNo=${order.orderNo}, status=2)}">
+                                            <form method="post" onsubmit="return validateDelivnum();" th:action="@{/admin/manageOrder/{orderNo}/{status}/orderDelivnum(orderNo=${order.orderNo}, status=2)}">
                                                 <h2>운송장 번호</h2>
-                                                <input type="text" name="orderDelivnum" placeholder="송장번호">
+                                                <input type="text" id="delivnum" name="orderDelivnum" placeholder="송장번호">
                                                 <input type="hidden" name="prevStatus" th:value="${selectedStatus}">
                                                 <div style="margin-top: 20px;">
                                                     <button type="submit" style="border: none; background-color: #0d6efd; color: white">확인</button>
-                                                    <button type="button" th:onclick="'hidePopup(\'' + ${order.orderNo} + '\', \'inputPopup\');'" style="border: none; background-color: #939393; color: white">취소</button>
+                                                    <button type="button" th:onclick="'hidePopup(\'inputPopup-' + ${order.orderNo} + '\');'" style="border: none; background-color: #939393; color: white">취소</button>
                                                 </div>
                                             </form>
                                         </div>
                                     </div>
                                 </span>
+
+                                <!-- 배송중 상태에서 송장번호 조회 버튼과 팝업창, 배송완료 버튼 -->
                                 <span th:if="${order.orderStatus == 2}">
                                     배송중 <br>
                                     <button type="button" th:onclick="'showPopup(\'' + ${order.orderNo} + '\', \'viewPopup\');'" class="manageConfirmBtn">송장번호조회</button>
                                     <form method="post" th:action="@{/admin/manageOrder/{orderNo}/{status}(orderNo=${order.orderNo}, status=4)}" id="updateForm2">
                                         <input type="hidden" name="prevStatus" th:value="${selectedStatus}">
-                                        <button type="submit" onclick="confirmUpdate2()" class="manageConfirmBtn">배송완료</button>
+                                        <button type="button" onclick="confirmUpdate2()" class="manageConfirmBtn">배송완료</button>
                                     </form>
                                     <div th:id="'viewPopup-' + ${order.orderNo}" class="popup" style="display: none;">
                                         <div class="popup-content">
                                             <h2>운송장 번호</h2>
                                             <p th:text="${order.orderDelivnum}"></p>
-                                            <button type="button" th:onclick="'hidePopup(\'' + ${order.orderNo} + '\', \'viewPopup\');'" style="border: none; background-color: #939393; color: white">닫기</button>
+                                            <button type="button" th:onclick="'hidePopup(\'viewPopup-' + ${order.orderNo} + '\');'" style="border: none; background-color: #939393; color: white">닫기</button>
                                         </div>
                                     </div>
                                 </span>
@@ -123,7 +125,7 @@
 
                             <td>
                                 <!-- 결제 취소 요청 처리 버튼 -->
-                                <button th:if="${order.orderStatus == 3 && order.requestType == 1}" th:onclick="'showConfirmPopup(' + ${order.orderNo} + ')'" class="manageConfirmBtnPlus">결제 취소 요청처리</button>
+                                <button th:if="${order.orderStatus == 3 && order.requestType == 1}" th:onclick="'showConfirmPopup(' + ${order.orderNo} + ')'" class="manageConfirmBtnPlus">결제 취소 요청 처리</button>
                                 <span th:if="${order.orderStatus == 3 && order.requestType == 3}">결제 취소 처리 완료</span>
 
                                 <!-- 결제 취소 요청 처리 팝업 -->
@@ -138,15 +140,37 @@
                                 </div>
 
                                 <!-- 환불 요청 처리 버튼 -->
-                                <form th:if="${order.orderStatus == 3 && order.requestType == 2}" method="post" th:action="@{/admin/manageOrder/{orderNo}/requestType/{requestType}(orderNo=${order.orderNo}, requestType=0)}">
-                                    <input type="hidden" name="prevStatus" th:value="${selectedStatus}">
-                                    <button type="submit" class="manageConfirmBtn">환불 요청처리</button>
-                                </form>
+                                <button th:if="${order.orderStatus == 3 && order.requestType == 2}" th:onclick="'showRefundPopup(' + ${order.orderNo} + ')'" class="manageConfirmBtnPlus">환불 요청 처리</button>
+                                <span th:if="${order.orderStatus == 3 && order.requestType == 4}">환불 처리 완료</span>
+                                <span th:if="${order.orderStatus == 4 && order.requestType == 5}">환불 요청 거절</span>
+
+                                <!-- 환불 요청 처리 팝업 -->
+                                <div id="refundPopup" class="popup" style="display: none;">
+                                    <div class="popup-content">
+                                        <h2>환불 요청 처리</h2>
+                                        <form id="refundForm" method="post">
+                                            <input type="hidden" name="prevStatus" th:value="${selectedStatus}">
+                                            <button type="button" onclick="confirmRefund()" style="border: none; background-color: #0d6efd; color: white">승인</button>
+                                            <button type="button" onclick="denyRefund()" style="border: none; background-color: #939393; color: white">거절</button>
+                                        </form>
+                                    </div>
+                                </div>
 
 
                             </td>
                         </tr>
                     </table>
+
+                    <!-- 페이지네이션 컨트롤 -->
+                    <div class="pagination">
+                        <a th:if="${currentPage > 1}" th:href="@{/admin/manageOrder/{status}(status=${selectedStatus == 'all' ? 5 : selectedStatus}, page=${currentPage - 1})}" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                        <span th:text="${currentPage}"></span>
+                        <a th:if="${currentPage < totalPage}" th:href="@{/admin/manageOrder/{status}(status=${selectedStatus == 'all' ? 5 : selectedStatus}, page=${currentPage + 1})}" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </div>
 
 
                 </div>
@@ -162,17 +186,34 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
 <script>
 
-    <!--  결제완료확인confirm창  -->
+    // 결제완료확인 confirm창
     function confirmUpdate() {
         if (confirm("해당 상품의 결제를 확인하셨습니까?")) {
             document.getElementById("updateForm").submit();
         }
     }
 
-    <!--  배송완료확인 confirm창  -->
+    //송장번호 입력 시 유효성 검사
+    function validateDelivnum() {
+        var delivnum = document.getElementById('delivnum').value;
+        var regex = /^[0-9]{1,12}$/;
+
+        if (!regex.test(delivnum)) {
+            alert("운송장 번호는 12자 이하의 숫자만 입력해야 합니다.");
+            return false;  // form의 제출을 방지합니다.
+        }
+
+        return true;  // form의 제출을 허용합니다.
+    }
+
+    // 배송완료확인 confirm창
     function confirmUpdate2() {
         if (confirm("해당 상품의 배송이 완료되었습니까?")) {
-            document.getElementById("updateForm").submit();
+            // "확인"을 클릭하면 form을 제출하여 orderStatus를 업데이트합니다.
+            document.getElementById("updateForm2").submit();
+        } else {
+            // "취소"를 클릭하면 팝업을 닫습니다.
+            hidePopup('viewPopup-' + currentOrderNo);
         }
     }
 
@@ -184,13 +225,14 @@
         document.getElementById(popupId).style.display = 'none';
     }
 
+    // 결제 취소 요청 처리 팝업
     function showConfirmPopup(orderNo) {
         // 팝업을 표시하고 form의 action을 설정합니다.
         document.getElementById('confirmPopup').style.display = 'block';
         document.getElementById('confirmForm').action = '/admin/manageOrder/' + orderNo + '/requestType/3';
         currentOrderNo = orderNo;  // 현재 주문 번호를 저장합니다.
     }
-
+    // 결제 취소 요청 처리 확인창
     function confirmRequest() {
         if (confirm("승인하시겠습니까?")) {
             // form을 제출하여 requestType을 업데이트합니다.
@@ -198,6 +240,36 @@
         } else {
             // "취소"를 클릭하면 팝업을 닫습니다.
             hidePopup('confirmPopup');  // 현재 주문 번호를 사용하여 팝업을 닫습니다.
+        }
+    }
+
+    // 환불 요청 처리 팝업
+    function showRefundPopup(orderNo) {
+        // 팝업을 표시하고 form의 action을 설정합니다.
+        document.getElementById('refundPopup').style.display = 'block';
+        document.getElementById('refundForm').action = '/admin/manageOrder/' + orderNo + '/requestType/4';
+        currentOrderNo = orderNo;  // 현재 주문 번호를 저장합니다.
+    }
+
+    // 환불 요청 처리 확인창
+    function confirmRefund() {
+        if (confirm("환불을 승인하시겠습니까?")) {
+            // form을 제출하여 requestType을 업데이트합니다.
+            document.getElementById('refundForm').submit();
+        } else {
+            // "취소"를 클릭하면 팝업을 닫습니다.
+            hidePopup('refundPopup');
+        }
+    }
+    // 환불 요청 거절 확인창
+    function denyRefund() {
+        if (confirm("환불을 거절하시겠습니까?")) {
+            // form의 action을 수정하여 requestType을 5로, orderStatus를 4로 업데이트합니다.
+            document.getElementById('refundForm').action = '/admin/manageOrder/' + currentOrderNo + '/requestType/5/orderStatus/4';
+            document.getElementById('refundForm').submit();
+        } else {
+            // "취소"를 클릭하면 팝업을 닫습니다.
+            hidePopup('refundPopup');
         }
     }
 

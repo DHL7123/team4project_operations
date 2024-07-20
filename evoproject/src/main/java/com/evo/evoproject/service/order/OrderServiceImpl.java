@@ -19,13 +19,13 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public List<Order> getOrdersByStatus(int status) {
-        return orderMapper.getOrdersByStatus(status);
+    public List<Order> getOrdersByStatus(int status, int limit, int offset) {
+        return orderMapper.getOrdersByStatus(status, limit, offset);
     }
 
     @Override
-    public List<Order> getAllOrders() {
-        return orderMapper.getAllOrders();
+    public List<Order> getAllOrders(int limit, int offset) {
+        return orderMapper.getAllOrders(limit, offset);
     }
 
     @Override
@@ -34,10 +34,25 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
+    public int countAllOrders() {
+        return orderMapper.countAllOrders();
+    }
+
+    /**
+     * 주문의 상태 업데이트
+     * @param orderNo 주문 번호
+     * @param status 업데이트할 주문 상태 코드
+     */
+    @Override
     public void updateOrderStatus(int orderNo, int status) {
         orderMapper.updateOrderStatus(orderNo, status);
     }
 
+    /**
+     * 주문의 배송번호 업데이트
+     * @param orderNo 주문 번호
+     * @param orderDelivnum 배송번호
+     */
     @Override
     public void updateDelivnum(int orderNo, String orderDelivnum) {
         Map<String, Object> params = new HashMap<>();
@@ -46,6 +61,11 @@ public class OrderServiceImpl implements OrderService {
         orderMapper.updateDelivnum(params);
     }
 
+    /**
+     * 주문의 요청 타입 업데이트
+     * @param orderNo 주문 번호
+     * @param requestType 요청 타입 코드
+     */
     @Override
     public void updateRequestType(int orderNo, int requestType) {
         Map<String, Object> params = new HashMap<>();
