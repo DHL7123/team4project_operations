@@ -4,15 +4,27 @@ import com.evo.evoproject.controller.order.dto.OrderRequest;
 import com.evo.evoproject.controller.order.dto.OrderResponse;
 import com.evo.evoproject.controller.order.dto.RetrieveOrderItemRequest;
 import com.evo.evoproject.controller.order.dto.RetrieveOrdersResponse;
+import com.evo.evoproject.domain.order.Order;
+import com.evo.evoproject.domain.order.Orderitem;
+import com.evo.evoproject.domain.order.UserOrder;
+import com.evo.evoproject.domain.user.User;
+import com.evo.evoproject.service.cart.CartService;
+import com.evo.evoproject.service.order.OrderService;
 import com.evo.evoproject.service.order.PaymentOrderService;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
+
+import static com.evo.evoproject.domain.user.User.*;
 
 @Slf4j
 @Controller
@@ -21,6 +33,8 @@ import java.util.List;
 public class OrderPaymentController {
 
     private final PaymentOrderService paymentOrderService;
+
+    private final CartService cartService;
 
     @GetMapping("/{userNo}")
     public String getOrdersByUserNo(@RequestParam(defaultValue = "1") int page,
@@ -44,68 +58,90 @@ public class OrderPaymentController {
     @PostMapping("/payment")
     public String paymentPage(@RequestParam("productNo") int productNo,
                               @RequestParam("quantity") int quantity,
-                              HttpSession session, Model model) {
-        log.info("Received productNo: {}", productNo);
-        log.info("Received quantity: {}", quantity);
+                              HttpServletRequest request, HttpSession session, Model model) {
+        log.info("결제 페이지 요청 - 상품번호: {}, 수량: {}", productNo, quantity);
 
-        if (productNo <= 0 || quantity <= 0) {
-            log.error("Invalid product number or quantity: productNo={}, quantity={}", productNo, quantity);
-            return "redirect:/error";
+        Integer userNo = getCurrentUserNo();
+        if (userNo == null) {
+            return "redirect:/login"; // 로그인 페이지로 리디렉션
         }
 
-        RetrieveOrderItemRequest product = paymentOrderService.getProductById(productNo);
-        if (product == null) {
-            log.error("Product not found: productNo={}", productNo);
-            return "redirect:/error";
+        // 사용자 정보를 가져와서 모델에 추가
+        User user = paymentOrderService.getUserInfo(userNo);
+        if (user == null) {
+            log.error("사용자 정보를 찾을 수 없습니다. 사용자 번호: {}", userNo);
+            return "error"; // 사용자 정보를 찾을 수 없는 경우 에러 페이지로 리디렉션
+        }
+        model.addAttribute("user", user);
+
+        // 상품 정보를 가져오는 서비스 호출
+        RetrieveOrderItemRequest itemRequest = paymentOrderService.getProductById(productNo);
+        if (itemRequest == null) {
+            model.addAttribute("error", "해당 상품을 찾을 수 없습니다.");
+            return "error";
         }
 
-        OrderRequest order = new OrderRequest(
-                1, // userNo 예시 값
-                "주문자 이름",
-                "주소1",
-                "주소2",
-                010-1234-5678,
-                "주문 코멘트",
-                10000, // 예시 결제 금액
-                List.of(new RetrieveOrderItemRequest(
-                        product.getProductNo(),
-                        product.getProductName(),
-                        quantity,
-                        product.getPrice(),
-                        product.getShipping(),
-                        product.getMainImage()
-                ))
-        );
+        // 수량 설정
+        itemRequest.setQuantity(quantity);
 
-        paymentOrderService.storeOrderInSession(order, session);
-        model.addAttribute("order", order);
+        // OrderRequest 객체 생성 및 설정
+        OrderRequest orderRequest = new OrderRequest();
+        orderRequest.setUserNo(userNo);
+        orderRequest.setOrderName("Example Order");
+        orderRequest.setOrderAddress1(user.getUserAddress1());
+        orderRequest.setOrderAddress2(user.getUserAddress2());
+        orderRequest.setOrderPhone(user.getUserPhone());
+        orderRequest.setOrderComment("No comment");
+        orderRequest.setOrderPayment(10000); // 예시 결제 금액
+        orderRequest.setItems(List.of(itemRequest));
 
-        return "order/orderPayment"; // 템플릿 경로 수정
+        // 세션에 orderRequest 저장
+        paymentOrderService.storeOrderInSession(orderRequest, session);
+
+        // 모델에 orderRequest 추가
+        model.addAttribute("order", orderRequest);
+
+        return "order/orderPayment";
     }
 
     @PostMapping("/processPayment")
     public String processPayment(@RequestParam("paymentInfo") String paymentInfo, HttpSession session, Model model) {
-        OrderRequest order = paymentOrderService.getOrderFromSession(session);
-        if (order == null) {
+        OrderRequest orderRequest = paymentOrderService.getOrderFromSession(session);
+        if (orderRequest == null) {
             return "redirect:/error";
         }
 
-        boolean paymentSuccess = paymentOrderService.processPayment(order, paymentInfo);
+        boolean paymentSuccess = paymentOrderService.processPayment(orderRequest, paymentInfo);
         if (paymentSuccess) {
-            paymentOrderService.completeOrder(order);
+            // Order 객체로 변환하여 저장
+            UserOrder order = new UserOrder();
+            order.setUserNo(orderRequest.getUserNo());
+            order.setOrderName(orderRequest.getOrderName());
+            order.setOrderAddress1(orderRequest.getOrderAddress1());
+            order.setOrderAddress2(orderRequest.getOrderAddress2());
+            order.setOrderPhone(orderRequest.getOrderPhone());
+            order.setOrderComment(orderRequest.getOrderComment());
+            order.setOrderPayment(orderRequest.getOrderPayment());
+            order.setOrderStatus(orderRequest.getOrderStatus());
+            order.setOrderDelivnum(orderRequest.getOrderDelivnum());
+            order.setRequestType(orderRequest.getRequestType());
+
+            paymentOrderService.saveOrder(order);
+
             return "order/paymentSuccess"; // 결제 성공 페이지
         } else {
             return "order/paymentFailure"; // 결제 실패 페이지
         }
     }
 
-    @GetMapping("/paymentPage")
-    public String paymentPage(HttpSession session, Model model) {
-        OrderRequest order = paymentOrderService.getOrderFromSession(session);
-        if (order == null) {
-            return "redirect:/error";
+
+    // 현재 로그인된 사용자의 userNo를 반환하는 헬퍼 메서드
+    private Integer getCurrentUserNo() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null && authentication.isAuthenticated() && !authentication.getName().equals("anonymousUser")) {
+            String currentUsername = authentication.getName();
+            return cartService.getUserNoByUserId(currentUsername);
         }
-        model.addAttribute("order", order);
-        return "order/orderPayment";
+        return null;
     }
 }

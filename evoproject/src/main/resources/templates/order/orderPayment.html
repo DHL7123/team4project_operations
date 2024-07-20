@@ -20,6 +20,9 @@
             background-color: var(--background-color);
             color: var(--text-color);
             font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         .banner {
@@ -36,6 +39,10 @@
 
         .banner h1 {
             margin: 0;
+        }
+
+        .container {
+            flex: 1;
         }
 
         .order-form {
@@ -76,13 +83,10 @@
             color: white;
             text-align: center;
             padding: 10px 0;
-            position: absolute;
-            width: 100%;
-            bottom: 0;
         }
     </style>
 </head>
-<body>
+<body class="bg-light" th:data-user-no="${userNo}">
 <header th:replace="header :: header"></header>
 <div class="banner">
     <h1>Checkout</h1>
@@ -90,7 +94,7 @@
 <div class="container mt-5">
     <div class="order-summary">
         <h2>주문 / 결제</h2>
-        <div class="product-info" th:each="item : ${order.items}">
+        <div class="product-info" th:if="${order != null}" th:each="item : ${order.items}">
             <img class="product-image" th:src="@{${item.mainImage}}" alt="Product Image" style="width: 100px; height: auto;">
             <span class="product-name" th:text="${item.productName}"></span> X <span class="product-quantity" th:text="${item.quantity}"></span><br>
             <span>배송비: </span><span class="shipping-cost" th:text="${item.shipping}"></span><br>
@@ -104,11 +108,11 @@
         </div>
         <div class="mb-3">
             <label for="orderAddress1" class="form-label">배송지 주소</label>
-            <input type="text" id="orderAddress1" name="orderAddress1" class="form-control" required>
+            <input type="text" id="orderAddress1" name="orderAddress1" class="form-control" th:value="${user.userAddress1}" required>
         </div>
         <div class="mb-3">
             <label for="orderAddress2" class="form-label">상세주소</label>
-            <input type="text" id="orderAddress2" name="orderAddress2" class="form-control" required>
+            <input type="text" id="orderAddress2" name="orderAddress2" class="form-control" th:value="${user.userAddress2}" required>
         </div>
         <div class="mb-3">
             <label for="orderRecipient" class="form-label">수령인</label>
@@ -116,7 +120,7 @@
         </div>
         <div class="mb-3">
             <label for="orderPhone" class="form-label">휴대전화번호</label>
-            <input type="text" id="orderPhone" name="orderPhone" class="form-control" required>
+            <input type="number" id="orderPhone" name="orderPhone" class="form-control" th:value="${user.userPhone}" required>
         </div>
         <div class="mb-3">
             <label for="orderComment" class="form-label">요청사항</label>
@@ -148,59 +152,42 @@
             orderAmount += parseInt($(this).text());
         });
 
-        IMP.request_pay({
-            pg: 'html5_inicis',
-            pay_method: 'card',
-            merchant_uid: 'merchant_' + new Date().getTime(),
-            name: 'Total Order',
-            amount: orderAmount,
-            buyer_email: 'buyer@example.com',
-            buyer_name: orderName,
-            buyer_tel: orderPhone,
-            buyer_addr: orderAddress1 + ' ' + orderAddress2,
-            buyer_postcode: '123-456'
-        }, function (rsp) {
-            if (rsp.success) {
-                var order = {
-                    productNo: $('#productNo').val(),
-                    quantity: $('#quantity').val(),
-                    orderName: orderName,
-                    orderAddress1: orderAddress1,
-                    orderAddress2: orderAddress2,
-                    orderRecipient: orderRecipient,
-                    orderPhone: orderPhone,
-                    orderComment: orderComment,
-                    orderAmount: orderAmount,
-                    orderStatus: 0, // 결제 대기 상태로 설정
-                    items: []
-                };
+        var userNo = $('body').attr('data-user-no'); // 사용자 번호를 동적으로 가져옴
 
-                $('.product-info').each(function () {
-                    var item = {
-                        productName: $(this).find('.product-name').text(),
-                        quantity: $(this).find('.product-quantity').text(),
-                        shippingCost: $(this).find('.shipping-cost').text(),
-                        price: $(this).find('.total-price').text(),
-                        image: $(this).find('.product-image').attr('src')
-                    };
-                    order.items.push(item);
-                });
+        var order = {
+            userNo: userNo,
+            orderName: orderName,
+            orderAddress1: orderAddress1,
+            orderAddress2: orderAddress2,
+            orderRecipient: orderRecipient,
+            orderPhone: orderPhone,
+            orderComment: orderComment,
+            orderPayment: orderAmount,
+            items: [{
+                productNo: $('#productNo').val(),
+                quantity: $('#quantity').val(),
+                price: $('.product-info').find('.total-price').data('price'), // 예시 가격
+                shipping: $('.product-info').find('.shipping-cost').data('shipping'), // 예시 배송비
+                productName: $('.product-info').find('.product-name').text(),
+                mainImage: $('.product-info').find('.product-image').attr('src')
+            }],
+            orderStatus: 0, // 결제 대기 상태
+            orderDelivnum: '',
+            requestType: 0, // 아무 요청 없음
+            paymentInfo: 'MockPaymentInfo' // 임의의 결제 정보 추가
+        };
 
-                $.ajax({
-                    type: 'POST',
-                    url: '/orders/processPayment',  // 서버의 결제 처리 URL
-                    contentType: 'application/json',
-                    data: JSON.stringify(order),
-                    success: function () {
-                        window.location.href = '/orders';
-                    },
-                    error: function (error) {
-                        console.error('Error:', error);
-                        alert('주문을 완료하는 중 오류가 발생했습니다.');
-                    }
-                });
-            } else {
-                alert('Payment failed: ' + rsp.error_msg);
+        $.ajax({
+            type: 'POST',
+            url: '/orders/processPayment?paymentInfo=MockPaymentInfo',  // URL에 paymentInfo 매개변수 추가
+            contentType: 'application/json',
+            data: JSON.stringify(order),
+            success: function () {
+                window.location.href = '/orders';
+            },
+            error: function (error) {
+                console.error('Error:', error);
+                alert('주문을 완료하는 중 오류가 발생했습니다.');
             }
         });
     });

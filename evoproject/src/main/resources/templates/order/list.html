@@ -157,10 +157,10 @@
           </thead>
           <tbody>
           <tr th:each="order : ${orders}">
-            <td th:text="${order.id}">1</td>
-            <td th:text="${order.date}">2024-07-20</td>
-            <td th:text="${order.status}">Completed</td>
-            <td th:text="${order.total}">$100.00</td>
+            <td th:text="${order.orderNo}">주문번호</td>
+            <td th:text="${order.orderTimestamp}">일자</td>
+            <td th:text="${order.orderStatus}">상태</td>
+            <td th:text="${order.orderPayment}">결제금액</td>
             <td>
               <a href="#" class="btn btn-primary">Details</a>
               <a href="#" class="btn btn-danger">Cancel</a>

@@ -57,4 +57,11 @@
                  LEFT JOIN image i ON p.image_id = i.image_id
         WHERE p.pro_no = #{pro_no}
     </select>
+
+    <!-- 상품 재고 업데이트 -->
+    <update id="updateProductStock" parameterType="map">
+        UPDATE products
+        SET stock = stock - #{quantity}
+        WHERE product_no = #{productNo}
+    </update>
 </mapper>

@@ -2,6 +2,7 @@ package com.evo.evoproject.mapper.order;
 
 import com.evo.evoproject.domain.order.Order;
 import com.evo.evoproject.domain.order.Orderitem;
+import com.evo.evoproject.domain.order.UserOrder;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -14,7 +15,13 @@ public interface UserOrderMapper {
 
     int countOrdersById(int userNo);
 
-    void insertOrder(Order order);
+    void insertOrder(UserOrder order);
 
     Orderitem findOrderItemByProductNo(int pro_no);
+
+    void updateProductStock(@Param("productNo") int productNo, @Param("quantity") int quantity);
 }
+
+
+
+
