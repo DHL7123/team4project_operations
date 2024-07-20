@@ -6,6 +6,7 @@ import com.evo.evoproject.controller.order.dto.RetrieveOrderItemRequest;
 import com.evo.evoproject.controller.order.dto.RetrieveOrdersResponse;
 import com.evo.evoproject.domain.order.Order;
 import com.evo.evoproject.domain.order.UserOrder;
+import com.evo.evoproject.domain.user.User;
 import jakarta.servlet.http.HttpSession;
 
 public interface PaymentOrderService {
@@ -23,4 +24,6 @@ public interface PaymentOrderService {
     void completeOrder(OrderRequest order);
 
     void saveOrder(UserOrder order);
+
+    User getUserInfo (int userNo);
 }

@@ -7,7 +7,9 @@ import com.evo.evoproject.controller.order.dto.RetrieveOrdersResponse;
 import com.evo.evoproject.domain.order.Order;
 import com.evo.evoproject.domain.order.Orderitem;
 import com.evo.evoproject.domain.order.UserOrder;
+import com.evo.evoproject.domain.user.User;
 import com.evo.evoproject.mapper.order.UserOrderMapper;
+import com.evo.evoproject.mapper.user.UserMapper;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -27,6 +29,7 @@ import java.util.Map;
 public class PaymentOrderServiceImpl implements PaymentOrderService {
 
     private final UserOrderMapper userOrderMapper;
+    private final UserMapper userMapper;
 
     @Transactional(readOnly = true)
     @Override
@@ -102,5 +105,10 @@ public class PaymentOrderServiceImpl implements PaymentOrderService {
         order.getItems().forEach(item -> {
             userOrderMapper.updateProductStock(item.getProductNo(), item.getQuantity());
         });
+    }
+
+    @Override
+    public User getUserInfo(int userNo) {
+        return userMapper.findUserinfoByUserNo(userNo);
     }
 }

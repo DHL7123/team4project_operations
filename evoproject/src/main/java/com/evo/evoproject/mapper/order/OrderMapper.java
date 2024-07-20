@@ -59,6 +59,5 @@ public interface OrderMapper {
      */
     void updateRequestType(Map<String, Object> params);
 
-    List<Order> findOrdersById (@Param("limit") int userNo,@Param("limit") int limit, @Param("offset") int offset);
 
 }

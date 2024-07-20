@@ -64,4 +64,6 @@
         SET stock = stock - #{quantity}
         WHERE product_no = #{productNo}
     </update>
+
+
 </mapper>

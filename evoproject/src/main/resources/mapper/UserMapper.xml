@@ -40,6 +40,13 @@
         SELECT user_no FROM user WHERE user_id = #{userId}
     </select>
 
+    <select id="findUserinfoByUserNo" parameterType="int" resultMap="com.evo.evoproject.domain.user.User">
+        SELECT
+            user_address_1,user_address_2,user_phone
+        from user
+        where user_no = #{userNo}
+    </select>
+
 </mapper>
 
 
