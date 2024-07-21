@@ -130,3 +130,33 @@ function confirmDelete(button) {
         window.location.href = "/admin/boards/delete/" + boardNo;
     }
 }
+
+// 문의 작성 시 이미지 크기 제한
+document.addEventListener('DOMContentLoaded', function() {
+    var createBoardImage = document.getElementById('createBoardImage');
+    var editBoardImage = document.getElementById('editBoardImage');
+
+    if (createBoardImage) {
+        createBoardImage.addEventListener('change', function() {
+            if (this.files.length > 0) {
+                var fileSize = this.files[0].size / 1024 / 1024; // in MB
+                if (fileSize > 5) {
+                    alert('파일 크기가 너무 큽니다. 5MB 이하의 파일만 업로드 가능합니다.');
+                    this.value = ''; // clear the input
+                }
+            }
+        });
+    }
+
+    if (editBoardImage) {
+        editBoardImage.addEventListener('change', function() {
+            if (this.files.length > 0) {
+                var fileSize = this.files[0].size / 1024 / 1024; // in MB
+                if (fileSize > 5) {
+                    alert('파일 크기가 너무 큽니다. 5MB 이하의 파일만 업로드 가능합니다.');
+                    this.value = ''; // clear the input
+                }
+            }
+        });
+    }
+});
