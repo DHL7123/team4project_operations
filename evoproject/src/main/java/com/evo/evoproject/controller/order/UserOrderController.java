@@ -14,7 +14,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Slf4j
 @Controller
@@ -24,7 +26,6 @@ public class UserOrderController {
 
     private final UserOrderService userOrderService;
     private final CartService cartService;
-
     @GetMapping
     public String getUserOrders(@RequestParam(defaultValue = "1") int page,
                                 @RequestParam(defaultValue = "10") int size,
@@ -48,22 +49,29 @@ public class UserOrderController {
         }
     }
 
+
     @GetMapping("/{orderId}")
-    public String getOrderDetails(@PathVariable int orderId, Model model) {
+    @ResponseBody
+    public Map<String, Object> getOrderDetails(@PathVariable int orderId) {
+        Map<String, Object> response = new HashMap<>();
         Integer userNo = getCurrentUserNo();
         if (userNo == null) {
-            return "redirect:/login";
+            response.put("success", false);
+            response.put("message", "로그인이 필요합니다.");
+            return response;
         }
 
         log.info("주문 상세 정보 요청 - 주문 번호: {}, 사용자 번호: {}", orderId, userNo);
         Order order = userOrderService.getOrderDetails(orderId, userNo);
         if (order == null) {
-            model.addAttribute("error", "주문 정보를 찾을 수 없습니다.");
-            return "error";
+            response.put("success", false);
+            response.put("message", "주문 정보를 찾을 수 없습니다.");
+            return response;
         }
 
-        model.addAttribute("order", order);
-        return "/order/details";
+        response.put("success", true);
+        response.put("order", order);
+        return response;
     }
 
     @PostMapping
@@ -85,22 +93,51 @@ public class UserOrderController {
     }
 
     @PostMapping("/{orderId}/cancel")
-    public String cancelOrder(@PathVariable int orderId, Model model) {
+    @ResponseBody
+    public Map<String, Object> cancelOrder(@PathVariable int orderId) {
+        Map<String, Object> response = new HashMap<>();
         Integer userNo = getCurrentUserNo();
         if (userNo == null) {
-            return "redirect:/login";
+            response.put("success", false);
+            response.put("message", "로그인이 필요합니다.");
+            return response;
         }
 
         log.info("주문 취소 요청 - 주문 번호: {}, 사용자 번호: {}", orderId, userNo);
         try {
-            userOrderService.cancelOrder(orderId, userNo);
-            return "redirect:/orders";
+            userOrderService.requestCancelOrder(orderId, userNo);
+            response.put("success", true);
         } catch (Exception e) {
-            log.error("주문 취소 중 오류 발생", e);
-            model.addAttribute("error", "주문 취소 중 오류가 발생했습니다.");
-            return "error";
+            log.error("주문 취소 요청 중 오류 발생", e);
+            response.put("success", false);
+            response.put("message", "주문 취소 요청 중 오류가 발생했습니다.");
         }
+        return response;
     }
+
+    @PostMapping("/{orderId}/refund")
+    @ResponseBody
+    public Map<String, Object> requestRefund(@PathVariable int orderId) {
+        Map<String, Object> response = new HashMap<>();
+        Integer userNo = getCurrentUserNo();
+        if (userNo == null) {
+            response.put("success", false);
+            response.put("message", "로그인이 필요합니다.");
+            return response;
+        }
+
+        log.info("반품 요청 - 주문 번호: {}, 사용자 번호: {}", orderId, userNo);
+        try {
+            userOrderService.requestRefundOrder(orderId, userNo);
+            response.put("success", true);
+        } catch (Exception e) {
+            log.error("반품 요청 중 오류 발생", e);
+            response.put("success", false);
+            response.put("message", "반품 요청 중 오류가 발생했습니다.");
+        }
+        return response;
+    }
+
 
     private Integer getCurrentUserNo() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();

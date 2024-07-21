@@ -12,9 +12,8 @@ public interface UserOrderService {
     RetrieveOrdersResponse getOrdersByUserNo(int userNo, int page, int size);
     Order getOrderDetails(int orderId, int userNo);
     void createOrder(int userNo, OrderRequest orderRequest);
-    void cancelOrder(int orderId, int userNo);
-    int getTotalPages(int userNo, int size);
-    OrderRequest getOrderFromSession(HttpSession session);
+    void requestCancelOrder(int orderId, int userNo);
+    public void requestRefundOrder(int orderId, int userNo);
 }
 
 

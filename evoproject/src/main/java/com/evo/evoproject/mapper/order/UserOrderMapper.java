@@ -12,17 +12,19 @@ import java.util.List;
 @Mapper
 public interface UserOrderMapper {
 
-    List<Order> findOrdersById(@Param("userNo") int userNo, @Param("offset") int offset, @Param("size") int size);
+    List<Order> findOrdersByUserNo(@Param("userNo") int userNo, @Param("offset") int offset, @Param("size") int size);
 
     Order findOrderDetails(@Param("orderId") int orderId, @Param("userNo") int userNo);
 
     void insertOrder(OrderRequest orderRequest);
-
-    void updateOrderStatus(@Param("orderId") int orderId, @Param("userNo") int userNo, @Param("status") String status);
 
     int countOrdersByUserNo(@Param("userNo") int userNo);
 
     Orderitem findOrderItemByProductNo(@Param("productNo") int productNo);
 
     void updateProductStock(@Param("productNo") int productNo, @Param("quantity") int quantity);
+
+    Order findOrderByIdAndUserNo(@Param("orderId") int orderId, @Param("userNo") int userNo);
+
+    void updateOrderRequestType(Order order);
 }

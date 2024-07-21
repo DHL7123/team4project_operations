@@ -24,14 +24,13 @@ public class UserOrderServiceImpl implements UserOrderService {
     @Transactional(readOnly = true)
     @Override
     public RetrieveOrdersResponse getOrdersByUserNo(int userNo, int page, int size) {
-
         int offset = (page - 1) * size;
         int totalOrders = userOrderMapper.countOrdersByUserNo(userNo);
         int totalPages = (totalOrders + size - 1) / size;
 
-        List<Order> orders = userOrderMapper.findOrdersById(userNo, offset, size);
+        List<Order> orders = userOrderMapper.findOrdersByUserNo(userNo, offset, size);
 
-        return new RetrieveOrdersResponse(orders,userNo, page, totalPages);
+        return new RetrieveOrdersResponse(orders, userNo, page, totalPages);
     }
 
     @Transactional(readOnly = true)
@@ -56,21 +55,28 @@ public class UserOrderServiceImpl implements UserOrderService {
 
     @Transactional
     @Override
-    public void cancelOrder(int orderId, int userNo) {
-        // 주문 취소 로직
-        userOrderMapper.updateOrderStatus(orderId, userNo, "CANCELLED");
-        log.info("주문이 취소되었습니다: 주문 번호: {}, 사용자 번호: {}", orderId, userNo);
+    public void requestCancelOrder(int orderId, int userNo) {
+        Order order = userOrderMapper.findOrderByIdAndUserNo(orderId, userNo);
+        if (order == null || order.getOrderStatus() != 0) {
+            throw new IllegalStateException("주문을 취소할 수 없습니다.");
+        }
+
+        order.setRequestType(1); // 결제 취소 요청으로 설정
+        userOrderMapper.updateOrderRequestType(order);
     }
 
+    @Transactional
     @Override
-    public int getTotalPages(int userNo, int size) {
-        int totalOrders = userOrderMapper.countOrdersByUserNo(userNo);
-        return (totalOrders + size - 1) / size;
+    public void requestRefundOrder(int orderId, int userNo) {
+        Order order = userOrderMapper.findOrderByIdAndUserNo(orderId, userNo);
+        if (order == null || order.getOrderStatus() != 4) {
+            throw new IllegalStateException("반품을 요청할 수 없습니다.");
+        }
+
+        order.setRequestType(2); // 반품 요청으로 설정
+        userOrderMapper.updateOrderRequestType(order);
     }
 
-    @Override
-    public OrderRequest getOrderFromSession(HttpSession session) {
-        return (OrderRequest) session.getAttribute("order");
-    }
+
 }
 
