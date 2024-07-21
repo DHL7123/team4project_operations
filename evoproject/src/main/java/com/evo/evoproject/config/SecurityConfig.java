@@ -44,10 +44,6 @@ public class SecurityConfig {
                                 .anyRequest().authenticated() // 이 외의 요청은 인증 필요
 
                 )
-//                .authorizeHttpRequests(authorizeRequests ->
-//                        authorizeRequests
-//                                .anyRequest().permitAll() // 모든 요청에 대해 인증을 요구하지 않도록 설정
-//                )
                 .formLogin(formLogin ->
                         formLogin
                                 .loginPage("/login") // 커스텀 로그인 페이지 설정

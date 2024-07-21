@@ -16,6 +16,11 @@
         <result property="boardTimestamp" column="board_timestamp" />
         <result property="isAnswered" column="is_answered" />
         <result property="imageUrl" column="image_url" />
+        <association property="user" javaType="com.evo.evoproject.domain.user.User">
+            <id property="userId" column="user_id"/>
+            <result property="userName" column="user_name"/>
+            <!-- Add other user properties as needed -->
+        </association>
     </resultMap>
 
     <!-- Board 삽입 -->
@@ -50,8 +55,12 @@
     </select>
 
     <!-- 전체 Board 조회 -->
-    <select id="findAllBoards" resultMap="BoardMap" parameterType="map">
-        SELECT * FROM board ORDER BY board_timestamp DESC LIMIT #{limit} OFFSET #{offset}
+    <select id="findAllBoardsWithUser" resultMap="BoardMap" parameterType="map">
+        SELECT b.*, u.user_id, u.user_name
+        FROM board b
+                 LEFT JOIN user u ON b.user_no = u.user_no
+        ORDER BY b.board_timestamp DESC
+            LIMIT #{limit} OFFSET #{offset}
     </select>
 
     <!-- 전체 Board 수 조회 -->
@@ -80,6 +89,35 @@
         VALUES (#{boardNo}, #{imageId})
     </insert>
 
+    <select id="findBoardsByCategory" parameterType="map" resultType="com.evo.evoproject.domain.board.Board">
+        SELECT *
+        FROM board
+        WHERE user_no = #{userNo}
+          AND category_id = #{category}
+        ORDER BY board_timestamp DESC
+            LIMIT #{offset}, #{limit}
+    </select>
+
+    <select id="countBoardsByCategory" parameterType="map" resultType="int">
+        SELECT COUNT(*)
+        FROM board
+        WHERE user_no = #{userNo}
+          AND category_id = #{category}
+    </select>
 
 
+    <select id="findAllBoardsByCategory" resultMap="BoardMap" parameterType="map">
+        SELECT b.*, u.user_id, u.user_name
+        FROM board b
+                 LEFT JOIN user u ON b.user_no = u.user_no
+        WHERE b.category_id = #{category}
+        ORDER BY b.board_timestamp DESC
+            LIMIT #{limit} OFFSET #{offset}
+    </select>
+
+    <select id="countAllBoardsByCategory" parameterType="map" resultType="int">
+        SELECT COUNT(*)
+        FROM board
+        WHERE category_id = #{category}
+    </select>
 </mapper>

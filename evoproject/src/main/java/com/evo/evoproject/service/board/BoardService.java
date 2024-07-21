@@ -92,4 +92,24 @@ public class BoardService {
 
         boardMapper.updateBoard(board);
     }
+    public List<Board> getAllBoardsWithUser(int offset, int limit) {
+        return boardMapper.findAllBoardsWithUser(offset, limit);
+    }
+    public List<Board> getBoardsByCategory(int userNo, int category, int offset, int limit) {
+        return boardMapper.findBoardsByCategory(userNo, category, offset, limit);
+    }
+
+    public int getUserBoardCountByCategory(int userNo, int category) {
+        return boardMapper.countBoardsByCategory(userNo, category);
+    }
+
+    public List<Board> getAllBoardsByCategory(int category, int offset, int limit) {
+        return boardMapper.findAllBoardsByCategory(category, offset, limit);
+    }
+
+    public int getTotalBoardCountByCategory(int category) {
+        return boardMapper.countAllBoardsByCategory(category);
+    }
+
+
 }

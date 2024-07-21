@@ -1,8 +1,10 @@
 package com.evo.evoproject.controller.board;
 
 import com.evo.evoproject.domain.board.Board;
+import com.evo.evoproject.domain.board.Reply;
 import com.evo.evoproject.domain.user.User;
 import com.evo.evoproject.service.board.BoardService;
+import com.evo.evoproject.service.board.ReplyService;
 import com.evo.evoproject.service.board.NaverImageUploadService;
 import com.evo.evoproject.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,18 +22,20 @@ import java.util.List;
 public class BoardController {
 
     private final BoardService boardService;
+    private final ReplyService replyService;
     private final UserService userService;
     private final NaverImageUploadService imageUploadService;
 
     @Autowired
-    public BoardController(BoardService boardService, UserService userService, NaverImageUploadService imageUploadService) {
+    public BoardController(BoardService boardService, ReplyService replyService, UserService userService, NaverImageUploadService imageUploadService) {
         this.boardService = boardService;
+        this.replyService = replyService;
         this.userService = userService;
         this.imageUploadService = imageUploadService;
     }
 
     @GetMapping
-    public String listBoards(HttpSession session, Model model, @RequestParam(defaultValue = "0") int page) {
+    public String listBoards(HttpSession session, Model model, @RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "0") int category) {
         String userId = (String) session.getAttribute("userId");
         if (userId == null) {
             return "redirect:/login";
@@ -43,14 +47,20 @@ public class BoardController {
         List<Board> boards;
         int totalBoards;
 
-        boards = boardService.getBoardsByUserNo(userNo, offset, 10);
-        totalBoards = boardService.getUserBoardCount(userNo);
+        if (category == 0) {
+            boards = boardService.getBoardsByUserNo(userNo, offset, 10);
+            totalBoards = boardService.getUserBoardCount(userNo);
+        } else {
+            boards = boardService.getBoardsByCategory(userNo, category, offset, 10);
+            totalBoards = boardService.getUserBoardCountByCategory(userNo, category);
+        }
 
         int totalPages = (int) Math.ceil((double) totalBoards / 10);
 
         model.addAttribute("boards", boards);
         model.addAttribute("currentPage", page);
         model.addAttribute("totalPages", totalPages);
+        model.addAttribute("currentCategory", category);
         return "board/list";
     }
 
@@ -106,7 +116,7 @@ public class BoardController {
             e.printStackTrace();
         }
 
-        return "redirect:/boards";
+        return "redirect:/boards/view/" + boardNo;
     }
 
     @GetMapping("/delete/{boardNo}")
@@ -130,9 +140,11 @@ public class BoardController {
         User user = userService.findUserByUserId(userId);
 
         boolean isAuthor = board.getUserNo() == user.getUserNo();
+        List<Reply> replies = replyService.getRepliesByBoardNo(boardNo);
 
         model.addAttribute("board", board);
         model.addAttribute("isAuthor", isAuthor);
+        model.addAttribute("replies", replies);
         return "board/view";
     }
 }

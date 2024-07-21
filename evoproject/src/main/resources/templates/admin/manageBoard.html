@@ -11,7 +11,11 @@
     <link rel="stylesheet" th:href="@{/css/dashboard.css}">
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 
-
+    <style>
+        #categorySelect {
+            width: 200px; /* 원하는 너비로 설정 */
+        }
+    </style>
 </head>
 <body>
 <!--Header-->
@@ -51,6 +55,15 @@
             <main>
                 <div class="container-fluid px-4 container-custom">
                     <h1 class="mt-4">Board 관리</h1>
+                    <div class="mb-3">
+                        <label for="categorySelect" class="form-label">카테고리 선택</label>
+                        <select id="categorySelect" class="form-select" onchange="location.href='/admin/boards?category=' + this.value">
+                            <option value="0" th:selected="${currentCategory == 0}">전체</option>
+                            <option value="1" th:selected="${currentCategory == 1}">상품</option>
+                            <option value="2" th:selected="${currentCategory == 2}">배송</option>
+                            <option value="3" th:selected="${currentCategory == 3}">기타</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="card mt-4">
                     <div class="card-body">
@@ -61,6 +74,7 @@
                             <table class="table table-striped">
                                 <thead>
                                 <tr>
+                                    <th>유저 아이디</th>
                                     <th>카테고리</th>
                                     <th>제목</th>
                                     <th>날짜</th>
@@ -70,7 +84,10 @@
                                 </thead>
                                 <tbody>
                                 <tr th:each="board : ${boards}">
-                                    <td th:text="${board.categoryId}"></td>
+                                    <!-- 유저 아이디 -->
+                                    <td th:text="${board.user.userId}"></td>
+                                    <!-- 카테고리 아이디 -->
+                                    <td th:text="${board.categoryId == 1 ? '상품' : board.categoryId == 2 ? '배송' : '기타'}"></td>
                                     <!-- 제목 -->
                                     <td>
                                         <a th:href="@{/admin/boards/view/{boardNo}(boardNo=${board.boardNo})}" th:text="${board.boardTitle}"></a>
@@ -98,18 +115,14 @@
                     <ul class="pagination">
                         <!-- 이전 버튼 -->
                         <li class="page-item" th:classappend="${currentPage == 0} ? 'disabled'">
-                            <a class="page-link" th:if="${currentPage > 0}" th:href="@{/admin/boards(page=${currentPage - 1})}">이전</a>
+                            <a class="page-link" th:if="${currentPage > 0}" th:href="@{/admin/boards(page=${currentPage - 1}, category=${currentCategory})}">이전</a>
                             <a class="page-link" th:if="${currentPage == 0}">이전</a>
                         </li>
-
-                        <!-- 페이지 번호 -->
                         <li class="page-item" th:each="i : ${#numbers.sequence(0, totalPages - 1)}" th:classappend="${currentPage == i} ? 'active'">
-                            <a class="page-link" th:href="@{/admin/boards(page=${i})}" th:text="${i + 1}"></a>
+                            <a class="page-link" th:href="@{/admin/boards(page=${i}, category=${currentCategory})}" th:text="${i + 1}"></a>
                         </li>
-
-                        <!-- 다음 버튼 -->
                         <li class="page-item" th:classappend="${currentPage == totalPages - 1} ? 'disabled'">
-                            <a class="page-link" th:if="${currentPage < totalPages - 1}" th:href="@{/admin/boards(page=${currentPage + 1})}">다음</a>
+                            <a class="page-link" th:if="${currentPage < totalPages - 1}" th:href="@{/admin/boards(page=${currentPage + 1}, category=${currentCategory})}">다음</a>
                             <a class="page-link" th:if="${currentPage == totalPages - 1}">다음</a>
                         </li>
                     </ul>

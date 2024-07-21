@@ -5,17 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c3d7cf85-c82f-4d99-bfa0-82f0efec097a" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evoproject/src/main/java/com/evo/evoproject/config/AmazonS3Config.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/evoproject/src/main/java/com/evo/evoproject/config/MybatisConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/evoproject/src/main/java/com/evo/evoproject/config/MybatisConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/evoproject/src/main/java/com/evo/evoproject/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/evoproject/src/main/java/com/evo/evoproject/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evoproject/src/main/java/com/evo/evoproject/config/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/evoproject/src/main/java/com/evo/evoproject/config/WebConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evoproject/src/main/java/com/evo/evoproject/controller/product/AdminProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/evoproject/src/main/java/com/evo/evoproject/controller/product/AdminProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evoproject/src/main/java/com/evo/evoproject/controller/user/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/evoproject/src/main/java/com/evo/evoproject/controller/user/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evoproject/src/main/java/com/evo/evoproject/service/image/ImageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/evoproject/src/main/java/com/evo/evoproject/service/image/ImageService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evoproject/src/main/java/com/evo/evoproject/service/image/ImageServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/evoproject/src/main/java/com/evo/evoproject/service/image/ImageServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evoproject/src/main/java/com/evo/evoproject/controller/admin/AdminBoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/evoproject/src/main/java/com/evo/evoproject/controller/admin/AdminBoardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evoproject/src/main/java/com/evo/evoproject/controller/board/BoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/evoproject/src/main/java/com/evo/evoproject/controller/board/BoardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evoproject/src/main/java/com/evo/evoproject/controller/board/ReplyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/evoproject/src/main/java/com/evo/evoproject/controller/board/ReplyController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evoproject/src/main/java/com/evo/evoproject/domain/board/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/evoproject/src/main/java/com/evo/evoproject/domain/board/Board.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evoproject/src/main/java/com/evo/evoproject/mapper/board/BoardMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/evoproject/src/main/java/com/evo/evoproject/mapper/board/BoardMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evoproject/src/main/java/com/evo/evoproject/service/board/BoardService.java" beforeDir="false" afterPath="$PROJECT_DIR$/evoproject/src/main/java/com/evo/evoproject/service/board/BoardService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/evoproject/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/evoproject/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evoproject/src/main/resources/mapper/BoardMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/evoproject/src/main/resources/mapper/BoardMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evoproject/src/main/resources/templates/admin/manageBoard.html" beforeDir="false" afterPath="$PROJECT_DIR$/evoproject/src/main/resources/templates/admin/manageBoard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evoproject/src/main/resources/templates/admin/manageView.html" beforeDir="false" afterPath="$PROJECT_DIR$/evoproject/src/main/resources/templates/admin/manageView.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evoproject/src/main/resources/templates/board/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/evoproject/src/main/resources/templates/board/list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evoproject/src/main/resources/templates/board/view.html" beforeDir="false" afterPath="$PROJECT_DIR$/evoproject/src/main/resources/templates/board/view.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myapp.log" beforeDir="false" afterPath="$PROJECT_DIR$/myapp.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myapp.log.2024-07-13.0.gz" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,9 +36,6 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
-        <task path="$PROJECT_DIR$/evoproject">
-          <activation />
-        </task>
         <projects_view>
           <tree_state>
             <expand>
@@ -53,7 +56,6 @@
         <option value="CSS File" />
         <option value="spring-beans.schema" />
         <option value="HTML File" />
-        <option value="JUnit5 Test Class" />
         <option value="Class" />
       </list>
     </option>
@@ -73,40 +75,9 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
     &quot;Gradle.Build evoproject.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.EvoprojectApplicationTests.contextLoads.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.EvoprojectApplicationTests.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.FindControllerTest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.FindControllerTest.testFindIdFailure.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.FindControllerTest.testFindIdSuccess.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.FindControllerTest.testFindPasswordSuccess.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.FindControllerTest.testUpdateUserFailure.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.FindControllerTest.testUpdateUserSuccess.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.UserControllerTest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.UserControllerTest.showTermsForm.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.UserControllerTest.showTermsForm_whenUserLoggedIn_shouldRedirectToIndex.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.UserControllerTest.showTermsForm_whenUserNotLoggedIn_shouldShowTermsForm.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.UserControllerTest.testAcceptTerms.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.UserControllerTest.testCheckUsername.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.UserControllerTest.testCheckUsernameDuplicate.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.UserControllerTest.testDeleteUser.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.UserControllerTest.testDeleteUserWrongPassword.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.UserControllerTest.testDeleteUserWrongPasswordFailure.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.UserControllerTest.testLogout.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.UserControllerTest.testLogoutWithoutLogin.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.UserControllerTest.testMyPage.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.UserControllerTest.testMyPageWithoutLogin.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.UserControllerTest.testRegisterUser.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.UserControllerTest.testShowLoginForm.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.UserControllerTest.testShowRegisterForm.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.UserControllerTest.testShowTermsForm.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.UserControllerTest.testWithdrawalForm.executor&quot;: &quot;Run&quot;,
     &quot;Gradle.evoproject.executor&quot;: &quot;Run&quot;,
     &quot;JavaScript Debug.ListBoard.html.executor&quot;: &quot;Run&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
     &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
     &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
     &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
@@ -114,9 +85,6 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;Spring Boot.EvoprojectApplication.executor&quot;: &quot;Run&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;feature/board#3&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
@@ -130,7 +98,7 @@
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.projectsettings.compiler.annotationProcessors&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -143,69 +111,14 @@
       <recent name="D:\EVO\evoproject\src\main\java\com\evo\evoproject\domain\board" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\EVO\evoproject\src\main\resources\static" />
       <recent name="D:\EVO\evoproject\src\main\resources\templates\board" />
       <recent name="D:\EVO\evoproject\src\main\resources\templates" />
       <recent name="D:\EVO\evoproject\src\main\resources\templates\inquiries" />
       <recent name="D:\EVO\evoproject\src\main\resources\static\css" />
-    </key>
-    <key name="CreateTestDialog.Recents.Supers">
-      <recent name="" />
-    </key>
-    <key name="CreateTestDialog.RecentsKey">
-      <recent name="com.evo.evoproject.controller.user" />
-      <recent name="com.evo.evoproject.service.user" />
+      <recent name="D:\EVO\evoproject\src\main\resources\templates\css" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.EvoprojectApplication">
-    <configuration name="FindControllerTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/evoproject" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;com.evo.evoproject.controller.user.FindControllerTest&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
-    </configuration>
-    <configuration name="FindControllerTest.testFindIdSuccess" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/evoproject" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;com.evo.evoproject.controller.user.FindControllerTest.testFindIdSuccess&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
-    </configuration>
+  <component name="RunManager">
     <configuration name="EvoprojectApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="evoproject.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.evo.evoproject.EvoprojectApplication" />
@@ -213,12 +126,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Gradle.FindControllerTest.testFindIdSuccess" />
-        <item itemvalue="Gradle.FindControllerTest" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -256,9 +163,9 @@
       <workItem from="1721262793451" duration="3655000" />
       <workItem from="1721267103253" duration="21000" />
       <workItem from="1721276152586" duration="1091000" />
-      <workItem from="1721348916095" duration="25783000" />
-      <workItem from="1721391250978" duration="6624000" />
-      <workItem from="1721434211001" duration="6933000" />
+      <workItem from="1721455617290" duration="8486000" />
+      <workItem from="1721464697352" duration="543000" />
+      <workItem from="1721532493640" duration="5206000" />
     </task>
     <servers />
   </component>
@@ -274,8 +181,5 @@
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>
-  </component>
-  <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/evoproject$FindControllerTest.ic" NAME="FindControllerTest Coverage Results" MODIFIED="1721349474974" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
   </component>
 </project>

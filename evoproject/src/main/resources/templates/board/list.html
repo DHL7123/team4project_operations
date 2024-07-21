@@ -131,6 +131,15 @@
 </div>
 <div class="container mt-5">
     <h2>문의 게시판</h2>
+    <div class="mb-3">
+        <label for="categorySelect" class="form-label">카테고리 선택</label>
+        <select id="categorySelect" class="form-select" onchange="location.href='/boards?category=' + this.value">
+            <option value="0" th:selected="${currentCategory == 0}">전체</option>
+            <option value="1" th:selected="${currentCategory == 1}">상품</option>
+            <option value="2" th:selected="${currentCategory == 2}">배송</option>
+            <option value="3" th:selected="${currentCategory == 3}">기타</option>
+        </select>
+    </div>
     <div class="text-right mb-3">
         <a class="btn btn-primary" th:href="@{/boards/create}">문의하기</a>
     </div>
@@ -150,7 +159,7 @@
             </thead>
             <tbody>
             <tr th:each="board : ${boards}">
-                <td th:text="${board.categoryId}"></td>
+                <td th:text="${board.categoryId == 1 ? '상품' : board.categoryId == 2 ? '배송' : '기타'}"></td>
                 <td>
                     <a th:href="@{/boards/view/{boardNo}(boardNo=${board.boardNo})}" th:text="${board.boardTitle}"></a>
                 </td>

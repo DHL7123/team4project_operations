@@ -29,18 +29,6 @@ public class ReplyController {
         this.userService = userService;
     }
 
-    @GetMapping("/board/{boardNo}/reply")
-    public String showReplyForm(@PathVariable int boardNo, Model model, HttpSession session) {
-        // 관리자만 접근 가능
-        if (!session.getAttribute("isAdmin").equals("Y")) {
-            return "redirect:/boards/view/" + boardNo;
-        }
-
-        Board board = boardService.getBoardById(boardNo);
-        model.addAttribute("board", board);
-        return "admin/admin_reply_form";
-    }
-
     @PostMapping("/create")
     public String createReply(@ModelAttribute Reply reply, HttpSession session) {
         String userId = (String) session.getAttribute("userId");
@@ -61,31 +49,6 @@ public class ReplyController {
 
         return "redirect:/admin/boards";
     }
-
-    @GetMapping("/delete/{replyNo}")
-    public String deleteReply(@PathVariable int replyNo, HttpSession session) {
-        String userId = (String) session.getAttribute("userId");
-        User user = userService.findUserByUserId(userId);
-
-        Reply reply = replyService.getReplyById(replyNo);
-        if (reply == null) {
-            return "redirect:/boards?error=replyNotFound";
-        }
-
-        // 관리자만 댓글 삭제 가능
-        if (user.getIsAdmin() != 'Y') {
-            return "redirect:/boards/view/" + reply.getBoardNo();
-        }
-
-        replyService.deleteReply(replyNo);
-
-        Board board = boardService.getBoardById(reply.getBoardNo());
-        board.setIsAnswered('N');
-        boardService.updateBoard(board);
-
-        return "redirect:/boards/view/" + reply.getBoardNo();
-    }
-
 
     @GetMapping("/board/{boardNo}")
     public String listReplies(@PathVariable int boardNo, Model model) {
