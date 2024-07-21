@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 
@@ -13,14 +14,17 @@ import java.util.List;
 public class OrderResponse {
         private int orderNo;
         private int userNo;
+        private int proNo;
         private String orderName;
         private String orderAddress1;
         private String orderAddress2;
-        private int orderPhone;
+        private String orderPhone;
         private String orderComment;
-        private Date orderTimestamp;
-        private int orderPayment;
-        private int orderStatus;
+        private Timestamp orderTimestamp;
+        private String orderPayment;
+        private String orderStatus;
         private String orderDelivnum;
-        private int requestType;
+        private String requestType;
+        private int quantity;
+
 }

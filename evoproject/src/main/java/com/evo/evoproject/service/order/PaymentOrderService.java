@@ -1,29 +1,29 @@
 package com.evo.evoproject.service.order;
 
 import com.evo.evoproject.controller.order.dto.OrderRequest;
-import com.evo.evoproject.controller.order.dto.OrderResponse;
 import com.evo.evoproject.controller.order.dto.RetrieveOrderItemRequest;
 import com.evo.evoproject.controller.order.dto.RetrieveOrdersResponse;
-import com.evo.evoproject.domain.order.Order;
-import com.evo.evoproject.domain.order.UserOrder;
+import com.evo.evoproject.domain.order.Orderitem;
 import com.evo.evoproject.domain.user.User;
 import jakarta.servlet.http.HttpSession;
 
-public interface PaymentOrderService {
+import java.util.List;
 
-    RetrieveOrdersResponse getOrdersById(int userNo, int page, int size);
+public interface PaymentOrderService {
 
     void storeOrderInSession(OrderRequest order, HttpSession session);
 
     OrderRequest getOrderFromSession(HttpSession session);
 
-    RetrieveOrderItemRequest getProductById(int productNo);
+    Orderitem getProductById(int productNo);
 
     boolean processPayment(OrderRequest order, String paymentInfo);
 
-    void completeOrder(OrderRequest order);
+    User getUserInfo(int userNo);
 
-    void saveOrder(UserOrder order);
+    OrderRequest createOrderRequest(int userNo, List<RetrieveOrderItemRequest> itemRequests);
 
-    User getUserInfo (int userNo);
+    RetrieveOrderItemRequest convertToRetrieveOrderItemRequest(Orderitem orderItem);
+
+
 }

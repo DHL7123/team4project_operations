@@ -9,9 +9,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class RetrieveOrderItemRequest {
     private int productNo;
-    private String productName;
     private int quantity;
     private int price;
     private int shipping;
+    private String productName;
     private String mainImage;
 }

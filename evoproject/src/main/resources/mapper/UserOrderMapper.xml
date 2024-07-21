@@ -1,69 +1,86 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
 <mapper namespace="com.evo.evoproject.mapper.order.UserOrderMapper">
 
     <!-- Result Map -->
     <resultMap id="OrderResultMap" type="com.evo.evoproject.domain.order.Order">
-        <id property="orderNo" column="order_no"/>
-        <result property="userNo" column="user_no"/>
-        <result property="proNo" column="pro_no"/>
-        <result property="orderName" column="order_name"/>
-        <result property="orderAddress1" column="order_address_1"/>
-        <result property="orderAddress2" column="order_address_2"/>
-        <result property="orderPhone" column="order_phone"/>
-        <result property="orderComment" column="order_comment"/>
-        <result property="orderTimestamp" column="order_timestamp"/>
-        <result property="orderPayment" column="order_payment"/>
-        <result property="orderStatus" column="order_status"/>
-        <result property="orderDelivnum" column="order_delivnum"/>
-        <result property="requestType" column="request_type"/>
+        <id property="orderNo" column="order_no" />
+        <result property="userNo" column="user_no" />
+        <result property="proNo" column="pro_no" />
+        <result property="orderName" column="order_name" />
+        <result property="orderAddress1" column="order_address_1" />
+        <result property="orderAddress2" column="order_address_2" />
+        <result property="orderPhone" column="order_phone" />
+        <result property="orderComment" column="order_comment" />
+        <result property="orderTimestamp" column="order_timestamp" />
+        <result property="orderPayment" column="order_payment" />
+        <result property="orderStatus" column="order_status" />
+        <result property="orderDelivnum" column="order_delivnum" />
+        <result property="requestType" column="request_type" />
     </resultMap>
 
-    <!-- Result Map -->
-    <resultMap id="OrderItemResultMap" type="com.evo.evoproject.domain.order.Orderitem">
-        <id property="productNo" column="pro_no"/>
-        <result property="productName" column="pro_name"/>
-        <result property="quantity" column="pro_stock"/>
-        <result property="price" column="pro_price"/>
-        <result property="shippingCost" column="shipping"/>
-        <result property="image" column="image_name"/>
-    </resultMap>
-
-    <!-- 아이디로 주문 조회 -->
-    <select id="findOrdersById" parameterType="map" resultMap="OrderResultMap">
-        SELECT order_no, user_no, pro_no, order_name, order_timestamp, order_payment, order_status, order_delivnum, request_type
+    <!-- 주문 목록 조회 -->
+    <select id="findOrdersByUserNo" resultMap="OrderResultMap">
+        SELECT *
         FROM orders
         WHERE user_no = #{userNo}
         ORDER BY order_timestamp DESC
             LIMIT #{offset}, #{size}
     </select>
 
-    <!-- 주문 상태별 주문 개수를 조회 -->
-    <select id="countOrdersById" parameterType="int" resultType="int">
-        SELECT COUNT(*) FROM orders WHERE user_no = #{userNo}
+    <!-- 주문 상세 조회 -->
+    <select id="findOrderDetails" resultMap="OrderResultMap">
+        SELECT *
+        FROM orders
+        WHERE order_no = #{orderId}
+          AND user_no = #{userNo}
     </select>
 
-    <!-- 주문 삽입 -->
-    <insert id="insertOrder" parameterType="com.evo.evoproject.domain.order.Orderitem">
-        INSERT INTO orders (user_no, pro_no, order_name, order_address1, order_address2, order_phone, order_comment, order_timestamp, order_payment, order_status, order_delivnum, request_type)
-        VALUES (#{userNo}, #{proNo}, #{orderName}, #{orderAddress1}, #{orderAddress2}, #{orderPhone}, #{orderComment}, #{orderTimestamp}, #{orderPayment}, #{orderStatus}, #{orderDelivnum}, #{requestType})
+    <!-- 주문 생성 -->
+    <insert id="insertOrder">
+        INSERT INTO orders (
+            user_no, pro_no, order_name, order_address_1, order_address_2, order_phone,
+            order_comment, order_timestamp, order_payment, order_status,
+            order_delivnum, request_type, pro_stock
+        )
+        VALUES (
+                   #{userNo}, #{proNo}, #{orderName}, #{orderAddress1}, #{orderAddress2},
+                   #{orderPhone}, #{orderComment}, NOW(), #{orderPayment}, 0,
+                   NULL, #{requestType}, #{quantity}
+               )
     </insert>
 
-    <!-- 상품 번호로 주문 아이템 조회 -->
-    <select id="findOrderItemByProductNo" resultMap="OrderItemResultMap">
-        SELECT p.pro_no, p.pro_name, p.pro_stock, p.pro_price, p.shipping, i.image_name
+    <!-- 주문 상태 업데이트 -->
+    <update id="updateOrderStatus">
+        UPDATE orders
+        SET order_status = #{status}
+        WHERE order_id = #{orderId}
+          AND user_no = #{userNo}
+    </update>
+
+    <!-- 주문 수량 카운트 -->
+    <select id="countOrdersByUserNo" resultType="int">
+        SELECT COUNT(*)
+        FROM orders
+        WHERE user_no = #{userNo}
+    </select>
+
+    <!-- 상품 조회 -->
+    <select id="findOrderItemByProductNo" resultType="com.evo.evoproject.domain.order.Orderitem">
+        SELECT p.pro_no AS productNo, p.pro_price AS price, p.shipping, p.pro_name AS productName, i.image_name AS mainImage
         FROM product p
                  LEFT JOIN image i ON p.image_id = i.image_id
-        WHERE p.pro_no = #{pro_no}
+        WHERE p.pro_no = #{productNo}
     </select>
 
     <!-- 상품 재고 업데이트 -->
     <update id="updateProductStock" parameterType="map">
-        UPDATE products
-        SET stock = stock - #{quantity}
-        WHERE product_no = #{productNo}
+        UPDATE product
+        SET pro_stock = pro_stock - #{quantity}
+        WHERE pro_no = #{productNo}
     </update>
-
 
 </mapper>

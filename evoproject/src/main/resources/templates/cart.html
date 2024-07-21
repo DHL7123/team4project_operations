@@ -86,7 +86,11 @@
 
 <!-- 주문페이지로 넘어가기 -->
 <div class="checkoutBtn">
-    <a href="#" class="btn btn-primary btn-rounded btn-block btn-lg fw-bold" style="display: none;">Checkout</a>
+    <form id="checkoutForm" method="post" action="/orders/payment">
+        <input type="hidden" name="selectedItems" id="selectedItems">
+        <input type="hidden" name="proNo" id="proNo">
+        <button type="button" class="btn btn-primary btn-rounded btn-block btn-lg fw-bold" onclick="submitCheckoutForm()">Checkout</button>
+    </form>
 </div>
 
 <!-- footer -->
@@ -98,7 +102,6 @@
 <script th:inline="javascript">
 
     document.addEventListener('DOMContentLoaded', function() {
-        var cartItems = [];
         var totalAmount = 0;
 
         function calculateTotal() {
@@ -117,12 +120,10 @@
                 totalAmount += subTotal;
             });
 
-
             var formattedTotal = '₩' + totalAmount.toLocaleString('ko-KR');
             document.getElementById('totalAmount').textContent = formattedTotal;
 
-
-            var checkoutBtn = document.querySelector('.checkoutBtn a');
+            var checkoutBtn = document.querySelector('.checkoutBtn button');
             checkoutBtn.style.display = checkboxes.length > 0 ? 'block' : 'none';
         }
 
@@ -164,11 +165,41 @@
             checkboxes.forEach(function(checkbox) {
                 checkbox.checked = source.checked;
             });
-
             calculateTotal();
         };
-    });
 
+        window.submitCheckoutForm = function() {
+            var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+            var selectedItems = [];
+            var proNo = null; // proNo 변수 추가
+
+            checkboxes.forEach(function(checkbox) {
+                if (!checkbox.id.startsWith('selectItem_')) return;
+
+                var row = checkbox.closest('tr');
+                var productNo = checkbox.value;
+                var quantity = row.querySelector('td:nth-child(4)').textContent.trim();
+
+                selectedItems.push({
+                    productNo: productNo,
+                    quantity: quantity
+                });
+
+                if (!proNo) {
+                    proNo = productNo; // 첫 번째 선택된 상품의 proNo 설정
+                }
+            });
+
+            if (selectedItems.length === 0) {
+                alert('상품을 선택해 주세요.');
+                return;
+            }
+
+            document.getElementById('selectedItems').value = JSON.stringify(selectedItems);
+            document.getElementById('proNo').value = proNo;
+            document.getElementById('checkoutForm').submit();
+        };
+    });
 </script>
 
 </body>

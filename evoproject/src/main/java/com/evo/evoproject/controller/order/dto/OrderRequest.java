@@ -4,24 +4,23 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
 import java.util.List;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 public class OrderRequest {
-    private int orderNo;
     private int userNo;
+    private int proNo; // 필요 시 추가
     private String orderName;
     private String orderAddress1;
     private String orderAddress2;
-    private int orderPhone;
+    private String orderPhone;
     private String orderComment;
-    private Date orderTimestamp;
     private int orderPayment;
+    private List<RetrieveOrderItemRequest> items;
     private int orderStatus;
     private String orderDelivnum;
     private int requestType;
-    private List<RetrieveOrderItemRequest> items;
+    private int quantity;
 }

@@ -30,4 +30,5 @@ public interface ProductMapper {
     int countProductsAdmin(Integer soldout);
     void deleteProductImageMapping( @Param("imageId") int imageId);
 
+
 }

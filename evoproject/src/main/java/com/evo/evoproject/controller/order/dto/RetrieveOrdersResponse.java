@@ -12,6 +12,7 @@ import java.util.List;
 @AllArgsConstructor
 public class RetrieveOrdersResponse {
     private List<Order> orders;
-    private int page;
+    private int userNo;
+    private int currentPage;
     private int totalPages;
 }

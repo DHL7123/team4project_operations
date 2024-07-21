@@ -7,8 +7,7 @@
     <link rel="stylesheet" th:href="@{/css/styles.css}">
     <link rel="stylesheet" th:href="@{/css/detail.css}">
 </head>
-
-<body class="bg-light" th:data-user-no="${userNo}">
+<body class="bg-light" th:data-user-no="${userNo}" th:data-product-no="${productDetailResponse.product.productNo}">
 
 <header th:replace="~{header :: header}"></header>
 
@@ -70,11 +69,12 @@
                     <input type="number" id="quantity" value="1" min="1" max="${productDetailResponse.product.stock}" class="form-control text-center mx-2" style="width: 60px;">
                     <button class="btn btn-secondary btn-number" type="button" onclick="document.getElementById('quantity').stepUp()">+</button>
                 </div>
-                <form id="paymentForm" method="POST" action="/orders/payment" class="w-100 text-center">
-                    <input type="hidden" name="productNo" th:value="${productDetailResponse.product.productNo}">
-                    <input type="hidden" id="quantityInput" name="quantity" value="1">
+                <form id="paymentForm" method="POST" action="/orders/payment" onsubmit="prepareSelectedItems()">
+                    <input type="hidden" name="selectedItems" id="selectedItems">
+                    <input type="hidden" name="proNo" th:value="${productDetailResponse.product.productNo}">
                     <button type="submit" class="btn btn-custom mb-2">구매하기</button>
                 </form>
+
                 <button class="btn btn-custom" th:onclick="'addToCart(' + ${productDetailResponse.product.productNo} + ', ' + ${productDetailResponse.product.price} + ', document.getElementById(\'quantity\').value, ' + ${productDetailResponse.product.stock} + ')'">장바구니 담기</button>
             </div>
             <div class="text-center mt-4" th:if="${productDetailResponse.product.soldout == 1}">
@@ -123,9 +123,18 @@
         document.body.appendChild(modal);
     }
 
-    document.getElementById('quantity').addEventListener('change', function() {
-        document.getElementById('quantityInput').value = this.value;
-    });
+    function prepareSelectedItems() {
+        const productNo = document.body.getAttribute('data-product-no');
+        const quantity = document.getElementById('quantity').value;
+        const selectedItems = [
+            {
+                productNo: productNo,
+                quantity: quantity
+            }
+        ];
+        document.getElementById('selectedItems').value = JSON.stringify(selectedItems);
+        console.log('Form submit with selectedItems:', selectedItems);
+    }
 
     function addToCart(productNo, price, quantity, stock) {
         const userNo = document.body.getAttribute('data-user-no');

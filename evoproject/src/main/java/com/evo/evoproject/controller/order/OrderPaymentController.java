@@ -1,30 +1,30 @@
 package com.evo.evoproject.controller.order;
 
 import com.evo.evoproject.controller.order.dto.OrderRequest;
-import com.evo.evoproject.controller.order.dto.OrderResponse;
 import com.evo.evoproject.controller.order.dto.RetrieveOrderItemRequest;
-import com.evo.evoproject.controller.order.dto.RetrieveOrdersResponse;
-import com.evo.evoproject.domain.order.Order;
 import com.evo.evoproject.domain.order.Orderitem;
-import com.evo.evoproject.domain.order.UserOrder;
 import com.evo.evoproject.domain.user.User;
 import com.evo.evoproject.service.cart.CartService;
-import com.evo.evoproject.service.order.OrderService;
 import com.evo.evoproject.service.order.PaymentOrderService;
-import jakarta.servlet.http.HttpServletRequest;
+import com.evo.evoproject.service.order.UserOrderService;
+import com.evo.evoproject.service.product.ProductService;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
-
-import static com.evo.evoproject.domain.user.User.*;
+import java.util.Map;
 
 @Slf4j
 @Controller
@@ -33,33 +33,14 @@ import static com.evo.evoproject.domain.user.User.*;
 public class OrderPaymentController {
 
     private final PaymentOrderService paymentOrderService;
-
+    private final UserOrderService userOrderService;
     private final CartService cartService;
 
-    @GetMapping("/{userNo}")
-    public String getOrdersByUserNo(@RequestParam(defaultValue = "1") int page,
-                                    @RequestParam(defaultValue = "10") int size,
-                                    @PathVariable int userNo,
-                                    Model model) {
-        log.info("회원의 주문 목록 요청 - 회원번호: {}, 페이지: {}, 사이즈: {}", userNo, page, size);
-        try {
-            RetrieveOrdersResponse response = paymentOrderService.getOrdersById(userNo, page, size);
-            model.addAttribute("orders", response.getOrders());
-            model.addAttribute("ordersResponse", response);
-            model.addAttribute("userNo", userNo);
-            return "/order/list";
-        } catch (Exception e) {
-            log.error("제품 목록을 가져오는 중 오류 발생", e);
-            model.addAttribute("error", "제품 목록을 가져오는 중 오류가 발생했습니다.");
-            return "error";
-        }
-    }
-
     @PostMapping("/payment")
-    public String paymentPage(@RequestParam("productNo") int productNo,
-                              @RequestParam("quantity") int quantity,
-                              HttpServletRequest request, HttpSession session, Model model) {
-        log.info("결제 페이지 요청 - 상품번호: {}, 수량: {}", productNo, quantity);
+    public String paymentPage(@RequestParam("selectedItems") String selectedItemsJson,
+                              @RequestParam("proNo") Integer proNo,
+                              HttpSession session, Model model) {
+        log.info("결제 페이지 요청 - 선택된 상품들: {}", selectedItemsJson);
 
         Integer userNo = getCurrentUserNo();
         if (userNo == null) {
@@ -74,68 +55,107 @@ public class OrderPaymentController {
         }
         model.addAttribute("user", user);
 
-        // 상품 정보를 가져오는 서비스 호출
-        RetrieveOrderItemRequest itemRequest = paymentOrderService.getProductById(productNo);
-        if (itemRequest == null) {
-            model.addAttribute("error", "해당 상품을 찾을 수 없습니다.");
+        // 선택된 상품들 처리
+        List<RetrieveOrderItemRequest> itemRequests = new ArrayList<>();
+        ObjectMapper objectMapper = new ObjectMapper();
+        List<Map<String, Object>> selectedItems;
+        try {
+            selectedItems = objectMapper.readValue(selectedItemsJson, new TypeReference<List<Map<String, Object>>>() {});
+        } catch (JsonProcessingException e) {
+            log.error("선택된 상품들 파싱 오류: {}", e.getMessage());
+            model.addAttribute("error", "선택된 상품 정보를 파싱하는 중 오류가 발생했습니다.");
             return "error";
         }
 
-        // 수량 설정
-        itemRequest.setQuantity(quantity);
+        for (Map<String, Object> selectedItem : selectedItems) {
+            int productNo;
+            int quantity;
 
-        // OrderRequest 객체 생성 및 설정
-        OrderRequest orderRequest = new OrderRequest();
-        orderRequest.setUserNo(userNo);
-        orderRequest.setOrderName("Example Order");
-        orderRequest.setOrderAddress1(user.getUserAddress1());
-        orderRequest.setOrderAddress2(user.getUserAddress2());
-        orderRequest.setOrderPhone(user.getUserPhone());
-        orderRequest.setOrderComment("No comment");
-        orderRequest.setOrderPayment(10000); // 예시 결제 금액
-        orderRequest.setItems(List.of(itemRequest));
+            try {
+                productNo = Integer.parseInt(selectedItem.get("productNo").toString());
+                quantity = Integer.parseInt(selectedItem.get("quantity").toString());
+            } catch (NumberFormatException e) {
+                log.error("상품 번호 또는 수량 변환 오류: {}", e.getMessage());
+                model.addAttribute("error", "상품 번호 또는 수량 변환 중 오류가 발생했습니다.");
+                return "error";
+            }
 
-        // 세션에 orderRequest 저장
-        paymentOrderService.storeOrderInSession(orderRequest, session);
+            // 상품 정보를 가져오는 서비스 호출
+            Orderitem orderItem = paymentOrderService.getProductById(productNo);
+            if (orderItem == null) {
+                log.error("상품 정보를 찾을 수 없습니다. 상품 번호: {}", productNo);
+                model.addAttribute("error", "상품 정보를 찾을 수 없습니다.");
+                return "error";
+            }
 
-        // 모델에 orderRequest 추가
+            // Orderitem을 RetrieveOrderItemRequest로 변환하고 수량 설정
+            RetrieveOrderItemRequest itemRequest = paymentOrderService.convertToRetrieveOrderItemRequest(orderItem);
+            itemRequest.setQuantity(quantity); // 수량 설정
+            itemRequests.add(itemRequest);
+            log.info("상품 정보 추가 - 아이템: {}", itemRequest);
+        }
+        model.addAttribute("items", itemRequests);
+
+        // 주문 정보를 생성하고 세션에 저장
+        OrderRequest orderRequest = paymentOrderService.createOrderRequest(userNo, itemRequests);
+        orderRequest.setProNo(proNo); // proNo 설정
+        session.setAttribute("orderRequest", orderRequest); // 세션에 저장
         model.addAttribute("order", orderRequest);
+        log.info("주문 정보 생성 및 세션 저장 - 주문: {}", orderRequest);
 
-        return "order/orderPayment";
+        // 총 가격 계산 및 모델에 추가
+        int totalPrice = itemRequests.stream()
+                .mapToInt(item -> item.getPrice() * item.getQuantity() + item.getShipping())
+                .sum();
+        model.addAttribute("totalPrice", totalPrice);
+
+        return "/order/payment";
     }
 
     @PostMapping("/processPayment")
-    public String processPayment(@RequestParam("paymentInfo") String paymentInfo, HttpSession session, Model model) {
-        OrderRequest orderRequest = paymentOrderService.getOrderFromSession(session);
-        if (orderRequest == null) {
-            return "redirect:/error";
+    public ResponseEntity<String> processPayment(@RequestBody OrderRequest ajaxOrder,
+                                                 @RequestParam String paymentInfo,
+                                                 HttpSession session) {
+        log.info("결제 완료 요청 - 결제 정보: {}", paymentInfo);
+
+        // 세션에서 주문 정보 가져오기
+        OrderRequest sessionOrder = (OrderRequest) session.getAttribute("orderRequest");
+        if (sessionOrder == null) {
+            log.error("세션에서 주문 정보를 찾을 수 없습니다.");
+            return ResponseEntity.badRequest().body("세션에서 주문 정보를 찾을 수 없습니다.");
+        }
+        log.info("세션에서 가져온 주문 정보: {}", sessionOrder);
+
+        // AJAX로 전달된 정보로 세션 주문 정보 업데이트
+        sessionOrder.setOrderName(ajaxOrder.getOrderName());
+        sessionOrder.setOrderAddress1(ajaxOrder.getOrderAddress1());
+        sessionOrder.setOrderAddress2(ajaxOrder.getOrderAddress2());
+        sessionOrder.setOrderPhone(ajaxOrder.getOrderPhone());
+        sessionOrder.setOrderComment(ajaxOrder.getOrderComment());
+
+        // 결제 처리
+        boolean paymentSuccess = paymentOrderService.processPayment(sessionOrder, paymentInfo);
+        if (!paymentSuccess) {
+            return ResponseEntity.badRequest().body("결제 처리 중 오류가 발생했습니다.");
         }
 
-        boolean paymentSuccess = paymentOrderService.processPayment(orderRequest, paymentInfo);
-        if (paymentSuccess) {
-            // Order 객체로 변환하여 저장
-            UserOrder order = new UserOrder();
-            order.setUserNo(orderRequest.getUserNo());
-            order.setOrderName(orderRequest.getOrderName());
-            order.setOrderAddress1(orderRequest.getOrderAddress1());
-            order.setOrderAddress2(orderRequest.getOrderAddress2());
-            order.setOrderPhone(orderRequest.getOrderPhone());
-            order.setOrderComment(orderRequest.getOrderComment());
-            order.setOrderPayment(orderRequest.getOrderPayment());
-            order.setOrderStatus(orderRequest.getOrderStatus());
-            order.setOrderDelivnum(orderRequest.getOrderDelivnum());
-            order.setRequestType(orderRequest.getRequestType());
-
-            paymentOrderService.saveOrder(order);
-
-            return "order/paymentSuccess"; // 결제 성공 페이지
-        } else {
-            return "order/paymentFailure"; // 결제 실패 페이지
+        // 주문 생성
+        try {
+            userOrderService.createOrder(sessionOrder.getUserNo(), sessionOrder);
+            return ResponseEntity.ok("주문이 완료되었습니다.");
+        } catch (Exception e) {
+            log.error("주문 생성 중 오류 발생", e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("주문 생성 중 오류가 발생했습니다.");
         }
     }
 
 
-    // 현재 로그인된 사용자의 userNo를 반환하는 헬퍼 메서드
+
+    @GetMapping("/complete")
+    public String orderComplete() {
+        return "/order/complete";
+    }
+
     private Integer getCurrentUserNo() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication != null && authentication.isAuthenticated() && !authentication.getName().equals("anonymousUser")) {
