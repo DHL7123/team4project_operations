@@ -70,7 +70,7 @@ public class OrderController {
 
         String userId = (String) session.getAttribute("userId");
         User user = userService.findUserByUserId(userId);
-
+        int total = 0;
         for (Cart cart : cartItems) {
             for (Product product : cart.getProducts()) {
                 // Order 객체 생성 및 설정
@@ -90,6 +90,8 @@ public class OrderController {
                 order.setRequestType(0); // 기본값 설정
                 order.setOrder_delivnum(0); // 기본값 설정
 
+                total += product.getProPrice();
+                total += product.getShipping();
                 // 세션에 저장
                 session.setAttribute("order", order);
 
@@ -100,6 +102,8 @@ public class OrderController {
                         order.getOrder_timestamp(), order.getPro_stock(), order.getOrder_payment(), order.getOrder_status(), order.getRequestType(), order.getOrder_delivnum());
             }
         }
+        session.setAttribute("totalAmount", total);
+        log.info("total을 보자: {}", total);
         return "redirect:/paymentOrders/cart/checkout";
     }
 
@@ -125,8 +129,12 @@ public class OrderController {
         } else {
             log.info("No order found in session.");
         }
+        int k = (int) session.getAttribute("totalAmount");
+        model.addAttribute("totalAmount", k);
+        log.info("total {}", k);
 
         return "checkOut";  // checkOut.html 파일과 매핑
     }
+
 
 }

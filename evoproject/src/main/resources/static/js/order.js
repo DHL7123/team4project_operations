@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 pay_method: "card",
                 merchant_uid: "merchant_" + new Date().getTime(),//merchant부터 buyer까지 연결 및 필요없는거 제거해서 쓰면 된다.
                 name: "주문명:결제테스트",
-                amount: 1000,
+                amount: totalAmount,
                 buyer_email: "iamport@siot.do",
                 buyer_name: "구매자이름",
                 buyer_tel: "010-1234-5678",

@@ -39,7 +39,16 @@
             type="text/javascript"
     ></script>
     <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script type="text/javascript" th:inline="javascript">
+        /*<![CDATA[*/
+
+        var totalAmount = [[${session.totalAmount}]];
+        var order = [[${session.order}]];
+
+        /*]]*/
+    </script>
     <script defer th:src="@{/js/order.js}"></script>
+
 </head>
 <body>
 <header class="header">
