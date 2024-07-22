@@ -19,7 +19,7 @@ public class OrderService {
         orderMapper.insertOrder(order);
     }
 
-    public List<Order> getAllOrders(Integer user_no) {
+    public List<Order> getAllOrders(int user_no) {
         return orderMapper.findAllOrders(user_no);
     }
 

@@ -83,12 +83,12 @@
             <div th:each="order : ${orders}" class="product">
                 <img th:src="@{/images/default-product-image.jpg}" alt="Product Image" />
                 <div class="product-details">
-                    <div class="product-name" th:text="${order.item}">Product Name</div>
-                    <div class="product-price" th:text="${order.price}+원">$100.00</div>
+                    <div class="product-name" th:text="${order.pro_name}">Product Name</div>
+                    <div class="product-price" th:text="${order.order_payment}+원">$100.00</div>
                 </div>
                 <div class="product-actions">
                     <button type="button" class="btn btn-primary">결제 취소 신청</button>
-                    <div class="status" th:text="${order.status}">Pending</div>
+                    <div class="status" th:text="${order.order_status}">Pending</div>
                 </div>
             </div>
 

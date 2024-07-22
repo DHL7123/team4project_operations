@@ -32,12 +32,12 @@ public class OrderController {
     @Autowired
     private CartService cartService;
 
-    @GetMapping
-    public String listOrders(Model model, HttpSession session) {
-        User user = (User) session.getAttribute("user");
-        List<Order> orders = orderService.getAllOrders(user.getUserNo());
+    @GetMapping("/{userNo}")
+    public String listOrders(@PathVariable int userNo, Model model) {
+        List<Order> orders = orderService.getAllOrders(userNo);
+        model.addAttribute("userNo", userNo);
         model.addAttribute("orders", orders);
-        log.info("Order in session: {}", orders);
+        log.info("Orders for user {}: {}", userNo, orders);
         return "orders";
     }
 

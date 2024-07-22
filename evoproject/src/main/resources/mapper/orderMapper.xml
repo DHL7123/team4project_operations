@@ -7,7 +7,7 @@
         VALUES (#{order_no}, #{user_no}, #{pro_no}, #{order_name}, #{order_address1}, #{order_address2}, #{order_phone}, #{order_comment}, #{pro_name}, #{order_timestamp}, #{pro_stock}, #{order_payment}, #{order_status}, #{requestType}, #{order_delivnum})
     </insert>
 
-    <select id="findAllOrders" resultType="com.evo.evoproject.domain.order.Order">
+    <select id="findAllOrders" parameterType="int" resultType="com.evo.evoproject.domain.order.Order">
         SELECT * FROM orders WHERE user_no = #{user_no}
     </select>
 
