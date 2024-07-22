@@ -76,7 +76,7 @@
                         <div th:each="reply : ${replies}" class="reply-box">
                             <p th:text="${reply.replyContent}"></p>
                             <p th:text="${#dates.format(reply.replyTimestamp, 'yyyy-MM-dd HH:mm')}"></p>
-                            <a th:href="@{/replies/delete/{replyNo}(replyNo=${reply.replyNo})}" class="btn btn-danger btn-sm" sec:authorize="hasAuthority('ADMIN')">삭제</a>
+                            <a th:href="@{/admin/boards/deleteReply/{replyNo}(replyNo=${reply.replyNo})}" class="btn btn-danger btn-sm" sec:authorize="hasAuthority('ADMIN')">삭제</a>
                         </div>
                     </div>
                     <div class="comment-form mt-5" sec:authorize="hasAuthority('ADMIN')">

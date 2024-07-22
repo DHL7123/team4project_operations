@@ -33,4 +33,14 @@ public interface BoardMapper {
     List<Integer> findImageIdsByBoardNo(int boardNo);
 
 
+    List<Board> findAllBoardsWithUser(@Param("offset") int offset, @Param("limit") int limit);
+
+    List<Board> findBoardsByCategory(@Param("userNo") int userNo, @Param("category") int category, @Param("offset") int offset, @Param("limit") int limit);
+
+    int countBoardsByCategory(@Param("userNo") int userNo, @Param("category") int category);
+
+    List<Board> findAllBoardsByCategory(@Param("category") int category, @Param("offset") int offset, @Param("limit") int limit);
+
+    int countAllBoardsByCategory(@Param("category") int category);
+
 }

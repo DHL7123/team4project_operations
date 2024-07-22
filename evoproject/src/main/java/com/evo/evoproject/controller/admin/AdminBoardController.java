@@ -35,22 +35,35 @@ public class AdminBoardController {
     }
 
     @GetMapping
-    public String listBoards(HttpSession session, Model model, @RequestParam(defaultValue = "0") int page) {
+    public String listAdminBoards(HttpSession session, Model model, @RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "0") int category) {
         String userId = (String) session.getAttribute("userId");
+
         User user = userService.findUserByUserId(userId);
+
 
         if (user == null || user.getIsAdmin() != 'Y') {
             return "redirect:/login";
         }
 
         int offset = page * 10;
-        List<Board> boards = boardService.getAllBoards(offset, 10);
-        int totalBoards = boardService.getTotalBoardCount();
+        List<Board> boards;
+        int totalBoards;
+
+        if (category == 0) {
+            boards = boardService.getAllBoardsWithUser(offset, 10);
+            totalBoards = boardService.getTotalBoardCount();
+        } else {
+            boards = boardService.getAllBoardsByCategory(category, offset, 10);
+            totalBoards = boardService.getTotalBoardCountByCategory(category);
+        }
+
         int totalPages = (int) Math.ceil((double) totalBoards / 10);
+
 
         model.addAttribute("boards", boards);
         model.addAttribute("currentPage", page);
         model.addAttribute("totalPages", totalPages);
+        model.addAttribute("currentCategory", category);
         return "admin/manageBoard";
     }
 
@@ -84,62 +97,28 @@ public class AdminBoardController {
         model.addAttribute("replies", replies);
         return "admin/manageView";
     }
-//    @GetMapping("/edit/{boardNo}")
-//    public String showEditForm(@PathVariable int boardNo, HttpSession session, Model model) {
-//        String userId = (String) session.getAttribute("userId");
-//        User user = userService.findUserByUserId(userId);
-//
-//        if (user == null || user.getIsAdmin() != 'Y') {
-//            return "redirect:/login";
-//        }
-//
-//        Board board = boardService.getBoardById(boardNo);
-//        model.addAttribute("board", board);
-//        model.addAttribute("action", "edit");
-//        return "admin/board_form";
-//    }
-//
-//    @PostMapping("/edit/{boardNo}")
-//    public String updateBoard(@PathVariable int boardNo, @ModelAttribute Board board, @RequestParam("image") MultipartFile image, HttpSession session) {
-//        String userId = (String) session.getAttribute("userId");
-//        User user = userService.findUserByUserId(userId);
-//
-//        if (user == null || user.getIsAdmin() != 'Y') {
-//            return "redirect:/login";
-//        }
-//
-//        try {
-//            boardService.updateBoardWithImage(board, image);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//
-//        return "redirect:/admin/boards";
-//    }
-//@GetMapping("/create")
-//public String showCreateForm(Model model) {
-//    model.addAttribute("board", new Board());
-//    model.addAttribute("action", "create");
-//    return "admin/board_form";
-//}
-//
-//    @PostMapping("/create")
-//    public String createBoard(@ModelAttribute Board board, @RequestParam("image") MultipartFile image, HttpSession session) {
-//        String userId = (String) session.getAttribute("userId");
-//        User user = userService.findUserByUserId(userId);
-//
-//        if (user == null || user.getIsAdmin() != 'Y') {
-//            return "redirect:/login";
-//        }
-//
-//        board.setUserNo(user.getUserNo());
-//
-//        try {
-//            boardService.createBoardWithImage(board, image);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//
-//        return "redirect:/admin/boards";
-//    }
+
+    @GetMapping("/deleteReply/{replyNo}")
+    public String deleteReply(@PathVariable int replyNo, HttpSession session) {
+        String userId = (String) session.getAttribute("userId");
+        User user = userService.findUserByUserId(userId);
+
+        Reply reply = replyService.getReplyById(replyNo);
+        if (reply == null) {
+            return "redirect:/admin/boards?error=replyNotFound";
+        }
+
+        // 관리자만 댓글 삭제 가능
+        if (user.getIsAdmin() != 'Y') {
+            return "redirect:/admin/boards/view/" + reply.getBoardNo();
+        }
+
+        replyService.deleteReply(replyNo);
+
+        Board board = boardService.getBoardById(reply.getBoardNo());
+        board.setIsAnswered('N');
+        boardService.updateBoard(board);
+
+        return "redirect:/admin/boards/view/" + reply.getBoardNo();
+    }
 }

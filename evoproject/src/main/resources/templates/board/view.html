@@ -97,7 +97,6 @@
             <a th:href="${board.imageUrl}" download th:attr="download='image-${board.boardNo}'" class="btn btn-secondary btn-sm mt-2">이미지 다운로드</a>
         </div>
         <div class="button-group" th:if="${isAuthor}">
-            <a th:href="@{/boards/edit/{boardNo}(boardNo=${board.boardNo})}" class="btn btn-warning btn-sm">수정</a>
             <a th:href="@{/boards/delete/{boardNo}(boardNo=${board.boardNo})}" class="btn btn-danger btn-sm">삭제</a>
         </div>
     </div>
@@ -109,17 +108,7 @@
         <div th:each="reply : ${replies}" class="reply-box">
             <p th:text="${reply.replyContent}"></p>
             <p th:text="${#dates.format(reply.replyTimestamp, 'yyyy-MM-dd HH:mm')}"></p>
-            <a th:href="@{/replies/delete/{replyNo}(replyNo=${reply.replyNo})}" class="btn btn-danger btn-sm" sec:authorize="hasAuthority('ADMIN')">삭제</a>
         </div>
-    </div>
-    <div class="comment-form mt-5" sec:authorize="hasAuthority('ADMIN')">
-        <form th:action="@{/replies/create}" method="post">
-            <input type="hidden" name="boardNo" th:value="${board != null ? board.boardNo : ''}" />
-            <div class="form-group">
-                <textarea class="form-control" name="replyContent" rows="3" required></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">답글 달기</button>
-        </form>
     </div>
 </div>
 <footer th:replace="~{footer :: footer}"></footer>
