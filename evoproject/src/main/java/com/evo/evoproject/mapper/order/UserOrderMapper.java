@@ -28,4 +28,7 @@ public interface UserOrderMapper {
 
     void updateOrderRequestType(Order order);
 
+    List<Order> findCancelReturnsByUserNo (@Param("userNo") int userNo, @Param("offset") int offset, @Param("size") int size);
+
+    int countCancelReturnsByUserNo (@Param("userNo") int userNo);
 }

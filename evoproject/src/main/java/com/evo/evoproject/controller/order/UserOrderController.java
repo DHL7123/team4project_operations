@@ -48,6 +48,26 @@ public class UserOrderController {
             return "error";
         }
     }
+    @GetMapping("/cancelReturns")
+    public String getCancelReturns(@RequestParam(defaultValue = "1") int page,
+                                   @RequestParam(defaultValue = "10") int size,
+                                   Model model) {
+        Integer userNo = getCurrentUserNo();
+
+        try {
+            log.info("회원의 취소/반품 내역 요청 - 회원번호: {}, 페이지: {}, 사이즈: {}", userNo, page, size);
+            RetrieveOrdersResponse response = userOrderService.getCancelReturnsByUserNo(userNo, page, size);
+            model.addAttribute("orders", response.getOrders());
+            model.addAttribute("ordersResponse", response);
+            model.addAttribute("userNo", userNo);
+
+            return "order/cancelReturns";
+        } catch (Exception e) {
+            log.error("취소/반품 내역을 가져오는 중 오류 발생", e);
+            model.addAttribute("error", "취소/반품 내역을 가져오는 중 오류가 발생했습니다.");
+            return "error";
+        }
+    }
 
     @GetMapping("/{orderId}")
     @ResponseBody

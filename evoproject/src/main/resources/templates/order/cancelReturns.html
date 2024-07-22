@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Order List</title>
+  <title>Cancel/Return List</title>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet"/>
   <link href="../static/css/styles.css" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -313,13 +313,13 @@
 <body>
 
 <div class="mypage-banner">
-  <h1>Order List</h1>
+  <h1>Cancel/Return List</h1>
 </div>
 <div class="sidebar">
   <nav class="main-nav" role="navigation">
     <ul class="unstyled list-hover-slide">
-      <li><a href="/orders" class="is-current">주문목록</a></li>
-      <li><a href="orders/cancelReturns">취소/반품내역</a></li>
+      <li><a href="/orders">주문목록</a></li>
+      <li><a href="/orders/cancelReturns" class="is-current">취소/반품내역</a></li>
       <li><a href="/boards">문의</a></li>
       <li><a href="/mypage">개인정보</a></li>
     </ul>
@@ -332,7 +332,7 @@
       <h5 class="card-title">
         <a th:href="@{/product/detail/{productNo}(productNo=${order.productNo})}" th:text="${order.productName}">Product Name</a>
       </h5>
-      <p class="card-text" th:text="${order.orderPayment} + '원'">1,700,000원</p>  <!-- 수정된 부분 -->
+      <p class="card-text" th:text="${order.orderPayment} + '원'">1,700,000원</p>
     </div>
     <div class="order-card-actions">
       <button th:if="${order.orderStatus == 0 && order.requestType == 0}" th:onclick="'cancelOrder(' + ${order.orderNo} + ', $(this))'" class="btn btn-danger">결제 취소 신청</button>
@@ -346,22 +346,21 @@
     </div>
   </div>
 
-
   <nav th:if="${ordersResponse.totalPages > 1}">
     <ul class="pagination justify-content-center">
       <!-- 이전 페이지 버튼 -->
       <li class="page-item" th:classappend="${ordersResponse.currentPage == 1} ? 'disabled'">
-        <a class="page-link" th:href="@{/orders(page=${ordersResponse.currentPage - 1}, size=${ordersResponse.size})}">Prev</a>
+        <a class="page-link" th:href="@{/cancel-returns(page=${ordersResponse.currentPage - 1}, size=${ordersResponse.size})}">Prev</a>
       </li>
 
       <!-- 페이지 번호 반복 -->
       <li class="page-item" th:each="i : ${#numbers.sequence(1, ordersResponse.totalPages)}" th:classappend="${ordersResponse.currentPage == i} ? 'active'">
-        <a class="page-link" th:href="@{/orders(page=${i}, size=${ordersResponse.size})}" th:text="${i}"></a>
+        <a class="page-link" th:href="@{/cancel-returns(page=${i}, size=${ordersResponse.size})}" th:text="${i}"></a>
       </li>
 
       <!-- 다음 페이지 버튼 -->
       <li class="page-item" th:classappend="${ordersResponse.currentPage == ordersResponse.totalPages} ? 'disabled'">
-        <a class="page-link" th:href="@{/orders(page=${ordersResponse.currentPage + 1}, size=${ordersResponse.size})}">Next</a>
+        <a class="page-link" th:href="@{/cancel-returns(page=${ordersResponse.currentPage + 1}, size=${ordersResponse.size})}">Next</a>
       </li>
     </ul>
   </nav>
@@ -385,7 +384,5 @@
 
 <footer th:replace="footer :: footer"></footer>
 <script src="js/script.js"></script>
-
 </body>
-
 </html>

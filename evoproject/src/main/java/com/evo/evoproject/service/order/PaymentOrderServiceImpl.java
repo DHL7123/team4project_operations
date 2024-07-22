@@ -59,9 +59,7 @@ public class PaymentOrderServiceImpl implements PaymentOrderService {
             return false;
         }
 
-        // 결제 처리 로직 추가 필요
-        // 예: 결제 API 호출, 결과 처리 등
-        return true; // 임시 반환값
+        return true;
     }
 
     @Override
@@ -96,7 +94,6 @@ public class PaymentOrderServiceImpl implements PaymentOrderService {
         log.info("주문 요청 생성 - 주문: {}", orderRequest);
         return orderRequest;
     }
-
 
     @Override
     public RetrieveOrderItemRequest convertToRetrieveOrderItemRequest(Orderitem orderItem) {

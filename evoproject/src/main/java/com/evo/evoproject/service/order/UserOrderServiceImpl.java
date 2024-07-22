@@ -17,6 +17,7 @@ import java.util.List;
 @Slf4j
 @Service
 @RequiredArgsConstructor
+
 public class UserOrderServiceImpl implements UserOrderService {
 
     private final UserOrderMapper userOrderMapper;
@@ -77,5 +78,17 @@ public class UserOrderServiceImpl implements UserOrderService {
         userOrderMapper.updateOrderRequestType(order);
     }
 
+    @Override
+    public RetrieveOrdersResponse getCancelReturnsByUserNo(int userNo, int page, int size) {
+        int offset = (page - 1) * size;
+        int totalOrders = userOrderMapper.countCancelReturnsByUserNo(userNo);
+        int totalPages = (totalOrders + size - 1) / size;
+
+        List<Order> orders = userOrderMapper.findCancelReturnsByUserNo(userNo, offset, size);
+
+        return new RetrieveOrdersResponse(orders, userNo, page, totalPages, size);
+    }
 }
+
+
 
