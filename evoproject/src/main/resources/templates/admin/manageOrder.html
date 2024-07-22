@@ -222,7 +222,12 @@
     }
 
     function hidePopup(popupId) {
-        document.getElementById(popupId).style.display = 'none';
+        var popup = document.getElementById(popupId);
+        popup.style.display = 'none';
+        var input = popup.querySelector('input[type="text"]');
+        if (input) {
+            input.value = '';
+        }
     }
 
     // 결제 취소 요청 처리 팝업

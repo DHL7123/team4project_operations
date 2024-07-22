@@ -51,7 +51,9 @@
             </td>
             <td th:each="product : ${cartItem.products}" th:text="${product.proPrice}"></td>
             <td th:text="${cartItem.cartQuantity}"></td>
-            <td th:each="product : ${cartItem.products}" th:text="${product.shipping}"></td>
+            <td>
+                <span th:each="product : ${cartItem.products}" th:text="${product.shipping * cartItem.cartQuantity}"></span>
+            </td>
             <td>
                 <span th:each="product : ${cartItem.products}" th:text="${(product.proPrice * cartItem.cartQuantity) + product.shipping}"></span>
             </td>

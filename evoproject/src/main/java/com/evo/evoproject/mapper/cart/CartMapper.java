@@ -17,4 +17,6 @@ public interface CartMapper {
     int getProductStock(int proNo);
 
     int getCartProductQuantity(int userNo, int proNo);
+
+    void updateProductQuantityInCart(int userNo, int proNo, int quantity);
 }
