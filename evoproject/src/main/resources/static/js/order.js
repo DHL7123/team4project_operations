@@ -22,6 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
         function onClickPay() {
+            let orderStatus = creditCardRadio.checked ? 1 : 0;
             if (creditCardRadio.checked) {
                 IMP.init("imp77114780");
                 IMP.request_pay({
@@ -47,11 +48,12 @@ document.addEventListener("DOMContentLoaded", function () {
                                 orderId: rsp.merchant_uid,
                                 orderComment: requestComment,
                                 orderAddress1: inputAddress.value,
-                                orderAddress2: inputDetailAddress.value
+                                orderAddress2: inputDetailAddress.value,
+                                orderStatus: orderStatus
                             }),
                             contentType: "application/json",
                             success: function () {
-                                window.location.href = "/orders";
+                                window.location.href = "/paymentOrders/cart/orderComplete";
                             },
                             error: function (xhr, status, error) {
                                 alert("Order completion failed: " + error);
@@ -62,7 +64,28 @@ document.addEventListener("DOMContentLoaded", function () {
                     }
                 });
             } else if (bankTransferRadio.checked) {
-                window.location.href = "orderComplete.html";
+                // 은행 이체의 경우에도 AJAX 요청을 사용하여 서버로 정보 전송
+                const requestComment = inputRequest.value;
+                $.ajax({
+                    type: "POST",
+                    url: "/paymentOrders/complete",
+                    data: JSON.stringify({
+                        transactionId: "bank_transfer_" + new Date().getTime(), // 임시로 설정
+                        amount: totalAmount, // 이체 금액
+                        orderId: new Date().getTime(), // 임시로 설정
+                        orderComment: requestComment,
+                        orderAddress1: inputAddress.value,
+                        orderAddress2: inputDetailAddress.value,
+                        orderStatus: orderStatus // 은행 이체의 경우에도 전달
+                    }),
+                    contentType: "application/json",
+                    success: function () {
+                        window.location.href = "/paymentOrders/cart/orderComplete";
+                    },
+                    error: function (xhr, status, error) {
+                        alert("Order completion failed: " + error);
+                    }
+                });
             }
         }
 

@@ -32,18 +32,20 @@ public class OrderController {
     @Autowired
     private CartService cartService;
 
+    @GetMapping
+    public String listOrders(Model model, HttpSession session) {
+        User user = (User) session.getAttribute("user");
+        List<Order> orders = orderService.getAllOrders(user.getUserNo());
+        model.addAttribute("orders", orders);
+        log.info("Order in session: {}", orders);
+        return "orders";
+    }
+
     @PostMapping("/save")
     public String saveOrder(@ModelAttribute Order order, HttpSession session) {
         session.setAttribute("order", order); // 세션에 임시 저장
         log.info("Order in session: {}", order);
         return "redirect:/paymentOrders/checkout"; // 결제 페이지로 리다이렉션
-    }
-
-    @GetMapping
-    public String listOrders(Model model) {
-        List<Order> orders = orderService.getAllOrders();
-        model.addAttribute("orders", orders);
-        return "orders";
     }
 
     @GetMapping("/create")
@@ -58,7 +60,6 @@ public class OrderController {
             Order order = (Order) session.getAttribute("order");
             if (order != null) {
                 // 결제 정보 설정
-                order.setOrder_status(1); // 결제 완료 상태
                 order.setOrder_payment(request.getAmount()); // 결제 금액 설정
                 order.setOrder_comment(request.getOrderComment());//주문요청사항
                 order.setOrder_address1(request.getOrderAddress1());
@@ -147,6 +148,15 @@ public class OrderController {
         log.info("total {}", k);
 
         return "checkOut";  // checkOut.html 파일과 매핑
+    }
+
+    @GetMapping("/cart/orderComplete")
+    public String showOrderCompletePage(Model model) {
+        // 필요한 데이터가 있다면 모델에 추가합니다.
+        // 예를 들어, 주문 정보를 가져와서 모델에 추가할 수 있습니다.
+
+        // 이 경우에는 단순히 orderComplete.html을 반환합니다.
+        return "orderComplete"; // orderComplete.html을 렌더링
     }
 
 

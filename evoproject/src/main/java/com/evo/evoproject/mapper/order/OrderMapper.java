@@ -8,8 +8,8 @@ import java.util.List;
 @Mapper
 public interface OrderMapper {
     void insertOrder(Order order);
-    List<Order> findAllOrders();
-    Order getOrderById(Long id);
+    List<Order> findAllOrders(int user_no);
+    Order getOrderById(int id);
     void updateOrder(Order order);
-    void deleteOrder(Long id);
+    void deleteOrder(int id);
 }

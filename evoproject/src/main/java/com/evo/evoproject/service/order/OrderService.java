@@ -19,11 +19,11 @@ public class OrderService {
         orderMapper.insertOrder(order);
     }
 
-    public List<Order> getAllOrders() {
-        return orderMapper.findAllOrders();
+    public List<Order> getAllOrders(Integer user_no) {
+        return orderMapper.findAllOrders(user_no);
     }
 
-    public Order getOrderById(Long id) {
+    public Order getOrderById(int id) {
         return orderMapper.getOrderById(id);
     }
 
@@ -33,7 +33,7 @@ public class OrderService {
     }
 
     @Transactional
-    public void deleteOrder(Long id) {
+    public void deleteOrder(int id) {
         orderMapper.deleteOrder(id);
     }
 }
