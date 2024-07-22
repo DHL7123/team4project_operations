@@ -10,6 +10,8 @@ import com.evo.evoproject.service.product.ProductService;
 import com.evo.evoproject.service.user.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -50,17 +52,29 @@ public class OrderController {
         return "createOrder";
     }
     // 추가된 부분
-    @PostMapping("/order/complete")
-    public String completeOrder(HttpSession session) {
-        Order order = (Order) session.getAttribute("order");
+    @PostMapping("/complete")
+    public ResponseEntity<String> completeOrder(@RequestBody PaymentCallbackRequest request, HttpSession session) {
+        try {
+            Order order = (Order) session.getAttribute("order");
+            if (order != null) {
+                // 결제 정보 설정
+                order.setOrder_status(1); // 결제 완료 상태
+                order.setOrder_payment(request.getAmount()); // 결제 금액 설정
+                order.setOrder_comment(request.getOrderComment());//주문요청사항
+                order.setOrder_address1(request.getOrderAddress1());
+                order.setOrder_address2(request.getOrderAddress2());
+                orderService.createOrder(order);
 
-        if (order != null) {
-            order.setOrder_status(1);
-            orderService.createOrder(order);
-            session.removeAttribute("order"); // 세션에서 제거
+                // 세션에서 주문 정보 제거
+                session.removeAttribute("order");
+                return ResponseEntity.ok("Order saved successfully");
+            } else {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Order not found in session");
+            }
+        } catch (Exception e) {
+            e.printStackTrace(); // 서버 로그에 오류 스택 트레이스를 출력
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An error occurred: " + e.getMessage());
         }
-
-        return "orderComplete";
     }
 
     @PostMapping("/cart")
@@ -81,7 +95,6 @@ public class OrderController {
                 order.setOrder_address1(user.getUserAddress1());
                 order.setOrder_address2(user.getUserAddress2());
                 order.setOrder_phone(user.getUserPhone());
-                order.setOrder_comment("Example comment"); // 필요 시 설정
                 order.setPro_name(product.getProName());
                 order.setOrder_timestamp(LocalDateTime.now());
                 order.setPro_stock(cart.getCartQuantity());
@@ -90,7 +103,7 @@ public class OrderController {
                 order.setRequestType(0); // 기본값 설정
                 order.setOrder_delivnum(0); // 기본값 설정
 
-                total += product.getProPrice();
+                total += product.getProPrice() * cart.getCartQuantity();
                 total += product.getShipping();
                 // 세션에 저장
                 session.setAttribute("order", order);

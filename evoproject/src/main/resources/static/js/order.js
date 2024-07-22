@@ -4,6 +4,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const bankTransferRadio = document.getElementById("bankTransfer");
     const checkOutButton = document.querySelector("#checkoutButton");
     const info = document.getElementById("info");
+    const inputRequest = document.getElementById("inputRequest");
+    const inputAddress = document.getElementById("inputAddress");
+    const inputDetailAddress = document.getElementById("inputDetailAddress");
 
     function updateButtonState() {
         if (creditCardRadio.checked) {
@@ -18,31 +21,50 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    function onClickPay() {
-        if (creditCardRadio.checked) {
-            IMP.init("imp77114780");
-            IMP.request_pay({
-                pg: "html5_inicis",
-                pay_method: "card",
-                merchant_uid: "merchant_" + new Date().getTime(),//merchant부터 buyer까지 연결 및 필요없는거 제거해서 쓰면 된다.
-                name: "주문명:결제테스트",
-                amount: totalAmount,
-                buyer_email: "iamport@siot.do",
-                buyer_name: "구매자이름",
-                buyer_tel: "010-1234-5678",
-                buyer_addr: "서울특별시 강남구 삼성동",
-                buyer_postcode: "123-456"
-            }, function (rsp) {
-                if (rsp.success) {
-                    alert("결제가 완료되었습니다.");
-                } else {
-                    alert("결제에 실패하였습니다.");
-                }
-            });
-        } else if (bankTransferRadio.checked) {
-            window.location.href = "bankTransfer.html";
+        function onClickPay() {
+            if (creditCardRadio.checked) {
+                IMP.init("imp77114780");
+                IMP.request_pay({
+                    pg: "html5_inicis",
+                    pay_method: "card",
+                    merchant_uid: new Date().getTime(),
+                    name: order.pro_name,
+                    amount: totalAmount,
+                    buyer_email: "iamport@siot.do",
+                    buyer_name: "구매자이름",
+                    buyer_tel: "010-1234-5678",
+                    buyer_addr: "서울특별시 강남구 삼성동",
+                    buyer_postcode: "123-456"
+                }, function (rsp) {
+                    if (rsp.success) {
+                        const requestComment = inputRequest.value;
+                        $.ajax({
+                            type: "POST",
+                            url: "/paymentOrders/complete",
+                            data: JSON.stringify({
+                                transactionId: rsp.imp_uid,
+                                amount: totalAmount,
+                                orderId: rsp.merchant_uid,
+                                orderComment: requestComment,
+                                orderAddress1: inputAddress.value,
+                                orderAddress2: inputDetailAddress.value
+                            }),
+                            contentType: "application/json",
+                            success: function () {
+                                window.location.href = "/orders";
+                            },
+                            error: function (xhr, status, error) {
+                                alert("Order completion failed: " + error);
+                            }
+                        });
+                    } else {
+                        alert("결제에 실패하였습니다.");
+                    }
+                });
+            } else if (bankTransferRadio.checked) {
+                window.location.href = "orderComplete.html";
+            }
         }
-    }
 
     $('#payButton').click(function () {
         IMP.request_pay({

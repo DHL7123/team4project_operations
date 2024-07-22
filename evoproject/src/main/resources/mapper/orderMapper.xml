@@ -3,8 +3,8 @@
 <mapper namespace="com.evo.evoproject.mapper.order.OrderMapper">
 
     <insert id="insertOrder" parameterType="com.evo.evoproject.domain.order.Order">
-        INSERT INTO list (user_name, item, quantity, price)
-        VALUES (#{userName}, #{item}, #{quantity}, #{price})
+        INSERT INTO orders (order_no, user_no, pro_no, order_name, order_address_1, order_address_2, order_phone, order_comment, pro_name, order_timestamp, pro_stock, order_payment, order_status, request_type, order_delivnum)
+        VALUES (#{order_no}, #{user_no}, #{pro_no}, #{order_name}, #{order_address1}, #{order_address2}, #{order_phone}, #{order_comment}, #{pro_name}, #{order_timestamp}, #{pro_stock}, #{order_payment}, #{order_status}, #{requestType}, #{order_delivnum})
     </insert>
 
     <select id="findAllOrders" resultType="com.evo.evoproject.domain.order.Order">
