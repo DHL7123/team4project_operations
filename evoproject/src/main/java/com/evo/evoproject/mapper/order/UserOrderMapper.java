@@ -27,4 +27,5 @@ public interface UserOrderMapper {
     Order findOrderByIdAndUserNo(@Param("orderId") int orderId, @Param("userNo") int userNo);
 
     void updateOrderRequestType(Order order);
+
 }

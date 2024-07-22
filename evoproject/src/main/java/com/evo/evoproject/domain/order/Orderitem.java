@@ -4,6 +4,7 @@ import lombok.Data;
 
 @Data
 public class Orderitem {
+    private int orderNo;
     private int productNo;
     private int quantity;
     private int price;

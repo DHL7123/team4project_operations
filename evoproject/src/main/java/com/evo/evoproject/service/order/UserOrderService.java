@@ -3,6 +3,7 @@ package com.evo.evoproject.service.order;
 import com.evo.evoproject.controller.order.dto.OrderRequest;
 import com.evo.evoproject.controller.order.dto.RetrieveOrdersResponse;
 import com.evo.evoproject.domain.order.Order;
+import com.evo.evoproject.domain.order.Orderitem;
 import jakarta.servlet.http.HttpSession;
 
 
@@ -13,7 +14,8 @@ public interface UserOrderService {
     Order getOrderDetails(int orderId, int userNo);
     void createOrder(int userNo, OrderRequest orderRequest);
     void requestCancelOrder(int orderId, int userNo);
-    public void requestRefundOrder(int orderId, int userNo);
+     void requestRefundOrder(int orderId, int userNo);
+
 }
 
 

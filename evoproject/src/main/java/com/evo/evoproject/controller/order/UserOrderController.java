@@ -3,6 +3,7 @@ package com.evo.evoproject.controller.order;
 import com.evo.evoproject.controller.order.dto.OrderRequest;
 import com.evo.evoproject.controller.order.dto.RetrieveOrdersResponse;
 import com.evo.evoproject.domain.order.Order;
+import com.evo.evoproject.domain.order.Orderitem;
 import com.evo.evoproject.service.cart.CartService;
 import com.evo.evoproject.service.order.UserOrderService;
 import jakarta.servlet.http.HttpSession;
@@ -26,29 +27,27 @@ public class UserOrderController {
 
     private final UserOrderService userOrderService;
     private final CartService cartService;
-    @GetMapping
-    public String getUserOrders(@RequestParam(defaultValue = "1") int page,
-                                @RequestParam(defaultValue = "10") int size,
-                                Model model) {
-        Integer userNo = getCurrentUserNo();
-        if (userNo == null) {
-            return "redirect:/login";
-        }
 
-        log.info("회원의 주문 목록 요청 - 회원번호: {}, 페이지: {}, 사이즈: {}", userNo, page, size);
+    @GetMapping
+    public String getOrders(@RequestParam(defaultValue = "1") int page,
+                            @RequestParam(defaultValue = "10") int size,
+                            Model model) {
+        Integer userNo = getCurrentUserNo();
+
         try {
+            log.info("회원의 주문 목록 요청 - 회원번호: {}, 페이지: {}, 사이즈: {}", userNo, page, size);
             RetrieveOrdersResponse response = userOrderService.getOrdersByUserNo(userNo, page, size);
             model.addAttribute("orders", response.getOrders());
             model.addAttribute("ordersResponse", response);
             model.addAttribute("userNo", userNo);
-            return "/order/list";
+
+            return "order/list";
         } catch (Exception e) {
             log.error("주문 목록을 가져오는 중 오류 발생", e);
             model.addAttribute("error", "주문 목록을 가져오는 중 오류가 발생했습니다.");
             return "error";
         }
     }
-
 
     @GetMapping("/{orderId}")
     @ResponseBody
@@ -137,7 +136,6 @@ public class UserOrderController {
         }
         return response;
     }
-
 
     private Integer getCurrentUserNo() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();

@@ -3,11 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>My Page - Order List</title>
+  <title>Order List</title>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet"/>
   <link href="../static/css/styles.css" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
   <link rel="stylesheet" th:href="@{/css/styles.css}">
+
   <style>
     :root {
       --orange: #DF4500;
@@ -17,46 +19,98 @@
       --sans: 'Source Sans Pro', Helvetica, Arial, sans-serif;
     }
 
-    * {
+    *,
+    ::before,
+    ::after {
       box-sizing: border-box;
     }
 
-    body {
-      font-family: var(--sans);
-      margin: 0;
+    .unstyled {
+      list-style: none;
       padding: 0;
+      margin: 0;
     }
 
     .sidebar {
+      top: 580px;
+      left: 0;
       width: 250px;
-      background-color: #f8f9fa;
-      position: fixed;
-      top: 0;
-      bottom: 0;
+      height: calc(100% - 400px);
+      background-color: #333;
+      color: #fff;
       padding-top: 20px;
     }
 
-    .sidebar ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    .sidebar ul li {
-      padding: 10px 20px;
-    }
-
-    .sidebar ul li a {
+    .unstyled a {
       text-decoration: none;
-      color: #333;
     }
 
-    .sidebar ul li a:hover {
-      color: #000;
+    .main-nav ul {
+      border-top: solid 1px var(--gray-shine);
     }
 
-    .content {
-      margin-left: 250px;
-      padding: 20px;
+    .main-nav li {
+      border-bottom: solid 1px var(--gray-shine);
+    }
+
+    .main-nav a {
+      padding: 1.1em 0;
+      color: var(--white-off);
+      font: 400 1.125em var(--sans);
+      text-align: center;
+      text-transform: lowercase;
+    }
+
+    .main-nav a:hover {
+      color: #fff;
+    }
+
+    .list-hover-slide li {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .list-hover-slide a {
+      display: block;
+      position: relative;
+      z-index: 1;
+      transition: .35s ease color;
+    }
+
+    .list-hover-slide a::before {
+      content: '';
+      display: block;
+      z-index: -1;
+      position: absolute;
+      left: -100%;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      border-right: solid 5px var(--orange);
+      background: var(--gray-shine);
+      transition: .35s ease left;
+    }
+
+    .list-hover-slide a.is-current::before,
+    .list-hover-slide a:hover::before {
+      left: 0;
+    }
+
+    .mypage-banner {
+      position: relative;
+      background-image: url('/image/banner.jpg');
+      background-size: cover;
+      background-position: center;
+      height: 400px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+    .mypage-banner h1 {
+      margin: 0;
     }
 
     .order-card {
@@ -65,6 +119,7 @@
       border: 1px solid #ddd;
       border-radius: 10px;
       overflow: hidden;
+      width: 100%;
     }
 
     .order-card img {
@@ -92,6 +147,30 @@
       margin-bottom: 10px;
     }
 
+    .pagination {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .pagination a {
+      margin: 0 5px;
+      padding: 8px 16px;
+      background-color: #f1f1f1;
+      color: #333;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+
+    .pagination a.active {
+      background-color: #4caf50;
+      color: white;
+    }
+
+    .pagination a:hover:not(.active) {
+      background-color: #ddd;
+    }
+
     .modal {
       display: none;
       position: fixed;
@@ -100,7 +179,6 @@
       top: 0;
       width: 100%;
       height: 100%;
-      overflow: auto;
       background-color: rgba(0, 0, 0, 0.5);
       display: flex;
       justify-content: center;
@@ -166,22 +244,52 @@
       }
     }
 
+    function formatOrderStatus(status) {
+      switch(status) {
+        case 0: return "결제 대기";
+        case 1: return "배송 준비중";
+        case 2: return "배송중";
+        case 3: return "결제취소/환불";
+        case 4: return "배송완료";
+        default: return "알 수 없음";
+      }
+    }
+
+    function formatTimestamp(timestamp) {
+      const date = new Date(timestamp);
+      const yyyy = date.getFullYear();
+      const mm = String(date.getMonth() + 1).padStart(2, '0');
+      const dd = String(date.getDate()).padStart(2, '0');
+      const hh = String(date.getHours()).padStart(2, '0');
+      const min = String(date.getMinutes()).padStart(2, '0');
+      return `${yyyy}/${mm}/${dd} ${hh}:${min}`;
+    }
+
+    function formatPhoneNumber(phoneNumber) {
+      return phoneNumber.replace(/(\d{3})(\d{3,4})(\d{4})/, '$1-$2-$3');
+    }
+
+    function formatCurrency(amount) {
+      return amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "원";
+    }
+
     function showOrderDetails(orderId) {
       $.get("/orders/" + orderId, function(data) {
         if (data.success) {
+          const deliveryNumber = data.order.orderDelivnum ? data.order.orderDelivnum : "배송 준비중";
           $("#orderDetailsModal .modal-body").html(`
-            <p><strong>주문 번호:</strong> ${data.order.orderNo}</p>
-            <p><strong>제품 번호:</strong> ${data.order.proNo}</p>
-            <p><strong>주문 이름:</strong> ${data.order.orderName}</p>
-            <p><strong>주문 주소:</strong> ${data.order.orderAddress1} ${data.order.orderAddress2}</p>
-            <p><strong>전화 번호:</strong> ${data.order.orderPhone}</p>
-            <p><strong>주문 코멘트:</strong> ${data.order.orderComment}</p>
-            <p><strong>주문 시간:</strong> ${data.order.orderTimestamp}</p>
-            <p><strong>결제 금액:</strong> ${data.order.orderPayment}</p>
-            <p><strong>주문 상태:</strong> ${data.order.orderStatus}</p>
-            <p><strong>배송 번호:</strong> ${data.order.orderDelivnum}</p>
-            <p><strong>요청 타입:</strong> ${data.order.requestType}</p>
-          `);
+          <p><strong>주문 번호:</strong> ${data.order.orderNo}</p>
+          <p><strong>제품 번호:</strong> ${data.order.proNo}</p>
+          <p><strong>수령인 이름:</strong> ${data.order.orderName}</p>
+          <p><strong>주문 주소:</strong> ${data.order.orderAddress1} ${data.order.orderAddress2}</p>
+          <p><strong>전화 번호:</strong> ${formatPhoneNumber(data.order.orderPhone.toString())}</p>
+          <p><strong>주문 코멘트:</strong> ${data.order.orderComment}</p>
+          <p><strong>주문 시간:</strong> ${formatTimestamp(data.order.orderTimestamp)}</p>
+          <p><strong>결제 금액:</strong> ${formatCurrency(data.order.orderPayment)}</p>
+          <p><strong>주문 상태:</strong> ${formatOrderStatus(data.order.orderStatus)}</p>
+          <p><strong>송장 번호:</strong> ${deliveryNumber}</p>
+          <p><strong>주문 수량:</strong> ${data.order.quantity}</p>
+        `);
           $("#orderDetailsModal").show();
         } else {
           alert(data.message);
@@ -193,39 +301,70 @@
       $(".modal .close").click(function() {
         $(".modal").hide();
       });
+
+      // Ensure the modal is hidden initially
+      $("#orderDetailsModal").hide();
     });
   </script>
+
 </head>
+<body class="bg-light" th:data-user-no="${userNo}">
+<header th:replace="header :: header"></header>
 <body>
-<div class="sidebar">
-  <ul>
-    <li><a href="/orders" class="is-current">주문목록</a></li>
-    <li><a href="#">취소/반품내역</a></li>
-    <li><a href="/boards">문의</a></li>
-    <li><a href="/mypage">개인정보</a></li>
-  </ul>
+
+<div class="mypage-banner">
+  <h1>Order List</h1>
 </div>
-<div class="content">
-  <h1>주문목록</h1>
-  <div th:each="order : ${orders}" class="order-card">
-    <img th:src="@{/images/sofa.jpg}" alt="Product Image">
+<div class="sidebar">
+  <nav class="main-nav" role="navigation">
+    <ul class="unstyled list-hover-slide">
+      <li><a href="/orders" class="is-current">주문목록</a></li>
+      <li><a href="#">취소/반품내역</a></li>
+      <li><a href="/boards">문의</a></li>
+      <li><a href="/mypage">개인정보</a></li>
+    </ul>
+  </nav>
+</div>
+<div class="container mt-5">
+  <div th:each="order : ${orders}" class="order-card bg-light card-custom mx-auto" style="border-radius: 1rem; max-width: 800px;">
+    <img th:src="${order.mainImage != null ? order.mainImage : '/image/evo.png'}" alt="Product Image">
     <div class="order-card-body">
-      <h5 class="card-title" th:text="${order.orderName}">Asgaard sofa</h5>
+      <h5 class="card-title">
+        <a th:href="@{/product/{productNo}(productNo=${order.proNo})}" th:text="${order.productName}">Product Name</a>
+      </h5>
       <p class="card-text" th:text="${order.orderPayment} + '원'">1,700,000원</p>
     </div>
     <div class="order-card-actions">
-      <button th:if="${order.orderStatus == 0 and order.requestType == 0}" th:onclick="'cancelOrder(' + ${order.orderNo} + ', $(this))'" class="btn btn-danger">결제 취소 신청</button>
-      <button th:if="${order.orderStatus == 0 and order.requestType != 0}" class="btn btn-secondary" disabled>취소 접수</button>
+      <button th:if="${order.orderStatus == 0 && order.requestType == 0}" th:onclick="'cancelOrder(' + ${order.orderNo} + ', $(this))'" class="btn btn-danger">결제 취소 신청</button>
+      <button th:if="${order.orderStatus == 0 && order.requestType != 0}" class="btn btn-secondary" disabled>취소 접수</button>
       <button th:if="${order.orderStatus == 1}" class="btn btn-secondary">배송 준비중</button>
       <button th:if="${order.orderStatus == 2}" class="btn btn-primary">배송중</button>
-      <button th:if="${order.orderStatus == 4 and order.requestType == 0}" th:onclick="'requestRefund(' + ${order.orderNo} + ', $(this))'" class="btn btn-warning">반품 신청</button>
-      <button th:if="${order.orderStatus == 4 and order.requestType != 0}" class="btn btn-secondary" disabled>환불 접수</button>
+      <button th:if="${order.orderStatus == 4 && order.requestType == 0}" th:onclick="'requestRefund(' + ${order.orderNo} + ', $(this))'" class="btn btn-warning">반품 신청</button>
+      <button th:if="${order.orderStatus == 4 && order.requestType != 0}" class="btn btn-secondary" disabled>환불 접수</button>
       <button th:if="${order.orderStatus == 5}" class="btn btn-success">구매 완료</button>
       <button th:onclick="'showOrderDetails(' + ${order.orderNo} + ')'" class="btn btn-info">상세 보기</button>
     </div>
   </div>
-</div>
 
+  <nav th:if="${ordersResponse.totalPages > 1}">
+    <ul class="pagination justify-content-center">
+      <!-- 이전 페이지 버튼 -->
+      <li class="page-item" th:classappend="${ordersResponse.currentPage == 1} ? 'disabled'">
+        <a class="page-link" th:href="@{/orders(page=${ordersResponse.currentPage - 1}, size=${ordersResponse.size})}">Prev</a>
+      </li>
+
+      <!-- 페이지 번호 반복 -->
+      <li class="page-item" th:each="i : ${#numbers.sequence(1, ordersResponse.totalPages)}" th:classappend="${ordersResponse.currentPage == i} ? 'active'">
+        <a class="page-link" th:href="@{/orders(page=${i}, size=${ordersResponse.size})}" th:text="${i}"></a>
+      </li>
+
+      <!-- 다음 페이지 버튼 -->
+      <li class="page-item" th:classappend="${ordersResponse.currentPage == ordersResponse.totalPages} ? 'disabled'">
+        <a class="page-link" th:href="@{/orders(page=${ordersResponse.currentPage + 1}, size=${ordersResponse.size})}">Next</a>
+      </li>
+    </ul>
+  </nav>
+</div>
 
 <!-- Modal -->
 <div id="orderDetailsModal" class="modal">
@@ -235,11 +374,15 @@
       <span class="close">&times;</span>
     </div>
     <div class="modal-body">
+
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-secondary close">닫기</button>
     </div>
   </div>
 </div>
+
+<footer th:replace="footer :: footer"></footer>
+<script src="js/script.js"></script>
 </body>
 </html>

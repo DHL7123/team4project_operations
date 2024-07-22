@@ -15,4 +15,5 @@ public class RetrieveOrdersResponse {
     private int userNo;
     private int currentPage;
     private int totalPages;
+    private int size;
 }

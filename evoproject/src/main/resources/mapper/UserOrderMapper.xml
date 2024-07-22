@@ -10,6 +10,8 @@
         <id property="orderNo" column="order_no" />
         <result property="userNo" column="user_no" />
         <result property="proNo" column="pro_no" />
+        <result property="productName" column="product_name" />
+        <result property="mainImage" column="image_name" />
         <result property="orderName" column="order_name" />
         <result property="orderAddress1" column="order_address_1" />
         <result property="orderAddress2" column="order_address_2" />
@@ -20,15 +22,41 @@
         <result property="orderStatus" column="order_status" />
         <result property="orderDelivnum" column="order_delivnum" />
         <result property="requestType" column="request_type" />
+        <result property="quantity" column="pro_stock"/>
     </resultMap>
 
     <!-- 주문 목록 조회 -->
     <select id="findOrdersByUserNo" resultMap="OrderResultMap">
-        SELECT *
-        FROM orders
-        WHERE user_no = #{userNo}
-        ORDER BY order_timestamp DESC
+        SELECT o.order_no AS orderNo,
+               o.user_no AS userNo,
+               p.pro_no AS proNo,
+               p.pro_name AS productName,
+               i.image_name AS mainImage,
+               o.order_name AS orderName,
+               o.order_address_1 AS orderAddress1,
+               o.order_address_2 AS orderAddress2,
+               o.order_phone AS orderPhone,
+               o.order_comment AS orderComment,
+               o.order_timestamp AS orderTimestamp,
+               o.order_payment AS orderPayment,
+               o.order_status AS orderStatus,
+               o.order_delivnum AS orderDelivnum,
+               o.request_type AS requestType,
+               o.pro_stock AS quantity
+        FROM orders o
+                 JOIN product p ON o.pro_no = p.pro_no
+                 LEFT JOIN image i ON p.image_id = i.image_id
+        WHERE o.user_no = #{userNo}
+        ORDER BY o.order_timestamp DESC
             LIMIT #{size} OFFSET #{offset}
+    </select>
+
+    <!-- 주문 목록 조회 -->
+    <select id="findOrderListWithProductInfo" resultType="com.evo.evoproject.domain.order.Orderitem">
+        SELECT o.order_no AS orderNo, p.pro_no AS productNo, p.pro_name AS productName, i.image_name AS mainImage
+        FROM orders o
+                 JOIN product p ON o.pro_no = p.pro_no
+                 LEFT JOIN image i ON p.image_id = i.image_id
     </select>
 
     <!-- 주문 상세 조회 -->
@@ -84,4 +112,7 @@
         SET request_type = #{requestType}
         WHERE order_no = #{orderNo}
     </update>
+
+
+
 </mapper>

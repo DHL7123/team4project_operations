@@ -22,7 +22,6 @@ public class UserOrderServiceImpl implements UserOrderService {
     private final UserOrderMapper userOrderMapper;
 
     @Transactional(readOnly = true)
-    @Override
     public RetrieveOrdersResponse getOrdersByUserNo(int userNo, int page, int size) {
         int offset = (page - 1) * size;
         int totalOrders = userOrderMapper.countOrdersByUserNo(userNo);
@@ -30,8 +29,9 @@ public class UserOrderServiceImpl implements UserOrderService {
 
         List<Order> orders = userOrderMapper.findOrdersByUserNo(userNo, offset, size);
 
-        return new RetrieveOrdersResponse(orders, userNo, page, totalPages);
+        return new RetrieveOrdersResponse(orders, userNo, page, totalPages, size);
     }
+
 
     @Transactional(readOnly = true)
     @Override
@@ -76,7 +76,6 @@ public class UserOrderServiceImpl implements UserOrderService {
         order.setRequestType(2); // 반품 요청으로 설정
         userOrderMapper.updateOrderRequestType(order);
     }
-
 
 }
 
