@@ -7,8 +7,12 @@
     <link rel="stylesheet" th:href="@{/css/styles.css}">
     <link rel="stylesheet" th:href="@{/css/detail.css}">
 </head>
+<<<<<<< HEAD
 
 <body class="bg-light" th:data-user-no="${userNo}">
+=======
+<body class="bg-light" th:data-user-no="${userNo}" th:data-product-no="${productDetailResponse.product.productNo}">
+>>>>>>> feature/order#3
 
 <header th:replace="~{header :: header}"></header>
 
@@ -19,11 +23,11 @@
         <div class="col-md-8">
             <div class="product-images mb-4">
                 <div class="main-image mb-4">
-                    <img th:src="${productDetailResponse.images[0].imageName}" class="img-thumbnail" alt="Main Product Image" onclick="enlargeImage(this)">
+                    <img th:src="@{${productDetailResponse.images[0].imageName}}" class="img-thumbnail" alt="Main Product Image" onclick="enlargeImage(this)" data-image-name="${productDetailResponse.images[0].imageName}">
                 </div>
                 <div class="thumbnail-images d-flex">
                     <div th:each="image : ${productDetailResponse.images}" th:if="${image != null && image.imageName != productDetailResponse.images[0].imageName}" class="col-3">
-                        <img th:src="${image.imageName}" class="img-thumbnail" alt="Product Image" onclick="enlargeImage(this)">
+                        <img th:src="@{${image.imageName}}" class="img-thumbnail" alt="Product Image" onclick="enlargeImage(this)">
                     </div>
                 </div>
             </div>
@@ -70,11 +74,16 @@
                     <input type="number" id="quantity" value="1" min="1" max="${productDetailResponse.product.stock}" class="form-control text-center mx-2" style="width: 60px;">
                     <button class="btn btn-secondary btn-number" type="button" onclick="document.getElementById('quantity').stepUp()">+</button>
                 </div>
-                <button class="btn btn-custom mb-2" onclick="location.href='/order.html'">구매하기</button>
+                <form id="paymentForm" method="POST" action="/orders/payment" onsubmit="prepareSelectedItems()">
+                    <input type="hidden" name="selectedItems" id="selectedItems">
+                    <input type="hidden" name="proNo" th:value="${productDetailResponse.product.productNo}">
+                    <button type="submit" class="btn btn-custom mb-2">구매하기</button>
+                </form>
+
                 <button class="btn btn-custom" th:onclick="'addToCart(' + ${productDetailResponse.product.productNo} + ', ' + ${productDetailResponse.product.price} + ', document.getElementById(\'quantity\').value, ' + ${productDetailResponse.product.stock} + ')'">장바구니 담기</button>
             </div>
             <div class="text-center mt-4" th:if="${productDetailResponse.product.soldout == 1}">
-                <span class="text-danger">Sold Out</span>
+                <span class="text-danger soldout">Sold Out</span>
             </div>
         </div>
     </div>
@@ -84,7 +93,7 @@
         <div class="d-flex flex-wrap justify-content-center">
             <div th:each="product : ${relatedProducts}" class="card m-2" style="width: 18rem;">
                 <a th:href="@{'/product/detail/' + ${product.productNo}}">
-                    <img th:src="${product.mainImage.imageName}" class="card-img-top" alt="Related Product Image">
+                    <img th:src="@{${product.mainImage.imageName}}" class="card-img-top" alt="Related Product Image">
                     <div class="card-body text-center">
                         <h5 class="card-title" th:text="${product.productName}">Product Name</h5>
                         <p class="card-text" th:text="${#numbers.formatInteger(product.price, 0, 'COMMA')} + '원'"></p>
@@ -95,7 +104,7 @@
     </div>
 </div>
 
-<script>
+<script th:inline="javascript">
     function enlargeImage(img) {
         var src = img.getAttribute("src");
         var modal = document.createElement("div");
@@ -108,7 +117,7 @@
         modal.style.width = "100%";
         modal.style.height = "100%";
         modal.style.backgroundColor = "rgba(0,0,0,0.8)";
-        modal.onclick = function() {
+        modal.onclick = function () {
             document.body.removeChild(modal);
         };
         var modalImg = document.createElement("img");
@@ -117,6 +126,19 @@
         modalImg.style.maxHeight = "80%";
         modal.appendChild(modalImg);
         document.body.appendChild(modal);
+    }
+
+    function prepareSelectedItems() {
+        const productNo = document.body.getAttribute('data-product-no');
+        const quantity = document.getElementById('quantity').value;
+        const selectedItems = [
+            {
+                productNo: productNo,
+                quantity: quantity
+            }
+        ];
+        document.getElementById('selectedItems').value = JSON.stringify(selectedItems);
+        console.log('Form submit with selectedItems:', selectedItems);
     }
 
     function addToCart(productNo, price, quantity, stock) {

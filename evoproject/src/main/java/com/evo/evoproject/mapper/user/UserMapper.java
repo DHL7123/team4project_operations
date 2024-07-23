@@ -25,6 +25,9 @@ public interface UserMapper {
     void getLatestTerms(@Param("content") String[] content, @Param("version") String[] version, @Param("termsType") String termsType);
 
     Integer getUserNoByUserId(String userId);
+
+    User findUserinfoByUserNo(int userNo);
 }
+
 
 

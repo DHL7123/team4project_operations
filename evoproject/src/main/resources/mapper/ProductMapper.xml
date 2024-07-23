@@ -203,4 +203,7 @@
         WHERE image_id = #{imageId}
     </delete>
 
+
+
+
 </mapper>

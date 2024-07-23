@@ -18,5 +18,6 @@ public interface ProductService {
     List<String> getProductImageUrls(Long id);
     void saveProductWithImages(Product product, List<MultipartFile> images);
     void updateProductWithImages(Product product, List<MultipartFile> newImages, List<Integer> imagesToDelete);
+
 }
 
