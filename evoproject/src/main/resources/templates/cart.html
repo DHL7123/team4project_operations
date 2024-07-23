@@ -88,7 +88,7 @@
 
 <!-- 주문페이지로 넘어가기 -->
 <div class="checkoutBtn">
-    <form id="checkoutForm" method="post" action="/orders/payment">
+    <form id="checkoutForm" method="post" th:action="@{/orders/payment}">
         <input type="hidden" name="selectedItems" id="selectedItems">
         <input type="hidden" name="proNo" id="proNo">
         <button type="button" class="btn btn-primary btn-rounded btn-block btn-lg fw-bold" onclick="submitCheckoutForm()">Checkout</button>
@@ -108,11 +108,9 @@
 
         function calculateTotal() {
             totalAmount = 0;
-            var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+            var checkboxes = document.querySelectorAll('input.itemCheckbox:checked');
 
             checkboxes.forEach(function(checkbox) {
-                if (!checkbox.id.startsWith('selectItem_')) return;
-
                 var row = checkbox.closest('tr');
                 var price = parseFloat(row.querySelector('td:nth-child(3)').textContent.trim().replace(/,/g, ''));
                 var quantity = parseInt(row.querySelector('td:nth-child(4)').textContent.trim());
@@ -125,7 +123,7 @@
             var formattedTotal = '₩' + totalAmount.toLocaleString('ko-KR');
             document.getElementById('totalAmount').textContent = formattedTotal;
 
-            var checkoutBtn = document.querySelector('.checkoutBtn a');
+            var checkoutBtn = document.querySelector('.checkoutBtn button');
             checkoutBtn.style.display = checkboxes.length > 0 ? 'block' : 'none';
         }
 
@@ -134,7 +132,7 @@
         }
 
         // 페이지 로드 시 모든 체크박스 선택 및 총 금액 계산
-        var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        var checkboxes = document.querySelectorAll('input.itemCheckbox');
         checkboxes.forEach(function(checkbox) {
             checkbox.checked = true;
         });
@@ -163,7 +161,7 @@
 
         // 전체 선택 체크박스 기능
         window.toggleSelectAll = function(source) {
-            var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            var checkboxes = document.querySelectorAll('input.itemCheckbox');
             checkboxes.forEach(function(checkbox) {
                 checkbox.checked = source.checked;
             });
@@ -179,16 +177,14 @@
             }
             return true;
         };
-    
 
+        // 구매 폼 제출
         window.submitCheckoutForm = function() {
-            var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+            var checkboxes = document.querySelectorAll('input.itemCheckbox:checked');
             var selectedItems = [];
-            var proNo = null; // proNo 변수 추가
+            var proNo = null;
 
             checkboxes.forEach(function(checkbox) {
-                if (!checkbox.id.startsWith('selectItem_')) return;
-
                 var row = checkbox.closest('tr');
                 var productNo = checkbox.value;
                 var quantity = row.querySelector('td:nth-child(4)').textContent.trim();
@@ -199,7 +195,7 @@
                 });
 
                 if (!proNo) {
-                    proNo = productNo; // 첫 번째 선택된 상품의 proNo 설정
+                    proNo = productNo;
                 }
             });
 

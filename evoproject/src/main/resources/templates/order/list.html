@@ -304,7 +304,6 @@
       $("#orderDetailsModal").hide();
     });
   </script>
-
 </head>
 <body class="bg-light" th:data-user-no="${userNo}">
 <header th:replace="header :: header"></header>
@@ -330,20 +329,44 @@
       <h5 class="card-title">
         <a th:href="@{/product/detail/{productNo}(productNo=${order.productNo})}" th:text="${order.productName}">Product Name</a>
       </h5>
-      <p class="card-text" th:text="${order.orderPayment} + '원'">1,700,000원</p>  <!-- 수정된 부분 -->
+      <p class="card-text" th:text="${order.orderPayment} + '원'">1,700,000원</p>
     </div>
     <div class="order-card-actions">
-      <button th:if="${order.orderStatus == 0 && order.requestType == 0}" th:onclick="'cancelOrder(' + ${order.orderNo} + ', $(this))'" class="btn btn-danger">결제 취소 신청</button>
-      <button th:if="${order.orderStatus == 0 && order.requestType != 0}" class="btn btn-secondary" disabled>취소 접수</button>
-      <button th:if="${order.orderStatus == 1}" class="btn btn-secondary">배송 준비중</button>
-      <button th:if="${order.orderStatus == 2}" class="btn btn-primary">배송중</button>
-      <button th:if="${order.orderStatus == 4 && order.requestType == 0}" th:onclick="'requestRefund(' + ${order.orderNo} + ', $(this))'" class="btn btn-warning">반품 신청</button>
-      <button th:if="${order.orderStatus == 4 && order.requestType != 0}" class="btn btn-secondary" disabled>환불 접수</button>
-      <button th:if="${order.orderStatus == 5}" class="btn btn-success">구매 완료</button>
-      <button th:onclick="'showOrderDetails(' + ${order.orderNo} + ')'" class="btn btn-info">상세 보기</button>
+      <!-- 결제 취소 신청 버튼 -->
+      <button th:if="${order.orderStatus == 0 && order.requestType == 0}"
+              th:onclick="'cancelOrder(' + ${order.orderNo} + ', $(this))'"
+              class="btn btn-danger">결제 취소 신청</button>
+
+      <!-- 취소 접수 버튼 -->
+      <button th:if="${order.orderStatus == 0 && (order.requestType == 1 || order.requestType == 3)}"
+              class="btn btn-secondary" disabled>취소 접수</button>
+
+      <!-- 배송 준비중 버튼 -->
+      <button th:if="${order.orderStatus == 1}"
+              class="btn btn-secondary">배송 준비중</button>
+
+      <!-- 배송중 버튼 -->
+      <button th:if="${order.orderStatus == 2}"
+              class="btn btn-primary">배송중</button>
+
+      <!-- 반품 신청 버튼 -->
+      <button th:if="${order.orderStatus == 4 && order.requestType == 0}"
+              th:onclick="'requestRefund(' + ${order.orderNo} + ', $(this))'"
+              class="btn btn-warning">반품 신청</button>
+
+      <!-- 환불 접수 버튼 -->
+      <button th:if="${order.orderStatus == 4 && (order.requestType == 2 || order.requestType == 4)}"
+              class="btn btn-secondary" disabled>환불 접수</button>
+
+      <!-- 구매 완료 버튼 -->
+      <button th:if="${order.orderStatus == 5}"
+              class="btn btn-success">구매 완료</button>
+
+      <!-- 상세 보기 버튼 -->
+      <button th:onclick="'showOrderDetails(' + ${order.orderNo} + ')'"
+              class="btn btn-info">상세 보기</button>
     </div>
   </div>
-
 
   <nav th:if="${ordersResponse.totalPages > 1}">
     <ul class="pagination justify-content-center">
@@ -373,7 +396,6 @@
       <span class="close">&times;</span>
     </div>
     <div class="modal-body">
-
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-secondary close">닫기</button>
@@ -383,7 +405,6 @@
 
 <footer th:replace="footer :: footer"></footer>
 <script src="js/script.js"></script>
-
 </body>
 
 </html>

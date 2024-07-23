@@ -4,23 +4,16 @@
     <meta charset="UTF-8">
     <title>Product Detail</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" />
-    <link rel="stylesheet" th:href="@{/css/styles.css}">
-    <link rel="stylesheet" th:href="@{/css/detail.css}">
+    <link rel="stylesheet" href="/css/detail.css">
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
-<<<<<<< HEAD
-
-<body class="bg-light" th:data-user-no="${userNo}">
-=======
 <body class="bg-light" th:data-user-no="${userNo}" th:data-product-no="${productDetailResponse.product.productNo}">
->>>>>>> feature/order#3
-
 <header th:replace="~{header :: header}"></header>
-
 <div class="container">
     <h1 class="text-center mb-4">Product Detail</h1>
-
     <div class="row">
         <div class="col-md-8">
+            <!-- Product Images -->
             <div class="product-images mb-4">
                 <div class="main-image mb-4">
                     <img th:src="@{${productDetailResponse.images[0].imageName}}" class="img-thumbnail" alt="Main Product Image" onclick="enlargeImage(this)" data-image-name="${productDetailResponse.images[0].imageName}">
@@ -33,6 +26,7 @@
             </div>
         </div>
         <div class="col-md-4">
+            <!-- Product Details -->
             <table class="table table-bordered table-striped">
                 <tr>
                     <th>Product Name</th>
@@ -63,11 +57,11 @@
                 </tr>
                 <tr>
                     <th>Stock</th>
-                    <td th:text="${productDetailResponse.product.soldout == 1 ? 'Sold Out' : productDetailResponse.product.stock}"
-                        th:classappend="${productDetailResponse.product.soldout == 1 ? 'text-danger' : ''}"></td>
+                    <td th:text="${productDetailResponse.product.soldout == 1 ? 'Sold Out' : productDetailResponse.product.stock}" th:classappend="${productDetailResponse.product.soldout == 1 ? 'text-danger' : ''}"></td>
                 </tr>
             </table>
 
+            <!-- Buttons -->
             <div class="btn-container" th:if="${productDetailResponse.product.soldout == 0}">
                 <div class="d-flex justify-content-center align-items-center mb-3">
                     <button class="btn btn-secondary btn-number" type="button" onclick="document.getElementById('quantity').stepDown()">-</button>
@@ -79,7 +73,6 @@
                     <input type="hidden" name="proNo" th:value="${productDetailResponse.product.productNo}">
                     <button type="submit" class="btn btn-custom mb-2">구매하기</button>
                 </form>
-
                 <button class="btn btn-custom" th:onclick="'addToCart(' + ${productDetailResponse.product.productNo} + ', ' + ${productDetailResponse.product.price} + ', document.getElementById(\'quantity\').value, ' + ${productDetailResponse.product.stock} + ')'">장바구니 담기</button>
             </div>
             <div class="text-center mt-4" th:if="${productDetailResponse.product.soldout == 1}">
@@ -87,7 +80,6 @@
             </div>
         </div>
     </div>
-
     <div class="related-products mt-5">
         <h2 class="text-center mb-4">Related Products</h2>
         <div class="d-flex flex-wrap justify-content-center">
@@ -103,7 +95,6 @@
         </div>
     </div>
 </div>
-
 <script th:inline="javascript">
     function enlargeImage(img) {
         var src = img.getAttribute("src");
@@ -182,11 +173,8 @@
             alert('상품 추가 중 오류가 발생했습니다.');
         });
     }
-
 </script>
-
 <footer th:replace="~{footer :: footer}"></footer>
 <script th:src="@{/js/script.js}"></script>
-
 </body>
 </html>

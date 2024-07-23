@@ -62,6 +62,7 @@ public class UserOrderServiceImpl implements UserOrderService {
             throw new IllegalStateException("주문을 취소할 수 없습니다.");
         }
 
+        order.setOrderStatus(3);
         order.setRequestType(1); // 결제 취소 요청으로 설정
         userOrderMapper.updateOrderRequestType(order);
     }
@@ -74,6 +75,7 @@ public class UserOrderServiceImpl implements UserOrderService {
             throw new IllegalStateException("반품을 요청할 수 없습니다.");
         }
 
+        order.setOrderStatus(3);
         order.setRequestType(2); // 반품 요청으로 설정
         userOrderMapper.updateOrderRequestType(order);
     }

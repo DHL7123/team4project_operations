@@ -169,7 +169,8 @@
 
     <update id="updateOrderRequestType">
         UPDATE orders
-        SET request_type = #{requestType}
+        SET request_type = #{requestType},
+            order_status = #{orderStatus}
         WHERE order_no = #{orderNo}
     </update>
 

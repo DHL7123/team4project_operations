@@ -8,6 +8,7 @@
   <link href="../static/css/styles.css" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdn.iamport.kr/js/iamport.payment-1.1.7.js"></script>
+  <link rel="stylesheet" th:href="@{/css/styles.css}">
   <style>
     :root {
       --primary-color: #007bff;
@@ -97,9 +98,9 @@
     <div class="product-info" th:if="${order != null}" th:each="item : ${order.items}" th:data-product-no="${item.productNo}" th:data-unit-price="${item.price}" th:data-shipping="${item.shipping}">
       <img class="product-image" th:src="@{${item.mainImage}}" alt="Product Image" style="width: 100px; height: auto;">
       <span class="product-name" th:text="${item.productName}"></span> X <span class="product-quantity" th:text="${item.quantity}"></span><br>
-      <span>배송비: </span><span class="shipping-cost" th:text="${item.shipping}"></span>원<br>
-      <span>상품 가격: </span><span class="unit-price" th:text="${item.price}"></span>원<br>
-      <span>Total: </span><span class="total-price" th:text="${item.price * item.quantity + item.shipping}"></span>원<br>
+      <span>배송비: </span><span class="shipping-cost" th:text="${item.shipping}"></span><br>
+      <span>상품 가격: </span><span class="unit-price" th:text="${item.price}"></span><br>
+      <span>Total: </span><span class="total-price" th:text="${item.price * item.quantity + item.shipping}"></span><br>
     </div>
   </div>
 
@@ -141,6 +142,7 @@
   </div>
 </div>
 <footer th:replace="~{footer :: footer}"></footer>
+<script src="js/script.js"></script>
 <script>
   $(document).ready(function() {
     const $totalPriceInput = $("#totalPrice");
@@ -150,7 +152,6 @@
 
     $('#orderForm').submit(function (event) {
       event.preventDefault();
-      
 
       const orderName = $('#orderName').val();
       const orderAddress1 = $('#orderAddress1').val();
@@ -197,11 +198,32 @@
         }
       });
     });
+
+    // 가격 포맷팅 함수
+    function formatPrice(price) {
+      return new Intl.NumberFormat('ko-KR').format(price) + '원';
+    }
+
+    // 페이지 로드 시 가격 포맷팅 적용
+    $('.unit-price').each(function() {
+      const price = parseFloat($(this).text());
+      $(this).text(formatPrice(price));
+    });
+
+    $('.shipping-cost').each(function() {
+      const price = parseFloat($(this).text());
+      $(this).text(formatPrice(price));
+    });
+
+    $('.total-price').each(function() {
+      const price = parseFloat($(this).text());
+      $(this).text(formatPrice(price));
+    });
+
+    // 총 가격 입력란 포맷팅
+    const totalPrice = parseFloat($totalPriceInput.val());
+    $totalPriceInput.val(formatPrice(totalPrice));
   });
 </script>
-
-
-
-
 </body>
 </html>

@@ -37,6 +37,7 @@ public class UserOrderController {
         try {
             log.info("회원의 주문 목록 요청 - 회원번호: {}, 페이지: {}, 사이즈: {}", userNo, page, size);
             RetrieveOrdersResponse response = userOrderService.getOrdersByUserNo(userNo, page, size);
+
             model.addAttribute("orders", response.getOrders());
             model.addAttribute("ordersResponse", response);
             model.addAttribute("userNo", userNo);

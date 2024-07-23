@@ -4,6 +4,7 @@ import com.evo.evoproject.domain.user.User;
 import com.evo.evoproject.service.user.TermsService;
 import com.evo.evoproject.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -134,19 +135,26 @@ public class UserController {
     // 회원탈퇴 처리
     @PostMapping("/delete-user")
     @ResponseBody
-    public ResponseEntity<Map<String, String>> deleteUser(@RequestParam String userId, @RequestParam String password) {
+    public ResponseEntity<Map<String, String>> deleteUser(@RequestParam String userId, @RequestParam String password, HttpSession session) {
         User user = userService.findUserByUserId(userId);
         Map<String, String> response = new HashMap<>();
 
         if (userService.checkPassword(user, password)) {
-            userService.deleteUser(userId);
-            response.put("message", "회원탈퇴가 완료되었습니다.");
-            return ResponseEntity.ok(response);
+            try {
+                userService.deleteUser(userId);
+                session.invalidate(); // 세션 무효화
+                response.put("message", "회원탈퇴가 완료되었습니다.");
+                return ResponseEntity.ok(response);
+            } catch (Exception e) {
+                response.put("error", "회원 탈퇴 처리 중 오류가 발생했습니다.");
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+            }
         } else {
             response.put("error", "비밀번호가 일치하지 않습니다.");
             return ResponseEntity.badRequest().body(response);
         }
     }
+
 
 
 
