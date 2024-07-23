@@ -20,5 +20,9 @@ public class WebConfig implements WebMvcConfigurer {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/productimage/**")
                 .addResourceLocations("classpath:/static/productimage/");
+
+        //사용자 환경에 맞춰서 경로 설정합니다.
+        registry.addResourceHandler("/boardimage/**")
+                .addResourceLocations("file:///D:/EVO/evoproject/src/main/resources/static/boardimage/");
     }
 }

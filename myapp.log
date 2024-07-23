@@ -8891,3 +8891,865 @@ Unconditional classes:
 2024-07-21T23:45:50.131+09:00 DEBUG 25128 --- [evoproject] [SpringApplicationShutdownHook] o.s.b.f.support.DisposableBeanAdapter    : Custom destroy method 'shutdown' on bean with name 'naverS3' completed
 2024-07-21T23:45:50.133+09:00  INFO 25128 --- [evoproject] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2024-07-21T23:45:50.254+09:00  INFO 25128 --- [evoproject] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-07-23T21:32:24.166+09:00  INFO 16516 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : Starting EvoprojectApplication using Java 17.0.11 with PID 16516 (D:\EVO\evoproject\build\classes\java\main started by skygv in D:\EVO)
+2024-07-23T21:32:24.168+09:00  INFO 16516 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : No active profile set, falling back to 1 default profile: "default"
+2024-07-23T21:32:25.289+09:00  INFO 16516 --- [evoproject] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8090 (http)
+2024-07-23T21:32:25.310+09:00  INFO 16516 --- [evoproject] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-07-23T21:32:25.310+09:00  INFO 16516 --- [evoproject] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-07-23T21:32:25.369+09:00  INFO 16516 --- [evoproject] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-07-23T21:32:25.369+09:00  INFO 16516 --- [evoproject] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1161 ms
+2024-07-23T21:32:25.904+09:00  INFO 16516 --- [evoproject] [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-07-23T21:32:26.077+09:00  INFO 16516 --- [evoproject] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@71b97eeb, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2776fd8f, org.springframework.security.web.context.SecurityContextHolderFilter@74fb5b59, org.springframework.security.web.header.HeaderWriterFilter@22f8adc2, org.springframework.web.filter.CorsFilter@1c62c3fd, org.springframework.security.web.authentication.logout.LogoutFilter@5e2a6991, com.evo.evoproject.config.LoginFilter@734ce281, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@59918c8f, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@722531ab, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@26fadd98, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@49b89425, org.springframework.security.web.access.ExceptionTranslationFilter@230232b0, org.springframework.security.web.access.intercept.AuthorizationFilter@2450256f]
+2024-07-23T21:32:26.305+09:00  INFO 16516 --- [evoproject] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8090 (http) with context path ''
+2024-07-23T21:32:26.315+09:00  INFO 16516 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : Started EvoprojectApplication in 2.55 seconds (process running for 3.215)
+2024-07-23T21:32:26.320+09:00  INFO 16516 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-23T21:32:26.320+09:00  INFO 16516 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-23T21:32:30.749+09:00  INFO 16516 --- [evoproject] [http-nio-8090-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-07-23T21:32:30.749+09:00  INFO 16516 --- [evoproject] [http-nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-07-23T21:32:30.751+09:00  INFO 16516 --- [evoproject] [http-nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-07-23T21:32:35.554+09:00  INFO 16516 --- [evoproject] [http-nio-8090-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-07-23T21:32:40.495+09:00  INFO 16516 --- [evoproject] [http-nio-8090-exec-2] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@64f2883c
+2024-07-23T21:32:40.498+09:00  INFO 16516 --- [evoproject] [http-nio-8090-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-07-23T21:32:40.732+09:00  WARN 16516 --- [evoproject] [http-nio-8090-exec-2] o.a.c.util.SessionIdGeneratorBase        : Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [113] milliseconds.
+2024-07-23T21:32:40.732+09:00  WARN 16516 --- [evoproject] [http-nio-8090-exec-9] o.a.c.util.SessionIdGeneratorBase        : Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [112] milliseconds.
+2024-07-23T21:32:42.718+09:00  WARN 16516 --- [evoproject] [http-nio-8090-exec-7] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-7][mypage] Deprecated unwrapped fragment expression "header :: header" found in template mypage, line 126, col 9. Please use the complete syntax of fragment expressions instead ("~{header :: header}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-23T21:32:42.726+09:00  WARN 16516 --- [evoproject] [http-nio-8090-exec-7] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-7][mypage] Deprecated unwrapped fragment expression "footer :: footer" found in template mypage, line 204, col 9. Please use the complete syntax of fragment expressions instead ("~{footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-23T21:33:26.314+09:00  INFO 16516 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-23T21:33:26.314+09:00  INFO 16516 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-23T21:34:26.326+09:00  INFO 16516 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-23T21:34:26.326+09:00  INFO 16516 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-23T21:34:39.789+09:00  INFO 16516 --- [evoproject] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-07-23T21:34:39.850+09:00  INFO 16516 --- [evoproject] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-07-23T21:34:46.078+09:00  INFO 33012 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : Starting EvoprojectApplication using Java 17.0.11 with PID 33012 (D:\EVO\evoproject\build\classes\java\main started by skygv in D:\EVO)
+2024-07-23T21:34:46.080+09:00  INFO 33012 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : No active profile set, falling back to 1 default profile: "default"
+2024-07-23T21:34:47.113+09:00  INFO 33012 --- [evoproject] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8090 (http)
+2024-07-23T21:34:47.123+09:00  INFO 33012 --- [evoproject] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-07-23T21:34:47.124+09:00  INFO 33012 --- [evoproject] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-07-23T21:34:47.172+09:00  INFO 33012 --- [evoproject] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-07-23T21:34:47.172+09:00  INFO 33012 --- [evoproject] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1048 ms
+2024-07-23T21:34:47.662+09:00  INFO 33012 --- [evoproject] [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-07-23T21:34:47.835+09:00  INFO 33012 --- [evoproject] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@7f2b39a, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7a358613, org.springframework.security.web.context.SecurityContextHolderFilter@207dd1b7, org.springframework.security.web.header.HeaderWriterFilter@3db6dd52, org.springframework.web.filter.CorsFilter@760f1081, org.springframework.security.web.authentication.logout.LogoutFilter@63917fe1, com.evo.evoproject.config.LoginFilter@52621501, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@59328218, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@23ad2d17, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@25f0c5e7, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@401e02b4, org.springframework.security.web.access.ExceptionTranslationFilter@26fadd98, org.springframework.security.web.access.intercept.AuthorizationFilter@49b89425]
+2024-07-23T21:34:48.062+09:00  INFO 33012 --- [evoproject] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8090 (http) with context path ''
+2024-07-23T21:34:48.072+09:00  INFO 33012 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : Started EvoprojectApplication in 2.388 seconds (process running for 3.033)
+2024-07-23T21:34:48.077+09:00  INFO 33012 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-23T21:34:48.078+09:00  INFO 33012 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-23T21:34:53.096+09:00  INFO 33012 --- [evoproject] [http-nio-8090-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-07-23T21:34:53.096+09:00  INFO 33012 --- [evoproject] [http-nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-07-23T21:34:53.097+09:00  INFO 33012 --- [evoproject] [http-nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-07-23T21:34:59.169+09:00  INFO 33012 --- [evoproject] [http-nio-8090-exec-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-07-23T21:34:59.311+09:00  INFO 33012 --- [evoproject] [http-nio-8090-exec-5] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2beb9fc6
+2024-07-23T21:34:59.313+09:00  INFO 33012 --- [evoproject] [http-nio-8090-exec-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-07-23T21:34:59.540+09:00  WARN 33012 --- [evoproject] [http-nio-8090-exec-5] o.a.c.util.SessionIdGeneratorBase        : Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [114] milliseconds.
+2024-07-23T21:35:01.828+09:00  WARN 33012 --- [evoproject] [http-nio-8090-exec-7] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-7][mypage] Deprecated unwrapped fragment expression "header :: header" found in template mypage, line 126, col 9. Please use the complete syntax of fragment expressions instead ("~{header :: header}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-23T21:35:01.837+09:00  WARN 33012 --- [evoproject] [http-nio-8090-exec-7] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-7][mypage] Deprecated unwrapped fragment expression "footer :: footer" found in template mypage, line 204, col 9. Please use the complete syntax of fragment expressions instead ("~{footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-23T21:35:48.076+09:00  INFO 33012 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-23T21:35:48.076+09:00  INFO 33012 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-23T21:36:48.073+09:00  INFO 33012 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-23T21:36:48.073+09:00  INFO 33012 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-23T21:37:38.741+09:00  INFO 33012 --- [evoproject] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-07-23T21:37:38.747+09:00  INFO 33012 --- [evoproject] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-07-23T21:37:41.597+09:00  INFO 10960 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : Starting EvoprojectApplication using Java 17.0.11 with PID 10960 (D:\EVO\evoproject\build\classes\java\main started by skygv in D:\EVO)
+2024-07-23T21:37:41.599+09:00  INFO 10960 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : No active profile set, falling back to 1 default profile: "default"
+2024-07-23T21:37:42.734+09:00  INFO 10960 --- [evoproject] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8090 (http)
+2024-07-23T21:37:42.749+09:00  INFO 10960 --- [evoproject] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-07-23T21:37:42.749+09:00  INFO 10960 --- [evoproject] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-07-23T21:37:42.806+09:00  INFO 10960 --- [evoproject] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-07-23T21:37:42.806+09:00  INFO 10960 --- [evoproject] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1160 ms
+2024-07-23T21:37:43.366+09:00  INFO 10960 --- [evoproject] [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-07-23T21:37:43.548+09:00  INFO 10960 --- [evoproject] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@2776fd8f, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1c62c3fd, org.springframework.security.web.context.SecurityContextHolderFilter@130a6eb9, org.springframework.security.web.header.HeaderWriterFilter@69d103f0, org.springframework.web.filter.CorsFilter@734ce281, org.springframework.security.web.authentication.logout.LogoutFilter@5002fde9, com.evo.evoproject.config.LoginFilter@49b89425, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@2b7facc7, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@8f57e4c, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@66451058, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@59328218, org.springframework.security.web.access.ExceptionTranslationFilter@44fd7ba4, org.springframework.security.web.access.intercept.AuthorizationFilter@59918c8f]
+2024-07-23T21:37:43.803+09:00  INFO 10960 --- [evoproject] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8090 (http) with context path ''
+2024-07-23T21:37:43.815+09:00  INFO 10960 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : Started EvoprojectApplication in 2.632 seconds (process running for 3.256)
+2024-07-23T21:37:43.820+09:00  INFO 10960 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-23T21:37:43.820+09:00  INFO 10960 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-23T21:37:46.145+09:00  INFO 10960 --- [evoproject] [http-nio-8090-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-07-23T21:37:46.145+09:00  INFO 10960 --- [evoproject] [http-nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-07-23T21:37:46.146+09:00  INFO 10960 --- [evoproject] [http-nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-07-23T21:37:46.295+09:00  WARN 10960 --- [evoproject] [http-nio-8090-exec-1] o.a.c.util.SessionIdGeneratorBase        : Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [111] milliseconds.
+2024-07-23T21:37:50.226+09:00  INFO 10960 --- [evoproject] [http-nio-8090-exec-8] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-07-23T21:37:50.364+09:00  INFO 10960 --- [evoproject] [http-nio-8090-exec-8] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6d5d3b77
+2024-07-23T21:37:50.366+09:00  INFO 10960 --- [evoproject] [http-nio-8090-exec-8] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-07-23T21:37:51.944+09:00  INFO 10960 --- [evoproject] [http-nio-8090-exec-6] c.e.e.c.p.RetrieveProductsController     : 카테고리별 제품 목록 요청 - 정렬기준: viewCount_desc 카테고리 ID: 2, 페이지: 1, 사이즈: 16
+2024-07-23T21:37:51.949+09:00  INFO 10960 --- [evoproject] [http-nio-8090-exec-6] c.e.e.s.product.ProductServiceImpl       : 카테고리별 제품 목록을 가져오는 서비스 - 정렬 기준: viewCount_desc, 카테고리 ID: 2, 페이지: 1, 사이즈: 16
+2024-07-23T21:37:53.147+09:00  WARN 10960 --- [evoproject] [http-nio-8090-exec-7] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-7][mypage] Deprecated unwrapped fragment expression "header :: header" found in template mypage, line 126, col 9. Please use the complete syntax of fragment expressions instead ("~{header :: header}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-23T21:37:53.155+09:00  WARN 10960 --- [evoproject] [http-nio-8090-exec-7] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-7][mypage] Deprecated unwrapped fragment expression "footer :: footer" found in template mypage, line 204, col 9. Please use the complete syntax of fragment expressions instead ("~{footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-23T21:37:54.969+09:00 ERROR 10960 --- [evoproject] [http-nio-8090-exec-2] org.thymeleaf.TemplateEngine             : [THYMELEAF][http-nio-8090-exec-2] Exception processing template "board/view": An error happened during template parsing (template: "class path resource [templates/board/view.html]")
+
+org.thymeleaf.exceptions.TemplateInputException: An error happened during template parsing (template: "class path resource [templates/board/view.html]")
+	at org.thymeleaf.templateparser.markup.AbstractMarkupTemplateParser.parse(AbstractMarkupTemplateParser.java:241) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.templateparser.markup.AbstractMarkupTemplateParser.parseStandalone(AbstractMarkupTemplateParser.java:100) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.engine.TemplateManager.parseAndProcess(TemplateManager.java:666) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1103) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1077) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.spring6.view.ThymeleafView.renderFragment(ThymeleafView.java:372) ~[thymeleaf-spring6-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.spring6.view.ThymeleafView.render(ThymeleafView.java:192) ~[thymeleaf-spring6-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1431) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1167) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1106) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564) ~[tomcat-embed-core-10.1.25.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.25.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:365) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:100) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:227) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:221) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at com.evo.evoproject.config.LoginFilter.doFilter(LoginFilter.java:25) ~[main/:na]
+	at jakarta.servlet.http.HttpFilter.doFilter(HttpFilter.java:53) ~[tomcat-embed-core-10.1.25.jar:6.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$3(HandlerMappingIntrospector.java:195) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:230) ~[spring-security-config-6.2.5.jar:6.2.5]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:352) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:268) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:389) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:904) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at java.base/java.lang.Thread.run(Thread.java:842) ~[na:na]
+Caused by: org.attoparser.ParseException: Exception evaluating SpringEL expression: "#strings.substringAfterLast(board.imageUrl, '/')" (template: "board/view" - line 97, col 16)
+	at org.attoparser.MarkupParser.parseDocument(MarkupParser.java:393) ~[attoparser-2.0.7.RELEASE.jar:2.0.7.RELEASE]
+	at org.attoparser.MarkupParser.parse(MarkupParser.java:257) ~[attoparser-2.0.7.RELEASE.jar:2.0.7.RELEASE]
+	at org.thymeleaf.templateparser.markup.AbstractMarkupTemplateParser.parse(AbstractMarkupTemplateParser.java:230) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	... 98 common frames omitted
+Caused by: org.thymeleaf.exceptions.TemplateProcessingException: Exception evaluating SpringEL expression: "#strings.substringAfterLast(board.imageUrl, '/')" (template: "board/view" - line 97, col 16)
+	at org.thymeleaf.spring6.expression.SPELVariableExpressionEvaluator.evaluate(SPELVariableExpressionEvaluator.java:292) ~[thymeleaf-spring6-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.standard.expression.VariableExpression.executeVariableExpression(VariableExpression.java:166) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.standard.expression.SimpleExpression.executeSimple(SimpleExpression.java:66) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.standard.expression.Expression.execute(Expression.java:109) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.standard.expression.Expression.execute(Expression.java:138) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.standard.expression.LinkExpression.resolveParameters(LinkExpression.java:339) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.standard.expression.LinkExpression.executeLinkExpression(LinkExpression.java:285) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.standard.expression.SimpleExpression.executeSimple(SimpleExpression.java:85) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.standard.expression.Expression.execute(Expression.java:109) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.standard.expression.Expression.execute(Expression.java:138) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.standard.processor.AbstractStandardExpressionAttributeTagProcessor.doProcess(AbstractStandardExpressionAttributeTagProcessor.java:144) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.processor.element.AbstractAttributeTagProcessor.doProcess(AbstractAttributeTagProcessor.java:74) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.processor.element.AbstractElementTagProcessor.process(AbstractElementTagProcessor.java:95) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.util.ProcessorConfigurationUtils$ElementTagProcessorWrapper.process(ProcessorConfigurationUtils.java:633) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.engine.ProcessorTemplateHandler.handleOpenElement(ProcessorTemplateHandler.java:1314) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.engine.TemplateHandlerAdapterMarkupHandler.handleOpenElementEnd(TemplateHandlerAdapterMarkupHandler.java:304) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.templateparser.markup.InlinedOutputExpressionMarkupHandler$InlineMarkupAdapterPreProcessorHandler.handleOpenElementEnd(InlinedOutputExpressionMarkupHandler.java:278) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.standard.inline.OutputExpressionInlinePreProcessorHandler.handleOpenElementEnd(OutputExpressionInlinePreProcessorHandler.java:186) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.templateparser.markup.InlinedOutputExpressionMarkupHandler.handleOpenElementEnd(InlinedOutputExpressionMarkupHandler.java:124) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.attoparser.HtmlElement.handleOpenElementEnd(HtmlElement.java:109) ~[attoparser-2.0.7.RELEASE.jar:2.0.7.RELEASE]
+	at org.attoparser.HtmlMarkupHandler.handleOpenElementEnd(HtmlMarkupHandler.java:297) ~[attoparser-2.0.7.RELEASE.jar:2.0.7.RELEASE]
+	at org.attoparser.MarkupEventProcessorHandler.handleOpenElementEnd(MarkupEventProcessorHandler.java:402) ~[attoparser-2.0.7.RELEASE.jar:2.0.7.RELEASE]
+	at org.attoparser.ParsingElementMarkupUtil.parseOpenElement(ParsingElementMarkupUtil.java:159) ~[attoparser-2.0.7.RELEASE.jar:2.0.7.RELEASE]
+	at org.attoparser.MarkupParser.parseBuffer(MarkupParser.java:710) ~[attoparser-2.0.7.RELEASE.jar:2.0.7.RELEASE]
+	at org.attoparser.MarkupParser.parseDocument(MarkupParser.java:301) ~[attoparser-2.0.7.RELEASE.jar:2.0.7.RELEASE]
+	... 100 common frames omitted
+Caused by: org.springframework.expression.spel.SpelEvaluationException: EL1004E: Method call: Method substringAfterLast(java.lang.String,java.lang.String) cannot be found on type org.thymeleaf.expression.Strings
+	at org.springframework.expression.spel.ast.MethodReference.findAccessorForMethod(MethodReference.java:238) ~[spring-expression-6.1.10.jar:6.1.10]
+	at org.springframework.expression.spel.ast.MethodReference.getValueInternal(MethodReference.java:148) ~[spring-expression-6.1.10.jar:6.1.10]
+	at org.springframework.expression.spel.ast.MethodReference$MethodValueRef.getValue(MethodReference.java:401) ~[spring-expression-6.1.10.jar:6.1.10]
+	at org.springframework.expression.spel.ast.CompoundExpression.getValueInternal(CompoundExpression.java:97) ~[spring-expression-6.1.10.jar:6.1.10]
+	at org.springframework.expression.spel.ast.SpelNodeImpl.getValue(SpelNodeImpl.java:114) ~[spring-expression-6.1.10.jar:6.1.10]
+	at org.springframework.expression.spel.standard.SpelExpression.getValue(SpelExpression.java:338) ~[spring-expression-6.1.10.jar:6.1.10]
+	at org.thymeleaf.spring6.expression.SPELVariableExpressionEvaluator.evaluate(SPELVariableExpressionEvaluator.java:265) ~[thymeleaf-spring6-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	... 124 common frames omitted
+
+2024-07-23T21:37:54.976+09:00 ERROR 10960 --- [evoproject] [http-nio-8090-exec-2] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.thymeleaf.exceptions.TemplateInputException: An error happened during template parsing (template: "class path resource [templates/board/view.html]")] with root cause
+
+org.springframework.expression.spel.SpelEvaluationException: EL1004E: Method call: Method substringAfterLast(java.lang.String,java.lang.String) cannot be found on type org.thymeleaf.expression.Strings
+	at org.springframework.expression.spel.ast.MethodReference.findAccessorForMethod(MethodReference.java:238) ~[spring-expression-6.1.10.jar:6.1.10]
+	at org.springframework.expression.spel.ast.MethodReference.getValueInternal(MethodReference.java:148) ~[spring-expression-6.1.10.jar:6.1.10]
+	at org.springframework.expression.spel.ast.MethodReference$MethodValueRef.getValue(MethodReference.java:401) ~[spring-expression-6.1.10.jar:6.1.10]
+	at org.springframework.expression.spel.ast.CompoundExpression.getValueInternal(CompoundExpression.java:97) ~[spring-expression-6.1.10.jar:6.1.10]
+	at org.springframework.expression.spel.ast.SpelNodeImpl.getValue(SpelNodeImpl.java:114) ~[spring-expression-6.1.10.jar:6.1.10]
+	at org.springframework.expression.spel.standard.SpelExpression.getValue(SpelExpression.java:338) ~[spring-expression-6.1.10.jar:6.1.10]
+	at org.thymeleaf.spring6.expression.SPELVariableExpressionEvaluator.evaluate(SPELVariableExpressionEvaluator.java:265) ~[thymeleaf-spring6-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.standard.expression.VariableExpression.executeVariableExpression(VariableExpression.java:166) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.standard.expression.SimpleExpression.executeSimple(SimpleExpression.java:66) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.standard.expression.Expression.execute(Expression.java:109) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.standard.expression.Expression.execute(Expression.java:138) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.standard.expression.LinkExpression.resolveParameters(LinkExpression.java:339) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.standard.expression.LinkExpression.executeLinkExpression(LinkExpression.java:285) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.standard.expression.SimpleExpression.executeSimple(SimpleExpression.java:85) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.standard.expression.Expression.execute(Expression.java:109) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.standard.expression.Expression.execute(Expression.java:138) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.standard.processor.AbstractStandardExpressionAttributeTagProcessor.doProcess(AbstractStandardExpressionAttributeTagProcessor.java:144) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.processor.element.AbstractAttributeTagProcessor.doProcess(AbstractAttributeTagProcessor.java:74) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.processor.element.AbstractElementTagProcessor.process(AbstractElementTagProcessor.java:95) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.util.ProcessorConfigurationUtils$ElementTagProcessorWrapper.process(ProcessorConfigurationUtils.java:633) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.engine.ProcessorTemplateHandler.handleOpenElement(ProcessorTemplateHandler.java:1314) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.engine.TemplateHandlerAdapterMarkupHandler.handleOpenElementEnd(TemplateHandlerAdapterMarkupHandler.java:304) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.templateparser.markup.InlinedOutputExpressionMarkupHandler$InlineMarkupAdapterPreProcessorHandler.handleOpenElementEnd(InlinedOutputExpressionMarkupHandler.java:278) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.standard.inline.OutputExpressionInlinePreProcessorHandler.handleOpenElementEnd(OutputExpressionInlinePreProcessorHandler.java:186) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.templateparser.markup.InlinedOutputExpressionMarkupHandler.handleOpenElementEnd(InlinedOutputExpressionMarkupHandler.java:124) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.attoparser.HtmlElement.handleOpenElementEnd(HtmlElement.java:109) ~[attoparser-2.0.7.RELEASE.jar:2.0.7.RELEASE]
+	at org.attoparser.HtmlMarkupHandler.handleOpenElementEnd(HtmlMarkupHandler.java:297) ~[attoparser-2.0.7.RELEASE.jar:2.0.7.RELEASE]
+	at org.attoparser.MarkupEventProcessorHandler.handleOpenElementEnd(MarkupEventProcessorHandler.java:402) ~[attoparser-2.0.7.RELEASE.jar:2.0.7.RELEASE]
+	at org.attoparser.ParsingElementMarkupUtil.parseOpenElement(ParsingElementMarkupUtil.java:159) ~[attoparser-2.0.7.RELEASE.jar:2.0.7.RELEASE]
+	at org.attoparser.MarkupParser.parseBuffer(MarkupParser.java:710) ~[attoparser-2.0.7.RELEASE.jar:2.0.7.RELEASE]
+	at org.attoparser.MarkupParser.parseDocument(MarkupParser.java:301) ~[attoparser-2.0.7.RELEASE.jar:2.0.7.RELEASE]
+	at org.attoparser.MarkupParser.parse(MarkupParser.java:257) ~[attoparser-2.0.7.RELEASE.jar:2.0.7.RELEASE]
+	at org.thymeleaf.templateparser.markup.AbstractMarkupTemplateParser.parse(AbstractMarkupTemplateParser.java:230) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.templateparser.markup.AbstractMarkupTemplateParser.parseStandalone(AbstractMarkupTemplateParser.java:100) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.engine.TemplateManager.parseAndProcess(TemplateManager.java:666) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1103) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1077) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.spring6.view.ThymeleafView.renderFragment(ThymeleafView.java:372) ~[thymeleaf-spring6-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.spring6.view.ThymeleafView.render(ThymeleafView.java:192) ~[thymeleaf-spring6-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1431) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1167) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1106) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564) ~[tomcat-embed-core-10.1.25.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.25.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:365) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:100) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:227) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:221) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at com.evo.evoproject.config.LoginFilter.doFilter(LoginFilter.java:25) ~[main/:na]
+	at jakarta.servlet.http.HttpFilter.doFilter(HttpFilter.java:53) ~[tomcat-embed-core-10.1.25.jar:6.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$3(HandlerMappingIntrospector.java:195) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:230) ~[spring-security-config-6.2.5.jar:6.2.5]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:352) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:268) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:389) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:904) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at java.base/java.lang.Thread.run(Thread.java:842) ~[na:na]
+
+2024-07-23T21:37:57.758+09:00 ERROR 10960 --- [evoproject] [http-nio-8090-exec-9] org.thymeleaf.TemplateEngine             : [THYMELEAF][http-nio-8090-exec-9] Exception processing template "board/view": An error happened during template parsing (template: "class path resource [templates/board/view.html]")
+
+org.thymeleaf.exceptions.TemplateInputException: An error happened during template parsing (template: "class path resource [templates/board/view.html]")
+	at org.thymeleaf.templateparser.markup.AbstractMarkupTemplateParser.parse(AbstractMarkupTemplateParser.java:241) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.templateparser.markup.AbstractMarkupTemplateParser.parseStandalone(AbstractMarkupTemplateParser.java:100) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.engine.TemplateManager.parseAndProcess(TemplateManager.java:666) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1103) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1077) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.spring6.view.ThymeleafView.renderFragment(ThymeleafView.java:372) ~[thymeleaf-spring6-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.spring6.view.ThymeleafView.render(ThymeleafView.java:192) ~[thymeleaf-spring6-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1431) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1167) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1106) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564) ~[tomcat-embed-core-10.1.25.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.25.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:365) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:100) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:227) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:221) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at com.evo.evoproject.config.LoginFilter.doFilter(LoginFilter.java:25) ~[main/:na]
+	at jakarta.servlet.http.HttpFilter.doFilter(HttpFilter.java:53) ~[tomcat-embed-core-10.1.25.jar:6.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$3(HandlerMappingIntrospector.java:195) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:230) ~[spring-security-config-6.2.5.jar:6.2.5]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:352) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:268) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:389) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:904) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at java.base/java.lang.Thread.run(Thread.java:842) ~[na:na]
+Caused by: org.attoparser.ParseException: Exception evaluating SpringEL expression: "#strings.substringAfterLast(board.imageUrl, '/')" (template: "board/view" - line 97, col 16)
+	at org.attoparser.MarkupParser.parseDocument(MarkupParser.java:393) ~[attoparser-2.0.7.RELEASE.jar:2.0.7.RELEASE]
+	at org.attoparser.MarkupParser.parse(MarkupParser.java:257) ~[attoparser-2.0.7.RELEASE.jar:2.0.7.RELEASE]
+	at org.thymeleaf.templateparser.markup.AbstractMarkupTemplateParser.parse(AbstractMarkupTemplateParser.java:230) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	... 98 common frames omitted
+Caused by: org.thymeleaf.exceptions.TemplateProcessingException: Exception evaluating SpringEL expression: "#strings.substringAfterLast(board.imageUrl, '/')" (template: "board/view" - line 97, col 16)
+	at org.thymeleaf.spring6.expression.SPELVariableExpressionEvaluator.evaluate(SPELVariableExpressionEvaluator.java:292) ~[thymeleaf-spring6-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.standard.expression.VariableExpression.executeVariableExpression(VariableExpression.java:166) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.standard.expression.SimpleExpression.executeSimple(SimpleExpression.java:66) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.standard.expression.Expression.execute(Expression.java:109) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.standard.expression.Expression.execute(Expression.java:138) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.standard.expression.LinkExpression.resolveParameters(LinkExpression.java:339) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.standard.expression.LinkExpression.executeLinkExpression(LinkExpression.java:285) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.standard.expression.SimpleExpression.executeSimple(SimpleExpression.java:85) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.standard.expression.Expression.execute(Expression.java:109) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.standard.expression.Expression.execute(Expression.java:138) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.standard.processor.AbstractStandardExpressionAttributeTagProcessor.doProcess(AbstractStandardExpressionAttributeTagProcessor.java:144) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.processor.element.AbstractAttributeTagProcessor.doProcess(AbstractAttributeTagProcessor.java:74) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.processor.element.AbstractElementTagProcessor.process(AbstractElementTagProcessor.java:95) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.util.ProcessorConfigurationUtils$ElementTagProcessorWrapper.process(ProcessorConfigurationUtils.java:633) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.engine.ProcessorTemplateHandler.handleOpenElement(ProcessorTemplateHandler.java:1314) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.engine.TemplateHandlerAdapterMarkupHandler.handleOpenElementEnd(TemplateHandlerAdapterMarkupHandler.java:304) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.templateparser.markup.InlinedOutputExpressionMarkupHandler$InlineMarkupAdapterPreProcessorHandler.handleOpenElementEnd(InlinedOutputExpressionMarkupHandler.java:278) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.standard.inline.OutputExpressionInlinePreProcessorHandler.handleOpenElementEnd(OutputExpressionInlinePreProcessorHandler.java:186) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.templateparser.markup.InlinedOutputExpressionMarkupHandler.handleOpenElementEnd(InlinedOutputExpressionMarkupHandler.java:124) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.attoparser.HtmlElement.handleOpenElementEnd(HtmlElement.java:109) ~[attoparser-2.0.7.RELEASE.jar:2.0.7.RELEASE]
+	at org.attoparser.HtmlMarkupHandler.handleOpenElementEnd(HtmlMarkupHandler.java:297) ~[attoparser-2.0.7.RELEASE.jar:2.0.7.RELEASE]
+	at org.attoparser.MarkupEventProcessorHandler.handleOpenElementEnd(MarkupEventProcessorHandler.java:402) ~[attoparser-2.0.7.RELEASE.jar:2.0.7.RELEASE]
+	at org.attoparser.ParsingElementMarkupUtil.parseOpenElement(ParsingElementMarkupUtil.java:159) ~[attoparser-2.0.7.RELEASE.jar:2.0.7.RELEASE]
+	at org.attoparser.MarkupParser.parseBuffer(MarkupParser.java:710) ~[attoparser-2.0.7.RELEASE.jar:2.0.7.RELEASE]
+	at org.attoparser.MarkupParser.parseDocument(MarkupParser.java:301) ~[attoparser-2.0.7.RELEASE.jar:2.0.7.RELEASE]
+	... 100 common frames omitted
+Caused by: org.springframework.expression.spel.SpelEvaluationException: EL1004E: Method call: Method substringAfterLast(java.lang.String,java.lang.String) cannot be found on type org.thymeleaf.expression.Strings
+	at org.springframework.expression.spel.ast.MethodReference.findAccessorForMethod(MethodReference.java:238) ~[spring-expression-6.1.10.jar:6.1.10]
+	at org.springframework.expression.spel.ast.MethodReference.getValueInternal(MethodReference.java:148) ~[spring-expression-6.1.10.jar:6.1.10]
+	at org.springframework.expression.spel.ast.MethodReference$MethodValueRef.getValue(MethodReference.java:401) ~[spring-expression-6.1.10.jar:6.1.10]
+	at org.springframework.expression.spel.ast.CompoundExpression.getValueInternal(CompoundExpression.java:97) ~[spring-expression-6.1.10.jar:6.1.10]
+	at org.springframework.expression.spel.ast.SpelNodeImpl.getValue(SpelNodeImpl.java:114) ~[spring-expression-6.1.10.jar:6.1.10]
+	at org.springframework.expression.spel.standard.SpelExpression.getValue(SpelExpression.java:338) ~[spring-expression-6.1.10.jar:6.1.10]
+	at org.thymeleaf.spring6.expression.SPELVariableExpressionEvaluator.evaluate(SPELVariableExpressionEvaluator.java:265) ~[thymeleaf-spring6-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	... 124 common frames omitted
+
+2024-07-23T21:37:57.760+09:00 ERROR 10960 --- [evoproject] [http-nio-8090-exec-9] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.thymeleaf.exceptions.TemplateInputException: An error happened during template parsing (template: "class path resource [templates/board/view.html]")] with root cause
+
+org.springframework.expression.spel.SpelEvaluationException: EL1004E: Method call: Method substringAfterLast(java.lang.String,java.lang.String) cannot be found on type org.thymeleaf.expression.Strings
+	at org.springframework.expression.spel.ast.MethodReference.findAccessorForMethod(MethodReference.java:238) ~[spring-expression-6.1.10.jar:6.1.10]
+	at org.springframework.expression.spel.ast.MethodReference.getValueInternal(MethodReference.java:148) ~[spring-expression-6.1.10.jar:6.1.10]
+	at org.springframework.expression.spel.ast.MethodReference$MethodValueRef.getValue(MethodReference.java:401) ~[spring-expression-6.1.10.jar:6.1.10]
+	at org.springframework.expression.spel.ast.CompoundExpression.getValueInternal(CompoundExpression.java:97) ~[spring-expression-6.1.10.jar:6.1.10]
+	at org.springframework.expression.spel.ast.SpelNodeImpl.getValue(SpelNodeImpl.java:114) ~[spring-expression-6.1.10.jar:6.1.10]
+	at org.springframework.expression.spel.standard.SpelExpression.getValue(SpelExpression.java:338) ~[spring-expression-6.1.10.jar:6.1.10]
+	at org.thymeleaf.spring6.expression.SPELVariableExpressionEvaluator.evaluate(SPELVariableExpressionEvaluator.java:265) ~[thymeleaf-spring6-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.standard.expression.VariableExpression.executeVariableExpression(VariableExpression.java:166) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.standard.expression.SimpleExpression.executeSimple(SimpleExpression.java:66) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.standard.expression.Expression.execute(Expression.java:109) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.standard.expression.Expression.execute(Expression.java:138) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.standard.expression.LinkExpression.resolveParameters(LinkExpression.java:339) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.standard.expression.LinkExpression.executeLinkExpression(LinkExpression.java:285) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.standard.expression.SimpleExpression.executeSimple(SimpleExpression.java:85) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.standard.expression.Expression.execute(Expression.java:109) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.standard.expression.Expression.execute(Expression.java:138) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.standard.processor.AbstractStandardExpressionAttributeTagProcessor.doProcess(AbstractStandardExpressionAttributeTagProcessor.java:144) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.processor.element.AbstractAttributeTagProcessor.doProcess(AbstractAttributeTagProcessor.java:74) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.processor.element.AbstractElementTagProcessor.process(AbstractElementTagProcessor.java:95) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.util.ProcessorConfigurationUtils$ElementTagProcessorWrapper.process(ProcessorConfigurationUtils.java:633) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.engine.ProcessorTemplateHandler.handleOpenElement(ProcessorTemplateHandler.java:1314) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.engine.TemplateHandlerAdapterMarkupHandler.handleOpenElementEnd(TemplateHandlerAdapterMarkupHandler.java:304) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.templateparser.markup.InlinedOutputExpressionMarkupHandler$InlineMarkupAdapterPreProcessorHandler.handleOpenElementEnd(InlinedOutputExpressionMarkupHandler.java:278) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.standard.inline.OutputExpressionInlinePreProcessorHandler.handleOpenElementEnd(OutputExpressionInlinePreProcessorHandler.java:186) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.templateparser.markup.InlinedOutputExpressionMarkupHandler.handleOpenElementEnd(InlinedOutputExpressionMarkupHandler.java:124) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.attoparser.HtmlElement.handleOpenElementEnd(HtmlElement.java:109) ~[attoparser-2.0.7.RELEASE.jar:2.0.7.RELEASE]
+	at org.attoparser.HtmlMarkupHandler.handleOpenElementEnd(HtmlMarkupHandler.java:297) ~[attoparser-2.0.7.RELEASE.jar:2.0.7.RELEASE]
+	at org.attoparser.MarkupEventProcessorHandler.handleOpenElementEnd(MarkupEventProcessorHandler.java:402) ~[attoparser-2.0.7.RELEASE.jar:2.0.7.RELEASE]
+	at org.attoparser.ParsingElementMarkupUtil.parseOpenElement(ParsingElementMarkupUtil.java:159) ~[attoparser-2.0.7.RELEASE.jar:2.0.7.RELEASE]
+	at org.attoparser.MarkupParser.parseBuffer(MarkupParser.java:710) ~[attoparser-2.0.7.RELEASE.jar:2.0.7.RELEASE]
+	at org.attoparser.MarkupParser.parseDocument(MarkupParser.java:301) ~[attoparser-2.0.7.RELEASE.jar:2.0.7.RELEASE]
+	at org.attoparser.MarkupParser.parse(MarkupParser.java:257) ~[attoparser-2.0.7.RELEASE.jar:2.0.7.RELEASE]
+	at org.thymeleaf.templateparser.markup.AbstractMarkupTemplateParser.parse(AbstractMarkupTemplateParser.java:230) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.templateparser.markup.AbstractMarkupTemplateParser.parseStandalone(AbstractMarkupTemplateParser.java:100) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.engine.TemplateManager.parseAndProcess(TemplateManager.java:666) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1103) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1077) ~[thymeleaf-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.spring6.view.ThymeleafView.renderFragment(ThymeleafView.java:372) ~[thymeleaf-spring6-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.thymeleaf.spring6.view.ThymeleafView.render(ThymeleafView.java:192) ~[thymeleaf-spring6-3.1.2.RELEASE.jar:3.1.2.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1431) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1167) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1106) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564) ~[tomcat-embed-core-10.1.25.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.25.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:365) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:100) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:227) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:221) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at com.evo.evoproject.config.LoginFilter.doFilter(LoginFilter.java:25) ~[main/:na]
+	at jakarta.servlet.http.HttpFilter.doFilter(HttpFilter.java:53) ~[tomcat-embed-core-10.1.25.jar:6.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$3(HandlerMappingIntrospector.java:195) ~[spring-webmvc-6.1.10.jar:6.1.10]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:230) ~[spring-security-config-6.2.5.jar:6.2.5]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:352) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:268) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.10.jar:6.1.10]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:389) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:904) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.25.jar:10.1.25]
+	at java.base/java.lang.Thread.run(Thread.java:842) ~[na:na]
+
+2024-07-23T21:38:43.822+09:00  INFO 10960 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-23T21:38:43.822+09:00  INFO 10960 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-23T21:39:43.823+09:00  INFO 10960 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-23T21:39:43.823+09:00  INFO 10960 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-23T21:40:43.825+09:00  INFO 10960 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-23T21:40:43.825+09:00  INFO 10960 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-23T21:41:43.823+09:00  INFO 10960 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-23T21:41:43.823+09:00  INFO 10960 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-23T21:42:43.820+09:00  INFO 10960 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-23T21:42:43.820+09:00  INFO 10960 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-23T21:43:43.819+09:00  INFO 10960 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-23T21:43:43.819+09:00  INFO 10960 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-23T21:44:43.823+09:00  INFO 10960 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-23T21:44:43.824+09:00  INFO 10960 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-23T21:45:43.815+09:00  INFO 10960 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-23T21:45:43.815+09:00  INFO 10960 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-23T21:46:43.828+09:00  INFO 10960 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-23T21:46:43.828+09:00  INFO 10960 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-23T21:47:43.815+09:00  INFO 10960 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-23T21:47:43.815+09:00  INFO 10960 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-23T21:48:43.815+09:00  INFO 10960 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-23T21:48:43.815+09:00  INFO 10960 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-23T21:49:43.816+09:00  INFO 10960 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-23T21:49:43.816+09:00  INFO 10960 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-23T21:50:43.827+09:00  INFO 10960 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-23T21:50:43.827+09:00  INFO 10960 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-23T21:51:43.823+09:00  INFO 10960 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-23T21:51:43.823+09:00  INFO 10960 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-23T21:52:43.813+09:00  INFO 10960 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-23T21:52:43.813+09:00  INFO 10960 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-23T21:53:43.818+09:00  INFO 10960 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-23T21:53:43.818+09:00  INFO 10960 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-23T21:54:43.825+09:00  INFO 10960 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-23T21:54:43.825+09:00  INFO 10960 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-23T21:55:18.563+09:00  INFO 10960 --- [evoproject] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-07-23T21:55:18.570+09:00  INFO 10960 --- [evoproject] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-07-23T21:55:22.632+09:00  INFO 12144 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : Starting EvoprojectApplication using Java 17.0.11 with PID 12144 (D:\EVO\evoproject\build\classes\java\main started by skygv in D:\EVO)
+2024-07-23T21:55:22.634+09:00  INFO 12144 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : No active profile set, falling back to 1 default profile: "default"
+2024-07-23T21:55:23.762+09:00  INFO 12144 --- [evoproject] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8090 (http)
+2024-07-23T21:55:23.773+09:00  INFO 12144 --- [evoproject] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-07-23T21:55:23.774+09:00  INFO 12144 --- [evoproject] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-07-23T21:55:23.830+09:00  INFO 12144 --- [evoproject] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-07-23T21:55:23.830+09:00  INFO 12144 --- [evoproject] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1149 ms
+2024-07-23T21:55:24.352+09:00  INFO 12144 --- [evoproject] [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-07-23T21:55:24.541+09:00  INFO 12144 --- [evoproject] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@71b97eeb, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2776fd8f, org.springframework.security.web.context.SecurityContextHolderFilter@74fb5b59, org.springframework.security.web.header.HeaderWriterFilter@22f8adc2, org.springframework.web.filter.CorsFilter@1c62c3fd, org.springframework.security.web.authentication.logout.LogoutFilter@5e2a6991, com.evo.evoproject.config.LoginFilter@734ce281, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@59918c8f, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@722531ab, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@26fadd98, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@49b89425, org.springframework.security.web.access.ExceptionTranslationFilter@230232b0, org.springframework.security.web.access.intercept.AuthorizationFilter@2450256f]
+2024-07-23T21:55:24.786+09:00  INFO 12144 --- [evoproject] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8090 (http) with context path ''
+2024-07-23T21:55:24.796+09:00  INFO 12144 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : Started EvoprojectApplication in 2.557 seconds (process running for 3.181)
+2024-07-23T21:55:24.801+09:00  INFO 12144 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-23T21:55:24.802+09:00  INFO 12144 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-23T21:55:25.818+09:00  INFO 12144 --- [evoproject] [http-nio-8090-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-07-23T21:55:25.818+09:00  INFO 12144 --- [evoproject] [http-nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-07-23T21:55:25.819+09:00  INFO 12144 --- [evoproject] [http-nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-07-23T21:55:25.959+09:00  WARN 12144 --- [evoproject] [http-nio-8090-exec-1] o.a.c.util.SessionIdGeneratorBase        : Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [109] milliseconds.
+2024-07-23T21:55:31.467+09:00  INFO 12144 --- [evoproject] [http-nio-8090-exec-8] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-07-23T21:55:31.606+09:00  INFO 12144 --- [evoproject] [http-nio-8090-exec-8] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@506afbdb
+2024-07-23T21:55:31.608+09:00  INFO 12144 --- [evoproject] [http-nio-8090-exec-8] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-07-23T21:55:32.675+09:00  WARN 12144 --- [evoproject] [http-nio-8090-exec-1] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-1][mypage] Deprecated unwrapped fragment expression "header :: header" found in template mypage, line 126, col 9. Please use the complete syntax of fragment expressions instead ("~{header :: header}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-23T21:55:32.682+09:00  WARN 12144 --- [evoproject] [http-nio-8090-exec-1] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-1][mypage] Deprecated unwrapped fragment expression "footer :: footer" found in template mypage, line 204, col 9. Please use the complete syntax of fragment expressions instead ("~{footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-23T21:56:24.805+09:00  INFO 12144 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-23T21:56:24.806+09:00  INFO 12144 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-23T21:56:47.424+09:00  INFO 12144 --- [evoproject] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-07-23T21:56:47.430+09:00  INFO 12144 --- [evoproject] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-07-23T21:56:51.234+09:00  INFO 19208 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : Starting EvoprojectApplication using Java 17.0.11 with PID 19208 (D:\EVO\evoproject\build\classes\java\main started by skygv in D:\EVO)
+2024-07-23T21:56:51.237+09:00  INFO 19208 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : No active profile set, falling back to 1 default profile: "default"
+2024-07-23T21:56:52.375+09:00  INFO 19208 --- [evoproject] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8090 (http)
+2024-07-23T21:56:52.391+09:00  INFO 19208 --- [evoproject] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-07-23T21:56:52.391+09:00  INFO 19208 --- [evoproject] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-07-23T21:56:52.449+09:00  INFO 19208 --- [evoproject] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-07-23T21:56:52.450+09:00  INFO 19208 --- [evoproject] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1165 ms
+2024-07-23T21:56:53.031+09:00  INFO 19208 --- [evoproject] [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-07-23T21:56:53.214+09:00  INFO 19208 --- [evoproject] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@24197b13, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@71b97eeb, org.springframework.security.web.context.SecurityContextHolderFilter@5b742bc8, org.springframework.security.web.header.HeaderWriterFilter@44fd7ba4, org.springframework.web.filter.CorsFilter@2776fd8f, org.springframework.security.web.authentication.logout.LogoutFilter@426c0486, com.evo.evoproject.config.LoginFilter@1c62c3fd, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@2450256f, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@130a6eb9, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@8f57e4c, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@734ce281, org.springframework.security.web.access.ExceptionTranslationFilter@5463f035, org.springframework.security.web.access.intercept.AuthorizationFilter@2c60ce47]
+2024-07-23T21:56:53.462+09:00  INFO 19208 --- [evoproject] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8090 (http) with context path ''
+2024-07-23T21:56:53.476+09:00  INFO 19208 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : Started EvoprojectApplication in 2.64 seconds (process running for 3.29)
+2024-07-23T21:56:53.484+09:00  INFO 19208 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-23T21:56:53.485+09:00  INFO 19208 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-23T21:56:53.535+09:00  INFO 19208 --- [evoproject] [http-nio-8090-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-07-23T21:56:53.535+09:00  INFO 19208 --- [evoproject] [http-nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-07-23T21:56:53.537+09:00  INFO 19208 --- [evoproject] [http-nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2024-07-23T21:56:59.135+09:00  INFO 19208 --- [evoproject] [http-nio-8090-exec-3] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-07-23T21:56:59.271+09:00  INFO 19208 --- [evoproject] [http-nio-8090-exec-3] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5c6574da
+2024-07-23T21:56:59.272+09:00  INFO 19208 --- [evoproject] [http-nio-8090-exec-3] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-07-23T21:56:59.497+09:00  WARN 19208 --- [evoproject] [http-nio-8090-exec-3] o.a.c.util.SessionIdGeneratorBase        : Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [111] milliseconds.
+2024-07-23T21:57:06.134+09:00  INFO 19208 --- [evoproject] [http-nio-8090-exec-1] c.e.e.c.p.RetrieveProductsController     : 카테고리별 제품 목록 요청 - 정렬기준: viewCount_desc 카테고리 ID: 1, 페이지: 1, 사이즈: 16
+2024-07-23T21:57:06.139+09:00  INFO 19208 --- [evoproject] [http-nio-8090-exec-1] c.e.e.s.product.ProductServiceImpl       : 카테고리별 제품 목록을 가져오는 서비스 - 정렬 기준: viewCount_desc, 카테고리 ID: 1, 페이지: 1, 사이즈: 16
+2024-07-23T21:57:08.707+09:00  WARN 19208 --- [evoproject] [http-nio-8090-exec-5] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-5][mypage] Deprecated unwrapped fragment expression "header :: header" found in template mypage, line 126, col 9. Please use the complete syntax of fragment expressions instead ("~{header :: header}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-23T21:57:08.713+09:00  WARN 19208 --- [evoproject] [http-nio-8090-exec-5] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-5][mypage] Deprecated unwrapped fragment expression "footer :: footer" found in template mypage, line 204, col 9. Please use the complete syntax of fragment expressions instead ("~{footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-23T21:57:53.476+09:00  INFO 19208 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-23T21:57:53.476+09:00  INFO 19208 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-23T21:58:53.484+09:00  INFO 19208 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-23T21:58:53.484+09:00  INFO 19208 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-23T21:59:53.487+09:00  INFO 19208 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-23T21:59:53.487+09:00  INFO 19208 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-23T22:00:53.478+09:00  INFO 19208 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-23T22:00:53.478+09:00  INFO 19208 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-23T22:01:53.473+09:00  INFO 19208 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-23T22:01:53.473+09:00  INFO 19208 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-23T22:02:53.484+09:00  INFO 19208 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-23T22:02:53.484+09:00  INFO 19208 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-23T22:03:51.732+09:00  INFO 19208 --- [evoproject] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-07-23T22:03:51.737+09:00  INFO 19208 --- [evoproject] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-07-23T22:03:55.366+09:00  INFO 33132 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : Starting EvoprojectApplication using Java 17.0.11 with PID 33132 (D:\EVO\evoproject\build\classes\java\main started by skygv in D:\EVO)
+2024-07-23T22:03:55.368+09:00  INFO 33132 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : No active profile set, falling back to 1 default profile: "default"
+2024-07-23T22:03:56.493+09:00  INFO 33132 --- [evoproject] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8090 (http)
+2024-07-23T22:03:56.503+09:00  INFO 33132 --- [evoproject] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-07-23T22:03:56.503+09:00  INFO 33132 --- [evoproject] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-07-23T22:03:56.573+09:00  INFO 33132 --- [evoproject] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-07-23T22:03:56.573+09:00  INFO 33132 --- [evoproject] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1157 ms
+2024-07-23T22:03:57.206+09:00  INFO 33132 --- [evoproject] [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-07-23T22:03:57.397+09:00  INFO 33132 --- [evoproject] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@7f2b39a, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7a358613, org.springframework.security.web.context.SecurityContextHolderFilter@207dd1b7, org.springframework.security.web.header.HeaderWriterFilter@3db6dd52, org.springframework.web.filter.CorsFilter@760f1081, org.springframework.security.web.authentication.logout.LogoutFilter@63917fe1, com.evo.evoproject.config.LoginFilter@52621501, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@59328218, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@23ad2d17, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@25f0c5e7, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@401e02b4, org.springframework.security.web.access.ExceptionTranslationFilter@26fadd98, org.springframework.security.web.access.intercept.AuthorizationFilter@49b89425]
+2024-07-23T22:03:57.635+09:00  INFO 33132 --- [evoproject] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8090 (http) with context path ''
+2024-07-23T22:03:57.645+09:00  INFO 33132 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : Started EvoprojectApplication in 2.655 seconds (process running for 3.274)
+2024-07-23T22:03:57.650+09:00  INFO 33132 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-23T22:03:57.650+09:00  INFO 33132 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-23T22:03:58.009+09:00  INFO 33132 --- [evoproject] [http-nio-8090-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-07-23T22:03:58.010+09:00  INFO 33132 --- [evoproject] [http-nio-8090-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-07-23T22:03:58.011+09:00  INFO 33132 --- [evoproject] [http-nio-8090-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-07-23T22:03:58.160+09:00  WARN 33132 --- [evoproject] [http-nio-8090-exec-2] o.a.c.util.SessionIdGeneratorBase        : Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [113] milliseconds.
+2024-07-23T22:04:03.798+09:00  INFO 33132 --- [evoproject] [http-nio-8090-exec-8] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-07-23T22:04:03.932+09:00  INFO 33132 --- [evoproject] [http-nio-8090-exec-8] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5b29653b
+2024-07-23T22:04:03.936+09:00  INFO 33132 --- [evoproject] [http-nio-8090-exec-8] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-07-23T22:04:05.136+09:00  WARN 33132 --- [evoproject] [http-nio-8090-exec-2] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-2][mypage] Deprecated unwrapped fragment expression "header :: header" found in template mypage, line 126, col 9. Please use the complete syntax of fragment expressions instead ("~{header :: header}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-23T22:04:05.145+09:00  WARN 33132 --- [evoproject] [http-nio-8090-exec-2] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-2][mypage] Deprecated unwrapped fragment expression "footer :: footer" found in template mypage, line 204, col 9. Please use the complete syntax of fragment expressions instead ("~{footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-23T22:04:57.658+09:00  INFO 33132 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-23T22:04:57.658+09:00  INFO 33132 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-23T22:05:08.903+09:00  WARN 33132 --- [evoproject] [http-nio-8090-exec-10] o.a.i.s.AutoMappingUnknownColumnBehavior : Unknown column is detected on 'com.evo.evoproject.mapper.order.OrderMapper.getAllOrders' auto-mapping. Mapping parameters are [columnName=pro_name,propertyName=pro_name,propertyType=null]
+2024-07-23T22:05:08.903+09:00  WARN 33132 --- [evoproject] [http-nio-8090-exec-10] o.a.i.s.AutoMappingUnknownColumnBehavior : Unknown column is detected on 'com.evo.evoproject.mapper.order.OrderMapper.getAllOrders' auto-mapping. Mapping parameters are [columnName=pro_stock,propertyName=pro_stock,propertyType=null]
+2024-07-23T22:05:10.034+09:00  INFO 33132 --- [evoproject] [http-nio-8090-exec-2] c.e.e.s.product.ProductServiceImpl       : 모든 제품 목록을 가져오는 서비스 - 정렬기준: pro_date_desc, 페이지: 1, 사이즈: 10
+2024-07-23T22:05:11.503+09:00  WARN 33132 --- [evoproject] [http-nio-8090-exec-3] o.a.i.s.AutoMappingUnknownColumnBehavior : Unknown column is detected on 'com.evo.evoproject.mapper.order.OrderMapper.getAllOrders' auto-mapping. Mapping parameters are [columnName=pro_name,propertyName=pro_name,propertyType=null]
+2024-07-23T22:05:11.503+09:00  WARN 33132 --- [evoproject] [http-nio-8090-exec-3] o.a.i.s.AutoMappingUnknownColumnBehavior : Unknown column is detected on 'com.evo.evoproject.mapper.order.OrderMapper.getAllOrders' auto-mapping. Mapping parameters are [columnName=pro_stock,propertyName=pro_stock,propertyType=null]
+2024-07-23T22:05:12.438+09:00  INFO 33132 --- [evoproject] [http-nio-8090-exec-5] c.e.e.c.admin.AdminBoardController       : User ID: admin
+2024-07-23T22:05:12.439+09:00  INFO 33132 --- [evoproject] [http-nio-8090-exec-5] c.e.e.c.admin.AdminBoardController       : User: User(userNo=2, userId=admin, userPw=$2a$10$J2ZObMtCnQeaHUsXaMIvE.huKHHwfLJ6zeLtEaVhm1Vp5nwzeQzYq, userName=관리자, userEmail=admin@example.com, userAddress1=서울시 종로구, userAddress2=201호, userPhone=1087654321, userIndate=2024-07-07 00:00:00.0, userMarketing=N, userWithdrawal=N, isAdmin=Y)
+2024-07-23T22:05:12.452+09:00  INFO 33132 --- [evoproject] [http-nio-8090-exec-5] c.e.e.c.admin.AdminBoardController       : Boards: [Board(boardNo=50, userNo=31, orderNo=null, imageId=null, categoryId=3, boardTitle=혹시 필통 같은 제품도 파나요?, boardContent=필통 사고 싶어요, boardTimestamp=2024-07-24 00:20:01.0, isAnswered=N, imageUrl=null, user=User(userNo=0, userId=test123, userPw=null, userName=박장군, userEmail=null, userAddress1=null, userAddress2=null, userPhone=0, userIndate=null, userMarketing= , userWithdrawal=N, isAdmin=N)), Board(boardNo=49, userNo=31, orderNo=null, imageId=null, categoryId=2, boardTitle=배송이 얼마나 걸리는지 알고 싶습니다, boardContent=보통 몇일이 걸리나요?, boardTimestamp=2024-07-24 00:19:07.0, isAnswered=N, imageUrl=null, user=User(userNo=0, userId=test123, userPw=null, userName=박장군, userEmail=null, userAddress1=null, userAddress2=null, userPhone=0, userIndate=null, userMarketing= , userWithdrawal=N, isAdmin=N)), Board(boardNo=48, userNo=31, orderNo=null, imageId=null, categoryId=1, boardTitle=상품 규격에 대하여 자세히 알고 싶습니다!, boardContent=상품 규격에 대하여 자세히 알고 싶습니다!, boardTimestamp=2024-07-24 00:16:03.0, isAnswered=N, imageUrl=null, user=User(userNo=0, userId=test123, userPw=null, userName=박장군, userEmail=null, userAddress1=null, userAddress2=null, userPhone=0, userIndate=null, userMarketing= , userWithdrawal=N, isAdmin=N)), Board(boardNo=52, userNo=13, orderNo=null, imageId=null, categoryId=1, boardTitle=제품 상태가 이상합니다!, boardContent=제품 상태가 이상합니다!, boardTimestamp=2024-07-23 22:04:29.0, isAnswered=N, imageUrl=/boardimage/65f8bed3-5c03-4551-bcb0-f133f1da5e9a-banner.jpg, user=User(userNo=0, userId=xofid1, userPw=null, userName=q, userEmail=null, userAddress1=null, userAddress2=null, userPhone=0, userIndate=null, userMarketing= , userWithdrawal=N, isAdmin=N)), Board(boardNo=46, userNo=15, orderNo=null, imageId=null, categoryId=3, boardTitle=무통장 입금, boardContent=무통장 입금 시 몇 일 이내로 입금완료 해야하나요?, boardTimestamp=2024-07-22 06:03:17.0, isAnswered=Y, imageUrl=null, user=User(userNo=0, userId=lion99, userPw=null, userName=라이언, userEmail=null, userAddress1=null, userAddress2=null, userPhone=0, userIndate=null, userMarketing= , userWithdrawal=N, isAdmin=N)), Board(boardNo=45, userNo=14, orderNo=null, imageId=null, categoryId=2, boardTitle=배송이 얼마나 걸리나요, boardContent=빨리주세요, boardTimestamp=2024-07-21 01:46:16.0, isAnswered=Y, imageUrl=null, user=User(userNo=0, userId=user1234, userPw=null, userName=이동훈, userEmail=null, userAddress1=null, userAddress2=null, userPhone=0, userIndate=null, userMarketing= , userWithdrawal=N, isAdmin=N)), Board(boardNo=44, userNo=13, orderNo=null, imageId=null, categoryId=2, boardTitle=	제품이 손상되어 도착했어요., boardContent=	제품이 손상되어 도착했어요., boardTimestamp=2024-07-21 01:45:27.0, isAnswered=N, imageUrl=https://team4project.kr.object.ncloudstorage.com/90a93802-cd85-4e17-8696-92778c72578e-4378e977b53f8537787003344aeab384_460x.jpg, user=User(userNo=0, userId=xofid1, userPw=null, userName=q, userEmail=null, userAddress1=null, userAddress2=null, userPhone=0, userIndate=null, userMarketing= , userWithdrawal=N, isAdmin=N)), Board(boardNo=41, userNo=20, orderNo=null, imageId=null, categoryId=3, boardTitle=제품 가격문의, boardContent=빈티지의자는 얼마인가요, boardTimestamp=2024-07-18 01:47:33.0, isAnswered=N, imageUrl=https://team4project.kr.object.ncloudstorage.com/3801a8c7-ca53-4f96-b02e-06a8cbcdf4ff-unnamed.jpg, user=User(userNo=0, userId=qwer1, userPw=null, userName=김서방, userEmail=null, userAddress1=null, userAddress2=null, userPhone=0, userIndate=null, userMarketing= , userWithdrawal=N, isAdmin=N)), Board(boardNo=40, userNo=13, orderNo=null, imageId=null, categoryId=2, boardTitle=장농이 이상해요, boardContent=너무 더러워요, boardTimestamp=2024-07-16 23:19:31.0, isAnswered=N, imageUrl=https://team4project.kr.object.ncloudstorage.com/9cbf0cd7-a5d6-4db2-8e0b-db4865e39a2f-banner.jpg, user=User(userNo=0, userId=xofid1, userPw=null, userName=q, userEmail=null, userAddress1=null, userAddress2=null, userPhone=0, userIndate=null, userMarketing= , userWithdrawal=N, isAdmin=N)), Board(boardNo=39, userNo=13, orderNo=null, imageId=null, categoryId=2, boardTitle=곰팡이가 계속 발생합니다., boardContent=곰팡이가 계속 발생합니다.곰팡이가 계속 발생합니다.곰팡이가 계속 발생합니다., boardTimestamp=2024-07-16 23:07:48.0, isAnswered=Y, imageUrl=https://team4project.kr.object.ncloudstorage.com/eb4bed9a-c7f1-4cca-9c07-ab44199e7f5e-banner.jpg, user=User(userNo=0, userId=xofid1, userPw=null, userName=q, userEmail=null, userAddress1=null, userAddress2=null, userPhone=0, userIndate=null, userMarketing= , userWithdrawal=N, isAdmin=N))]
+2024-07-23T22:05:12.456+09:00  INFO 33132 --- [evoproject] [http-nio-8090-exec-5] c.e.e.c.admin.AdminBoardController       : Total Boards: 22
+2024-07-23T22:05:12.456+09:00  INFO 33132 --- [evoproject] [http-nio-8090-exec-5] c.e.e.c.admin.AdminBoardController       : Total Pages: 3
+2024-07-23T22:05:33.981+09:00  INFO 33132 --- [evoproject] [http-nio-8090-exec-8] c.e.e.c.admin.AdminBoardController       : User ID: admin
+2024-07-23T22:05:33.983+09:00  INFO 33132 --- [evoproject] [http-nio-8090-exec-8] c.e.e.c.admin.AdminBoardController       : User: User(userNo=2, userId=admin, userPw=$2a$10$J2ZObMtCnQeaHUsXaMIvE.huKHHwfLJ6zeLtEaVhm1Vp5nwzeQzYq, userName=관리자, userEmail=admin@example.com, userAddress1=서울시 종로구, userAddress2=201호, userPhone=1087654321, userIndate=2024-07-07 00:00:00.0, userMarketing=N, userWithdrawal=N, isAdmin=Y)
+2024-07-23T22:05:33.988+09:00  INFO 33132 --- [evoproject] [http-nio-8090-exec-8] c.e.e.c.admin.AdminBoardController       : Boards: [Board(boardNo=48, userNo=31, orderNo=null, imageId=null, categoryId=1, boardTitle=상품 규격에 대하여 자세히 알고 싶습니다!, boardContent=상품 규격에 대하여 자세히 알고 싶습니다!, boardTimestamp=2024-07-24 00:16:03.0, isAnswered=N, imageUrl=null, user=User(userNo=0, userId=test123, userPw=null, userName=박장군, userEmail=null, userAddress1=null, userAddress2=null, userPhone=0, userIndate=null, userMarketing= , userWithdrawal=N, isAdmin=N)), Board(boardNo=52, userNo=13, orderNo=null, imageId=null, categoryId=1, boardTitle=제품 상태가 이상합니다!, boardContent=제품 상태가 이상합니다!, boardTimestamp=2024-07-23 22:04:29.0, isAnswered=N, imageUrl=/boardimage/65f8bed3-5c03-4551-bcb0-f133f1da5e9a-banner.jpg, user=User(userNo=0, userId=xofid1, userPw=null, userName=q, userEmail=null, userAddress1=null, userAddress2=null, userPhone=0, userIndate=null, userMarketing= , userWithdrawal=N, isAdmin=N)), Board(boardNo=30, userNo=13, orderNo=null, imageId=null, categoryId=1, boardTitle=의자 이상해요, boardContent=ㅎㅎ, boardTimestamp=2024-07-15 22:36:23.0, isAnswered=N, imageUrl=null, user=User(userNo=0, userId=xofid1, userPw=null, userName=q, userEmail=null, userAddress1=null, userAddress2=null, userPhone=0, userIndate=null, userMarketing= , userWithdrawal=N, isAdmin=N)), Board(boardNo=22, userNo=13, orderNo=null, imageId=null, categoryId=1, boardTitle=제품이 손상되어 도착했어요., boardContent=주문한 제품이 손상되어 도착했습니다. 교환 가능한가요?
+, boardTimestamp=2024-07-13 02:40:57.0, isAnswered=Y, imageUrl=null, user=User(userNo=0, userId=xofid1, userPw=null, userName=q, userEmail=null, userAddress1=null, userAddress2=null, userPhone=0, userIndate=null, userMarketing= , userWithdrawal=N, isAdmin=N)), Board(boardNo=19, userNo=18, orderNo=null, imageId=null, categoryId=1, boardTitle=상품 상태가 영 좋지않습니다, boardContent=다 부셔젔습니다, boardTimestamp=2024-07-13 02:17:45.0, isAnswered=Y, imageUrl=null, user=User(userNo=0, userId=qkrxofid1, userPw=null, userName=박태량, userEmail=null, userAddress1=null, userAddress2=null, userPhone=0, userIndate=null, userMarketing= , userWithdrawal=N, isAdmin=N)), Board(boardNo=18, userNo=13, orderNo=null, imageId=null, categoryId=1, boardTitle=제품 재고가 있나요?, boardContent=이 제품이 품절이라고 나오는데 재입고 예정이 있나요?, boardTimestamp=2024-07-13 01:00:48.0, isAnswered=N, imageUrl=null, user=User(userNo=0, userId=xofid1, userPw=null, userName=q, userEmail=null, userAddress1=null, userAddress2=null, userPhone=0, userIndate=null, userMarketing= , userWithdrawal=N, isAdmin=N)), Board(boardNo=14, userNo=2, orderNo=null, imageId=null, categoryId=1, boardTitle=오래되고 멋진의자, boardContent=좋아요, boardTimestamp=2024-07-12 19:39:04.0, isAnswered=N, imageUrl=null, user=User(userNo=0, userId=admin, userPw=null, userName=관리자, userEmail=null, userAddress1=null, userAddress2=null, userPhone=0, userIndate=null, userMarketing= , userWithdrawal=N, isAdmin=N))]
+2024-07-23T22:05:33.988+09:00  INFO 33132 --- [evoproject] [http-nio-8090-exec-8] c.e.e.c.admin.AdminBoardController       : Total Boards: 7
+2024-07-23T22:05:33.989+09:00  INFO 33132 --- [evoproject] [http-nio-8090-exec-8] c.e.e.c.admin.AdminBoardController       : Total Pages: 1
+2024-07-23T22:05:57.644+09:00  INFO 33132 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-23T22:05:57.644+09:00  INFO 33132 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-23T22:06:07.799+09:00  WARN 33132 --- [evoproject] [http-nio-8090-exec-6] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-6][mypage] Deprecated unwrapped fragment expression "header :: header" found in template mypage, line 126, col 9. Please use the complete syntax of fragment expressions instead ("~{header :: header}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-23T22:06:07.803+09:00  WARN 33132 --- [evoproject] [http-nio-8090-exec-6] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-6][mypage] Deprecated unwrapped fragment expression "footer :: footer" found in template mypage, line 204, col 9. Please use the complete syntax of fragment expressions instead ("~{footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-23T22:06:57.649+09:00  INFO 33132 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-23T22:06:57.649+09:00  INFO 33132 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-23T22:07:57.658+09:00  INFO 33132 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-23T22:07:57.658+09:00  INFO 33132 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-23T22:08:38.981+09:00  INFO 33132 --- [evoproject] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-07-23T22:08:38.986+09:00  INFO 33132 --- [evoproject] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-07-23T22:08:42.706+09:00  INFO 34924 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : Starting EvoprojectApplication using Java 17.0.11 with PID 34924 (D:\EVO\evoproject\build\classes\java\main started by skygv in D:\EVO)
+2024-07-23T22:08:42.709+09:00  INFO 34924 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : No active profile set, falling back to 1 default profile: "default"
+2024-07-23T22:08:43.885+09:00  INFO 34924 --- [evoproject] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8090 (http)
+2024-07-23T22:08:43.898+09:00  INFO 34924 --- [evoproject] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-07-23T22:08:43.899+09:00  INFO 34924 --- [evoproject] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-07-23T22:08:43.956+09:00  INFO 34924 --- [evoproject] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-07-23T22:08:43.956+09:00  INFO 34924 --- [evoproject] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1206 ms
+2024-07-23T22:08:44.496+09:00  INFO 34924 --- [evoproject] [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-07-23T22:08:44.699+09:00  INFO 34924 --- [evoproject] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@24197b13, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@71b97eeb, org.springframework.security.web.context.SecurityContextHolderFilter@5b742bc8, org.springframework.security.web.header.HeaderWriterFilter@44fd7ba4, org.springframework.web.filter.CorsFilter@2776fd8f, org.springframework.security.web.authentication.logout.LogoutFilter@426c0486, com.evo.evoproject.config.LoginFilter@1c62c3fd, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@2450256f, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@130a6eb9, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@8f57e4c, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@734ce281, org.springframework.security.web.access.ExceptionTranslationFilter@5463f035, org.springframework.security.web.access.intercept.AuthorizationFilter@2c60ce47]
+2024-07-23T22:08:44.943+09:00  INFO 34924 --- [evoproject] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8090 (http) with context path ''
+2024-07-23T22:08:44.953+09:00  INFO 34924 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : Started EvoprojectApplication in 2.652 seconds (process running for 3.293)
+2024-07-23T22:08:44.958+09:00  INFO 34924 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-23T22:08:44.959+09:00  INFO 34924 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-23T22:08:45.136+09:00  INFO 34924 --- [evoproject] [http-nio-8090-exec-4] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-07-23T22:08:45.136+09:00  INFO 34924 --- [evoproject] [http-nio-8090-exec-4] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-07-23T22:08:45.137+09:00  INFO 34924 --- [evoproject] [http-nio-8090-exec-4] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-07-23T22:08:45.302+09:00  WARN 34924 --- [evoproject] [http-nio-8090-exec-4] o.a.c.util.SessionIdGeneratorBase        : Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [118] milliseconds.
+2024-07-23T22:08:49.914+09:00  INFO 34924 --- [evoproject] [http-nio-8090-exec-9] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-07-23T22:08:50.047+09:00  INFO 34924 --- [evoproject] [http-nio-8090-exec-9] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3f05785a
+2024-07-23T22:08:50.049+09:00  INFO 34924 --- [evoproject] [http-nio-8090-exec-9] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-07-23T22:08:51.088+09:00  WARN 34924 --- [evoproject] [http-nio-8090-exec-9] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-9][mypage] Deprecated unwrapped fragment expression "header :: header" found in template mypage, line 126, col 9. Please use the complete syntax of fragment expressions instead ("~{header :: header}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-23T22:08:51.096+09:00  WARN 34924 --- [evoproject] [http-nio-8090-exec-9] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-9][mypage] Deprecated unwrapped fragment expression "footer :: footer" found in template mypage, line 204, col 9. Please use the complete syntax of fragment expressions instead ("~{footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-23T22:09:44.095+09:00  INFO 34924 --- [evoproject] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-07-23T22:09:44.100+09:00  INFO 34924 --- [evoproject] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-07-23T22:09:46.783+09:00  INFO 32848 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : Starting EvoprojectApplication using Java 17.0.11 with PID 32848 (D:\EVO\evoproject\build\classes\java\main started by skygv in D:\EVO)
+2024-07-23T22:09:46.785+09:00  INFO 32848 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : No active profile set, falling back to 1 default profile: "default"
+2024-07-23T22:09:47.861+09:00  INFO 32848 --- [evoproject] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8090 (http)
+2024-07-23T22:09:47.871+09:00  INFO 32848 --- [evoproject] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-07-23T22:09:47.872+09:00  INFO 32848 --- [evoproject] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-07-23T22:09:47.929+09:00  INFO 32848 --- [evoproject] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-07-23T22:09:47.930+09:00  INFO 32848 --- [evoproject] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1102 ms
+2024-07-23T22:09:48.474+09:00  INFO 32848 --- [evoproject] [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-07-23T22:09:48.658+09:00  INFO 32848 --- [evoproject] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@71b97eeb, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2776fd8f, org.springframework.security.web.context.SecurityContextHolderFilter@74fb5b59, org.springframework.security.web.header.HeaderWriterFilter@22f8adc2, org.springframework.web.filter.CorsFilter@1c62c3fd, org.springframework.security.web.authentication.logout.LogoutFilter@5e2a6991, com.evo.evoproject.config.LoginFilter@734ce281, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@59918c8f, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@722531ab, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@26fadd98, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@49b89425, org.springframework.security.web.access.ExceptionTranslationFilter@230232b0, org.springframework.security.web.access.intercept.AuthorizationFilter@2450256f]
+2024-07-23T22:09:48.899+09:00  INFO 32848 --- [evoproject] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8090 (http) with context path ''
+2024-07-23T22:09:48.909+09:00  INFO 32848 --- [evoproject] [main] c.evo.evoproject.EvoprojectApplication   : Started EvoprojectApplication in 2.511 seconds (process running for 3.16)
+2024-07-23T22:09:48.914+09:00  INFO 32848 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-23T22:09:48.915+09:00  INFO 32848 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-23T22:09:49.001+09:00  INFO 32848 --- [evoproject] [http-nio-8090-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-07-23T22:09:49.002+09:00  INFO 32848 --- [evoproject] [http-nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-07-23T22:09:49.003+09:00  INFO 32848 --- [evoproject] [http-nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-07-23T22:09:49.152+09:00  WARN 32848 --- [evoproject] [http-nio-8090-exec-1] o.a.c.util.SessionIdGeneratorBase        : Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [109] milliseconds.
+2024-07-23T22:09:53.809+09:00  INFO 32848 --- [evoproject] [http-nio-8090-exec-8] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-07-23T22:09:53.953+09:00  INFO 32848 --- [evoproject] [http-nio-8090-exec-8] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@678a5c1e
+2024-07-23T22:09:53.955+09:00  INFO 32848 --- [evoproject] [http-nio-8090-exec-8] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-07-23T22:09:55.010+09:00  WARN 32848 --- [evoproject] [http-nio-8090-exec-1] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-1][mypage] Deprecated unwrapped fragment expression "header :: header" found in template mypage, line 126, col 9. Please use the complete syntax of fragment expressions instead ("~{header :: header}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-23T22:09:55.018+09:00  WARN 32848 --- [evoproject] [http-nio-8090-exec-1] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8090-exec-1][mypage] Deprecated unwrapped fragment expression "footer :: footer" found in template mypage, line 204, col 9. Please use the complete syntax of fragment expressions instead ("~{footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2024-07-23T22:10:03.097+09:00  INFO 32848 --- [evoproject] [http-nio-8090-exec-8] c.e.e.c.admin.AdminBoardController       : User ID: admin
+2024-07-23T22:10:03.098+09:00  INFO 32848 --- [evoproject] [http-nio-8090-exec-8] c.e.e.c.admin.AdminBoardController       : User: User(userNo=2, userId=admin, userPw=$2a$10$J2ZObMtCnQeaHUsXaMIvE.huKHHwfLJ6zeLtEaVhm1Vp5nwzeQzYq, userName=관리자, userEmail=admin@example.com, userAddress1=서울시 종로구, userAddress2=201호, userPhone=1087654321, userIndate=2024-07-07 00:00:00.0, userMarketing=N, userWithdrawal=N, isAdmin=Y)
+2024-07-23T22:10:03.112+09:00  INFO 32848 --- [evoproject] [http-nio-8090-exec-8] c.e.e.c.admin.AdminBoardController       : Boards: [Board(boardNo=50, userNo=31, orderNo=null, imageId=null, categoryId=3, boardTitle=혹시 필통 같은 제품도 파나요?, boardContent=필통 사고 싶어요, boardTimestamp=2024-07-24 00:20:01.0, isAnswered=N, imageUrl=null, user=User(userNo=0, userId=test123, userPw=null, userName=박장군, userEmail=null, userAddress1=null, userAddress2=null, userPhone=0, userIndate=null, userMarketing= , userWithdrawal=N, isAdmin=N)), Board(boardNo=49, userNo=31, orderNo=null, imageId=null, categoryId=2, boardTitle=배송이 얼마나 걸리는지 알고 싶습니다, boardContent=보통 몇일이 걸리나요?, boardTimestamp=2024-07-24 00:19:07.0, isAnswered=N, imageUrl=null, user=User(userNo=0, userId=test123, userPw=null, userName=박장군, userEmail=null, userAddress1=null, userAddress2=null, userPhone=0, userIndate=null, userMarketing= , userWithdrawal=N, isAdmin=N)), Board(boardNo=48, userNo=31, orderNo=null, imageId=null, categoryId=1, boardTitle=상품 규격에 대하여 자세히 알고 싶습니다!, boardContent=상품 규격에 대하여 자세히 알고 싶습니다!, boardTimestamp=2024-07-24 00:16:03.0, isAnswered=N, imageUrl=null, user=User(userNo=0, userId=test123, userPw=null, userName=박장군, userEmail=null, userAddress1=null, userAddress2=null, userPhone=0, userIndate=null, userMarketing= , userWithdrawal=N, isAdmin=N)), Board(boardNo=52, userNo=13, orderNo=null, imageId=null, categoryId=1, boardTitle=제품 상태가 이상합니다!, boardContent=제품 상태가 이상합니다!, boardTimestamp=2024-07-23 22:04:29.0, isAnswered=N, imageUrl=/boardimage/65f8bed3-5c03-4551-bcb0-f133f1da5e9a-banner.jpg, user=User(userNo=0, userId=xofid1, userPw=null, userName=q, userEmail=null, userAddress1=null, userAddress2=null, userPhone=0, userIndate=null, userMarketing= , userWithdrawal=N, isAdmin=N)), Board(boardNo=46, userNo=15, orderNo=null, imageId=null, categoryId=3, boardTitle=무통장 입금, boardContent=무통장 입금 시 몇 일 이내로 입금완료 해야하나요?, boardTimestamp=2024-07-22 06:03:17.0, isAnswered=Y, imageUrl=null, user=User(userNo=0, userId=lion99, userPw=null, userName=라이언, userEmail=null, userAddress1=null, userAddress2=null, userPhone=0, userIndate=null, userMarketing= , userWithdrawal=N, isAdmin=N)), Board(boardNo=45, userNo=14, orderNo=null, imageId=null, categoryId=2, boardTitle=배송이 얼마나 걸리나요, boardContent=빨리주세요, boardTimestamp=2024-07-21 01:46:16.0, isAnswered=Y, imageUrl=null, user=User(userNo=0, userId=user1234, userPw=null, userName=이동훈, userEmail=null, userAddress1=null, userAddress2=null, userPhone=0, userIndate=null, userMarketing= , userWithdrawal=N, isAdmin=N)), Board(boardNo=44, userNo=13, orderNo=null, imageId=null, categoryId=2, boardTitle=	제품이 손상되어 도착했어요., boardContent=	제품이 손상되어 도착했어요., boardTimestamp=2024-07-21 01:45:27.0, isAnswered=N, imageUrl=https://team4project.kr.object.ncloudstorage.com/90a93802-cd85-4e17-8696-92778c72578e-4378e977b53f8537787003344aeab384_460x.jpg, user=User(userNo=0, userId=xofid1, userPw=null, userName=q, userEmail=null, userAddress1=null, userAddress2=null, userPhone=0, userIndate=null, userMarketing= , userWithdrawal=N, isAdmin=N)), Board(boardNo=41, userNo=20, orderNo=null, imageId=null, categoryId=3, boardTitle=제품 가격문의, boardContent=빈티지의자는 얼마인가요, boardTimestamp=2024-07-18 01:47:33.0, isAnswered=N, imageUrl=https://team4project.kr.object.ncloudstorage.com/3801a8c7-ca53-4f96-b02e-06a8cbcdf4ff-unnamed.jpg, user=User(userNo=0, userId=qwer1, userPw=null, userName=김서방, userEmail=null, userAddress1=null, userAddress2=null, userPhone=0, userIndate=null, userMarketing= , userWithdrawal=N, isAdmin=N)), Board(boardNo=40, userNo=13, orderNo=null, imageId=null, categoryId=2, boardTitle=장농이 이상해요, boardContent=너무 더러워요, boardTimestamp=2024-07-16 23:19:31.0, isAnswered=N, imageUrl=https://team4project.kr.object.ncloudstorage.com/9cbf0cd7-a5d6-4db2-8e0b-db4865e39a2f-banner.jpg, user=User(userNo=0, userId=xofid1, userPw=null, userName=q, userEmail=null, userAddress1=null, userAddress2=null, userPhone=0, userIndate=null, userMarketing= , userWithdrawal=N, isAdmin=N)), Board(boardNo=39, userNo=13, orderNo=null, imageId=null, categoryId=2, boardTitle=곰팡이가 계속 발생합니다., boardContent=곰팡이가 계속 발생합니다.곰팡이가 계속 발생합니다.곰팡이가 계속 발생합니다., boardTimestamp=2024-07-16 23:07:48.0, isAnswered=Y, imageUrl=https://team4project.kr.object.ncloudstorage.com/eb4bed9a-c7f1-4cca-9c07-ab44199e7f5e-banner.jpg, user=User(userNo=0, userId=xofid1, userPw=null, userName=q, userEmail=null, userAddress1=null, userAddress2=null, userPhone=0, userIndate=null, userMarketing= , userWithdrawal=N, isAdmin=N))]
+2024-07-23T22:10:03.116+09:00  INFO 32848 --- [evoproject] [http-nio-8090-exec-8] c.e.e.c.admin.AdminBoardController       : Total Boards: 22
+2024-07-23T22:10:03.117+09:00  INFO 32848 --- [evoproject] [http-nio-8090-exec-8] c.e.e.c.admin.AdminBoardController       : Total Pages: 3
+2024-07-23T22:10:48.908+09:00  INFO 32848 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-23T22:10:48.908+09:00  INFO 32848 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-23T22:11:48.908+09:00  INFO 32848 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-23T22:11:48.908+09:00  INFO 32848 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-23T22:12:48.914+09:00  INFO 32848 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-23T22:12:48.914+09:00  INFO 32848 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-23T22:13:48.908+09:00  INFO 32848 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-23T22:13:48.908+09:00  INFO 32848 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-23T22:14:48.921+09:00  INFO 32848 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-23T22:14:48.921+09:00  INFO 32848 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-23T22:15:48.917+09:00  INFO 32848 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-23T22:15:48.917+09:00  INFO 32848 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-23T22:16:48.919+09:00  INFO 32848 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-23T22:16:48.919+09:00  INFO 32848 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-23T22:17:48.920+09:00  INFO 32848 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-23T22:17:48.920+09:00  INFO 32848 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-23T22:18:48.910+09:00  INFO 32848 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-23T22:18:48.910+09:00  INFO 32848 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-23T22:19:48.920+09:00  INFO 32848 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 시작합니다.
+2024-07-23T22:19:48.920+09:00  INFO 32848 --- [evoproject] [scheduling-1] c.e.e.s.product.ProductServiceImpl       : 조회수 업데이트 작업을 완료했습니다.
+2024-07-23T22:20:27.619+09:00  INFO 32848 --- [evoproject] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-07-23T22:20:27.624+09:00  INFO 32848 --- [evoproject] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

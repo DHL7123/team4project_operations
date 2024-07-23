@@ -59,10 +59,12 @@
                         <p th:text="${board != null ? board.boardContent : '게시물 내용'}" class="content-box1">게시물 내용</p>
                     </div>
                     <div class="image-box">
+                        <!-- 로컬에 문의 이미지 저장시작 -->
                         <div th:if="${board != null && board.imageUrl != null}">
-                            <!-- <img th:src="${board.imageUrl}" alt="업로드된 이미지" class="img-fluid" width="100" height="100" />-->
-                            <a th:href="${board.imageUrl}" download th:attr="download='image-${board.boardNo}'" class="btn btn-secondary btn-sm mt-2">이미지 다운로드</a>
+                            <img th:src="${board.imageUrl}" alt="업로드된 이미지" class="img-fluid" width="100" height="100" />
+                            <a th:href="${board.imageUrl}" th:download="|image-${board.boardNo}|" class="btn btn-secondary btn-sm mt-2">이미지 다운로드</a>
                         </div>
+                        <!-- 로컬에 문의 이미지 저장시작부터 여기가지만 수정  -->
                         <div class="button-group" th:if="${isAuthor}">
                             <a th:href="@{/boards/edit/{boardNo}(boardNo=${board.boardNo})}" class="btn btn-warning btn-sm">수정</a>
                             <a th:href="@{/boards/delete/{boardNo}(boardNo=${board.boardNo})}" class="btn btn-danger btn-sm">삭제</a>

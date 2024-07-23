@@ -15,10 +15,10 @@ import java.util.List;
 public class BoardService {
 
     private final BoardMapper boardMapper;
-    private final NaverImageUploadService imageUploadService;
+    private final LocalImageUploadService imageUploadService;
 
     @Autowired
-    public BoardService(BoardMapper boardMapper, NaverImageUploadService imageUploadService) {
+    public BoardService(BoardMapper boardMapper, LocalImageUploadService imageUploadService) {
         this.boardMapper = boardMapper;
         this.imageUploadService = imageUploadService;
     }
@@ -53,45 +53,36 @@ public class BoardService {
         return boardMapper.countBoardsByUserNo(userNo);
     }
 
-
+    //로컬이미지 업로드 서비스로 리팩토링
     @Transactional
     public void createBoardWithImage(Board board, MultipartFile image) throws IOException {
-        // 게시글을 먼저 생성하고 생성된 boardNo를 반환받음
         board.setBoardTimestamp(new Timestamp(System.currentTimeMillis()));
         boardMapper.insertBoard(board);
         if (board.getBoardNo() == null || board.getBoardNo() == 0) {
             throw new IllegalStateException("Failed to generate boardNo");
         }
 
-        // 이미지가 있으면 업로드 후 게시글 업데이트
         if (!image.isEmpty()) {
             String imageUrl = imageUploadService.uploadImage(image);
             board.setImageUrl(imageUrl);
             boardMapper.updateBoard(board);
-
-            // 이미지 정보를 데이터베이스에 저장
-            imageUploadService.saveBoardImage(board.getBoardNo(), imageUrl);
         }
     }
-
+    //로컬이미지 업로드 서비스로 리팩토링
     @Transactional
     public void updateBoardWithImage(Board board, MultipartFile image) throws IOException {
-        // boardNo가 제대로 설정되었는지 확인
         if (board.getBoardNo() == null || board.getBoardNo() == 0) {
             throw new IllegalStateException("Board number is missing");
         }
 
-        // 이미지가 있으면 업로드 후 게시글 업데이트
         if (!image.isEmpty()) {
             String imageUrl = imageUploadService.uploadImage(image);
             board.setImageUrl(imageUrl);
-
-            // 이미지 정보를 데이터베이스에 저장
-            imageUploadService.saveBoardImage(board.getBoardNo(), imageUrl);
         }
 
         boardMapper.updateBoard(board);
     }
+
     public List<Board> getAllBoardsWithUser(int offset, int limit) {
         return boardMapper.findAllBoardsWithUser(offset, limit);
     }

@@ -5,8 +5,9 @@ import com.evo.evoproject.domain.board.Reply;
 import com.evo.evoproject.domain.user.User;
 import com.evo.evoproject.service.board.BoardService;
 import com.evo.evoproject.service.board.ReplyService;
-import com.evo.evoproject.service.board.NaverImageUploadService;
+import com.evo.evoproject.service.board.LocalImageUploadService;
 import com.evo.evoproject.service.user.UserService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,13 +25,15 @@ public class BoardController {
     private final BoardService boardService;
     private final ReplyService replyService;
     private final UserService userService;
-    private final NaverImageUploadService imageUploadService;
+    //로컬이미지 업로드 서비스로 리팩토링
+    private final LocalImageUploadService imageUploadService;
 
     @Autowired
-    public BoardController(BoardService boardService, ReplyService replyService, UserService userService, NaverImageUploadService imageUploadService) {
+    public BoardController(BoardService boardService, ReplyService replyService, UserService userService, LocalImageUploadService imageUploadService) {
         this.boardService = boardService;
         this.replyService = replyService;
         this.userService = userService;
+        //로컬이미지 업로드 서비스로 리팩토링
         this.imageUploadService = imageUploadService;
     }
 
@@ -71,6 +74,7 @@ public class BoardController {
         return "board/form";
     }
 
+    //로컬이미지 업로드 서비스로 리팩토링
     @PostMapping("/create")
     public String createBoard(@ModelAttribute Board board, @RequestParam("image") MultipartFile image, HttpSession session) {
         String userId = (String) session.getAttribute("userId");
@@ -101,6 +105,7 @@ public class BoardController {
         return "board/form";
     }
 
+    //로컬이미지 업로드 서비스로 리팩토링
     @PostMapping("/edit/{boardNo}")
     public String updateBoard(@PathVariable int boardNo, @ModelAttribute Board board, @RequestParam("image") MultipartFile image, HttpSession session) {
         String userId = (String) session.getAttribute("userId");
@@ -133,6 +138,7 @@ public class BoardController {
         return "redirect:/boards";
     }
 
+    //로컬이미지 업로드 서비스로 리팩토링
     @GetMapping("/view/{boardNo}")
     public String viewBoard(@PathVariable int boardNo, HttpSession session, Model model) {
         String userId = (String) session.getAttribute("userId");

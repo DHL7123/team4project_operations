@@ -5,23 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c3d7cf85-c82f-4d99-bfa0-82f0efec097a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evoproject/src/main/java/com/evo/evoproject/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/evoproject/src/main/java/com/evo/evoproject/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evoproject/src/main/java/com/evo/evoproject/controller/admin/AdminBoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/evoproject/src/main/java/com/evo/evoproject/controller/admin/AdminBoardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evoproject/src/main/java/com/evo/evoproject/config/NaverCloudConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/evoproject/src/main/java/com/evo/evoproject/config/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/evoproject/src/main/java/com/evo/evoproject/config/WebConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/evoproject/src/main/java/com/evo/evoproject/controller/board/BoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/evoproject/src/main/java/com/evo/evoproject/controller/board/BoardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evoproject/src/main/java/com/evo/evoproject/controller/board/ReplyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/evoproject/src/main/java/com/evo/evoproject/controller/board/ReplyController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evoproject/src/main/java/com/evo/evoproject/domain/board/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/evoproject/src/main/java/com/evo/evoproject/domain/board/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evoproject/src/main/java/com/evo/evoproject/mapper/board/BoardMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/evoproject/src/main/java/com/evo/evoproject/mapper/board/BoardMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/evoproject/src/main/java/com/evo/evoproject/service/board/BoardService.java" beforeDir="false" afterPath="$PROJECT_DIR$/evoproject/src/main/java/com/evo/evoproject/service/board/BoardService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evoproject/src/main/java/com/evo/evoproject/service/board/NaverImageUploadService.java" beforeDir="false" afterPath="$PROJECT_DIR$/evoproject/src/main/java/com/evo/evoproject/service/board/LocalImageUploadService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/evoproject/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/evoproject/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evoproject/src/main/resources/mapper/BoardMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/evoproject/src/main/resources/mapper/BoardMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evoproject/src/main/resources/templates/admin/manageBoard.html" beforeDir="false" afterPath="$PROJECT_DIR$/evoproject/src/main/resources/templates/admin/manageBoard.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/evoproject/src/main/resources/templates/admin/manageView.html" beforeDir="false" afterPath="$PROJECT_DIR$/evoproject/src/main/resources/templates/admin/manageView.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evoproject/src/main/resources/templates/board/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/evoproject/src/main/resources/templates/board/list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/evoproject/src/main/resources/templates/board/view.html" beforeDir="false" afterPath="$PROJECT_DIR$/evoproject/src/main/resources/templates/board/view.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp.log" beforeDir="false" afterPath="$PROJECT_DIR$/myapp.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp.log.2024-07-13.0.gz" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -166,6 +157,7 @@
       <workItem from="1721455617290" duration="8486000" />
       <workItem from="1721464697352" duration="543000" />
       <workItem from="1721532493640" duration="5206000" />
+      <workItem from="1721735949018" duration="4572000" />
     </task>
     <servers />
   </component>
