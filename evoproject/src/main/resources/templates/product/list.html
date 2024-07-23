@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Product List</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" />
+  <link rel="stylesheet" th:href="@{/css/styles.css}">
+  <link rel="stylesheet" th:href="@{/css/list.css}">
+</head>
+<body class="bg-light" th:data-user-no="${userNo}">
+
+<header th:replace="~{header :: header}"></header>
+
+<div class="container">
+  <h1 class="text-center mb-4">Product List</h1>
+
+  <div class="mb-3">
+    <select id="sortSelect" class="form-select" onchange="onSortChange()">
+      <option value="viewCount_desc" th:selected="${productsResponse.sort == 'viewCount_desc'}">인기순</option>
+      <option value="pro_date_desc" th:selected="${productsResponse.sort == 'pro_date_desc'}">최근 등록순</option>
+      <option value="price_asc" th:selected="${productsResponse.sort == 'price_asc'}">가격 오름차순</option>
+      <option value="price_desc" th:selected="${productsResponse.sort == 'price_desc'}">가격 내림차순</option>
+    </select>
+    <input type="hidden" id="categoryId" th:value="${categoryId}">
+    <input type="hidden" id="input" th:value="${productName}">
+  </div>
+
+  <input type="hidden" id="currentPage" th:value="${productsResponse.currentPage}" />
+
+  <div id="product-container" class="row row-cols-1 row-cols-md-4 g-4">
+    <div th:each="product : ${products}" class="col">
+      <div class="product card h-100" th:data-product-no="${product.productNo}" th:data-product-price="${product.price}">
+        <img th:if="${product.mainImage != null}" th:src="@{${product.mainImage.imageName}}" alt="Product Image" class="card-img-top">
+        <div class="card-body">
+          <h5 class="card-title" th:text="${product.productName}">Product Name</h5>
+          <p class="card-text" th:text="${product.soldout == 1 ? 'SoldOut' : #numbers.formatInteger(product.price, 0, 'COMMA') + ' 원'}"></p>
+        </div>
+        <div class="card-footer text-center">
+          <div class="add-to-cart btn btn-primary" th:if="${product.soldout == 0}">Add to cart</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pagination">
+    <ul class="pagination">
+      <li class="page-item" th:if="${productsResponse.currentPage > 1}">
+        <a class="page-link" th:href="@{${categoryId != null ? '/product/category/' + categoryId : (productName != null ? '/product/search/' + productName : '/product')}(page=${productsResponse.currentPage - 1}, size=16, sort=${productsResponse.sort})}">Prev</a>
+      </li>
+      <li class="page-item" th:each="pageNum : ${#numbers.sequence(1, productsResponse.totalPages)}" th:classappend="${pageNum == productsResponse.currentPage} ? 'active'">
+        <a class="page-link" th:href="@{${categoryId != null ? '/product/category/' + categoryId : (productName != null ? '/product/search/' + productName : '/product')}(page=${pageNum}, size=16, sort=${productsResponse.sort})}" th:text="${pageNum}">1</a>
+      </li>
+      <li class="page-item" th:if="${productsResponse.currentPage < productsResponse.totalPages}">
+        <a class="page-link" th:href="@{${categoryId != null ? '/product/category/' + categoryId : (productName != null ? '/product/search/' + productName : '/product')}(page=${productsResponse.currentPage + 1}, size=16, sort=${productsResponse.sort})}">Next</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<script>
+  function getParameterByName(name) {
+    const url = new URL(window.location.href);
+    return url.searchParams.get(name);
+  }
+
+  function onSortChange() {
+    const sort = document.getElementById("sortSelect").value;
+    const currentPage = document.getElementById("currentPage").value;
+    const categoryId = document.getElementById("categoryId").value;
+    const input = document.getElementById("input").value.trim();
+
+    let url;
+    if (categoryId) {
+      url = "/product/category/" + categoryId + "?sort=" + sort + "&page=" + currentPage + "&size=16";
+    } else if (input) {
+      url = "/product/search/" + encodeURIComponent(input) + "?sort=" + sort + "&page=" + currentPage + "&size=16";
+    } else {
+      url = "/product?sort=" + sort + "&page=" + currentPage + "&size=16";
+    }
+
+    window.location.href = url;
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const products = document.querySelectorAll('.product');
+    products.forEach(function (product) {
+      product.addEventListener('click', function (event) {
+        const addToCartButton = product.querySelector('.add-to-cart');
+        if (event.target !== addToCartButton) {
+          const productNo = product.getAttribute('data-product-no');
+          redirectToDetailPage(productNo);
+        }
+      });
+
+      const addToCartButton = product.querySelector('.add-to-cart');
+      if (addToCartButton) {
+        addToCartButton.addEventListener('click', function(event) {
+          event.stopPropagation();
+          const productNo = product.getAttribute('data-product-no');
+          const price = product.getAttribute('data-product-price');
+          addToCart(productNo, price, 1);
+        });
+      }
+    });
+  });
+
+  function redirectToDetailPage(productNo) {
+    window.location.href = '/product/detail/' + productNo;
+  }
+  function addToCart(productNo, price, quantity, stock) {
+    const userNo = document.body.getAttribute('data-user-no');
+
+    // 사용자 번호가 guest 경우
+    if (userNo === 'guest') {
+      alert('로그인이 필요합니다.');
+      window.location.href = '/login';
+      return;
+    }
+
+    // 요청된 수량이 재고 수량을 초과한 경우
+    if (quantity > stock) {
+      alert('재고 수량을 초과했습니다.');
+      return;
+    }
+
+    fetch('/cart/add', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: new URLSearchParams({
+        'userNo': userNo,
+        'proNo': productNo,
+        'quantity': quantity
+      })
+    }).then(response => {
+      if (response.ok) {
+        if (confirm('장바구니에 상품이 추가되었습니다. 장바구니로 이동하시겠습니까?')) {
+          window.location.href = '/cart';
+        }
+      } else {
+        alert('상품 추가에 실패했습니다. 장바구니를 확인해주세요.');{
+          window.location.href = '/cart';
+        }
+      }
+    }).catch(error => {
+      console.error('Error:', error);
+      alert('상품 추가 중 오류가 발생했습니다.');
+    });
+  }
+
+</script>
+<footer th:replace="~{footer :: footer}"></footer>
+<script th:src="@{/js/script.js}"></script>
+</body>
+</html>

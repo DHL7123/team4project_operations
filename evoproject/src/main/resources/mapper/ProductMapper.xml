@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.evo.evoproject.mapper.product.ProductMapper">
+
+    <resultMap id="ProductResultMap" type="com.evo.evoproject.domain.product.Product">
+        <id property="productNo" column="pro_no"/>
+        <result property="productName" column="pro_name"/>
+        <result property="productDes" column="pro_content"/>
+        <result property="categoryId" column="category_id"/>
+        <result property="price" column="pro_price"/>
+        <result property="stock" column="pro_stock"/>
+        <result property="date" column="pro_date"/>
+        <result property="viewCount" column="view_count"/>
+        <result property="shipping" column="shipping"/>
+        <result property="soldout" column="soldout"/>
+        <association property="mainImage" javaType="com.evo.evoproject.domain.image.Image">
+            <id property="imageId" column="image_id"/>
+            <result property="imageName" column="image_name"/>
+            <result property="imageType" column="image_type"/>
+        </association>
+    </resultMap>
+
+    <resultMap id="ProductDetailResultMap" type="com.evo.evoproject.domain.product.Product" extends="ProductResultMap">
+        <collection property="images" ofType="com.evo.evoproject.domain.image.Image">
+            <id property="imageId" column="image_id"/>
+            <result property="imageName" column="image_name"/>
+            <result property="imageType" column="image_type"/>
+        </collection>
+    </resultMap>
+
+    <select id="findAllProductsUser" resultMap="ProductResultMap">
+        SELECT p.pro_no, p.pro_name, p.pro_content, p.category_id, p.pro_price, p.pro_stock, p.pro_date, p.view_count, p.shipping, p.soldout,
+        i.image_id AS image_id, i.image_name AS image_name, i.image_type AS image_type
+        FROM product p
+        LEFT JOIN image i ON p.image_id = i.image_id
+        <choose>
+            <when test="sort == 'price_asc'">
+                ORDER BY p.soldout ASC, p.pro_price ASC
+            </when>
+            <when test="sort == 'price_desc'">
+                ORDER BY p.soldout ASC, p.pro_price DESC
+            </when>
+            <when test="sort == 'pro_date_desc'">
+                ORDER BY p.soldout ASC, p.pro_date DESC
+            </when>
+            <otherwise>
+                ORDER BY p.soldout ASC, p.view_count DESC
+            </otherwise>
+        </choose>
+        LIMIT #{offset}, #{size}
+    </select>
+
+    <select id="findAllProductsAdmin" resultMap="ProductResultMap">
+        SELECT p.pro_no, p.pro_name, p.pro_content, p.category_id, p.pro_price, p.pro_stock, p.pro_date, p.view_count, p.shipping, p.soldout,
+        i.image_id AS image_id, i.image_name AS image_name, i.image_type AS image_type
+        FROM product p
+        LEFT JOIN image i ON p.image_id = i.image_id
+        <where>
+            <if test="soldout != null">
+                p.soldout = #{soldout}
+            </if>
+        </where>
+        <choose>
+            <when test="sort == 'price_asc'">
+                ORDER BY p.pro_price ASC
+            </when>
+            <when test="sort == 'price_desc'">
+                ORDER BY p.pro_price DESC
+            </when>
+            <when test="sort == 'viewCount_desc'">
+                ORDER BY p.view_count DESC
+            </when>
+            <otherwise>
+                ORDER BY p.pro_date DESC
+            </otherwise>
+        </choose>
+        LIMIT #{offset}, #{size}
+    </select>
+
+
+    <select id="findProductsByCategory" resultMap="ProductResultMap">
+        SELECT p.pro_no, p.pro_name, p.pro_content, p.category_id, p.pro_price, p.pro_stock, p.pro_date, p.view_count, p.shipping, p.soldout,
+        i.image_id AS image_id, i.image_name AS image_name, i.image_type AS image_type
+        FROM product p
+        LEFT JOIN image i ON p.image_id = i.image_id
+        WHERE category_id = #{categoryId}
+        <choose>
+            <when test="sort == 'price_asc'">
+                ORDER BY p.soldout ASC, p.pro_price ASC
+            </when>
+            <when test="sort == 'price_desc'">
+                ORDER BY p.soldout ASC, p.pro_price DESC
+            </when>
+            <when test="sort == 'pro_date_desc'">
+                ORDER BY p.soldout ASC, p.pro_date DESC
+            </when>
+            <otherwise>
+                ORDER BY p.soldout ASC, p.view_count DESC
+            </otherwise>
+        </choose>
+        LIMIT #{offset}, #{size}
+    </select>
+
+    <select id="findProductByNo" resultMap="ProductDetailResultMap">
+        SELECT * FROM product_detail_view
+        WHERE pro_no = #{productNo}
+    </select>
+
+    <select id="countProducts" resultType="int">
+        SELECT COUNT(*) FROM product
+    </select>
+
+    <select id="countProductsByCategory" resultType="int">
+        SELECT COUNT(*) FROM product WHERE category_id = #{categoryId}
+    </select>
+
+    <select id="countProductsAdmin" resultType="int">
+        SELECT COUNT(*)
+        FROM product p
+        <where>
+            <if test="soldout != null and soldout != ''">
+                p.soldout = #{soldout}
+            </if>
+        </where>
+    </select>
+
+    <update id="incrementProductViewCount">
+        UPDATE product SET view_count = view_count + #{count} WHERE pro_no = #{productNo}
+    </update>
+
+    <select id="findTopProductsByCategory" resultMap="ProductResultMap">
+        SELECT *
+        FROM top_products_by_category_view
+        WHERE category_id = #{categoryId}
+          AND pro_no != #{productNo}
+        ORDER BY view_count DESC
+            LIMIT 4;
+    </select>
+
+    <select id="findProductByName" resultMap="ProductResultMap">
+        SELECT p.pro_no, p.pro_name, p.pro_content, p.category_id, p.pro_price, p.pro_stock, p.pro_date, p.view_count, p.shipping, p.soldout,
+        i.image_id AS image_id, i.image_name AS image_name, i.image_type AS image_type
+        FROM product p
+        LEFT JOIN image i ON p.image_id = i.image_id
+        WHERE p.pro_name LIKE CONCAT('%', #{productName}, '%')
+        <choose>
+            <when test="sort == 'price_asc'">
+                ORDER BY p.soldout ASC, p.pro_price ASC
+            </when>
+            <when test="sort == 'price_desc'">
+                ORDER BY p.soldout ASC, p.pro_price DESC
+            </when>
+            <when test="sort == 'pro_date_desc'">
+                ORDER BY p.soldout ASC, p.pro_date DESC
+            </when>
+            <otherwise>
+                ORDER BY p.soldout ASC, p.view_count DESC
+            </otherwise>
+        </choose>
+        LIMIT #{offset}, #{size}
+    </select>
+
+    <select id="countByProductsName" resultType="int">
+        SELECT COUNT(*) FROM product
+        WHERE pro_name LIKE CONCAT('%', #{productName}, '%')
+    </select>
+
+
+    <insert id="addProduct" parameterType="com.evo.evoproject.domain.product.Product" useGeneratedKeys="true" keyProperty="productNo">
+        INSERT INTO product (pro_name, pro_content, category_id, pro_price, pro_stock, shipping, soldout)
+        VALUES (#{productName}, #{productDes}, #{categoryId}, #{price}, #{stock}, #{shipping}, #{soldout})
+    </insert>
+
+    <update id="updateProductMainImage" parameterType="map">
+        UPDATE product
+        SET image_id = #{mainImage}
+        WHERE pro_no = #{productNo}
+    </update>
+    <insert id="saveProductImageMapping">
+        INSERT INTO product_image (pro_no, image_id)
+        VALUES (#{productNo}, #{imageId})
+    </insert>
+
+    <delete id="deleteProductImages" parameterType="int">
+        DELETE FROM product_image WHERE pro_no = #{productNo}
+    </delete>
+
+    <delete id="deleteProduct" parameterType="int">
+        DELETE FROM product WHERE pro_no = #{productNo}
+    </delete>
+
+    <update id="updateProduct" parameterType="com.evo.evoproject.domain.product.Product">
+        UPDATE product
+        SET pro_name = #{productName}, pro_content = #{productDes}, category_id = #{categoryId}, pro_price = #{price}, pro_stock = #{stock}
+        WHERE pro_no = #{productNo}
+    </update>
+
+    <delete id="deleteProductImageMapping" parameterType="int">
+        DELETE FROM product_image
+        WHERE image_id = #{imageId}
+    </delete>
+
+
+
+
+</mapper>

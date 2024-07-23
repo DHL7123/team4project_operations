@@ -1,0 +1,143 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+.banner {
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 70px;
+}
+.sb-topnav {
+    background-color: #343a40;
+}
+
+.sb-sidenav {
+    background-color: #6c757d;
+}
+
+.container-fluid {
+    margin-top: 20px;
+}
+
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+table th {
+    /*background-color: #F9F1E7;*/
+    color: black;
+}
+
+.button-container {
+    text-align: center;
+}
+
+.button-container button {
+    margin: 20px;
+    padding: 10px;
+    width: 200px;
+    height: 60px;
+    background-color: #D6D6D6;
+    color: black;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    transition-duration: 0.4s;
+}
+button:hover {
+    background-color: #F3F3F3;
+    color: black;
+}
+.selected {
+    font-weight: bold;
+}
+
+.manageConfirmBtn {
+    background-color: #D6D6D6;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 120px;
+    text-align: center;
+    margin-bottom: 5px;
+}
+.manageConfirmBtnPlus {
+    background-color: #D6D6D6;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 150px;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+/*송장번호 입력 팝업*/
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 166px;
+    background-color: rgba(0, 0, 0, 0);
+    z-index: 1002;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    background-color: white;
+    padding: 20px;
+    width: 80%;
+    max-width: 300px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    z-index: 1003;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/*페이지네이션 컨트롤러*/
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+    border: 1px solid #ddd;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.pagination a.active {
+    background-color: #F9F1E7; !important;
+    color: white;   !important;
+    border: 1px solid #F9F1E7;  !important;
+}
+
+.pagination a:hover:not(.active) {background-color: #ddd; !important;}

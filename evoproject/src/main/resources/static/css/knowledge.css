@@ -1,0 +1,112 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+/*공통*/
+.banner {
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*공지사항*/
+.noticeContent {
+    max-width: 1200px;
+    margin: 50px auto;
+    background-color: #ffffff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-size: 20px;
+}
+.noticeContent p{
+    line-height: 1.6;
+    text-align: left;
+}
+
+/*FAQ*/
+.faqContent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+}
+.faq-section {
+    max-width: 1200px; /* Adjust max-width as needed */
+    width: 100%;
+    background-color: #ffffff;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.faq-section h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+.faq-section .question {
+    font-weight: bold;
+    margin: 10px 0 5px;
+}
+.faq-section .answer {
+    margin: 0 0 15px 20px;
+}
+
+/* 서비스 약관 */
+.servicePolicyContent {
+    max-width: 1200px;
+    margin: 50px auto;
+    background-color: #ffffff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.article {
+    margin-bottom: 20px;
+}
+.article h4 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    text-align: left;
+}
+.article p {
+    line-height: 1.6;
+    text-align: left;
+}
+
+/*개인정보 처리방침*/
+.privacyPolicyContent {
+    max-width: 1200px;
+    margin: 50px auto;
+    background-color: #ffffff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.privacyPolicyContent h4 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+.privacyPolicyContent h5 {
+    margin-top: 20px;
+}
+.privacyPolicyContent p {
+    line-height: 1.6;
+    text-align: left;
+}
+
+/*배송 및 환불 정책*/
+.deliveryNrefundPolicyContent {
+    max-width: 1200px;
+    margin: 50px auto;
+    background-color: #ffffff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.privacyPolicyContent h5 {
+    margin-top: 20px;
+}
+.deliveryNrefundPolicyContent p {
+    line-height: 1.6;
+    text-align: left;
+}

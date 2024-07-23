@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order / Payment</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="../static/css/styles.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.iamport.kr/js/iamport.payment-1.1.7.js"></script>
+  <link rel="stylesheet" th:href="@{/css/styles.css}">
+  <style>
+    :root {
+      --primary-color: #007bff;
+      --secondary-color: #6c757d;
+      --background-color: #f8f9fa;
+      --text-color: #212529;
+    }
+
+    body {
+      background-color: var(--background-color);
+      color: var(--text-color);
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .banner {
+      background-image: url('/image/banner.jpg');
+      background-size: cover;
+      background-position: center;
+      height: 200px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .banner h1 {
+      margin: 0;
+    }
+
+    .container {
+      flex: 1;
+    }
+
+    .order-form {
+      background-color: white;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin-top: 20px;
+    }
+
+    .order-summary {
+      background-color: var(--secondary-color);
+      color: white;
+      padding: 15px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+    }
+
+    .order-summary h2 {
+      margin-top: 0;
+    }
+
+    .order-summary .total {
+      font-size: 1.5em;
+    }
+
+    .btn-primary {
+      background-color: var(--primary-color);
+      border: none;
+    }
+
+    .btn-primary:hover {
+      background-color: darken(var(--primary-color), 10%);
+    }
+
+    footer {
+      background-color: var(--secondary-color);
+      color: white;
+      text-align: center;
+      padding: 10px 0;
+    }
+  </style>
+</head>
+<body class="bg-light" th:data-user-no="${userNo}">
+<header th:replace="~{header :: header}"></header>
+<div class="banner">
+  <h1>Checkout</h1>
+</div>
+<div class="container mt-5">
+  <div class="order-summary">
+    <h2>주문 / 결제</h2>
+    <div class="product-info" th:if="${order != null}" th:each="item : ${order.items}" th:data-product-no="${item.productNo}" th:data-unit-price="${item.price}" th:data-shipping="${item.shipping}">
+      <img class="product-image" th:src="@{${item.mainImage}}" alt="Product Image" style="width: 100px; height: auto;">
+      <span class="product-name" th:text="${item.productName}"></span> X <span class="product-quantity" th:text="${item.quantity}"></span><br>
+      <span>배송비: </span><span class="shipping-cost" th:text="${item.shipping}"></span><br>
+      <span>상품 가격: </span><span class="unit-price" th:text="${item.price}"></span><br>
+      <span>Total: </span><span class="total-price" th:text="${item.price * item.quantity + item.shipping}"></span><br>
+    </div>
+  </div>
+
+  <form id="orderForm" class="order-form">
+    <div class="mb-3">
+      <label for="orderName" class="form-label">수령인</label>
+      <input type="text" id="orderName" name="orderName" class="form-control" required>
+    </div>
+    <div class="mb-3">
+      <label for="orderAddress1" class="form-label">배송지 주소</label>
+      <input type="text" id="orderAddress1" name="orderAddress1" class="form-control" th:value="${user.userAddress1}" required>
+    </div>
+    <div class="mb-3">
+      <label for="orderAddress2" class="form-label">상세주소</label>
+      <input type="text" id="orderAddress2" name="orderAddress2" class="form-control" th:value="${user.userAddress2}" required>
+    </div>
+    <div class="mb-3">
+      <label for="orderPhone" class="form-label">휴대전화번호</label>
+      <input type="text" id="orderPhone" name="orderPhone" class="form-control" th:value="${user.userPhone}" required>
+    </div>
+    <div class="mb-3">
+      <label for="orderComment" class="form-label">요청사항</label>
+      <input type="text" id="orderComment" name="orderComment" class="form-control">
+    </div>
+    <input type="hidden" name="paymentInfo" value="MockPaymentInfo">
+    <input type="hidden" name="selectedItems" id="selectedItems">
+    <button type="submit" class="btn btn-primary">지금 결제</button>
+  </form>
+
+  <div class="mb-3">
+    <label for="totalPrice" class="form-label">총 가격</label>
+    <input type="text" id="totalPrice" class="form-control" readonly th:value="${totalPrice}">
+  </div>
+
+  <div class="order-summary mt-5">
+    <img src="https://cdn.iamport.kr/images/payment-logo/inicis/inicis.svg" alt="KG Inicis" style="width: 100px;">
+    <p>‘지금 결제’를 클릭한 후, 주문을 안전하게 완료하기 위해 KG Inicis (New)로 다시 연결됩니다.</p>
+    <p>계좌이체 기업은행: 000000-000-000000 예금주 (주)EVO</p>
+  </div>
+</div>
+<footer th:replace="~{footer :: footer}"></footer>
+<script src="js/script.js"></script>
+<script>
+  $(document).ready(function() {
+    const $totalPriceInput = $("#totalPrice");
+    const orderItems = /*[[${order.items}]]*/ '[]';
+
+    console.log('Total Price from Server:', $totalPriceInput.val());
+
+    $('#orderForm').submit(function (event) {
+      event.preventDefault();
+
+      const orderName = $('#orderName').val();
+      const orderAddress1 = $('#orderAddress1').val();
+      const orderAddress2 = $('#orderAddress2').val();
+      const orderPhone = $('#orderPhone').val();
+      const orderComment = $('#orderComment').val();
+      const orderAmount = parseFloat($totalPriceInput.val().replace(/[^0-9.-]+/g,""));
+
+      const userNo = $('body').data('user-no');
+
+      if (!orderName) {
+        alert('이름을 입력해주세요.');
+        return;
+      }
+
+      const order = {
+        userNo: userNo,
+        orderName: orderName,
+        orderAddress1: orderAddress1,
+        orderAddress2: orderAddress2,
+        orderPhone: orderPhone,
+        orderComment: orderComment,
+        orderPayment: orderAmount,
+        items: JSON.parse(orderItems), // 서버에서 받아온 아이템 리스트
+        orderStatus: 0,
+        orderDelivnum: '',
+        requestType: 0,
+        proNo: JSON.parse(orderItems).length > 0 ? JSON.parse(orderItems)[0].productNo : 0 // 첫 번째 아이템의 productNo로 설정
+      };
+
+      console.log('Order Data:', JSON.stringify(order, null, 2));
+
+      $.ajax({
+        type: 'POST',
+        url: '/orders/processPayment?paymentInfo=MockPaymentInfo',
+        contentType: 'application/json',
+        data: JSON.stringify(order),
+        success: function () {
+          window.location.href = '/orders/complete';
+        },
+        error: function (error) {
+          console.error('Error:', error);
+          alert('주문을 완료하는 중 오류가 발생했습니다.');
+        }
+      });
+    });
+
+    // 가격 포맷팅 함수
+    function formatPrice(price) {
+      return new Intl.NumberFormat('ko-KR').format(price) + '원';
+    }
+
+    // 페이지 로드 시 가격 포맷팅 적용
+    $('.unit-price').each(function() {
+      const price = parseFloat($(this).text());
+      $(this).text(formatPrice(price));
+    });
+
+    $('.shipping-cost').each(function() {
+      const price = parseFloat($(this).text());
+      $(this).text(formatPrice(price));
+    });
+
+    $('.total-price').each(function() {
+      const price = parseFloat($(this).text());
+      $(this).text(formatPrice(price));
+    });
+
+    // 총 가격 입력란 포맷팅
+    const totalPrice = parseFloat($totalPriceInput.val());
+    $totalPriceInput.val(formatPrice(totalPrice));
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,327 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+
+html {
+    font-family: 'Ubuntu', sans-serif;
+}
+/* 폰트 끝 */
+
+/* 노멀라이즈 시작 */
+body, ul, li {
+    margin: 0;
+    padding: 0;
+    list-style: none;		/* 해당 태그의 list-style을 none으로 하는 것으로 ●을 제거한다 */
+}
+
+body {
+    background-color: white;
+}
+
+#wrap{
+    /* 각 웹 페이지 크기에 맞게 사이즈 조정 */
+    /*display: table-cell;*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    text-align:center;
+    background-repeat:repeat-y;
+    font-size:2em;
+    vertical-align: center;
+    white-space: nowrap;
+    width:1500pt;
+}
+
+header.top-bar {
+    display: flex;
+    align-items: center;
+    padding: 20px 0; /* 위아래 패딩을 추가하여 로고에 여백을 줍니다. */
+}
+
+a {
+    color: inherit;		/* 부모 엘리먼트의 값을 물려받는다 */
+    text-decoration: none;	/* 해당 태그의 text-decoration을 none으로 하는 것으로 밑줄을 제거한다 */
+}
+/* 노멀라이즈 끝 */
+
+#logo {
+    display:inline-block;
+    text-align: left;
+    width:100px;
+    height:100px;
+    margin-left: 200pt;
+    /*margin-right:200pt;*/
+}
+
+div#rightMenu {
+    display: inline-block;
+    white-space: nowrap;
+    margin-right: 200pt;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 2em;
+    margin-left: auto; /* 추가: 오른쪽으로 이동 */
+}
+
+div#rightMenu ul{
+    text-align: center;
+}
+
+div#rightMenu li{
+    list-style: none;
+    display: inline-block;
+    margin-right: 20px;
+    vertical-align: middle;
+}
+div#rightMenu a{
+    color: black;
+}
+div#rightMenu a:hover{
+    color: gray;
+}
+
+
+/* 라이브러리 시작 */
+.con {
+    margin-right: auto;
+    margin-left: auto;
+    display: inline;
+    vertical-align: middle;
+    text-align: center;
+    white-space: nowrap;
+}
+/* 라이브러리 끝 */
+
+/* 커스텀 시작 */
+:root {
+    --site-width: 1200px;
+}
+
+.con-min-width {
+    min-width: var(--site-width);
+}
+
+.top-bar > .con {
+    width: var(--site-width);
+}
+
+
+/* 드롭다운 메뉴 시작 */
+.top-bar__menu-box-1 > ul ul {
+    display: none;
+    background-image: url('../image/menubar.png');
+    background-size: 1800px 1260px;
+    background-position: center;
+}
+
+.top-bar__menu-box-1 > ul > li {
+    list-style: none;
+    vertical-align: middle;
+    display: inline-block;
+    text-align: center;
+}
+
+.top-bar__menu-box-1 {
+    position: relative;
+    white-space: nowrap;
+    display: inline-block;
+    margin: auto;
+    font-family: Arial, Helvetica, sans-serif;
+    justify-content: center;
+    text-align: center;
+    z-index: 9999;
+}
+.top-bar__menu-box-1 ul {
+    text-align: center;
+    font-size:0;
+}
+
+.top-bar__menu-box-1 ul > li > a {
+    display: block;
+    font-size: 2rem;
+    padding: 66px 100px;
+    margin:0 0 0 0;
+    text-align: left;
+}
+
+.top-bar__menu-box-1 ul > li:hover > a {
+    color: gray;
+}
+
+.top-bar__menu-box-1 > ul > li {
+    position: relative;
+}
+
+.top-bar__menu-box-1 > ul > li > ul {
+    position: fixed;
+    top: 180px;
+    left: 0;
+    width: 100vw;
+    text-align: left;
+}
+
+.top-bar__menu-box-1 > ul > li:hover > ul {
+    display: block;
+}
+
+.top-bar__menu-box-1 > ul {
+    border-radius: 20px;
+}
+/*검색창_모달*/
+.searchModal {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 10;
+}
+#modalContent {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    max-width: 80%;
+    max-height: 80%;
+    overflow: auto;
+    position: relative;
+}
+#searchInput {
+    background-color: transparent;
+    border: none;
+    color: black;
+    padding: 10px;
+    font-size: 16px;
+    width: 600px;
+    margin-right: 10px;
+    outline: none;
+    display: inline-block;
+}
+#searchButton {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    vertical-align: middle;
+    display: flex;
+}
+.closeButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    color: white;
+    font-size: 20px;
+    line-height: 1;
+}
+/*메인페이지 > 인기카테고리*/
+.gallery_container {
+    max-width: 1050px;
+    margin: 0 auto;
+    padding: 20px;
+}
+.gallery {
+    display: grid;
+    /*뷰포트를 줄이고 키우고에 따라서 반응형으로 만든 것이지만, 아직 컨트롤하는 능력이 부족해 픽스 형태로 해놨음*/
+    /*이후에 주석을 바꾸고 gap을 20px로 수정해 반응형 그리드로 수정 진행 예정*/
+    /*grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));*/
+    grid-template-columns: repeat(4, 250px);
+    gap: 40px;
+}
+.galleryItem {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    height: 400px;
+}
+.galleryItem img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+.galleryItem:nth-child(1),
+.galleryItem:nth-child(3) {
+    grid-column: span 2;
+    width: 546px;
+}
+.galleryItem:nth-child(2),
+.galleryItem:nth-child(4) {
+    grid-column: span 2;
+    width: 454px;
+}
+
+.galleryItem:nth-child(5) {
+    grid-column: span 2;
+    width: 1040px;
+}
+.galleryItem:nth-child(3) {
+    margin-right: 20px;
+}
+.galleryItem:hover {
+    transform: translateY(-5px);
+}
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.3s ease;
+}
+.galleryItem:hover .overlay {
+    opacity: 1;
+}
+.overlay button {
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+.overlay button:hover {
+    background-color: white;
+    color: black;
+}
+/*footer*/
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 0;
+    border-top: 1px solid #dee2e6;
+    margin-top: 2rem;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 80%;
+    max-width: 1200px;
+}
+
+.footer-section {
+    flex: 1;
+    margin: 0 150px; /* Increased margin */
+}
+
+.footer-section h5 {
+    margin-bottom: 1rem;
+}
+
+.footer-section p {
+    margin: 0.5rem 0;
+}

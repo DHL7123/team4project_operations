@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Evo Market - Shopping Cart</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" />
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" th:href="@{/css/cart.css}">
+</head>
+<body>
+
+<!-- header -->
+<header th:replace="~{header :: header}"></header>
+
+<div class="CartBanner">
+    <img th:src="@{/image/cart.png}" alt="Shopping Cart">
+</div>
+<div th:if="${errorMessage}" class="alert alert-danger" role="alert">
+    <span th:text="${errorMessage}"></span>
+</div>
+
+<form th:action="@{/cart/deleteSelected}" method="post" onsubmit="return validateSelection()">
+    <input type="hidden" name="userNo" th:value="${userNo}" />
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>
+                <input type="checkbox" id="selectAllCheckbox" onchange="toggleSelectAll(this)">
+            </th>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Shipping</th>
+            <th>SubTotal</th>
+        </tr>
+        </thead>
+
+        <tbody th:if="${cartItems != null}">
+        <tr th:each="cartItem, cartItemStat : ${cartItems}">
+            <td>
+                <input type="checkbox" class="itemCheckbox" th:id="'selectItem_' + ${cartItemStat.index}" name="proNos" th:value="${cartItem.products[0].proNo}">
+            </td>
+            <td class="product-column">
+                <div class="product-container">
+                    <span th:each="product : ${cartItem.products}" class="product-item">
+                        <img th:src="${product.mainImage.imageName}" alt="Product Image">
+                        <span th:text="${product.proName}"></span>
+                    </span>
+                </div>
+            </td>
+            <td th:each="product : ${cartItem.products}" th:text="${product.proPrice}"></td>
+            <td th:text="${cartItem.cartQuantity}"></td>
+            <td>
+                <span th:each="product : ${cartItem.products}" th:text="${product.shipping * cartItem.cartQuantity}"></span>
+            </td>
+            <td>
+                <span th:each="product : ${cartItem.products}" th:text="${(product.proPrice * cartItem.cartQuantity) + product.shipping}"></span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <!-- 선택 상품 삭제 버튼 -->
+    <div class="text-right mt-3">
+        <button type="submit" class="btn btn-sm btn-light-brown">
+            <img th:src="@{/image/delete.png}" alt="Delete" height="30px" width="30px">
+        </button>
+    </div>
+</form>
+
+<br><br><br><br>
+
+<div class="continueShopping">
+    <a th:href="@{/}">쇼핑 계속하기</a>
+</div>
+
+<hr>
+<table class="table">
+    <tbody>
+    <tr>
+        <td><strong>Total</strong></td>
+        <td id="totalAmount">₩0</td>
+    </tr>
+    </tbody>
+</table>
+<hr>
+
+<!-- 주문페이지로 넘어가기 -->
+<div class="checkoutBtn">
+    <form id="checkoutForm" method="post" th:action="@{/orders/payment}">
+        <input type="hidden" name="selectedItems" id="selectedItems">
+        <input type="hidden" name="proNo" id="proNo">
+        <button type="button" class="btn btn-primary btn-rounded btn-block btn-lg fw-bold" onclick="submitCheckoutForm()">Checkout</button>
+    </form>
+</div>
+
+<!-- footer -->
+<footer th:replace="~{footer :: footer}"></footer>
+
+<!-- JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js"></script>
+<script src="js/script.js"></script>
+<script th:inline="javascript">
+
+    document.addEventListener('DOMContentLoaded', function() {
+        var totalAmount = 0;
+
+        function calculateTotal() {
+            totalAmount = 0;
+            var checkboxes = document.querySelectorAll('input.itemCheckbox:checked');
+
+            checkboxes.forEach(function(checkbox) {
+                var row = checkbox.closest('tr');
+                var price = parseFloat(row.querySelector('td:nth-child(3)').textContent.trim().replace(/,/g, ''));
+                var quantity = parseInt(row.querySelector('td:nth-child(4)').textContent.trim());
+                var shipping = parseFloat(row.querySelector('td:nth-child(5)').textContent.trim().replace(/,/g, ''));
+                var subTotal = (price * quantity) + shipping;
+                row.querySelector('td:nth-child(6) span').textContent = formatNumber(subTotal);
+                totalAmount += subTotal;
+            });
+
+            var formattedTotal = '₩' + totalAmount.toLocaleString('ko-KR');
+            document.getElementById('totalAmount').textContent = formattedTotal;
+
+            var checkoutBtn = document.querySelector('.checkoutBtn button');
+            checkoutBtn.style.display = checkboxes.length > 0 ? 'block' : 'none';
+        }
+
+        function formatNumber(number) {
+            return number.toLocaleString('ko-KR');
+        }
+
+        // 페이지 로드 시 모든 체크박스 선택 및 총 금액 계산
+        var checkboxes = document.querySelectorAll('input.itemCheckbox');
+        checkboxes.forEach(function(checkbox) {
+            checkbox.checked = true;
+        });
+
+        // 가격과 배송비 포맷 맞추기
+        var prices = document.querySelectorAll('td:nth-child(3)');
+        prices.forEach(function(priceElement) {
+            var price = parseFloat(priceElement.textContent.trim().replace(/,/g, ''));
+            priceElement.textContent = formatNumber(price);
+        });
+
+        var shippings = document.querySelectorAll('td:nth-child(5)');
+        shippings.forEach(function(shippingElement) {
+            var shipping = parseFloat(shippingElement.textContent.trim().replace(/,/g, ''));
+            shippingElement.textContent = formatNumber(shipping);
+        });
+
+        calculateTotal();
+
+        // 체크박스 상태 변화를 감지해 총 금액 재계산
+        checkboxes.forEach(function(checkbox) {
+            checkbox.addEventListener('change', function() {
+                calculateTotal();
+            });
+        });
+
+        // 전체 선택 체크박스 기능
+        window.toggleSelectAll = function(source) {
+            var checkboxes = document.querySelectorAll('input.itemCheckbox');
+            checkboxes.forEach(function(checkbox) {
+                checkbox.checked = source.checked;
+            });
+            calculateTotal();
+        };
+
+        // 폼 제출 시 선택된 상품이 있는지 확인하는 함수
+        window.validateSelection = function() {
+            var selectedCheckboxes = document.querySelectorAll('input.itemCheckbox:checked');
+            if (selectedCheckboxes.length === 0) {
+                alert('선택된 상품이 없습니다!');
+                return false;
+            }
+            return true;
+        };
+
+        // 구매 폼 제출
+        window.submitCheckoutForm = function() {
+            var checkboxes = document.querySelectorAll('input.itemCheckbox:checked');
+            var selectedItems = [];
+            var proNo = null;
+
+            checkboxes.forEach(function(checkbox) {
+                var row = checkbox.closest('tr');
+                var productNo = checkbox.value;
+                var quantity = row.querySelector('td:nth-child(4)').textContent.trim();
+
+                selectedItems.push({
+                    productNo: productNo,
+                    quantity: quantity
+                });
+
+                if (!proNo) {
+                    proNo = productNo;
+                }
+            });
+
+            if (selectedItems.length === 0) {
+                alert('상품을 선택해 주세요.');
+                return;
+            }
+
+            document.getElementById('selectedItems').value = JSON.stringify(selectedItems);
+            document.getElementById('proNo').value = proNo;
+            document.getElementById('checkoutForm').submit();
+        };
+    });
+</script>
+
+</body>
+</html>

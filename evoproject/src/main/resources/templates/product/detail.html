@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Detail</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/detail.css">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body class="bg-light" th:data-user-no="${userNo}" th:data-product-no="${productDetailResponse.product.productNo}">
+<header th:replace="~{header :: header}"></header>
+<div class="container">
+    <h1 class="text-center mb-4">Product Detail</h1>
+    <div class="row">
+        <div class="col-md-8">
+            <!-- Product Images -->
+            <div class="product-images mb-4">
+                <div class="main-image mb-4">
+                    <img th:src="@{${productDetailResponse.images[0].imageName}}" class="img-thumbnail" alt="Main Product Image" onclick="enlargeImage(this)" data-image-name="${productDetailResponse.images[0].imageName}">
+                </div>
+                <div class="thumbnail-images d-flex">
+                    <div th:each="image : ${productDetailResponse.images}" th:if="${image != null && image.imageName != productDetailResponse.images[0].imageName}" class="col-3">
+                        <img th:src="@{${image.imageName}}" class="img-thumbnail" alt="Product Image" onclick="enlargeImage(this)">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <!-- Product Details -->
+            <table class="table table-bordered table-striped">
+                <tr>
+                    <th>Product Name</th>
+                    <td th:text="${productDetailResponse.product.productName}"></td>
+                </tr>
+                <tr>
+                    <th>Category</th>
+                    <td th:switch="${productDetailResponse.product.categoryId}">
+                        <span th:case="1">Chair</span>
+                        <span th:case="2">Lamp</span>
+                        <span th:case="3">Table</span>
+                        <span th:case="4">Cabinet</span>
+                        <span th:case="5">Decorative</span>
+                        <span th:case="6">Tableware</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Shipping</th>
+                    <td th:text="${#numbers.formatInteger(productDetailResponse.product.shipping, 0, 'COMMA')} + '원'"></td>
+                </tr>
+                <tr>
+                    <th>Product Description</th>
+                    <td th:text="${productDetailResponse.product.productDes}"></td>
+                </tr>
+                <tr>
+                    <th>Price</th>
+                    <td th:text="${#numbers.formatInteger(productDetailResponse.product.price, 0, 'COMMA')} + '원'"></td>
+                </tr>
+                <tr>
+                    <th>Stock</th>
+                    <td th:text="${productDetailResponse.product.soldout == 1 ? 'Sold Out' : productDetailResponse.product.stock}" th:classappend="${productDetailResponse.product.soldout == 1 ? 'text-danger' : ''}"></td>
+                </tr>
+            </table>
+
+            <!-- Buttons -->
+            <div class="btn-container" th:if="${productDetailResponse.product.soldout == 0}">
+                <div class="d-flex justify-content-center align-items-center mb-3">
+                    <button class="btn btn-secondary btn-number" type="button" onclick="document.getElementById('quantity').stepDown()">-</button>
+                    <input type="number" id="quantity" value="1" min="1" max="${productDetailResponse.product.stock}" class="form-control text-center mx-2" style="width: 60px;">
+                    <button class="btn btn-secondary btn-number" type="button" onclick="document.getElementById('quantity').stepUp()">+</button>
+                </div>
+                <form id="paymentForm" method="POST" action="/orders/payment" onsubmit="prepareSelectedItems()">
+                    <input type="hidden" name="selectedItems" id="selectedItems">
+                    <input type="hidden" name="proNo" th:value="${productDetailResponse.product.productNo}">
+                    <button type="submit" class="btn btn-custom mb-2">구매하기</button>
+                </form>
+                <button class="btn btn-custom" th:onclick="'addToCart(' + ${productDetailResponse.product.productNo} + ', ' + ${productDetailResponse.product.price} + ', document.getElementById(\'quantity\').value, ' + ${productDetailResponse.product.stock} + ')'">장바구니 담기</button>
+            </div>
+            <div class="text-center mt-4" th:if="${productDetailResponse.product.soldout == 1}">
+                <span class="text-danger soldout">Sold Out</span>
+            </div>
+        </div>
+    </div>
+    <div class="related-products mt-5">
+        <h2 class="text-center mb-4">Related Products</h2>
+        <div class="d-flex flex-wrap justify-content-center">
+            <div th:each="product : ${relatedProducts}" class="card m-2" style="width: 18rem;">
+                <a th:href="@{'/product/detail/' + ${product.productNo}}">
+                    <img th:src="@{${product.mainImage.imageName}}" class="card-img-top" alt="Related Product Image">
+                    <div class="card-body text-center">
+                        <h5 class="card-title" th:text="${product.productName}">Product Name</h5>
+                        <p class="card-text" th:text="${#numbers.formatInteger(product.price, 0, 'COMMA')} + '원'"></p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<script th:inline="javascript">
+    function enlargeImage(img) {
+        var src = img.getAttribute("src");
+        var modal = document.createElement("div");
+        modal.style.display = "flex";
+        modal.style.justifyContent = "center";
+        modal.style.alignItems = "center";
+        modal.style.position = "fixed";
+        modal.style.top = "0";
+        modal.style.left = "0";
+        modal.style.width = "100%";
+        modal.style.height = "100%";
+        modal.style.backgroundColor = "rgba(0,0,0,0.8)";
+        modal.onclick = function () {
+            document.body.removeChild(modal);
+        };
+        var modalImg = document.createElement("img");
+        modalImg.src = src;
+        modalImg.style.maxWidth = "80%";
+        modalImg.style.maxHeight = "80%";
+        modal.appendChild(modalImg);
+        document.body.appendChild(modal);
+    }
+
+    function prepareSelectedItems() {
+        const productNo = document.body.getAttribute('data-product-no');
+        const quantity = document.getElementById('quantity').value;
+        const selectedItems = [
+            {
+                productNo: productNo,
+                quantity: quantity
+            }
+        ];
+        document.getElementById('selectedItems').value = JSON.stringify(selectedItems);
+        console.log('Form submit with selectedItems:', selectedItems);
+    }
+
+    function addToCart(productNo, price, quantity, stock) {
+        const userNo = document.body.getAttribute('data-user-no');
+
+        // 사용자 번호가 guest 경우
+        if (userNo === 'guest') {
+            alert('로그인이 필요합니다.');
+            window.location.href = '/login';
+            return;
+        }
+
+        // 요청된 수량이 재고 수량을 초과한 경우
+        if (quantity > stock) {
+            alert('재고 수량을 초과했습니다.');
+            return;
+        }
+
+        fetch('/cart/add', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: new URLSearchParams({
+                'userNo': userNo,
+                'proNo': productNo,
+                'quantity': quantity
+            })
+        }).then(response => {
+            if (response.ok) {
+                if (confirm('장바구니에 상품이 추가되었습니다. 장바구니로 이동하시겠습니까?')) {
+                    window.location.href = '/cart';
+                }
+            } else {
+                alert('상품 추가에 실패했습니다. 장바구니를 확인해주세요.');{
+                    window.location.href = '/cart';
+                }
+            }
+        }).catch(error => {
+            console.error('Error:', error);
+            alert('상품 추가 중 오류가 발생했습니다.');
+        });
+    }
+</script>
+<footer th:replace="~{footer :: footer}"></footer>
+<script th:src="@{/js/script.js}"></script>
+</body>
+</html>

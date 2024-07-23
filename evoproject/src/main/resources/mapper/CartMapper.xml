@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.evo.evoproject.mapper.cart.CartMapper">
+
+    <!-- Result Map for Cart -->
+    <resultMap id="CartResultMap" type="com.evo.evoproject.domain.cart.Cart">
+        <id property="cartId" column="cart_id"/>
+        <result property="userNo" column="user_no"/>
+        <result property="cartQuantity" column="cart_quantity"/>
+        <collection property="products" ofType="com.evo.evoproject.domain.cart.CartItem">
+            <id property="proNo" column="pro_no"/>
+            <result property="proName" column="pro_name"/>
+            <result property="proPrice" column="pro_price"/>
+            <result property="shipping" column="shipping"/>
+            <association property="mainImage" javaType="com.evo.evoproject.domain.image.Image">
+                <id property="imageId" column="image_id"/>
+                <result property="imageName" column="image_name"/>
+                <result property="imageType" column="image_type"/>
+            </association>
+        </collection>
+    </resultMap>
+
+    <!-- 회원아이디에 따라 카트 조회 -->
+    <select id="findByUserNo" resultMap="CartResultMap">
+        SELECT
+            c.cart_id as cart_id,
+            c.user_no as user_no,
+            c.cart_quantity as cart_quantity,
+            p.pro_no as pro_no,
+            p.pro_name as pro_name,
+            p.pro_price as pro_price,
+            p.shipping as shipping,
+            i.image_id as image_id,
+            i.image_name as image_name,
+            i.image_type as image_type
+        FROM cart c
+                 JOIN product p ON c.pro_no = p.pro_no
+                 LEFT JOIN image i ON p.image_id = i.image_id
+        WHERE c.user_no = #{userNo}
+    </select>
+
+    <!-- 장바구니 선택 상품 삭제 -->
+    <delete id="deleteProductsFromCart">
+        DELETE FROM cart
+        WHERE user_no = #{userNo}
+        AND pro_no IN
+        <foreach item="proNo" collection="proNos" open="(" separator="," close=")">
+            #{proNo}
+        </foreach>
+    </delete>
+
+    <!-- 장바구니 상품 추가 -->
+    <insert id="addProductToCart">
+        INSERT INTO cart (user_no, pro_no, cart_quantity)
+        VALUES (#{userNo}, #{proNo}, #{quantity})
+    </insert>
+
+    <!-- 제품의 재고 수량을 가져오는 쿼리 -->
+    <select id="getProductStock" resultType="int">
+        SELECT pro_stock FROM product
+        WHERE pro_no = #{proNo}
+    </select>
+
+    <!-- 사용자의 장바구니에 담긴 특정 상품의 수량을 가져오는 쿼리 -->
+    <select id="getCartProductQuantity" resultType="int">
+        SELECT COALESCE(SUM(cart_quantity), 0) FROM cart
+        WHERE user_no = #{userNo} AND pro_no = #{proNo}
+    </select>
+
+    <update id="updateProductQuantityInCart">
+        UPDATE cart
+        SET cart_quantity = #{quantity}
+        WHERE user_no = #{userNo} AND pro_no = #{proNo}
+    </update>
+
+</mapper>

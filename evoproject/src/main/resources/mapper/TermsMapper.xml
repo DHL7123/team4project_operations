@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.evo.evoproject.mapper.user.TermsMapper">
+
+    <select id="getLatestTerms" statementType="CALLABLE">
+        {CALL get_latest_terms(#{content, mode=OUT, jdbcType=LONGVARCHAR}, #{version, mode=OUT, jdbcType=DATE}, #{termsType, jdbcType=VARCHAR})}
+    </select>
+
+</mapper>
