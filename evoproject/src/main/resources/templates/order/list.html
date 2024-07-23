@@ -214,9 +214,9 @@
   </style>
   <script>
     function updateButton(button, newText, disabled) {
-      button.text(newText);
+      $(button).text(newText);
       if (disabled) {
-        button.prop('disabled', true);
+        $(button).prop('disabled', true);
       }
     }
 
@@ -279,8 +279,7 @@
           const deliveryNumber = data.order.orderDelivnum ? data.order.orderDelivnum : "배송 준비중";
           $("#orderDetailsModal .modal-body").html(`
           <p><strong>주문 번호:</strong> ${data.order.orderNo}</p>
-          <p><strong>제품 번호:</strong> ${data.order.productNo}</p>
-          <p><strong>수령인 이름:</strong> ${data.order.orderName}</p>
+          <p><strong>수령인 :</strong> ${data.order.orderName}</p>
           <p><strong>주문 주소:</strong> ${data.order.orderAddress1} ${data.order.orderAddress2}</p>
           <p><strong>전화 번호:</strong> ${formatPhoneNumber(data.order.orderPhone.toString())}</p>
           <p><strong>주문 코멘트:</strong> ${data.order.orderComment}</p>
@@ -302,7 +301,6 @@
         $(".modal").hide();
       });
 
-      // Ensure the modal is hidden initially
       $("#orderDetailsModal").hide();
     });
   </script>
