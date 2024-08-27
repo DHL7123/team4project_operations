@@ -20,9 +20,9 @@
 ## 🛠️ 개발 환경
 - **OS**: Windows, MacOS
 - **Frontend**: HTML, CSS, JavaScript, Bootstrap
-- **Backend**: Spring Boot, Gradle, MyBatis, AJAX
+- **Backend**: Spring Boot, Gradle, MyBatis
 - **Database & WAS**: MySQL, Apache Tomcat, Spring Boot
-- **IDE**: IntelliJ IDEA, DataGrip
+- **IDE**: IntelliJ IDEA
 - **Version Control**: Git, SourceTree
 - **Communication**: Google Drive, Figma, Notion, Discord
 - **Cloud & Storage**: Amazon S3, Naver Cloud Platform
